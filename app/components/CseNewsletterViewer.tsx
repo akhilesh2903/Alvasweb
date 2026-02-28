@@ -17,7 +17,7 @@ import "./NewsletterViewer.css";
 
 // Configure pdfjs worker
 if (typeof window !== "undefined") {
-  pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+  pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 }
 
 const newsletters = [
