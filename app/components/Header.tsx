@@ -1,0 +1,1052 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
+
+interface HeaderProps {
+  onMenuToggle?: () => void;
+}
+
+export default function Header({ onMenuToggle }: HeaderProps) {
+  const headerRef = useRef<HTMLElement>(null);
+  const logoImgRef = useRef<HTMLImageElement>(null);
+  const logoText1Ref = useRef<HTMLHeadingElement>(null);
+  const logoText2Ref = useRef<HTMLSpanElement>(null);
+  const topBarRef = useRef<HTMLDivElement>(null);
+
+  // Create refs for ALL mega menu groups
+  const aboutGroupRef = useRef<HTMLDivElement>(null);
+  const academicsGroupRef = useRef<HTMLDivElement>(null);
+  const researchGroupRef = useRef<HTMLDivElement>(null);
+  const placementsGroupRef = useRef<HTMLDivElement>(null);
+  const campusGroupRef = useRef<HTMLDivElement>(null);
+  const admissionsGroupRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
+
+  // Create refs for ALL dropdowns
+  const aboutDropdownRef = useRef<HTMLDivElement>(null);
+  const academicsDropdownRef = useRef<HTMLDivElement>(null);
+  const researchDropdownRef = useRef<HTMLDivElement>(null);
+  const placementsDropdownRef = useRef<HTMLDivElement>(null);
+  const campusDropdownRef = useRef<HTMLDivElement>(null);
+  const admissionsDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const header = headerRef.current;
+    const logoImg = logoImgRef.current;
+    const logoText1 = logoText1Ref.current;
+    const logoText2 = logoText2Ref.current;
+    const topBar = topBarRef.current;
+
+    ScrollTrigger.create({
+      trigger: "body",
+      start: "top -50",
+      toggleClass: { targets: header, className: "header-scrolled" },
+      onEnter: () => {
+        gsap.to([logoText1, logoText2], { color: "#b77a00", duration: 0.2 });
+        gsap.to(".nav-btn", { color: "#b77a00", duration: 0.4 });
+        if (logoImg) {
+          logoImg.src =
+            "https://alvascentralschool001.42web.io/wp-content/uploads/2026/01/logo.png";
+        }
+        gsap.to(logoImg, { width: "3.5rem", height: "4.5rem", duration: 0.4 });
+        gsap.to(logoText1, { fontSize: "1.875rem", duration: 0.4 });
+        gsap.to(topBar, {
+          height: 0,
+          opacity: 0,
+          padding: 0,
+          marginBottom: 0,
+          duration: 0.4,
+          overflow: "hidden",
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to([logoText1, logoText2], { color: "#ffffff", duration: 0.4 });
+        gsap.to(".nav-btn", { color: "#ffffff", duration: 0.4 });
+        if (logoImg) {
+          logoImg.src =
+            "https://alvascentralschool001.42web.io/wp-content/uploads/2026/01/alvas-org-logo-white.png";
+        }
+        gsap.to(logoImg, { width: "3rem", height: "4rem", duration: 0.4 });
+        gsap.to(logoText1, {
+          fontSize: window.innerWidth < 768 ? "1.5rem" : "1.875rem",
+          duration: 0.4,
+        });
+        gsap.to(topBar, {
+          height: "auto",
+          opacity: 0.9,
+          paddingBottom: "0.5rem",
+          marginBottom: "0.75rem",
+          duration: 0.4,
+        });
+      },
+    });
+
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
+  // FULL-WIDTH MEGA MENU POSITIONING FOR ALL TABS
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    // Controllers for cleanup
+    const controllers = new AbortController();
+    const { signal } = controllers;
+
+    // Array of all mega menu groups and their dropdowns
+    const megaMenus = [
+      { group: aboutGroupRef.current, dd: aboutDropdownRef.current },
+      { group: academicsGroupRef.current, dd: academicsDropdownRef.current },
+      { group: researchGroupRef.current, dd: researchDropdownRef.current },
+      { group: placementsGroupRef.current, dd: placementsDropdownRef.current },
+      { group: campusGroupRef.current, dd: campusDropdownRef.current },
+      { group: admissionsGroupRef.current, dd: admissionsDropdownRef.current },
+    ];
+
+    function positionDropdown(dd: HTMLElement) {
+      const nav = navRef.current;
+      if (!dd || !nav) return;
+
+      const navRect = nav.getBoundingClientRect();
+
+      dd.style.position = "fixed";
+      dd.style.left = "50%";
+      dd.style.width = "100%";
+      dd.style.maxWidth = "1200px";
+
+      // ✅ Anchor dropdown to NAV (stable height)
+      dd.style.setProperty("top", `${navRect.bottom - 0.5}px`, "important");
+    }
+
+    // === MEGA MENU STATE ===
+    let activeMenu: HTMLElement | null = null;
+    let activeGroup: HTMLElement | null = null;
+    let closeTimer: ReturnType<typeof setTimeout> | null = null;
+
+    function isInside(el: HTMLElement | null, target: Node | null) {
+      return !!el && !!target && el.contains(target);
+    }
+
+    function openMenu(group: HTMLElement, dd: HTMLElement) {
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+
+      if (activeMenu && activeMenu !== dd) {
+        closeMenu(activeMenu);
+      }
+
+      positionDropdown(dd);
+
+      dd.style.setProperty("opacity", "1", "important");
+      dd.style.setProperty("visibility", "visible", "important");
+      dd.style.setProperty("pointer-events", "auto", "important");
+      dd.style.setProperty(
+        "transform",
+        "translateX(-50%) translateY(0)",
+        "important",
+      );
+
+      activeMenu = dd;
+      activeGroup = group;
+
+      // Update button color
+      const btn = group.querySelector("button");
+      if (btn) {
+        const headerEl = headerRef.current;
+        const useColor = headerEl?.classList.contains("header-scrolled")
+          ? "#b77a00"
+          : "#ffffff";
+        btn.style.color = useColor;
+      }
+    }
+
+    function closeMenu(dd: HTMLElement) {
+      dd.style.setProperty("opacity", "0", "important");
+      dd.style.setProperty("visibility", "hidden", "important");
+      dd.style.setProperty("pointer-events", "none", "important");
+      dd.style.setProperty(
+        "transform",
+        "translateX(-50%) translateY(6px)",
+        "important",
+      );
+
+      if (activeMenu === dd) {
+        // Reset button colors when menu closes
+        megaMenus.forEach(({ group, dd: menuDd }) => {
+          if (menuDd === dd) {
+            const btn = group?.querySelector("button");
+            if (btn) btn.style.color = "";
+          }
+        });
+        activeMenu = null;
+        activeGroup = null;
+      }
+    }
+
+    window.addEventListener(
+      "mousemove",
+      (e) => {
+        if (!activeMenu) return;
+
+        const target = e.target as Node;
+
+        // If mouse is inside ACTIVE TAB GROUP OR inside active dropdown → do nothing
+        if (isInside(activeGroup, target) || isInside(activeMenu, target)) {
+          if (closeTimer) {
+            clearTimeout(closeTimer);
+            closeTimer = null;
+          }
+          return;
+        }
+
+        // Delay closure slightly to bridge accidental gaps (e.g. while moving from tab to card)
+        if (!closeTimer && activeMenu) {
+          closeTimer = setTimeout(() => {
+            if (activeMenu) closeMenu(activeMenu);
+            closeTimer = null;
+          }, 100); // 100ms bridge remains snappy but prevents flicker
+        }
+      },
+      { passive: true, signal },
+    );
+
+    // Attach event listeners to all mega menus
+    megaMenus.forEach(({ group, dd }) => {
+      if (!group || !dd) return;
+
+      const handleEnter = () => openMenu(group, dd);
+
+      group.addEventListener("mouseenter", handleEnter, { signal });
+      dd.addEventListener("mouseenter", handleEnter, { signal });
+    });
+
+    window.addEventListener(
+      "resize",
+      () => {
+        megaMenus.forEach(({ dd }) => {
+          if (dd && dd.style.visibility === "visible") {
+            positionDropdown(dd);
+          }
+        });
+      },
+      { signal },
+    );
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        megaMenus.forEach(({ dd }) => {
+          if (dd && dd.style.visibility === "visible") {
+            positionDropdown(dd);
+          }
+        });
+      },
+      { passive: true, signal },
+    );
+
+    return () => {
+      controllers.abort();
+    };
+  }, []);
+
+  return (
+    <header
+      id="main-header"
+      ref={headerRef}
+      className="fixed top-0 w-full z-50 text-white pt-2 pb-2 bg-black/10 backdrop-blur-sm border-b border-white/10 transition-all duration-500"
+    >
+      {/* Top Bar - unchanged */}
+      <div
+        id="top-bar"
+        ref={topBarRef}
+        className="hidden md:flex container mx-auto px-6 lg:px-12 justify-between items-center text-[11px] font-semibold opacity-80 mb-3 border-b border-white/20 pb-2 transition-all duration-300"
+      >
+        <div className="flex gap-6">
+          <span className="hover:text-[#b77a00] cursor-pointer transition">
+            <i className="fas fa-envelope mr-2 text-[#b77a00]"></i>
+            principalaiet08@gmail.com
+          </span>
+          <span className="hover:text-[#b77a00] cursor-pointer transition">
+            <i className="fas fa-phone mr-2 text-[#b77a00]"></i>
+            8050579606, 8050585606
+          </span>
+          <span className="hover:text-[#b77a00] cursor-pointer transition">
+            CET CODE-E169
+          </span>
+          <span className="hover:text-[#b77a00] cursor-pointer transition">
+            PGCET CODE-
+          </span>
+        </div>
+
+        <div className="flex gap-6 tracking-wide items-center font-bold">
+          <a
+            href="#"
+            className="flex items-center gap-2 bg-slate-800 text-[#b77a00] px-4 py-1.5 rounded-full hover:bg-[#b77a00] hover:text-slate-900 transition"
+          >
+            <i className="fas fa-cube text-lg"></i>
+            360° View
+          </a>
+          <a href="#" className="text-[#b77a00]">
+            Admissions Enquiry
+          </a>
+        </div>
+      </div>
+
+      {/* Main Navigation */}
+      <nav
+        ref={navRef}
+        className="container mx-auto px-6 lg:px-12 flex justify-between items-center relative"
+      >
+        {/* Logo Area - clickable */}
+        <Link
+          href="/"
+          className="flex items-center gap-3 lg:gap-4 group cursor-pointer z-50"
+        >
+          <img
+            id="logo-img"
+            ref={logoImgRef}
+            src="https://alvascentralschool001.42web.io/wp-content/uploads/2026/01/alvas-org-logo-white.png"
+            className="w-12 h-12 md:w-16 md:h-16 object-contain drop-shadow-md transition-all duration-500"
+            alt="Alvas Institute Logo"
+          />
+          <div className="flex flex-col justify-center">
+            <h1
+              id="logo-text-1"
+              ref={logoText1Ref}
+              className="font-serif text-2xl md:text-3xl font-black leading-none tracking-tight transition-all duration-500 text-white"
+            >
+              ALVA&apos;S
+            </h1>
+            <span
+              id="logo-text-2"
+              ref={logoText2Ref}
+              className="text-[8px] md:text-[10px] font-bold tracking-[0.15em] md:tracking-[0.25em] uppercase opacity-90 font-sans mt-1 transition-all duration-500 text-white"
+            >
+              INSTITUTE OF ENGINEERING & TECHNOLOGY
+            </span>
+          </div>
+        </Link>
+
+        {/* Desktop Navigation Links */}
+        <div
+          className="hidden lg:flex items-center gap-6 xl:gap-8"
+          id="nav-links"
+        >
+          {/* ============ ABOUT - FULL WIDTH MEGA MENU ============ */}
+          <div ref={aboutGroupRef} className="relative group py-4">
+            <button className="nav-btn font-bold tracking-[1px] uppercase text-[1rem] py-[5px] flex items-center gap-1 text-white group-hover:text-[#b77a00] transition relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-[#b77a00] after:transition-all after:duration-200 hover:after:w-full">
+              ABOUT
+              <i className="fas fa-chevron-down text-[10px] ml-1 opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
+            </button>
+
+            <div
+              ref={aboutDropdownRef}
+              className="dropdown-menu transition-all duration-200 z-[9999]"
+            >
+              <div className="bg-white border border-[#edf2f7] border-t-[3px] border-t-[#b77a00] rounded-xl shadow-lg p-8">
+                <div className="grid grid-cols-4 gap-6 px-2">
+                  {/* Column 1 - Categories List */}
+                  <div className="col-span-1 border-r border-[#e2e8f0] pr-6">
+                    <div className="flex flex-col">
+                      {/* INSTITUTION – expandable, keeps arrow */}
+                      <div className="has-submenu group/sub">
+                        <div className="flex items-center justify-between text-[0.95rem] font-bold tracking-[0.03em] font-sans text-[#1e293b] hover:text-[#b77a00] cursor-pointer py-2.5 px-3 rounded-lg hover:bg-[#f8fafc] transition-all">
+                          <span>INSTITUTION</span>
+                          <i className="fas fa-chevron-right text-[10px] opacity-50 group-hover/sub:translate-x-1 transition-transform"></i>
+                        </div>
+                        <div className="submenu">
+                          <Link
+                            href="/about/college"
+                            className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
+                          >
+                            About College
+                          </Link>
+                          <Link
+                            href="/about/vision-mission"
+                            className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
+                          >
+                            Vision Mission
+                          </Link>
+                          <Link
+                            href="/about/milestone"
+                            className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
+                          >
+                            Milestones
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* ACCREDITATIONS – expandable, keeps arrow */}
+                      <div className="has-submenu group/sub">
+                        <div className="flex items-center justify-between text-[0.95rem] font-bold tracking-[0.03em] font-sans text-[#1e293b] hover:text-[#b77a00] cursor-pointer py-2.5 px-3 rounded-lg hover:bg-[#f8fafc] transition-all">
+                          <span>ACCREDITATIONS</span>
+                          <i className="fas fa-chevron-right text-[10px] opacity-50 group-hover/sub:translate-x-1 transition-transform"></i>
+                        </div>
+                        <div className="submenu">
+                          <a
+                            href="#"
+                            className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
+                          >
+                            AICTE
+                          </a>
+                          <a
+                            href="#"
+                            className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
+                          >
+                            NBA
+                          </a>
+                          <a
+                            href="#"
+                            className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
+                          >
+                            NAAC
+                          </a>
+                          <a
+                            href="#"
+                            className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
+                          >
+                            Autonomous
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* MANDATORY DISCLOSURE – expandable, keeps arrow */}
+                      <div className="has-submenu group/sub">
+                        <div className="flex items-center justify-between text-[0.95rem] font-bold tracking-[0.03em] font-sans text-[#1e293b] hover:text-[#b77a00] cursor-pointer py-2.5 px-3 rounded-lg hover:bg-[#f8fafc] transition-all">
+                          <span>MANDATORY DISCLOSURE</span>
+                          <i className="fas fa-chevron-right text-[10px] opacity-50 group-hover/sub:translate-x-1 transition-transform"></i>
+                        </div>
+                        <div className="submenu">
+                          <a
+                            href="#"
+                            className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
+                          >
+                            College Info
+                          </a>
+                          <a
+                            href="#"
+                            className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
+                          >
+                            AICTE
+                          </a>
+                          <a
+                            href="#"
+                            className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
+                          >
+                            NBA
+                          </a>
+                          <a
+                            href="#"
+                            className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
+                          >
+                            NAAC
+                          </a>
+                          <a
+                            href="#"
+                            className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
+                          >
+                            Autonomous
+                          </a>
+                          <a
+                            href="#"
+                            className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
+                          >
+                            Audit Reports
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* MOU – direct link, no arrow */}
+
+                      <Link
+                        href="/about/mou"
+                        className="about-nav-link flex items-center text-[0.95rem] font-bold tracking-[0.03em] font-sans text-[#1e293b] hover:text-[#b77a00] py-2.5 px-3 rounded-lg hover:bg-[#f8fafc] transition-all"
+                      >
+                        MOU
+                      </Link>
+
+                      {/* AEF – internal page */}
+                      <Link
+                        href="/about/aef"
+                        className="about-nav-link flex items-center text-[0.95rem] font-bold tracking-[0.03em] font-sans text-[#1e293b] hover:text-[#b77a00] py-2.5 px-3 rounded-lg hover:bg-[#f8fafc] transition-all"
+                      >
+                        AEF
+                      </Link>
+
+                      {/* ADMINISTRATION – direct link, no arrow */}
+                      <Link
+                        href="/about/administration"
+                        className="about-nav-link flex items-center text-[0.95rem] font-bold tracking-[0.03em] font-sans text-[#1e293b] hover:text-[#b77a00] py-2.5 px-3 rounded-lg hover:bg-[#f8fafc] transition-all"
+                      >
+                        ADMINISTRATION
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Spacer Column (for submenu overflow) */}
+                  <div className="col-span-1"></div>
+
+                  {/* Column 3 - Chairman's Message */}
+                  <div className="space-y-4">
+                    <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
+                      Chairman's Message
+                    </h3>
+                    <div className="flex flex-col gap-4">
+                      <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-md border-2 border-[#b77a00]/20">
+                        <img
+                          src="/Dr.Mohan-Alva-1.jpg"
+                          alt="Chairman"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="text-[0.85rem] font-bold text-[#b77a00] uppercase mb-1">
+                          Dr. Mohan Alva
+                        </h4>
+                        <p className="text-[0.82rem] text-[#475569] leading-relaxed italic line-clamp-3 mb-3">
+                          "Welcome to Alva's! Our mission is to provide
+                          world-class technical education infused with cultural
+                          values, shaping students into innovative leaders who
+                          serve society."
+                        </p>
+                        <Link
+                          href="/about/chairmans-message"
+                          className="inline-flex items-center gap-2 text-[0.75rem] font-bold text-white bg-[#b77a00] px-4 py-2 rounded-full hover:bg-[#966500] transition-colors shadow-sm"
+                        >
+                          KNOW MORE
+                          <i className="fas fa-arrow-right text-[10px]"></i>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Column 4 - Principal's Message */}
+                  <div className="space-y-4">
+                    <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
+                      Principal's Message
+                    </h3>
+                    <div className="flex flex-col gap-4">
+                      <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-md border-2 border-[#b77a00]/20">
+                        <img
+                          src="/peter sir.webp"
+                          alt="Principal"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="text-[0.85rem] font-bold text-[#b77a00] uppercase mb-1">
+                          Dr. Peter Fernandes
+                        </h4>
+                        <p className="text-[0.82rem] text-[#475569] leading-relaxed italic line-clamp-3 mb-3">
+                          "We foster an environment of academic excellence and
+                          personal growth. Our state-of-the-art facilities
+                          ensure students are well-prepared for the challenges
+                          of future industries."
+                        </p>
+                        <Link
+                          href="/about/principals-message"
+                          className="inline-flex items-center gap-2 text-[0.75rem] font-bold text-white bg-[#b77a00] px-4 py-2 rounded-full hover:bg-[#966500] transition-colors shadow-sm"
+                        >
+                          KNOW MORE
+                          <i className="fas fa-arrow-right text-[10px]"></i>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ============ ADMISSIONS - FULL WIDTH MEGA MENU ============ */}
+          <div ref={admissionsGroupRef} className="relative group py-4">
+            <button className="nav-btn font-bold tracking-[1px] uppercase text-[1rem] py-[5px] flex items-center gap-1 group-hover:text-[#b77a00] transition relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-[#b77a00] after:transition-all after:duration-200 hover:after:w-full">
+              ADMISSIONS
+              <i className="fas fa-chevron-down text-[10px] ml-1 opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
+            </button>
+
+            <div
+              ref={admissionsDropdownRef}
+              className="dropdown-menu transition-all duration-200 z-[9999]"
+            >
+              <div className="bg-white border border-[#edf2f7] border-t-[3px] border-t-[#b77a00] rounded-xl shadow-lg p-8">
+                <div className="grid grid-cols-3 gap-10">
+                  {/* Column 1 - Admission Procedure */}
+                  <div>
+                    <div
+                      style={{
+                        color: "#b77a00",
+                        fontWeight: "800",
+                        fontSize: "1.1rem",
+                        marginBottom: "1rem",
+                        borderBottom: "2px solid #e2e8f0",
+                        paddingBottom: "0.5rem",
+                        display: "block",
+                        visibility: "visible",
+                        opacity: 1,
+                      }}
+                    >
+                      ADMISSION PROCEDURE
+                    </div>
+                    <div className="space-y-1">
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Admission Through KCET
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Admission Through COMED-K
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Admission Through Management
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Documents Required
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Disclaimer – Eligibility Criteria
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Column 2 - Fees Structures */}
+                  <div>
+                    <div
+                      style={{
+                        color: "#b77a00",
+                        fontWeight: "800",
+                        fontSize: "1.1rem",
+                        marginBottom: "1rem",
+                        borderBottom: "2px solid #e2e8f0",
+                        paddingBottom: "0.5rem",
+                        display: "block",
+                        visibility: "visible",
+                        opacity: 1,
+                      }}
+                    >
+                      FEES STRUCTURES
+                    </div>
+                    <div className="space-y-1">
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        KCET Students
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        COMED-K Students
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Management
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Tuition Fees 2025–26
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Column 3 - Scholarships */}
+                  <div>
+                    <div
+                      style={{
+                        color: "#b77a00",
+                        fontWeight: "800",
+                        fontSize: "1.1rem",
+                        marginBottom: "1rem",
+                        borderBottom: "2px solid #e2e8f0",
+                        paddingBottom: "0.5rem",
+                        display: "block",
+                        visibility: "visible",
+                        opacity: 1,
+                      }}
+                    >
+                      SCHOLARSHIPS
+                    </div>
+                    <div className="space-y-1">
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        List of Scholarships Schemes
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Scholarships Schemes
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ============ ACADEMICS - FULL WIDTH MEGA MENU ============ */}
+          <div ref={academicsGroupRef} className="relative group py-4">
+            <button className="nav-btn font-bold tracking-[1px] uppercase text-[1rem] py-[5px] flex items-center gap-1 group-hover:text-[#b77a00] transition relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-[#b77a00] after:transition-all after:duration-200 hover:after:w-full">
+              ACADEMICS
+              <i className="fas fa-chevron-down text-[10px] ml-1 opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
+            </button>
+
+            <div
+              ref={academicsDropdownRef}
+              className="dropdown-menu transition-all duration-200 z-[9999]"
+            >
+              <div className="bg-white border border-[#edf2f7] border-t-[3px] border-t-[#b77a00] rounded-xl shadow-lg p-8">
+                <div className="grid grid-cols-3 gap-10">
+                  {/* Column 1 - UG Programmes */}
+                  <div>
+                    <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
+                      UG Programmes
+                    </h3>
+                    <div className="space-y-1">
+                      <Link
+                        href="/academics/agri"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Agriculture Engineering
+                      </Link>
+                      <Link
+                        href="/academics/ai"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Artificial Intelligence & ML
+                      </Link>
+                      <Link
+                        href="/academics/cse"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Computer Science & Engineering
+                      </Link>
+                      <Link
+                        href="/academics/civil"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Civil Engineering
+                      </Link>
+                      <Link
+                        href="/academics/ece"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Electronics & Communication Engg
+                      </Link>
+                      <Link
+                        href="/academics/ise"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Information Science & Engineering
+                      </Link>
+                      <Link
+                        href="/academics/mech"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Mechanical Engineering
+                      </Link>
+                      <Link
+                        href="/academics/icb"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        IoT, ICB & BlockChain
+                      </Link>
+                      <Link
+                        href="/academics/ds"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Data Science
+                      </Link>
+                      <Link
+                        href="/academics/cd"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Computer Science & Design
+                      </Link>
+                    </div>
+
+               
+                  </div>
+
+                  {/* Column 2 - PG Programmes */}
+                  <div>
+                    <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
+                      PG Programmes
+                    </h3>
+                    <div className="space-y-1">
+                      <Link
+                        href="/academics/mba"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        MBA Programme
+                      </Link>
+                      <Link
+                        href="/academics/mtech"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        M.Tech
+                      </Link>
+                    </div>
+
+              
+                  </div>
+
+                  {/* Column 3 - Basic Sciences */}
+                  <div>
+                    <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
+                      Basic Sciences
+                    </h3>
+                    <div className="space-y-1">
+                      <Link
+                        href="/academics/chemistry"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Chemistry
+                      </Link>
+                      <Link
+                        href="/academics/mathematics"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Mathematics
+                      </Link>
+                      <Link
+                        href="/academics/physics"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Physics
+                      </Link>
+                      <Link
+                        href="/academics/english"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        English
+                      </Link>
+                    </div>
+
+                
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ============ RESEARCH - FULL WIDTH MEGA MENU ============ */}
+          <div ref={researchGroupRef} className="relative group py-4">
+            <button className="nav-btn font-bold tracking-[1px] uppercase text-[1rem] py-[5px] flex items-center gap-1 group-hover:text-[#b77a00] transition relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-[#b77a00] after:transition-all after:duration-200 hover:after:w-full">
+              RESEARCH
+              <i className="fas fa-chevron-down text-[10px] ml-1 opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
+            </button>
+
+            <div
+              ref={researchDropdownRef}
+              className="dropdown-menu transition-all duration-200 z-[9999]"
+            >
+              <div className="bg-white border border-[#edf2f7] border-t-[3px] border-t-[#b77a00] rounded-xl shadow-lg p-8">
+                <div className="grid grid-cols-3 gap-10">
+                  <div>
+                    <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
+                      Research Areas
+                    </h3>
+                    <div className="space-y-1">
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Funding
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        IPR
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Publication
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Patent Application
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Multidisciplinary Research Ideas
+                      </a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
+                      Resources
+                    </h3>
+                    <div className="space-y-1">
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Research Team
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Research Policies
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Research Supervisors
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Journals
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Conference
+                      </a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
+                      Facilities
+                    </h3>
+                    <div className="space-y-1">
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Facilities
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        About
+                      </a>
+                      <a
+                        href="#"
+                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
+                      >
+                        Yearwise Details
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div ref={placementsGroupRef} className="relative group py-4">
+            <Link href="/placement">
+              <button className="nav-btn font-bold tracking-[1px] uppercase text-[1rem] py-[5px] flex items-center gap-1 group-hover:text-[#b77a00] transition relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-[#b77a00] after:transition-all after:duration-200 hover:after:w-full">
+                PLACEMENTS
+                <i className="text-[10px] ml-1 opacity-70"></i>
+              </button>
+            </Link>
+
+          
+          </div>
+
+          {/* ============ CAMPUS LIFE - FULL WIDTH MEGA MENU ============ */}
+
+          <div ref={campusGroupRef} className="relative group py-4">
+            <Link href="/campus-life">
+              <button className="nav-btn font-bold tracking-[1px] uppercase text-[1rem] py-[5px] flex items-center gap-1 group-hover:text-[#b77a00] transition relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-[#b77a00] after:transition-all after:duration-200 hover:after:w-full">
+                CAMPUS LIFE
+                <i className=" text-[10px] ml-1 opacity-70 "></i>
+              </button>
+            </Link>
+            
+          </div>
+
+          {/* Contact Us - Simple link */}
+          <Link
+            href="/contact"
+            className="nav-btn font-bold tracking-[1px] uppercase text-[1rem] py-[5px] hover:text-[#b77a00] transition relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-[#b77a00] after:transition-all after:duration-400 hover:after:w-full"
+          >
+            Contact Us
+          </Link>
+        </div>
+
+      </nav>
+
+      {/* Mobile hamburger + menu component (mobile only) */}
+      <MobileMenu onMenuToggle={onMenuToggle} />
+    </header>
+  );
+}
+
+function MobileMenu({ onMenuToggle }: { onMenuToggle?: () => void }) {
+  const [open, setOpen] = useState(false);
+
+  function toggle() {
+    setOpen((s) => !s);
+    if (onMenuToggle) onMenuToggle();
+  }
+
+  return (
+    <>
+      <button
+        className="absolute right-4 top-3 lg:hidden text-2xl cursor-pointer z-50 p-2 "
+        id="hamburger-btn"
+        onClick={toggle}
+        aria-label={open ? "Close menu" : "Open menu"}
+      >
+        <i
+          // 1. Added "nav-btn" class so GSAP targets it automatically
+          // 2. Removed Tailwind's "text-white" and "transition-colors" to let GSAP handle it
+          className={`nav-btn ${open ? "fas fa-times" : "fas fa-bars"}  `}
+          id="mobile-menu-icon"
+          style={{ color: "#ffffff" }} // 3. Set the default inline color for GSAP to start from
+        ></i>
+      </button>
+
+      
+    </>
+  );
+}
+
+

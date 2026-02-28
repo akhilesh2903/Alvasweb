@@ -1,0 +1,355 @@
+.magazine-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 90vh;
+}
+
+.year-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.year-tab-btn {
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  border: 2px solid #e2e8f0;
+  background: white;
+  color: #64748b;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.year-tab-btn:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.year-tab-btn.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.magazine-viewer {
+  position: relative;
+  width: 100%;
+  background: #f1f5f9;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.magazine-frame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flipbook {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.page {
+  background-color: white;
+  overflow: hidden;
+  box-shadow: inset 5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.page-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.page-footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.newsletter-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  color: #3b82f6;
+  font-size: 1.5rem;
+}
+
+.newsletter-nav-btn:hover:not(:disabled) {
+  background: #3b82f6;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.newsletter-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.newsletter-nav-btn-prev {
+  left: 30px;
+}
+
+.newsletter-nav-btn-next {
+  right: 30px;
+}
+
+.page-flip-info {
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #64748b;
+  background: #f8fafc;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Control Toolbar Styles */
+.control-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(45, 55, 72, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 20;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.toolbar-btn {
+  background: transparent;
+  border: none;
+  color: #cbd5e0;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.toolbar-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.toolbar-btn.close-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.toolbar-btn:active {
+  transform: translateY(0);
+}
+
+.toolbar-page-info {
+  color: #cbd5e0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-width: 60px;
+  text-align: center;
+  font-family: inherit;
+}
+
+.toolbar-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 0.5rem;
+}
+
+/* Fullscreen Styles */
+.magazine-container.fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #1a202c;
+  padding: 1rem;
+  max-width: none;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  border-radius: 0;
+  justify-content: center;
+}
+
+.magazine-container.fullscreen .magazine-viewer {
+  background: #1a202c;
+  flex: 1;
+  height: 100vh;
+  width: 100vw;
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fullscreen-top-close {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: rgba(239, 68, 68, 0.9);
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 10000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.fullscreen-top-close:hover {
+  transform: rotate(90deg) scale(1.1);
+  background: #ef4444;
+}
+
+.magazine-container.fullscreen .magazine-frame {
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.magazine-container.fullscreen .control-toolbar {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  min-width: 450px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.magazine-container.fullscreen .year-tabs {
+  display: none;
+}
+
+/* Loader Styles */
+.paper-loader-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.book-loader {
+  width: 60px;
+  height: 80px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.book-page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #3b82f6;
+  border-radius: 2px;
+  transform-origin: left;
+  animation: flip-page 2s infinite ease-in-out;
+}
+
+.book-page:nth-child(2) {
+  animation-delay: 0.2s;
+  background: #60a5fa;
+}
+.book-page:nth-child(3) {
+  animation-delay: 0.4s;
+  background: #93c5fd;
+}
+
+@keyframes flip-page {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(-180deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+.loading-text {
+  margin-top: 1.5rem;
+  color: #3b82f6;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+/* React PDF styling */
+.react-pdf__Page__canvas {
+  margin: 0 auto;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.page-loading {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+}
