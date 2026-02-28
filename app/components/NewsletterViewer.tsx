@@ -27,9 +27,9 @@ if (typeof window !== "undefined") {
 }
 
 const newsletters = [
-  { year: "2025-26", path: "/enewsletter/Newsletter 2025-26.pdf" },
-  { year: "2024-25", path: "/enewsletter/Newsletter 2024-25.pdf" },
-  { year: "2023-24", path: "/enewsletter/Newsletter 2023-24.pdf" },
+  { year: "2025-26", path: "/enewsletter/Newsletter_2025-26.pdf" },
+  { year: "2024-25", path: "/enewsletter/Newsletter_2024-25.pdf" },
+  { year: "2023-24", path: "/enewsletter/Newsletter_2023-24.pdf" },
 ];
 
 interface PageProps {
