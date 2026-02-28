@@ -1,0 +1,1 @@
+﻿app/academics/ece/page.tsx(376,66): error TS1501: This regular expression flag is only available when targeting 'es2018' or later.
