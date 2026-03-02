@@ -24,7 +24,7 @@ import "./NewsletterViewer.css";
 
 // Configure pdfjs worker to use local file for better reliability
 if (typeof window !== "undefined") {
-  pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 }
 
 const newsletters = [
