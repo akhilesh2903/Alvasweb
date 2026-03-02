@@ -11,6 +11,7 @@ import {
   MdFullscreenExit,
   MdClose,
   MdFileDownload,
+  MdErrorOutline,
 } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import "./NewsletterViewer.css";
@@ -53,6 +54,7 @@ export default function CseNewsletterViewer() {
   const [numPages, setNumPages] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [zoom, setZoom] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -118,6 +120,15 @@ export default function CseNewsletterViewer() {
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages);
     setIsLoaded(true);
+    setLoadError(null);
+  }
+
+  function onDocumentLoadError(error: Error) {
+    console.error("PDF Load Error:", error);
+    setLoadError(
+      `Failed to load PDF: ${error.message || "Unknown error"}. The file might be missing or corrupted.`,
+    );
+    setIsLoaded(false);
   }
 
   function onPageLoadSuccess(page: any) {
@@ -155,6 +166,7 @@ export default function CseNewsletterViewer() {
   const handleYearChange = (year: string) => {
     if (year !== activeYear) {
       setIsLoaded(false);
+      setLoadError(null);
       setActiveYear(year);
       // Reset semester to Odd by default when year changes
       setActiveSemester(
@@ -168,6 +180,7 @@ export default function CseNewsletterViewer() {
   const handleSemesterChange = (semester: string) => {
     if (semester !== activeSemester) {
       setIsLoaded(false);
+      setLoadError(null);
       setActiveSemester(semester);
       setPageNumber(1);
       setZoom(1);
@@ -259,7 +272,8 @@ export default function CseNewsletterViewer() {
             <MdClose />
           </button>
         )}
-        {!isLoaded && (
+
+        {!isLoaded && !loadError && (
           <div className="paper-loader-overlay">
             <div className="book-loader">
               <div className="book-page"></div>
@@ -270,18 +284,34 @@ export default function CseNewsletterViewer() {
           </div>
         )}
 
+        {loadError && (
+          <div className="error-display flex flex-col items-center justify-center p-10 text-center text-white">
+            <MdErrorOutline className="text-6xl text-red-500 mb-4" />
+            <h3 className="text-xl font-bold mb-2">{loadError}</h3>
+            <p className="text-gray-400 mb-6 uppercase text-xs tracking-widest font-bold">
+              Please check if the file exists in /public/enewsletter-cse/
+            </p>
+            <button
+              onClick={() => handleSemesterChange(activeSemester)}
+              className="px-6 py-2 bg-indigo-600 text-white rounded-full font-bold hover:bg-indigo-700 transition"
+            >
+              Retry Loading
+            </button>
+          </div>
+        )}
+
         {/* Navigation Buttons */}
         <button
           className="newsletter-nav-btn newsletter-nav-btn-prev"
           onClick={prevPage}
-          disabled={pageNumber <= 1}
+          disabled={pageNumber <= 1 || !!loadError}
         >
           <FaChevronLeft />
         </button>
         <button
           className="newsletter-nav-btn newsletter-nav-btn-next"
           onClick={nextPage}
-          disabled={pageNumber >= numPages}
+          disabled={pageNumber >= numPages || !!loadError}
         >
           <FaChevronRight />
         </button>
