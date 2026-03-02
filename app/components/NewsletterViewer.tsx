@@ -22,9 +22,9 @@ import {
 import { useRouter } from "next/navigation";
 import "./NewsletterViewer.css";
 
-// Configure pdfjs worker to use CDN for better Vercel compatibility
+// Configure pdfjs worker to use local file for better reliability
 if (typeof window !== "undefined") {
-  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+  pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 }
 
 const newsletters = [
@@ -120,7 +120,9 @@ export default function NewsletterViewer() {
 
   function onDocumentLoadError(error: Error) {
     console.error("PDF Load Error:", error);
-    setLoadError("Failed to load PDF. The file might be missing or corrupted.");
+    setLoadError(
+      `Failed to load PDF: ${error.message || "Unknown error"}. The file might be missing or corrupted.`,
+    );
     setIsLoaded(false);
   }
 
