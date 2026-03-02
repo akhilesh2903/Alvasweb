@@ -44,29 +44,6 @@ const newsletters = [
   },
 ];
 
-interface PageProps {
-  pageNumber: number;
-}
-
-const PageContent = forwardRef<HTMLDivElement, PageProps>((props, ref) => {
-  return (
-    <div className="page" ref={ref}>
-      <div className="page-content">
-        <Page
-          pageNumber={props.pageNumber}
-          width={500}
-          renderAnnotationLayer={false}
-          renderTextLayer={false}
-          loading={<div className="page-loading">...</div>}
-        />
-        <div className="page-footer">{props.pageNumber}</div>
-      </div>
-    </div>
-  );
-});
-
-PageContent.displayName = "PageContent";
-
 export default function CseNewsletterViewer() {
   const router = useRouter();
   const [activeYear, setActiveYear] = useState(newsletters[0].year);
@@ -79,8 +56,59 @@ export default function CseNewsletterViewer() {
   const [zoom, setZoom] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
+  // Dynamic dimensions for the magazine
+  const [dimensions, setDimensions] = useState({ width: 500, height: 700 });
+  const [pdfRatio, setPdfRatio] = useState(5 / 7); // Default aspect ratio
+  const [isMobile, setIsMobile] = useState(false);
+
   const bookRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const calculateDimensions = () => {
+    if (typeof window === "undefined") return;
+
+    const vWidth = window.innerWidth;
+    const vHeight = window.innerHeight;
+    const mobile = vWidth < 768;
+    setIsMobile(mobile);
+
+    let targetWidth, targetHeight;
+
+    if (isFullscreen) {
+      // FULLSCREEN: Maximize content, account for sidebar/padding
+      const availableHeight = vHeight - 80;
+      const availableWidth = vWidth - (mobile ? 40 : 120);
+
+      // Determine if we are limited by height or width
+      const totalRatio = mobile ? pdfRatio : pdfRatio * 2;
+
+      if (availableWidth / availableHeight > totalRatio) {
+        // Limited by height
+        targetHeight = availableHeight;
+        targetWidth = targetHeight * pdfRatio;
+      } else {
+        // Limited by width
+        const totalTargetWidth = availableWidth;
+        targetWidth = mobile ? totalTargetWidth : totalTargetWidth / 2;
+        targetHeight = targetWidth / pdfRatio;
+      }
+    } else {
+      // Standard view: Original behavior (max 500px single page width)
+      targetWidth = Math.min(500, (vWidth * 0.95) / (mobile ? 1 : 2));
+      targetHeight = targetWidth / pdfRatio;
+    }
+
+    setDimensions({
+      width: Math.floor(targetWidth),
+      height: Math.floor(targetHeight),
+    });
+  };
+
+  useEffect(() => {
+    calculateDimensions();
+    window.addEventListener("resize", calculateDimensions);
+    return () => window.removeEventListener("resize", calculateDimensions);
+  }, [isFullscreen, pdfRatio]);
 
   const activeNewsletterGroup = newsletters.find((n) => n.year === activeYear);
   const activeNewsletter = activeNewsletterGroup?.semesters.find(
@@ -92,13 +120,20 @@ export default function CseNewsletterViewer() {
     setIsLoaded(true);
   }
 
+  function onPageLoadSuccess(page: any) {
+    // Detect the actual aspect ratio of the first loaded page
+    const { width, height } = page;
+    if (width && height) {
+      const ratio = width / height;
+      if (Math.abs(ratio - pdfRatio) > 0.01) {
+        setPdfRatio(ratio);
+      }
+    }
+  }
+
   // Handle zoom when fullscreen changes
   useEffect(() => {
-    if (isFullscreen) {
-      setZoom(1.2);
-    } else {
-      setZoom(1);
-    }
+    setZoom(1);
   }, [isFullscreen]);
 
   const nextPage = () => {
@@ -256,6 +291,11 @@ export default function CseNewsletterViewer() {
           style={{
             transform: `scale(${zoom})`,
             transition: "transform 0.3s ease",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <Document
@@ -269,24 +309,24 @@ export default function CseNewsletterViewer() {
           >
             {isLoaded && (
               <HTMLFlipBook
-                width={500}
-                height={700}
+                width={dimensions.width}
+                height={dimensions.height}
                 size="stretch"
-                minWidth={315}
-                maxWidth={1000}
-                minHeight={400}
-                maxHeight={1533}
+                minWidth={dimensions.width}
+                maxWidth={2000}
+                minHeight={dimensions.height}
+                maxHeight={2533}
                 maxShadowOpacity={0.5}
                 showCover={true}
                 mobileScrollSupport={true}
                 onFlip={onFlip}
                 className="flipbook"
                 ref={bookRef}
-                style={{}}
+                style={{ margin: "0 auto" }}
                 startPage={0}
                 drawShadow={true}
                 flippingTime={1000}
-                usePortrait={false}
+                usePortrait={isMobile}
                 startZIndex={0}
                 autoSize={true}
                 clickEventForward={true}
@@ -296,10 +336,23 @@ export default function CseNewsletterViewer() {
                 disableFlipByClick={false}
               >
                 {Array.from(new Array(numPages), (el, index) => (
-                  <PageContent
-                    key={`page_${index + 1}`}
-                    pageNumber={index + 1}
-                  />
+                  <div className="page" key={`page_${index + 1}`}>
+                    <div className="page-content">
+                      <Page
+                        pageNumber={index + 1}
+                        width={dimensions.width}
+                        renderAnnotationLayer={false}
+                        renderTextLayer={false}
+                        onLoadSuccess={
+                          index === 0 ? onPageLoadSuccess : undefined
+                        }
+                        loading={null}
+                      />
+                      {!isFullscreen && (
+                        <div className="page-footer">{index + 1}</div>
+                      )}
+                    </div>
+                  </div>
                 ))}
               </HTMLFlipBook>
             )}
