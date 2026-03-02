@@ -9,7 +9,8 @@ const tabs = [
   { id: "team", label: "Our Team" },
   { id: "students", label: "Placed Students" },
   { id: "companies", label: "Companies Visited" },
-  { id: "gallery", label: "Placement Gallery" }, // ✅ ADD THIS
+  { id: "gallery", label: "Placement Gallery" },
+  { id: "alvas-pragathi", label: "Alvas Pragathi" },
 ];
 
 const slides = [
@@ -594,9 +595,7 @@ export default function PlacementClient() {
                 <p className="text-[#F4C430] font-bold text-lg">
                   Ms Ranjitha Raviprasad Acharya
                 </p>
-                <p className="text-gray-400 text-sm">
-                  Dean – Training & Placement
-                </p>
+                <p className="text-gray-400 text-sm">Head-Training & Placement</p>
               </div>
 
               <div className="space-y-2 pt-4 border-t border-white/10 text-sm md:text-base">
@@ -682,13 +681,13 @@ export default function PlacementClient() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                name: "Dr. Aslam B Nandyal",
-                role: "Associate Professor",
+                name: "Mr.Prabhath Bhandari",
+                role: "Training & Placement Officer",
                 img: "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/05/Aslam-B-Nandyal.jpg",
               },
               {
-                name: "Dr. Kumar Swamy M C",
-                role: "Learning & Development Lead",
+                name: "Mr.Samyak Jain",
+                role: "Training & Placement Officer",
                 img: "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/05/Kumar-Swamy-MC.jpg",
               },
             ].map((member, index) => (
@@ -1023,6 +1022,142 @@ export default function PlacementClient() {
               <div className="absolute top-6 right-6 w-10 h-10 border-t-2 border-r-2 border-white/30 rounded-tr-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ALVAS PRAGATHI SECTION */}
+      <section
+        ref={(el) => {
+          sectionRefs.current["alvas-pragathi"] = el;
+        }}
+        className="px-6 md:px-20 py-24 bg-[#F8F9FB] relative overflow-hidden"
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-16 mb-20">
+            <div className="w-full lg:w-1/2">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1E2A78]/5 border border-[#1E2A78]/10 mb-6">
+                <span className="w-2 h-2 rounded-full bg-[#F4C430]"></span>
+                <span className="text-[#1E2A78] text-xs font-bold uppercase tracking-widest">
+                  Mega Placement Drive
+                </span>
+              </div>
+              <h2 className="text-5xl font-black text-[#1E2A78] mb-8 leading-tight">
+                Alva's <span className="text-[#F4C430]">Pragati.</span>
+              </h2>
+              <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                Alva's Pragati is a premier mega placement drive organized by
+                Alva's Education Foundation, Moodbidri. Established in 2010, it
+                has grown to become one of the most significant recruitment
+                events in the region, connecting thousands of job seekers with
+                hundreds of premier companies across various sectors including
+                IT, ITeS, Manufacturing, Healthcare, BFSI, and more.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                {[
+                  {
+                    title: "Zero Registration Fee",
+                    desc: "A purely cause-driven event with no charges for candidates or companies.",
+                  },
+                  {
+                    title: "CCP Strategy",
+                    desc: "Corporate Career Profiling aligns candidate skills with specific company requirements.",
+                  },
+                  {
+                    title: "Enrichment Center",
+                    desc: "Professional counselors guide students to their most suitable job roles.",
+                  },
+                  {
+                    title: "Color Coding System",
+                    desc: "Unique system to help candidates easily identify relevant companies.",
+                  },
+                ].map((feature, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#F4C430] flex items-center justify-center">
+                      <svg
+                        className="w-4 h-4 text-[#1E2A78]"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="3"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#1E2A78] mb-1">
+                        {feature.title}
+                      </h4>
+                      <p className="text-sm text-gray-500 leading-snug">
+                        {feature.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href="https://www.alvaspragati.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-[#1E2A78] text-white rounded-full font-bold hover:bg-[#F4C430] hover:text-[#1E2A78] transition-all duration-300 shadow-xl shadow-[#1E2A78]/20 group"
+              >
+                Visit Official Website
+                <svg
+                  className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <div className="w-full lg:w-1/2 grid grid-cols-2 gap-4">
+              <div className="space-y-4">
+                <div className="rounded-[2rem] overflow-hidden shadow-lg h-64 group">
+                  <img
+                    src="https://www.alvaspragati.com/slider/slides/pragathi.jpg"
+                    alt="Alva's Pragati Campus View"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+                <div className="rounded-[2rem] overflow-hidden shadow-lg h-48 group">
+                  <img
+                    src="https://www.alvaspragati.com/slider/slides/pragathi2.jpg"
+                    alt="Recruitment Interaction"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+              </div>
+              <div className="space-y-4 pt-8">
+                <div className="rounded-[2rem] overflow-hidden shadow-lg h-48 group">
+                  <img
+                    src="https://www.alvaspragati.com/slider/slides/pragathi1.jpg"
+                    alt="Inauguration Ceremony"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+                <div className="rounded-[2rem] overflow-hidden shadow-lg h-64 group">
+                  <img
+                    src="https://www.alvaspragati.com/slider/slides/pragathi3.jpg"
+                    alt="Student Registration"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

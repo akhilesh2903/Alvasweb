@@ -8,7 +8,7 @@ export default function HeroSection() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="/Adding_Clouds_to_Video.mp4" type="video/mp4" />
+        <source src="/hero_video.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0f172a]/60 to-[#0f172a]/30"></div>
       <div className="relative z-10 max-w-6xl mt-20 md:mt-12">
