@@ -221,13 +221,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 </button>
                 {ugOpen && (
                   <div className="flex flex-col gap-2 ml-4 mt-2 text-white/60 text-base">
-                    <Link href="#" onClick={onClose}>Agriculture Engineering</Link>
-                    <Link href="#" onClick={onClose}>Artificial Intelligence & ML</Link>
-                    <Link href="#" onClick={onClose}>Computer Science & Engineering</Link>
-                    <Link href="#" onClick={onClose}>Civil Engineering</Link>
-                    <Link href="#" onClick={onClose}>Electronics & Communication Engg</Link>
-                    <Link href="#" onClick={onClose}>Information Science & Engineering</Link>
-                    <Link href="#" onClick={onClose}>Mechanical Engineering</Link>
+                    <Link href="academics/agri" onClick={onClose}>Agriculture Engineering</Link>
+                    <Link href="academics/ai" onClick={onClose}>Artificial Intelligence & ML</Link>
+                    <Link href="academics/cse" onClick={onClose}>Computer Science & Engineering</Link>
+                    <Link href="academics/cd" onClick={onClose}>Computer Science & Design</Link>
+                    <Link href="academics/civil" onClick={onClose}>Civil Engineering</Link>
+                    <Link href="academics/ds" onClick={onClose}>Data Science</Link>
+                    <Link href="academics/ece" onClick={onClose}>Electronics & Communication Engg</Link>
+                    <Link href="academics/ise" onClick={onClose}>Information Science & Engineering</Link>
+                    <Link href="academics/me" onClick={onClose}>Mechanical Engineering</Link>
                   </div>
                 )}
               </div>
@@ -242,8 +244,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 </button>
                 {pgOpen && (
                   <div className="flex flex-col gap-2 ml-4 mt-2 text-white/60 text-base">
-                    <Link href="#" onClick={onClose}>MBA Programme</Link>
-                    <Link href="#" onClick={onClose}>M.Tech</Link>
+                    <Link href="academics/mba" onClick={onClose}>MBA Programme</Link>
+                    <Link href="academics/mtech" onClick={onClose}>M.Tech</Link>
                   </div>
                 )}
               </div>
@@ -258,10 +260,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 </button>
                 {basicOpen && (
                   <div className="flex flex-col gap-2 ml-4 mt-2 text-white/60 text-base">
-                    <Link href="#" onClick={onClose}>Chemistry</Link>
-                    <Link href="#" onClick={onClose}>Mathematics</Link>
-                    <Link href="#" onClick={onClose}>Physics</Link>
-                    <Link href="#" onClick={onClose}>English</Link>
+                    <Link href="academics/chemistry" onClick={onClose}>Chemistry</Link>
+                    <Link href="academics/mathematics" onClick={onClose}>Mathematics</Link>
+                    <Link href="academics/physics" onClick={onClose}>Physics</Link>
+                    <Link href="academics/english" onClick={onClose}>English</Link>
                   </div>
                 )}
               </div>

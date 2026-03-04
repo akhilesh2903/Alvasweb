@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -389,6 +390,7 @@ function DetailPage({
             <span style={{ fontSize: 22 }}>{achievement.medal}</span>
           </div>
           <h1
+            className="acv-detail-hero-title"
             style={{
               color: "#fff",
               fontSize: 46,
@@ -441,6 +443,7 @@ function DetailPage({
         }}
       >
         <div
+          className="acv-detail-body"
           style={{
             maxWidth: 1100,
             margin: "0 auto",
@@ -537,7 +540,7 @@ function DetailPage({
           </div>
 
           {/* Right sidebar */}
-          <div style={{ width: 280, flexShrink: 0, paddingTop: 44 }}>
+          <div className="acv-detail-side" style={{ width: 280, flexShrink: 0, paddingTop: 44 }}>
             {/* Key Highlights */}
             <div
               style={{
@@ -689,6 +692,7 @@ export default function Achievements() {
   const [selectedAchievement, setSelectedAchievement] = useState<
     (typeof studentAchievements)[0] | null
   >(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [tick, setTick] = useState(0);
 
   useEffect(() => {
@@ -708,6 +712,7 @@ export default function Achievements() {
 
   return (
     <div
+      className="acv-page-container"
       style={{
         fontFamily: "'Palatino Linotype','Book Antiqua',Palatino,serif",
         minHeight: "100vh",
@@ -716,6 +721,29 @@ export default function Achievements() {
         overflow: "hidden",
       }}
     >
+      {/* MOBILE FLOATING SIDEBAR */}
+      <div className={`acv-mobile-sidebar ${isSidebarOpen ? "open" : ""}`}>
+        <div className="acv-ms-handle" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+          <div className={`acv-ms-arrow ${isSidebarOpen ? "expanded" : ""}`}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="9 18 15 12 9 6" /></svg>
+          </div>
+        </div>
+        <div className="acv-ms-nav">
+          {[
+            { id: "student", icon: "👨‍🎓", label: "Student" },
+            { id: "academic", icon: "📚", label: "Academic" },
+          ].map((item) => (
+            <button
+              key={item.id}
+              className={`acv-ms-item ${activeTab === item.id ? "active" : ""}`}
+              onClick={() => { setActiveTab(item.id as "student" | "academic"); setIsSidebarOpen(false); }}
+            >
+              <span className="acv-ms-icon">{item.icon}</span>
+              <span className="acv-ms-label">{item.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
       <style>{`
         @keyframes shimmer-g {
           0%   { background-position: -200% center; }
@@ -735,6 +763,98 @@ export default function Achievements() {
         .acv-btn        { transition: all 0.22s; cursor: pointer; }
         .acv-btn:hover  { opacity: 0.88; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(74,59,48,0.28) !important; }
         .acv-back:hover { background: rgba(100,90,78,0.1) !important; }
+
+        /* Responsive Refinements */
+        @media (max-width: 900px) {
+          .acv-back { display: none !important; }
+          
+          .acv-mobile-top-back {
+            display: flex;
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(74,59,48,0.7);
+            font-size: 13px;
+            font-weight: 600;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            background: rgba(255,255,255,0.6);
+            padding: 6px 14px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0,0,0,0.05);
+            z-index: 20;
+          }
+          .acv-mobile-top-back svg { width: 14px; height: 14px; }
+
+          .acv-header-inner { padding: 80px 20px 40px !important; text-align: center !important; }
+          .acv-header-inner h1 { font-size: 34px !important; line-height: 1.1 !important; }
+          .acv-desktop-sidebar { display: none !important; }
+          .acv-tabs-container { display: none !important; } 
+
+          /* Grid stacking */
+          .acv-grid { grid-template-columns: 1fr !important; padding: 0 20px !important; }
+          
+          /* Detail Page Stacking */
+          .acv-detail-hero h1 { font-size: 32px !important; }
+          .acv-detail-body { flex-direction: column !important; padding: 0 24px !important; gap: 24px !important; }
+          .acv-detail-side { width: 100% !important; }
+
+          /* Mobile Floating Sidebar */
+          .acv-mobile-sidebar {
+            display: flex;
+            position: fixed;
+            left: 0;
+            top: 55%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            height: fit-content;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-left: none;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            width: 50px;
+            overflow: hidden;
+            flex-direction: column;
+          }
+          .acv-mobile-sidebar.open { width: 160px; }
+          
+          .acv-ms-handle {
+            position: absolute;
+            right: 0;
+            top: 0; bottom: 0; width: 20px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; background: rgba(0,0,0,0.02);
+          }
+          .acv-ms-arrow {
+            width: 16px; height: 16px;
+            color: #6B5B4E;
+            transition: transform 0.4s;
+          }
+          .acv-ms-arrow.expanded { transform: rotate(180deg); }
+          
+          .acv-ms-nav { padding: 15px 0; width: 140px; display: flex; flex-direction: column; gap: 12px; }
+          .acv-ms-item {
+            width: 100%; display: flex; align-items: center; justify-content: flex-start;
+            padding: 10px 12px; border: none; background: none;
+            color: #8A807A; font-size: 14px; font-weight: 600;
+            transition: all 0.2s; text-align: left;
+          }
+          .acv-ms-item.active { color: #6B5B4E; background: rgba(107,91,78,0.08); }
+          .acv-ms-icon { font-size: 20px; width: 26px; flex-shrink: 0; display: flex; justify-content: center; }
+          .acv-ms-label { opacity: 0; transition: opacity 0.2s; margin-left: 10px; white-space: nowrap; }
+          .acv-mobile-sidebar.open .acv-ms-label { opacity: 1; }
+        }
+
+        @media (min-width: 901px) {
+          .acv-mobile-top-back { display: none; }
+          .acv-mobile-sidebar { display: none; }
+        }
       `}</style>
 
       <AnimatedBackground tick={tick} />
@@ -768,7 +888,7 @@ export default function Achievements() {
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
           <button
             className="acv-back"
-            onClick={() => router.back()} // Added actual back navigation
+            onClick={() => router.back()}
             style={{
               background: "rgba(100,90,78,0.07)",
               border: `1px solid ${C.border}`,
@@ -788,7 +908,12 @@ export default function Achievements() {
           >
             ← Back to Home
           </button>
-          <div style={{ textAlign: "center", paddingBottom: 44 }}>
+
+          <a href="/campus-life" className="acv-mobile-top-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6" /></svg>
+            Back to Campus Life
+          </a>
+          <div className="acv-header-inner" style={{ textAlign: "center", paddingBottom: 44 }}>
             <p
               style={{
                 color: C.gold,
@@ -841,6 +966,7 @@ export default function Achievements() {
 
       {/* ── MAIN LAYOUT ── */}
       <div
+        className="acv-main-layout"
         style={{
           maxWidth: 1200,
           margin: "0 auto",
@@ -854,6 +980,7 @@ export default function Achievements() {
       >
         {/* Sidebar */}
         <div
+          className="acv-desktop-sidebar"
           style={{
             width: 230,
             flexShrink: 0,
@@ -1011,6 +1138,7 @@ export default function Achievements() {
               </div>
 
               <div
+                className="acv-grid"
                 style={{
                   display: "grid",
                   gridTemplateColumns: "repeat(3, 1fr)",
@@ -1216,6 +1344,7 @@ export default function Achievements() {
               </div>
 
               <div
+                className="acv-grid"
                 style={{
                   background: `linear-gradient(135deg, ${C.accentDeep} 0%, ${C.accent} 50%, ${C.gold} 100%)`,
                   borderRadius: 18,
@@ -1269,6 +1398,7 @@ export default function Achievements() {
               </div>
 
               <div
+                className="acv-grid"
                 style={{
                   display: "grid",
                   gridTemplateColumns: "repeat(2, 1fr)",
