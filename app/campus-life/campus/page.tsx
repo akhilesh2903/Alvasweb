@@ -2,9 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import MobileMenu from "../../components/MobileMenu";
+import Breadcrumbs from "../../components/Breadcrumbs";
+
 
 const TABS = [
   { id: "college", label: "College" },
@@ -20,7 +19,7 @@ const TABS = [
 export default function CampusPage() {
   const [active, setActive] = useState("college");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const scrollToBody = () =>
@@ -255,13 +254,6 @@ export default function CampusPage() {
           50%     { box-shadow:0 0 0 6px rgba(14,165,233,0); }
         }
 
-        .cp-breadcrumb {
-          position:absolute; top:44px; right:48px;
-          color:rgba(255,255,255,.65); font-size:13px;
-          display:flex; align-items:center; gap:8px;
-        }
-        .cp-breadcrumb a { color:rgba(255,255,255,.65); text-decoration:none; }
-        .cp-breadcrumb a:hover { color:#fff; }
         .cp-breadcrumb-sep { opacity:.5; }
 
         .cp-hero-content {
@@ -520,7 +512,7 @@ export default function CampusPage() {
           .cp-hero { height: 480px; }
           .cp-hero-content { padding:0 24px 44px; }
           .cp-hero-badge { left:20px; top:20px; font-size: 10px; }
-          .cp-breadcrumb { display: none; }
+          .cp-hero-badge { left:20px; top:20px; font-size: 10px; }
           .cp-hero h1 { font-size: 56px; }
           
           .cp-panel-header { flex-direction: column; gap:16px; }
@@ -538,8 +530,7 @@ export default function CampusPage() {
       />
 
       <div className="cp-page">
-        <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
-        <Header onMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
+
 
         {/* Animated background */}
         <canvas ref={canvasRef} className="cp-bg-canvas" />
@@ -552,19 +543,17 @@ export default function CampusPage() {
         <section className="cp-hero">
           <div className="cp-hero-particles" id="cpHeroParticles" />
           <div className="cp-hero-badge"><span /> Campus · Life</div>
-          <div className="cp-breadcrumb">
-            <a href="/">Home</a>
-            <span className="cp-breadcrumb-sep">›</span>
-            <a href="/campus-life">Campus Life</a>
-            <span className="cp-breadcrumb-sep">›</span>
-            <span style={{ color: "#fff" }}>Campus</span>
+          <div style={{ position: 'absolute', top: '44px', right: '48px', zIndex: 10 }}>
+            <Breadcrumbs
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Campus Life", href: "/campus-life" },
+                { label: "Campus", active: true }
+              ]}
+            />
           </div>
           <div className="cp-hero-content">
-            <div className="cp-hero-tag">
-              <span className="cp-tag-main">Campus</span>
-              <span className="cp-tag-dot" />
-              <span className="cp-tag-sub">Life at Alva&apos;s</span>
-            </div>
+
             <h1>CAMPUS<br />LIFE</h1>
             <p>
               Experience a vibrant, self-contained campus with world-class infrastructure — from
@@ -1001,7 +990,7 @@ export default function CampusPage() {
 
           </main>
         </div>
-        <Footer />
+
       </div>
     </>
   );

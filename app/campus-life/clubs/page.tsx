@@ -254,7 +254,7 @@ export default function ClubsActivityPage() {
         {/* HERO */}
         <section className="ca-hero">
           <div className="ca-hero-particles" id="caHeroParticles" />
-          <div className="ca-hero-badge"><span />&nbsp;Campus · Activities</div>
+          
           <div className="ca-breadcrumb">
             <a href="/">Home</a><span className="ca-breadcrumb-sep">›</span>
             <a href="/campus-life">Campus Life</a><span className="ca-breadcrumb-sep">›</span>

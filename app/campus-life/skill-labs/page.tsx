@@ -432,7 +432,7 @@ export default function SkillLabsPage() {
         {/* HERO */}
         <section className="sl-hero">
           <div className="sl-hero-particles" id="slHeroParticles" />
-          <div className="sl-hero-badge"><span />&nbsp;Campus · Placements</div>
+         
           <div className="sl-breadcrumb">
             <a href="/">Home</a><span className="sl-breadcrumb-sep">›</span>
             <a href="/campus-life">Campus Life</a><span className="sl-breadcrumb-sep">›</span>
