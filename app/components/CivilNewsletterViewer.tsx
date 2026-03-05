@@ -13,48 +13,22 @@ import {
 import { useRouter } from "next/navigation";
 import "./NewsletterViewer.css";
 
-// Configure pdfjs worker to use local file for better reliability
+// Configure pdfjs worker
 if (typeof window !== "undefined") {
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 }
 
 const newsletters = [
-  {
-    year: "2025-26",
-    semesters: [
-      { name: "Odd", id: "1O2yZlZiex0vYz2CcWwQ_5-8gbCEBDAhw" },
-      { name: "Even", id: "" }, // No even semester for this year
-    ],
-  },
-  {
-    year: "2024-25",
-    semesters: [
-      { name: "Odd", id: "14w0WMUa5OWW5eK5-7gyd8Ws2sM4Ko6QE" },
-      { name: "Even", id: "1f7EfVu8KoEKJsS6dQZzwIgw9Y8heVMHK" },
-    ],
-  },
-  {
-    year: "2023-24",
-    semesters: [
-      { name: "Odd", id: "1WmDWvm7HkF4KGd4pY9ZwtNDoS_Rejpku" },
-      { name: "Even", id: "14xo6TeA-gbxJXuhUv0zF1dB4g6lmmNCk" },
-    ],
-  },
-  {
-    year: "2022-23",
-    semesters: [
-      { name: "Odd", id: "1LHryZCSIFIFJQrqnxeQI0v4wB4dUS_wE" },
-      { name: "Even", id: "1mKlnvAK1rLj43QE0WZaVkQSRdhVd-rgA" },
-    ],
-  },
+  { year: "2023-2024", id: "18QRVxQRTG0sfsoKzFl3EDMr9zY6dNQ01" },
+  { year: "2022-2023", id: "1yXgFG3w-wsuoh6aVPbiIMtleo0rk8EPa" },
+  { year: "2021-2022", id: "174PjdilbgJ00jFtlIXyWesOXpBj8ab1G" },
+  { year: "2020-2021", id: "1Qm2aZveg2sXBvsh_4738Q7dJRpeUKbQU" },
+  { year: "2019-2020", id: "1Lyaa2GB06-p2Se50Z97Cmx9RgNcwsiZ1" },
 ];
 
-export default function CseNewsletterViewer() {
+export default function CivilNewsletterViewer() {
   const router = useRouter();
   const [activeYear, setActiveYear] = useState(newsletters[0].year);
-  const [activeSemester, setActiveSemester] = useState(
-    newsletters[0].semesters[0].name,
-  );
   const [numPages, setNumPages] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -64,11 +38,18 @@ export default function CseNewsletterViewer() {
 
   // Dynamic dimensions for the magazine
   const [dimensions, setDimensions] = useState({ width: 500, height: 700 });
-  const [pdfRatio, setPdfRatio] = useState(5 / 7); // Default aspect ratio
+  const [pdfRatio, setPdfRatio] = useState(5 / 7);
   const [isMobile, setIsMobile] = useState(false);
 
   const bookRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const activeNewsletter = newsletters.find((n) => n.year === activeYear);
+
+  // Use the local API proxy to avoid CORS issues
+  const pdfUrl = activeNewsletter
+    ? `/api/pdf-proxy?id=${activeNewsletter.id}`
+    : "";
 
   const calculateDimensions = () => {
     if (typeof window === "undefined") return;
@@ -81,25 +62,19 @@ export default function CseNewsletterViewer() {
     let targetWidth, targetHeight;
 
     if (isFullscreen) {
-      // FULLSCREEN: Maximize content, account for sidebar/padding
       const availableHeight = vHeight - 80;
       const availableWidth = vWidth - (mobile ? 40 : 120);
-
-      // Determine if we are limited by height or width
       const totalRatio = mobile ? pdfRatio : pdfRatio * 2;
 
       if (availableWidth / availableHeight > totalRatio) {
-        // Limited by height
         targetHeight = availableHeight;
         targetWidth = targetHeight * pdfRatio;
       } else {
-        // Limited by width
         const totalTargetWidth = availableWidth;
         targetWidth = mobile ? totalTargetWidth : totalTargetWidth / 2;
         targetHeight = targetWidth / pdfRatio;
       }
     } else {
-      // Standard view: Original behavior (max 500px single page width)
       targetWidth = Math.min(500, (vWidth * 0.95) / (mobile ? 1 : 2));
       targetHeight = targetWidth / pdfRatio;
     }
@@ -116,20 +91,20 @@ export default function CseNewsletterViewer() {
     return () => window.removeEventListener("resize", calculateDimensions);
   }, [isFullscreen, pdfRatio]);
 
-  const activeNewsletterGroup = newsletters.find((n) => n.year === activeYear);
-  const activeNewsletter = activeNewsletterGroup?.semesters.find(
-    (s) => s.name === activeSemester,
-  );
-
-  // Use the local API proxy to avoid CORS issues
-  const pdfUrl = activeNewsletter
-    ? `/api/pdf-proxy?id=${activeNewsletter.id}`
-    : "";
-
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages);
     setIsLoaded(true);
     setLoadError(null);
+  }
+
+  function onPageLoadSuccess(page: any) {
+    const { width, height } = page;
+    if (width && height) {
+      const ratio = width / height;
+      if (Math.abs(ratio - pdfRatio) > 0.01) {
+        setPdfRatio(ratio);
+      }
+    }
   }
 
   function onDocumentLoadError(error: Error) {
@@ -140,18 +115,6 @@ export default function CseNewsletterViewer() {
     setIsLoaded(false);
   }
 
-  function onPageLoadSuccess(page: any) {
-    // Detect the actual aspect ratio of the first loaded page
-    const { width, height } = page;
-    if (width && height) {
-      const ratio = width / height;
-      if (Math.abs(ratio - pdfRatio) > 0.01) {
-        setPdfRatio(ratio);
-      }
-    }
-  }
-
-  // Handle zoom when fullscreen changes
   useEffect(() => {
     setZoom(1);
   }, [isFullscreen]);
@@ -177,23 +140,9 @@ export default function CseNewsletterViewer() {
       setIsLoaded(false);
       setLoadError(null);
       setActiveYear(year);
-      // Reset semester to Odd by default when year changes
-      setActiveSemester(
-        newsletters.find((n) => n.year === year)?.semesters[0].name || "Odd",
-      );
       setPageNumber(1);
       setZoom(1);
       setPdfRatio(5 / 7);
-    }
-  };
-
-  const handleSemesterChange = (semester: string) => {
-    if (semester !== activeSemester) {
-      setIsLoaded(false);
-      setLoadError(null);
-      setActiveSemester(semester);
-      setPageNumber(1);
-      setZoom(1);
     }
   };
 
@@ -211,10 +160,10 @@ export default function CseNewsletterViewer() {
     setIsFullscreen(false);
     if (document.fullscreenElement) {
       document.exitFullscreen().finally(() => {
-        router.push("/academics/cse/explore");
+        router.push("/academics/civil/explore");
       });
     } else {
-      router.push("/academics/cse/explore");
+      router.push("/academics/civil/explore");
     }
   };
 
@@ -226,46 +175,20 @@ export default function CseNewsletterViewer() {
       className={`magazine-container ${isFullscreen ? "fullscreen" : ""}`}
       ref={containerRef}
     >
-      {/* Year Tabs */}
       {!isFullscreen && (
-        <>
-          <div className="year-tabs" style={{ marginBottom: "10px" }}>
-            {newsletters.map((n) => (
-              <button
-                key={n.year}
-                className={`year-tab-btn ${activeYear === n.year ? "active" : ""}`}
-                onClick={() => handleYearChange(n.year)}
-              >
-                {n.year}
-              </button>
-            ))}
-          </div>
-
-          {/* Semester Tabs */}
-          <div
-            className="year-tabs"
-            style={{ marginTop: "0", marginBottom: "20px" }}
-          >
-            {activeNewsletterGroup?.semesters.map((s) => (
-              <button
-                key={s.name}
-                className={`year-tab-btn ${activeSemester === s.name ? "active" : ""} ${!s.id ? "disabled opacity-50 cursor-not-allowed" : ""}`}
-                onClick={() => s.id && handleSemesterChange(s.name)}
-                disabled={!s.id}
-                style={{
-                  fontSize: "0.9em",
-                  padding: "6px 12px",
-                }}
-                title={!s.id ? "Not yet available" : ""}
-              >
-                {s.name} Semester
-              </button>
-            ))}
-          </div>
-        </>
+        <div className="year-tabs">
+          {newsletters.map((n) => (
+            <button
+              key={n.year}
+              className={`year-tab-btn ${activeYear === n.year ? "active" : ""}`}
+              onClick={() => handleYearChange(n.year)}
+            >
+              {n.year}
+            </button>
+          ))}
+        </div>
       )}
 
-      {/* Magazine Viewing Area */}
       <div className="magazine-viewer">
         {isFullscreen && (
           <button
@@ -296,7 +219,7 @@ export default function CseNewsletterViewer() {
               Check if the Drive link is public and allows direct rendering.
             </p>
             <button
-              onClick={() => handleSemesterChange(activeSemester)}
+              onClick={() => handleYearChange(activeYear)}
               className="px-6 py-2 bg-indigo-600 text-white rounded-full font-bold hover:bg-indigo-700 transition"
             >
               Retry Loading
@@ -304,7 +227,6 @@ export default function CseNewsletterViewer() {
           </div>
         )}
 
-        {/* Navigation Buttons */}
         <button
           className="newsletter-nav-btn newsletter-nav-btn-prev"
           onClick={prevPage}
@@ -393,7 +315,6 @@ export default function CseNewsletterViewer() {
         </div>
       </div>
 
-      {/* Control Toolbar */}
       <div className="control-toolbar">
         <div className="toolbar-page-info">
           {pageNumber} / {numPages || 0}

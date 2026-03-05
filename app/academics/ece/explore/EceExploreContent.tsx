@@ -33,6 +33,18 @@ const NewsletterViewer = dynamic(
   },
 );
 
+const SyllabusViewer = dynamic(
+  () => import("@/app/components/SyllabusViewer"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-96 flex items-center justify-center bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200 text-gray-400">
+        Loading Syllabus Viewer...
+      </div>
+    ),
+  },
+);
+
 export default function EceExploreContent() {
   const department = eceDepartmentData;
 
@@ -603,6 +615,10 @@ export default function EceExploreContent() {
                       <>
                         {activeTab === "newsletter" ? (
                           <NewsletterViewer />
+                        ) : activeTab === "syllabus" ? (
+                          <SyllabusViewer
+                            syllabusLinks={currentData.syllabusLinks}
+                          />
                         ) : (
                           <div
                             className="text-sm md:text-base text-gray-800 leading-relaxed mb-6"
@@ -940,7 +956,7 @@ export default function EceExploreContent() {
                       : "max-h-0 opacity-0"
                       }`}
                   >
-                    <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed">
+                    <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-950 leading-relaxed whitespace-pre-line">
                       {selectedFaculty?.details?.[
                         item.key as keyof typeof selectedFaculty.details
                       ] || "Information not available."}

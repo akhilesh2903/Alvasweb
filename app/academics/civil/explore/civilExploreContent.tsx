@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 
 const NewsletterViewer = dynamic(
-  () => import("@/app/components/NewsletterViewer"),
+  () => import("@/app/components/CivilNewsletterViewer"),
   {
     ssr: false,
     loading: () => (

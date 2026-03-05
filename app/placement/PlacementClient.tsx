@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { Building2, Globe, Users2, Rocket } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Building2, Globe, Globe2, Users2, Rocket, ArrowRight } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PlacementBackground from "./components/PlacementBackground";
@@ -91,6 +91,7 @@ const PlacementSlider = () => {
 
 const tabs = [
   { id: "overview", label: "Overview" },
+  { id: "placement-types", label: "Placement Types Offered" },
   { id: "team", label: "Our Team" },
   { id: "students", label: "Placed Students" },
   { id: "companies", label: "Companies Visited" },
@@ -710,6 +711,132 @@ export default function PlacementClient() {
         </div>
       </section>
 
+      {/* PLACEMENT TYPES OFFERED TAB SECTION */}
+      <section
+        ref={(el) => {
+          sectionRefs.current["placement-types"] = el;
+        }}
+        className="px-6 md:px-20 py-24 bg-white"
+      >
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <span className="text-[#F4C430] font-bold uppercase tracking-[0.3em] text-sm mb-4 block">
+            Our Offerings
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black text-[#1E2A78] serif">
+            Placement Types Offered
+          </h2>
+          <div className="w-24 h-1 bg-[#F4C430] mx-auto mt-6"></div>
+        </div>
+
+        {/* ===== PLACEMENT TYPES OFFERED - GRID SYSTEM ===== */}
+        <div
+          id="placement-types-grid"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          {[
+            {
+              title: "On Campus",
+              description:
+                "Direct recruitment drives from global giants like Amazon, IBM, and Infosys right at our doorstep.",
+              icon: <Building2 className="w-8 h-8" />,
+              rate: "92%",
+              color: "bg-indigo-600",
+              lightColor: "bg-indigo-50",
+              textColor: "text-indigo-900",
+            },
+            {
+              title: "Off Campus",
+              description:
+                "Guided pathways and application mentorship for roles at top-tier startups and multinational corporations.",
+              icon: <Globe2 className="w-8 h-8" />,
+              rate: "85%",
+              color: "bg-blue-600",
+              lightColor: "bg-blue-50",
+              textColor: "text-blue-900",
+            },
+            {
+              title: "Pool Campus",
+              description:
+                "Collaborative recruitment events bringing multiple colleges together for high-volume hiring opportunities.",
+              icon: <Users2 className="w-8 h-8" />,
+              rate: "88%",
+              color: "bg-emerald-600",
+              lightColor: "bg-emerald-50",
+              textColor: "text-emerald-900",
+            },
+            {
+              title: "Pragathi",
+              description:
+                "India's premier mega-job fair hosted by Alva's, connecting thousands with their dream careers.",
+              icon: <Rocket className="w-8 h-8 text-amber-600" />,
+              rate: "96%",
+              color: "bg-amber-500",
+              lightColor: "bg-amber-50",
+              textColor: "text-amber-900",
+            },
+          ].map((type, i) => (
+            <motion.div
+              key={i}
+              whileHover="hover"
+              initial="initial"
+              className={`group relative bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden cursor-default h-full flex flex-col`}
+            >
+              <div
+                className={`absolute top-0 right-0 w-32 h-32 ${type.lightColor} rounded-full -mr-16 -mt-16 opacity-60`}
+              ></div>
+              <div
+                className={`w-14 h-14 ${type.lightColor} rounded-2xl flex items-center justify-center mb-8 relative z-10`}
+              >
+                <div className={`${type.textColor}`}>{type.icon}</div>
+              </div>
+              <h3
+                className={`text-2xl font-black ${type.textColor} mb-4 relative z-10 serif`}
+              >
+                {type.title}
+              </h3>
+              <p className="text-gray-500 text-sm leading-relaxed mb-8 relative z-10 flex-1 font-medium">
+                {type.description}
+              </p>
+              <div className="mt-auto relative z-10">
+                <p className="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase mb-2">
+                  Success Rate
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className={`text-3xl font-black ${type.textColor}`}>
+                    {type.rate}
+                  </span>
+                  <motion.div
+                    className={`w-10 h-10 ${type.color} rounded-xl flex items-center justify-center text-white shadow-lg`}
+                    variants={{ hover: { x: 5, scale: 1.1 } }}
+                  >
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.div>
+                </div>
+              </div>
+              <motion.div
+                className={`absolute bottom-0 left-0 right-0 h-1 ${type.color} opacity-40`}
+                variants={{
+                  hover: {
+                    height: "70%",
+                    opacity: 0.05,
+                    transition: { duration: 0.6, ease: "circOut" },
+                  },
+                }}
+              />
+              <motion.div
+                className={`absolute bottom-0 left-0 right-0 h-[2px] ${type.color} z-20`}
+                variants={{
+                  hover: {
+                    bottom: "30%",
+                    transition: { duration: 0.5, ease: "backOut" },
+                  },
+                }}
+              />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
       {/* STRATEGIC DRIVE ARCHITECTURE */}
       <section
         ref={(el) => {
@@ -832,11 +959,6 @@ export default function PlacementClient() {
           {/* TEAM MEMBERS GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              {
-                name: "Mr.Prabhath Bhandari",
-                role: "Training & Placement Officer",
-                img: "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/05/Aslam-B-Nandyal.jpg",
-              },
               {
                 name: "Mr.Samyak Jain",
                 role: "Training & Placement Officer",
@@ -1029,15 +1151,15 @@ export default function PlacementClient() {
             {[
               {
                 name: "Infosys",
-                logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg",
+                logo: "https://www.infosys.com/content/dam/infosys-web/en/global-resource/media-resources/infosys-logo-rgb.png",
               },
               {
                 name: "TCS",
-                logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Consultancy_Services_Logo.svg",
+                logo: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg",
               },
               {
                 name: "Wipro",
-                logo: "https://upload.wikimedia.org/wikipedia/commons/8/84/Wipro_Primary_Logo_Color_RGB.svg",
+                logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Logo.svg",
               },
               {
                 name: "Accenture",
@@ -1059,18 +1181,40 @@ export default function PlacementClient() {
                 name: "IBM",
                 logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
               },
+              {
+                name: "Microsoft",
+                logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg",
+              },
+              {
+                name: "Google",
+                logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+              },
+              {
+                name: "Oracle",
+                logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg",
+              },
+              {
+                name: "Cisco",
+                logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg",
+              },
             ]
               .concat(/* Triple Spread for Seamless Hand-off */)
               .concat(/* Repeat again */)
               .map((company, index) => (
-                <div key={`comp-${index}`} className="mx-4 group">
-                  <div className="w-36 h-16 flex items-center justify-center rounded-xl bg-white/[0.02] border border-white/5 backdrop-blur-md hover:bg-white/[0.07] transition-all duration-500">
+                <div
+                  key={`comp-${index}`}
+                  className="mx-6 group flex flex-col items-center gap-3"
+                >
+                  <div className="w-40 h-20 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 hover:border-[#F4C430]/50 transition-all duration-500 p-4">
                     <img
                       src={company.logo}
                       alt={company.name}
-                      className="h-6 w-auto object-contain brightness-0 invert opacity-25 group-hover:opacity-100 transition-all duration-700"
+                      className="h-full w-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-all duration-700"
                     />
                   </div>
+                  <span className="text-[10px] font-black text-white/90 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {company.name}
+                  </span>
                 </div>
               ))}
           </InfiniteSlider>

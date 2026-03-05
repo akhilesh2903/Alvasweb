@@ -4,15 +4,10 @@ export const civilDepartmentData: DepartmentData = {
   id: "civil",
   name: "Department of Civil",
   title: "Department of Civil Engineering",
-  vision: `Centre of excellence to empower the young minds in the field of Department of Civil Engineering with research focus and skill development through transformative education catering to the needs of the society`,
-  mission:
-    `M1:	To create Learning Environment to enable the students for excellence in the field of Department of Civil Engineering.
-M2:	To empower the students with ncivilssary skills for solving the complex technological problems.
-M3:	To inculcate Research Culture among Teaching Learning Group by guiding them towards Research activities to bridge the gap between Industry and Academia.
-M4:	By imbibing the students with human values and ethics through transformative education and make them socially responsible professionals.
-
-
-`,
+  vision: `To become a leader in the field of Civil Engineering by imparting quality education in developing highly competent manpower and promote research to meet the current and future challenges in Civil Engineering.`,
+  mission: `M1: To impart knowledge by creating conducive teaching-learning environment.
+M2: To produce civil engineers of high caliber, technical skills and ethical values, to serve the society.
+M3: To promote innovation in the minds of future engineers to face the challenges.`,
   hod: {
     name: "Dr. CIVIL HOD",
     designation: "Professor & HOD - CIVIL",
@@ -65,7 +60,7 @@ M4:	By imbibing the students with human values and ethics through transformative
   ),
   exploreData: {
     about: {
-      title: "ABOUT ELECTRONICS & COMMUNICATION ENGINEERING",
+      title: "ABOUT DEPARTMENT OF CIVIL ENGINEERING",
       body: `The Department of Department of Civil Engineering (CIVIL) is accredited by the National Board of Accreditation, New Delhi (NBA) for a continuous period of nine years, from 01 July 2019 to 30 June 2028, reflecting the department’s commitment to academic excellence and quality education.
 The Department of CIVIL is one of the most sought-after and dynamic branches of engineering, playing a vital role in the technological advancement and overall development of modern society. The department focuses on the design, development, manufacturing, and application of electronic devices, its software, and intelligent systems that drive today’s digital and connected world.
 The curriculum emphasizes a strong foundation in Electronic Devices and Circuits, Computer Architecture and Communication, VLSI and Embedded Systems, Electromagnetism, Analog and Digital Communication, Digital Signal Processing, and Microwave and Broadband Communication. With a team of highly qualified, experienced, and research-oriented faculty members, the department ensures outcome-based learning, industry relevance, and career readiness for students in core and emerging areas of semiconductor industry.
@@ -88,40 +83,27 @@ The curriculum emphasizes a strong foundation in Electronic Devices and Circuits
     },
     peo: {
       title: "(PEO's, PO's, PSO'S)",
-      body: `PO1: Engineering Knowledge: Apply knowledge of mathematics, science, engineering fundamentals and an engineering specialization to solve complex engineering problems.
+      body: `PO1: Engineering knowledge: Apply the knowledge of mathematics, science, engineering fundamentals and an engineering specialization to the solution of complex engineering problems.
+PO2: Problem analysis: Identify, formulate, review research literature and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.
+PO3: Design/development of solutions: Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for the public health, safety, cultural, societal and environmental considerations.
+PO4: Conduct investigations of complex problems: Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data and synthesis of the information to provide valid conclusions.
+PO5: Modern tool usage: Create, select, apply appropriate techniques, resources, modern engineering, IT tools including prediction and modeling to complex engineering activities with an understanding of the limitations.
+PO6: The engineer and society: Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.
+PO7: Environment and sustainability: Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.
+PO8: Ethics: Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.
+PO9: Individual and team work: Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.
+PO10: Communication: Communicate effectively on complex engineering activities with the engineering community and with society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.
+PO11: Project management and finance: Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.
+PO12: Life-long learning: Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change.
 
-PO2:	Problem Analysis: Identify, formulate, review research literature and analyze complex engineering problems using first principles of mathematics, natural sciences and engineering sciences.
+PEO1: To provide the students a strong foundation in fundamentals that will enable them to identify and solve real time problems in Civil engineering for Industries and Research activities.
+PEO2: To develop abilities and talents, leading to creativity and productivity in professional and industrial field beyond the curriculum and thus enhance the employability skill.
+PEO3: To explore and apply the modern engineering tools for planning, design, execution and maintenance of works those are technically and economically viable, and socially acceptable.
 
-PO3:	Design and Development of solutions: Design solutions for complex engineering problems and digital systems, components or processes that meet specified needs with appropriate consideration for public health and safety and cultural, societal and environmental considerations.
-
-PO4:	Conduct Investigations: Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data and synthesis of the information to provide valid conclusions.
-
-PO5:	Modern Tool Usage: Create, select and apply appropriate techniques, resources and modern engineering and IT tools to complex engineering activities with an understanding of the limitations.
-
-PO6:	The Engineer and Society: Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.
-
-PO7:	Environment and sustainability: Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.
-
-PO8:	Ethics: Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.
-
-PO9:	Individual and team work: Function effectively as an individual and as a member or leader in diverse teams, and in multidisciplinary settings.
-
-PO10:	Communication: Communicate effectively on complex engineering activities with the engineering community and with society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations and give and rcivilive clear instructions.
-
-PO11:	Project management and finance: Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.
-
-PO12:	Life-long learning: Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change.
-
-PEO1:	Apply mathematical, scientific and engineering skills for solving problems in the area of Department of Civil Engineering.
-PEO2: Expose to emerging technologies and excel in industries/higher studies/research.
-PEO3:	Apply analytical skills in the area of Department of Civil Engineering to become competent and employable.
-PEO4:	Inculcate Professional ethics, human values, team work for solving engineering problems and contribute to societal needs.
-
-PSO1: Understand and apply the principles of Department of Civil Engineering in various domains of Analog and Digital systems.
-
-PSO2: Design and implement systems using the concepts of Electronics, Signal Processing, Embedded Systems and Semiconductor Technology.
-
-PSO3: Apply modern Hardware and software tools to analyze and solve engineering Problems.`,
+PSO1: The graduates will have the ability to plan, analyze, design, execute and maintain cost effective civil engineering structures without overexploitation of natural resources.
+PSO2: The graduates of civil engineering program will have the ability to take up employment, entrepreneurship, research and development for sustainable civil society.
+PSO3: The graduates will be able to pursue opportunities for personal and professional growth, higher studies, demonstrate leadership skills and engage in lifelong learning by active participation in the civil engineering profession.
+PSO4: The graduates will be able to demonstrate professional integrity and an appreciation of ethical, environmental, regulatory and issues related to civil engineering projects.`,
       highlights: [
         "Strong foundational knowledge in electronics.",
         "Practical application of theoretical concepts.",

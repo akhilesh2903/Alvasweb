@@ -11,6 +11,14 @@ import MobileMenu from "./MobileMenu";
 const CAMPUS_DATA = [
  
   {
+    title: "ATC",
+    subtitle: "Campus Tour",
+    desc: "Virtually experience our world-class infrastructure.",
+    img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1600&q=80",
+    color: "#00ff88",
+    href: "/campus-life/atc",
+  },
+  {
     title: "CAMPUS",
     subtitle: "Living Spaces",
     desc: "Comfortable hostels and green spaces.",
