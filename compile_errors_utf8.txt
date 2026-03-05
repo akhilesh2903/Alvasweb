@@ -1,0 +1,6 @@
+﻿app/placement/PlacementClient.tsx(310,6): error TS17008: JSX element 'div' has no corresponding closing tag.
+app/placement/PlacementClient.tsx(428,8): error TS17008: JSX element 'section' has no corresponding closing tag.
+app/placement/PlacementClient.tsx(439,10): error TS17008: JSX element 'div' has no corresponding closing tag.
+app/placement/PlacementClient.tsx(548,15): error TS17002: Expected corresponding JSX closing tag for 'div'.
+app/placement/PlacementClient.tsx(1499,1): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+app/placement/PlacementClient.tsx(1501,1): error TS1005: '</' expected.
