@@ -912,8 +912,8 @@ export default function CivilExploreContent() {
                       )
                     }
                     className={`w-full flex items-center justify-between p-4 rounded-xl transition-all duration-300 text-left ${openAccordion === item.key
-                        ? "bg-[#f1f3f5] shadow-sm"
-                        : "bg-gray-50 hover:bg-white hover:shadow-md border border-gray-100"
+                      ? "bg-[#f1f3f5] shadow-sm"
+                      : "bg-gray-50 hover:bg-white hover:shadow-md border border-gray-100"
                       }`}
                   >
                     <span className="text-sm font-bold text-gray-700">
@@ -936,8 +936,8 @@ export default function CivilExploreContent() {
                   </button>
                   <div
                     className={`overflow-hidden transition-all duration-500 ease-in-out ${openAccordion === item.key
-                        ? "max-h-96 opacity-100 mt-2"
-                        : "max-h-0 opacity-0"
+                      ? "max-h-96 opacity-100 mt-2"
+                      : "max-h-0 opacity-0"
                       }`}
                   >
                     <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed">

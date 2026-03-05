@@ -9,14 +9,7 @@ import MobileMenu from "./MobileMenu";
 
 // Added 'href' to every single object in the data array
 const CAMPUS_DATA = [
-  {
-    title: "AEF",
-    subtitle: "Campus Tour",
-    desc: "Virtually experience our world-class infrastructure.",
-    img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1600&q=80",
-    color: "#00ff88",
-    href: "/campus-life/aef",
-  },
+ 
   {
     title: "CAMPUS",
     subtitle: "Living Spaces",
@@ -24,6 +17,14 @@ const CAMPUS_DATA = [
     img: "https://images.unsplash.com/photo-1541339907198-e08756ebafe3?w=1600&q=80",
     color: "#ffffff",
     href: "/campus-life/campus",
+  },
+   {
+    title: "ATC",
+    subtitle: "Campus Tour",
+    desc: "Virtually experience our world-class infrastructure.",
+    img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1600&q=80",
+    color: "#00ff88",
+    href: "/campus-life/ATC",
   },
   {
     title: "STARTUPS",
