@@ -225,52 +225,84 @@ const Gallery = () => {
             <div className="title-underline" />
           </div>
 
-          <div className="gallery-3d-stage">
-            <GalleryRow
-              images={row1}
-              direction="left"
-              speed={35}
-              rowIndex={0}
-              onImageClick={setSelectedImage}
-            />
-          </div>
-
-          {/* Bottom Section Layout: [Left Col] [Cylinder] [Right Col] */}
-          <div className="gallery-cols-container">
-            {/* Left Vertical Column */}
-            <div className="gallery-side-col left-col">
-              <GalleryVerticalColumn
-                images={leftColImages}
-                direction="down"
-                speed={40}
+          {/* DESKTOP VIEW - 3D/ANIMATED */}
+          <div className="hidden md:block">
+            <div className="gallery-3d-stage">
+              <GalleryRow
+                images={row1}
+                direction="left"
+                speed={35}
+                rowIndex={0}
                 onImageClick={setSelectedImage}
               />
             </div>
 
-            {/* Center Cylinder */}
-            <div className="gallery-cylinder-section">
-              <GalleryCylinder images={row4} onImageClick={setSelectedImage} />
+            <div className="gallery-cols-container">
+              <div className="gallery-side-col left-col">
+                <GalleryVerticalColumn
+                  images={leftColImages}
+                  direction="down"
+                  speed={40}
+                  onImageClick={setSelectedImage}
+                />
+              </div>
+
+              <div className="gallery-cylinder-section">
+                <GalleryCylinder
+                  images={row4}
+                  onImageClick={setSelectedImage}
+                />
+              </div>
+
+              <div className="gallery-side-col right-col">
+                <GalleryVerticalColumn
+                  images={rightColImages}
+                  direction="up"
+                  speed={45}
+                  onImageClick={setSelectedImage}
+                />
+              </div>
             </div>
 
-            {/* Right Vertical Column */}
-            <div className="gallery-side-col right-col">
-              <GalleryVerticalColumn
-                images={rightColImages}
-                direction="up"
-                speed={45}
+            <div>
+              <GalleryRow
+                images={row2}
+                direction="right"
+                speed={32}
+                rowIndex={1}
                 onImageClick={setSelectedImage}
               />
             </div>
           </div>
-        </div>
-        <div>
-          <GalleryRow
-            images={row2}
-            direction="right"
-            speed={32}
-            rowIndex={1}
-            onImageClick={setSelectedImage}
-          />
+
+          {/* MOBILE VIEW - SIMPLE GRID */}
+          <div className="block md:hidden">
+            <div className="grid grid-cols-3 gap-2">
+              {GALLERY_IMAGES.map((src, idx) => (
+                <div
+                  key={idx}
+                  className="relative aspect-square overflow-hidden rounded-2xl shadow-md border border-white/20 group cursor-pointer"
+                  onClick={() => setSelectedImage(src)}
+                >
+                  <img
+                    src={src}
+                    alt={`Gallery ${idx}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                    <span className="text-white text-[10px] font-bold tracking-widest uppercase">
+                      View Moment
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <p className="text-[#8b2635]/60 text-xs font-bold uppercase tracking-widest">
+                Showing {GALLERY_IMAGES.length} Moments
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

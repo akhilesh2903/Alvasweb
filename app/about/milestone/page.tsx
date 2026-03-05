@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect,useState, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaGraduationCap, FaAward, FaBuilding, FaLeaf, FaMedal, FaUniversity, FaQuoteLeft } from 'react-icons/fa';
 import Link from 'next/link';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import MobileMenu from '../../components/MobileMenu';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -106,6 +107,7 @@ export default function MilestonePage() {
   const lineRef = useRef(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const [activeMilestone, setActiveMilestone] = React.useState<number | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleDetails = (index: number) => {
     setActiveMilestone(prev => prev === index ? null : index);
@@ -177,9 +179,11 @@ export default function MilestonePage() {
     <div ref={containerRef} className="min-h-screen bg-[#e7e5e4] text-slate-800 font-sans overflow-x-hidden selection:bg-[#b77700] selection:text-white">
       
 
-      <Header onMenuToggle={function (): void {
-        throw new Error('Function not implemented.');
-      } } />
+      <MobileMenu
+              isOpen={isMobileMenuOpen}
+              onClose={() => setIsMobileMenuOpen(false)}
+            />
+            <Header onMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
       <header className="relative pt-40 pb-20 px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <div className="hero-text inline-block mb-4 px-4 py-1 rounded-full bg-[#b77700]/10 text-[#b77700] font-semibold text-sm tracking-widest uppercase">

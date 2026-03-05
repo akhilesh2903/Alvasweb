@@ -1,20 +1,26 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import MobileMenu from "../../components/MobileMenu";
 
 const TABS = [
-  { id: "college",    label: "College"           },
-  { id: "hostel",     label: "Hostel"            },
-  { id: "cultural",   label: "Cultural"          },
-  { id: "transport",  label: "Transportation"    },
-  { id: "library",    label: "Library"           },
-  { id: "auditorium", label: "Auditorium"        },
-  { id: "seminar",    label: "Seminar Hall"      },
-  { id: "gym",        label: "Gym"               },
+  { id: "college", label: "College" },
+  { id: "hostel", label: "Hostel" },
+  { id: "cultural", label: "Cultural" },
+  { id: "transport", label: "Transportation" },
+  { id: "library", label: "Library" },
+  { id: "auditorium", label: "Auditorium" },
+  { id: "seminar", label: "Seminar Hall" },
+  { id: "gym", label: "Gym" },
 ];
 
 export default function CampusPage() {
   const [active, setActive] = useState("college");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const scrollToBody = () =>
@@ -28,7 +34,7 @@ export default function CampusPage() {
     let W: number, H: number, animId: number, t = 0;
 
     function resize() {
-      W = canvas!.width  = window.innerWidth;
+      W = canvas!.width = window.innerWidth;
       H = canvas!.height = window.innerHeight;
     }
     resize();
@@ -70,8 +76,8 @@ export default function CampusPage() {
     function drawWaves() {
       const waves = [
         { amp: 40, freq: 0.0035, speed: 0.18, color: "rgba(56,189,248,0.03)", y: H * 0.55 },
-        { amp: 30, freq: 0.005,  speed: 0.25, color: "rgba(99,102,241,0.025)", y: H * 0.65 },
-        { amp: 50, freq: 0.003,  speed: 0.12, color: "rgba(20,184,166,0.02)", y: H * 0.75 },
+        { amp: 30, freq: 0.005, speed: 0.25, color: "rgba(99,102,241,0.025)", y: H * 0.65 },
+        { amp: 50, freq: 0.003, speed: 0.12, color: "rgba(20,184,166,0.02)", y: H * 0.75 },
       ];
       waves.forEach(w => {
         ctx.beginPath();
@@ -144,7 +150,8 @@ export default function CampusPage() {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
@@ -197,6 +204,10 @@ export default function CampusPage() {
           position: relative; height: 540px;
           background: url('/DJI_0135.jpg') center/cover no-repeat;
           display: flex; align-items: flex-end; overflow: hidden;
+          margin-top: 80px;
+        }
+        @media (max-width: 900px) {
+          .cp-hero { margin-top: 0; padding-top: 80px; }
         }
         .cp-hero::before {
           content:''; position: absolute; inset: 0;
@@ -457,11 +468,65 @@ export default function CampusPage() {
         /* Responsive */
         @media (max-width: 900px) {
           .cp-page-body { grid-template-columns:1fr; }
-          .cp-sidebar { position:static; }
+          
+          /* Hide static sidebar on mobile */
+          .cp-sidebar-desktop { display: none; }
+          
+          /* Floating Mobile Sidebar */
+          .cp-sidebar-mobile {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 280px;
+            background: #f8fbff;
+            z-index: 1000;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+            padding: 80px 20px 40px;
+            overflow-y: auto;
+          }
+          
+          .cp-sidebar-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(10,15,30,0.4);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+          }
+          
+          .cp-sidebar-toggle {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 90px;
+            background: var(--teal);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 12px 12px 0;
+            z-index: 998;
+            box-shadow: 4px 0 15px rgba(14,165,233,0.3);
+            border: none;
+            cursor: pointer;
+            transition: width 0.3s;
+          }
+          .cp-sidebar-toggle:hover { width: 45px; }
+          .cp-sidebar-toggle svg { width: 24px; height: 24px; }
+
           .cp-content { padding:28px 20px; }
+          .cp-hero { height: 480px; }
           .cp-hero-content { padding:0 24px 44px; }
-          .cp-hero-badge { left:24px; top:36px; }
-          .cp-breadcrumb { right:24px; top:40px; }
+          .cp-hero-badge { left:20px; top:20px; font-size: 10px; }
+          .cp-breadcrumb { display: none; }
+          .cp-hero h1 { font-size: 56px; }
+          
+          .cp-panel-header { flex-direction: column; gap:16px; }
+          .cp-icon-wrap { width: 60px; height: 60px; font-size: 28px; }
+          .cp-title-group h2 { font-size: 28px; }
+          
           .cp-info-strip { flex-wrap:wrap; }
           .cp-info-item { min-width:50%; }
         }
@@ -473,6 +538,9 @@ export default function CampusPage() {
       />
 
       <div className="cp-page">
+        <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
+        <Header onMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
+
         {/* Animated background */}
         <canvas ref={canvasRef} className="cp-bg-canvas" />
         <div className="cp-orb cp-orb1" />
@@ -512,21 +580,21 @@ export default function CampusPage() {
         {/* ── PAGE BODY ── */}
         <div className="cp-page-body">
 
-          {/* SIDEBAR */}
-          <aside className="cp-sidebar">
+          {/* SIDEBAR - DESKTOP */}
+          <aside className="cp-sidebar cp-sidebar-desktop">
             <div className="cp-sidebar-label">Browse</div>
             <div className="cp-sidebar-title">Campus Spaces</div>
 
             <nav>
               {[
-                { id:"college",    icon:<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 21h18M3 10h18M5 21V10M9 21V10M15 21V10M19 21V10M12 3L2 10h20L12 3z"/></svg>, label:"College" },
-                { id:"hostel",     icon:<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>, label:"Hostel" },
-                { id:"cultural",   icon:<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>, label:"Cultural" },
-                { id:"transport",  icon:<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>, label:"Transportation" },
-                { id:"library",    icon:<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>, label:"Library" },
-                { id:"auditorium", icon:<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>, label:"Auditorium" },
-                { id:"seminar",    icon:<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>, label:"Seminar Hall" },
-                { id:"gym",        icon:<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6.5 6.5h11M6.5 17.5h11M6 12h12M3 8.5V6a1 1 0 011-1h1a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1v-2.5M21 8.5V6a1 1 0 00-1-1h-1a1 1 0 00-1 1v12a1 1 0 001 1h1a1 1 0 001-1v-2.5"/></svg>, label:"Gym" },
+                { id: "college", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 21h18M3 10h18M5 21V10M9 21V10M15 21V10M19 21V10M12 3L2 10h20L12 3z" /></svg>, label: "College" },
+                { id: "hostel", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9,22 9,12 15,12 15,22" /></svg>, label: "Hostel" },
+                { id: "cultural", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" /><line x1="2" y1="12" x2="22" y2="12" /></svg>, label: "Cultural" },
+                { id: "transport", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" /><line x1="12" y1="12" x2="12" y2="16" /><line x1="10" y1="14" x2="14" y2="14" /></svg>, label: "Transportation" },
+                { id: "library", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" /></svg>, label: "Library" },
+                { id: "auditorium", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></svg>, label: "Auditorium" },
+                { id: "seminar", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>, label: "Seminar Hall" },
+                { id: "gym", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6.5 6.5h11M6.5 17.5h11M6 12h12M3 8.5V6a1 1 0 011-1h1a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1v-2.5M21 8.5V6a1 1 0 00-1-1h-1a1 1 0 00-1 1v12a1 1 0 001 1h1a1 1 0 001-1v-2.5" /></svg>, label: "Gym" },
               ].map(t => (
                 <div
                   key={t.id}
@@ -543,6 +611,74 @@ export default function CampusPage() {
             <div className="cp-sidebar-icon">🏛️</div>
             <div className="cp-sidebar-pride">Heart of Our Campus</div>
           </aside>
+
+          {/* MOBILE SIDEBAR TOGGLE */}
+          <button
+            className="cp-sidebar-toggle md:hidden"
+            onClick={() => setIsSidebarOpen(true)}
+            aria-label="Open Sidebar"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+
+          {/* MOBILE SIDEBAR OVERLAY */}
+          <AnimatePresence>
+            {isSidebarOpen && (
+              <>
+                <motion.div
+                  className="cp-sidebar-backdrop md:hidden"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => setIsSidebarOpen(false)}
+                />
+                <motion.aside
+                  className="cp-sidebar-mobile md:hidden"
+                  initial={{ x: "-100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "-100%" }}
+                  transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                >
+                  <button
+                    style={{ position: "absolute", top: "20px", right: "20px", background: "none", border: "none", fontSize: "24px", color: "var(--muted)" }}
+                    onClick={() => setIsSidebarOpen(false)}
+                  >
+                    ×
+                  </button>
+                  <div className="cp-sidebar-label">Browse</div>
+                  <div className="cp-sidebar-title">Campus Spaces</div>
+                  <nav>
+                    {[
+                      { id: "college", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 21h18M3 10h18M5 21V10M9 21V10M15 21V10M19 21V10M12 3L2 10h20L12 3z" /></svg>, label: "College" },
+                      { id: "hostel", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9,22 9,12 15,12 15,22" /></svg>, label: "Hostel" },
+                      { id: "cultural", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" /><line x1="2" y1="12" x2="22" y2="12" /></svg>, label: "Cultural" },
+                      { id: "transport", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" /><line x1="12" y1="12" x2="12" y2="16" /><line x1="10" y1="14" x2="14" y2="14" /></svg>, label: "Transportation" },
+                      { id: "library", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" /></svg>, label: "Library" },
+                      { id: "auditorium", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></svg>, label: "Auditorium" },
+                      { id: "seminar", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>, label: "Seminar Hall" },
+                      { id: "gym", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6.5 6.5h11M6.5 17.5h11M6 12h12M3 8.5V6a1 1 0 011-1h1a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1v-2.5M21 8.5V6a1 1 0 00-1-1h-1a1 1 0 00-1 1v12a1 1 0 001 1h1a1 1 0 001-1v-2.5" /></svg>, label: "Gym" },
+                    ].map(t => (
+                      <div
+                        key={t.id}
+                        className={`cp-nav-item ${active === t.id ? "active" : ""}`}
+                        onClick={() => {
+                          setActive(t.id);
+                          setIsSidebarOpen(false);
+                          scrollToBody();
+                        }}
+                      >
+                        {t.icon}
+                        {t.label}
+                        <span className="cp-nav-arrow">›</span>
+                      </div>
+                    ))}
+                  </nav>
+                </motion.aside>
+              </>
+            )}
+          </AnimatePresence>
 
           {/* CONTENT */}
           <main className="cp-content">
@@ -865,6 +1001,7 @@ export default function CampusPage() {
 
           </main>
         </div>
+        <Footer />
       </div>
     </>
   );

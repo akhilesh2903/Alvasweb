@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, forwardRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import HTMLFlipBook from "react-pageflip";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -9,28 +9,21 @@ import {
   MdZoomOut,
   MdFullscreen,
   MdFullscreenExit,
-  MdVolumeUp,
-  MdVolumeOff,
-  MdViewList,
-  MdGridView,
-  MdShare,
   MdClose,
-  MdNoteAlt,
-  MdFileDownload,
   MdErrorOutline,
 } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import "./NewsletterViewer.css";
 
-// Configure pdfjs worker to use local file for better reliability
+// Configure pdfjs worker
 if (typeof window !== "undefined") {
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 }
 
 const newsletters = [
-  { year: "2025-26", path: "/enewsletter/Newsletter_2025-26.pdf" },
-  { year: "2024-25", path: "/enewsletter/Newsletter_2024-25.pdf" },
-  { year: "2023-24", path: "/enewsletter/Newsletter_2023-24.pdf" },
+  { year: "2025-26", id: "1umDWA61FF3GLJCVCkn39q7qi60a_CU2k" },
+  { year: "2024-25", id: "1BGqP0bRHh4Wu6hg23JKqi3cL-Qpexmf4" },
+  { year: "2023-24", id: "1v_gSrTqgvrhd6F5TI0DncLtGBuE4WhfQ" },
 ];
 
 export default function NewsletterViewer() {
@@ -42,17 +35,21 @@ export default function NewsletterViewer() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [zoom, setZoom] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isSoundEnabled, setIsSoundEnabled] = useState(true);
 
   // Dynamic dimensions for the magazine
   const [dimensions, setDimensions] = useState({ width: 500, height: 700 });
-  const [pdfRatio, setPdfRatio] = useState(5 / 7); // Default aspect ratio
+  const [pdfRatio, setPdfRatio] = useState(5 / 7);
   const [isMobile, setIsMobile] = useState(false);
 
   const bookRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const activeNewsletter = newsletters.find((n) => n.year === activeYear);
+
+  // Use the local API proxy to avoid CORS issues
+  const pdfUrl = activeNewsletter
+    ? `/api/pdf-proxy?id=${activeNewsletter.id}`
+    : "";
 
   const calculateDimensions = () => {
     if (typeof window === "undefined") return;
@@ -65,26 +62,19 @@ export default function NewsletterViewer() {
     let targetWidth, targetHeight;
 
     if (isFullscreen) {
-      // FULLSCREEN: Maximize content, account for sidebar/padding
-      // Subtracting 120px width for nav buttons and 80px for toolbar
       const availableHeight = vHeight - 80;
       const availableWidth = vWidth - (mobile ? 40 : 120);
-
-      // Determine if we are limited by height or width
       const totalRatio = mobile ? pdfRatio : pdfRatio * 2;
 
       if (availableWidth / availableHeight > totalRatio) {
-        // Limited by height
         targetHeight = availableHeight;
         targetWidth = targetHeight * pdfRatio;
       } else {
-        // Limited by width
         const totalTargetWidth = availableWidth;
         targetWidth = mobile ? totalTargetWidth : totalTargetWidth / 2;
         targetHeight = targetWidth / pdfRatio;
       }
     } else {
-      // Standard view: Original behavior (max 500px single page width)
       targetWidth = Math.min(500, (vWidth * 0.95) / (mobile ? 1 : 2));
       targetHeight = targetWidth / pdfRatio;
     }
@@ -108,7 +98,6 @@ export default function NewsletterViewer() {
   }
 
   function onPageLoadSuccess(page: any) {
-    // Detect the actual aspect ratio of the first loaded page
     const { width, height } = page;
     if (width && height) {
       const ratio = width / height;
@@ -121,12 +110,11 @@ export default function NewsletterViewer() {
   function onDocumentLoadError(error: Error) {
     console.error("PDF Load Error:", error);
     setLoadError(
-      `Failed to load PDF: ${error.message || "Unknown error"}. The file might be missing or corrupted.`,
+      `Failed to load PDF. Access to the document might be restricted by CORS.`,
     );
     setIsLoaded(false);
   }
 
-  // Handle zoom when fullscreen changes
   useEffect(() => {
     setZoom(1);
   }, [isFullscreen]);
@@ -154,7 +142,7 @@ export default function NewsletterViewer() {
       setActiveYear(year);
       setPageNumber(1);
       setZoom(1);
-      setPdfRatio(5 / 7); // Reset ratio for new document
+      setPdfRatio(5 / 7);
     }
   };
 
@@ -170,16 +158,10 @@ export default function NewsletterViewer() {
 
   const handleClose = () => {
     setIsFullscreen(false);
-    setZoom(1);
     if (document.fullscreenElement) {
-      document
-        .exitFullscreen()
-        .then(() => {
-          router.push("/academics/ece/explore");
-        })
-        .catch(() => {
-          router.push("/academics/ece/explore");
-        });
+      document.exitFullscreen().finally(() => {
+        router.push("/academics/ece/explore");
+      });
     } else {
       router.push("/academics/ece/explore");
     }
@@ -187,30 +169,12 @@ export default function NewsletterViewer() {
 
   const handleZoomIn = () => setZoom((prev) => Math.min(prev + 0.2, 2));
   const handleZoomOut = () => setZoom((prev) => Math.max(prev - 0.2, 0.6));
-  const toggleSound = () => setIsSoundEnabled(!isSoundEnabled);
-
-  const handleDownload = () => {
-    if (activeNewsletter) {
-      // Direct link download for better Vercel/Production compatibility
-      const link = document.createElement("a");
-      link.href = activeNewsletter.path;
-      link.setAttribute(
-        "download",
-        activeNewsletter.path.split("/").pop() || "newsletter.pdf",
-      );
-      link.setAttribute("target", "_blank"); // Fallback to opening in new tab if direct download fails
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  };
 
   return (
     <div
       className={`magazine-container ${isFullscreen ? "fullscreen" : ""}`}
       ref={containerRef}
     >
-      {/* Year Tabs */}
       {!isFullscreen && (
         <div className="year-tabs">
           {newsletters.map((n) => (
@@ -225,7 +189,6 @@ export default function NewsletterViewer() {
         </div>
       )}
 
-      {/* Magazine Viewing Area */}
       <div className="magazine-viewer">
         {isFullscreen && (
           <button
@@ -253,7 +216,7 @@ export default function NewsletterViewer() {
             <MdErrorOutline className="text-6xl text-red-500 mb-4" />
             <h3 className="text-xl font-bold mb-2">{loadError}</h3>
             <p className="text-gray-400 mb-6 uppercase text-xs tracking-widest font-bold">
-              Please check if the file exists in /public/enewsletter/
+              Check if the Drive link is public and allows direct rendering.
             </p>
             <button
               onClick={() => handleYearChange(activeYear)}
@@ -264,7 +227,6 @@ export default function NewsletterViewer() {
           </div>
         )}
 
-        {/* Navigation Buttons */}
         <button
           className="newsletter-nav-btn newsletter-nav-btn-prev"
           onClick={prevPage}
@@ -295,7 +257,7 @@ export default function NewsletterViewer() {
           }}
         >
           <Document
-            file={activeNewsletter?.path}
+            file={pdfUrl}
             onLoadSuccess={onDocumentLoadSuccess}
             onLoadError={onDocumentLoadError}
             loading={null}
@@ -353,7 +315,6 @@ export default function NewsletterViewer() {
         </div>
       </div>
 
-      {/* Control Toolbar */}
       <div className="control-toolbar">
         <div className="toolbar-page-info">
           {pageNumber} / {numPages || 0}
@@ -362,14 +323,6 @@ export default function NewsletterViewer() {
         <div className="toolbar-divider" />
 
         <div className="toolbar-group">
-          <button
-            className="toolbar-btn"
-            onClick={handleDownload}
-            title="Download PDF"
-            disabled={!!loadError}
-          >
-            <MdFileDownload />
-          </button>
           <button
             className="toolbar-btn"
             onClick={handleZoomIn}

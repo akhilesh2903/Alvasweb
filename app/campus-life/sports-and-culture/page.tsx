@@ -4,9 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import MobileMenu from "../../components/MobileMenu";
+
 import GallerySection from "../../components/Gallery";
 
 /* ─────────────── DATA ─────────────── */
@@ -97,13 +95,14 @@ const typeColor: Record<string, string> = {
 
 /* ─────────────── PAGE ─────────────── */
 export default function SportsAndCulturePage() {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [activeTab, setActiveTab] = useState<"sports" | "cultural">("sports");
     const heroImgRef = useRef<HTMLDivElement>(null);
     const statsRef = useRef<HTMLDivElement>(null);
     const achieveRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        console.log("AIET Sports & Culture Responsive v1.1 Active");
         gsap.registerPlugin(ScrollTrigger);
         if (heroImgRef.current) {
             gsap.to(heroImgRef.current, {
@@ -162,25 +161,30 @@ export default function SportsAndCulturePage() {
                 <div className="sc-orb sc-orb-1" /><div className="sc-orb sc-orb-2" /><div className="sc-orb sc-orb-3" />
             </div>
 
-            <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
-            <Header onMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
+
 
             {/* ── HERO ── */}
-            <section className="relative h-[65vh] w-full mt-[80px] overflow-hidden z-10">
-                <div ref={heroImgRef} className="absolute inset-0">
+            <section className="relative h-[65vh] w-full mt-0 overflow-hidden z-10 sc-hero">
+                <div ref={heroImgRef} className="absolute inset-0 sc-hero-parallax">
                     <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1800&q=80"
                         alt="Sports and Culture at AIET" className="w-full h-full object-cover scale-110" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/55 to-slate-900/85 flex flex-col items-center justify-center p-6">
-                    <nav className="flex items-center gap-2 text-white/55 text-sm mb-6 font-medium">
+
+                <a href="/campus-life" className="sc-hero-back">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6" /></svg>
+                    Back to Campus Life
+                </a>
+
+                <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/55 to-slate-900/85 flex flex-col items-center justify-center p-6 text-center">
+                    <nav className="flex items-center gap-2 text-white/55 text-sm mb-6 font-medium sc-breadcrumb">
                         <Link href="/" className="hover:text-amber-400 transition">Home</Link>
                         <i className="fas fa-chevron-right text-[9px]" />
                         <Link href="/campus-life" className="hover:text-amber-400 transition">Campus Life</Link>
                         <i className="fas fa-chevron-right text-[9px]" />
                         <span className="text-amber-400">Sports &amp; Culture</span>
                     </nav>
-                    <div className="text-center max-w-3xl">
-                        <div className="inline-flex items-center gap-2 bg-purple-400/20 border border-purple-400/30 text-purple-300 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5 backdrop-blur-sm">
+                    <div className="text-center max-w-3xl sc-hero-content">
+                        <div className="inline-flex items-center gap-2 bg-purple-400/20 border border-purple-400/30 text-purple-300 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5 backdrop-blur-sm sc-hero-tag">
                             <i className="fas fa-futbol" /> Sports · Arts · Culture
                         </div>
                         <h1 className="text-5xl md:text-7xl font-black text-white mb-4 font-serif drop-shadow-2xl">
@@ -189,10 +193,10 @@ export default function SportsAndCulturePage() {
                                 Culture
                             </span>
                         </h1>
-                        <p className="text-white/75 text-lg font-medium max-w-xl mx-auto leading-relaxed">
+                        <p className="text-white/75 text-lg font-medium max-w-xl mx-auto leading-relaxed sc-hero-desc">
                             Where champions are forged and artists find their voice. Life at AIET extends far beyond the classroom.
                         </p>
-                        <div className="flex flex-wrap justify-center gap-3 mt-8">
+                        <div className="flex flex-wrap justify-center gap-3 mt-8 sc-hero-btns">
                             <a href="#sports-section" className="bg-amber-500 hover:bg-amber-600 text-white font-black px-6 py-3 rounded-2xl transition text-sm shadow-lg shadow-amber-400/30">
                                 <i className="fas fa-running mr-2" />Explore Sports
                             </a>
@@ -207,9 +211,33 @@ export default function SportsAndCulturePage() {
                 </svg>
             </section>
 
+            {/* MOBILE FLOATING SIDEBAR */}
+            <div className={`sc-mobile-sidebar ${isSidebarOpen ? "open" : ""}`}>
+                <div className="sc-ms-handle" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+                    <div className={`sc-ms-arrow ${isSidebarOpen ? "expanded" : ""}`}>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="9 18 15 12 9 6" /></svg>
+                    </div>
+                </div>
+                <div className="sc-ms-nav">
+                    {[
+                        { id: "sports", icon: "🏃", label: "Sports" },
+                        { id: "cultural", icon: "🎭", label: "Culture" },
+                    ].map((item) => (
+                        <button
+                            key={item.id}
+                            className={`sc-ms-item ${activeTab === item.id ? "active" : ""}`}
+                            onClick={() => { setActiveTab(item.id as "sports" | "cultural"); setIsSidebarOpen(false); }}
+                        >
+                            <span className="sc-ms-icon">{item.icon}</span>
+                            <span className="sc-ms-label">{item.label}</span>
+                        </button>
+                    ))}
+                </div>
+            </div>
+
             {/* ── STATS ── */}
             <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto" ref={statsRef}>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sc-grid">
                     {stats.map((s) => (
                         <div key={s.label} className="sc-stat bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-md border border-slate-100 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                             <div className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-2" style={{ background: s.color + "20" }}>
@@ -228,7 +256,7 @@ export default function SportsAndCulturePage() {
                     <h2 className="text-3xl font-black text-slate-900 font-serif italic border-l-8 border-amber-400 pl-5">Signature Events</h2>
                     <p className="text-slate-500 mt-2 pl-5 font-medium">The events that define the AIET experience.</p>
                 </div>
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-3 gap-6 sc-grid">
                     {megaEvents.map((ev) => (
                         <div key={ev.name} className="group rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 bg-white/85 backdrop-blur-sm flex flex-col">
                             <div className="relative h-52 overflow-hidden shrink-0">
@@ -275,7 +303,7 @@ export default function SportsAndCulturePage() {
                             <h2 className="text-3xl font-black text-slate-900 font-serif italic border-l-8 border-amber-400 pl-5">Sports at AIET</h2>
                             <p className="text-slate-500 mt-2 pl-5 font-medium">8 sports, two inter-collegiate tournaments, and a legacy of champions.</p>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sc-grid-3">
                             {sports.map((s) => (
                                 <div key={s.name} className="group bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                                     <div className="relative h-36 overflow-hidden">
@@ -306,7 +334,7 @@ export default function SportsAndCulturePage() {
                             <h2 className="text-3xl font-black text-slate-900 font-serif italic border-l-8 border-purple-500 pl-5">Cultural Clubs</h2>
                             <p className="text-slate-500 mt-2 pl-5 font-medium">6 clubs. One goal — nurturing talent beyond textbooks.</p>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sc-grid-3">
                             {culturalClubs.map((c) => (
                                 <div key={c.name} className="group bg-white/80 backdrop-blur-sm rounded-3xl p-6 border border-slate-100 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-24 h-24 pointer-events-none opacity-[0.06]" style={{ background: c.color, borderRadius: "0 0 0 100%" }} />
@@ -371,7 +399,7 @@ export default function SportsAndCulturePage() {
                 <div className="mb-10">
                     <h2 className="text-3xl font-black text-slate-900 font-serif italic border-l-8 border-amber-400 pl-5">Upcoming Events</h2>
                 </div>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sc-grid-3">
                     {upcomingEvents.map((e) => (
                         <div key={e.name} className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 border border-slate-100 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-4">
                             <div className="shrink-0 bg-slate-50 border border-slate-100 rounded-xl p-3 text-center min-w-[72px]">
@@ -390,7 +418,7 @@ export default function SportsAndCulturePage() {
             {/* ── GALLERY ── */}
             <GallerySection />
 
-            <Footer />
+
 
             <style jsx global>{`
         #main-header{background-color:rgba(255,255,255,0.4)!important;backdrop-filter:blur(20px)!important;border-bottom:2px solid rgba(168,85,247,0.12)!important;}
@@ -413,6 +441,98 @@ export default function SportsAndCulturePage() {
           30% {transform:translate(18px,-20px) rotate(12deg) scale(1.08);opacity:0.14;}
           60% {transform:translate(-14px,15px) rotate(-8deg) scale(0.95);opacity:0.08;}
           100%{transform:translate(9px,-9px) rotate(18deg) scale(1.04);opacity:0.11;}
+        }
+
+        .sc-hero-back { display: none; }
+
+        @media (max-width: 900px) {
+          /* Hero Tidy & Center */
+          .sc-hero { height: 320px !important; margin-top: 0 !important; }
+          .sc-hero img { transform: scale(1.2) !important; }
+          .sc-hero-parallax { background: #1e1b4b; }
+          .sc-breadcrumb, .sc-hero-tag, .sc-hero-desc, .sc-hero-btns { display: none !important; }
+          
+          .sc-hero-back {
+            display: flex;
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+            font-weight: 600;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            background: rgba(255,255,255,0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 20;
+          }
+          .sc-hero-back svg { width: 14px; height: 14px; }
+          
+          .sc-hero h1 { font-size: 42px !important; text-shadow: none !important; margin-bottom: 0 !important; }
+
+          /* Mobile Nav Hide Header Tabs */
+          .relative.z-10.px-6.max-w-6xl.mx-auto.pb-20 > div.flex.gap-2.mb-10 { display: none !important; }
+
+          /* Mobile Floating Sidebar */
+          .sc-mobile-sidebar {
+            display: flex;
+            position: fixed;
+            left: 0;
+            top: 55%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            height: fit-content;
+            background: rgba(255, 255, 255, 1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-left: none;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            width: 50px;
+            overflow: hidden;
+            flex-direction: column;
+          }
+          .sc-mobile-sidebar.open { width: 150px; }
+          
+          .sc-ms-handle {
+            position: absolute;
+            right: 0;
+            top: 0; bottom: 0; width: 20px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; background: rgba(0,0,0,0.02);
+          }
+          .sc-ms-arrow {
+            width: 16px; height: 16px;
+            color: #8b5cf6;
+            transition: transform 0.4s;
+          }
+          .sc-ms-arrow.expanded { transform: rotate(180deg); }
+          
+          .sc-ms-nav { padding: 15px 0; width: 130px; display: flex; flex-direction: column; gap: 12px; }
+          .sc-ms-item {
+            width: 100%; display: flex; align-items: center; justify-content: flex-start;
+            padding: 10px 12px; border: none; background: none;
+            color: #64748b; font-size: 14px; font-weight: 700;
+            transition: all 0.2s; text-align: left;
+          }
+          .sc-ms-item.active { color: #8b5cf6; background: rgba(139,92,246,0.08); }
+          .sc-ms-icon { font-size: 18px; width: 26px; flex-shrink: 0; display: flex; justify-content: center; }
+          .sc-ms-label { opacity: 0; transition: opacity 0.2s; margin-left: 10px; white-space: nowrap; }
+          .sc-mobile-sidebar.open .sc-ms-label { opacity: 1; }
+
+          /* Stack sections */
+          .sc-grid-3 { grid-template-columns: 1fr !important; }
+        }
+
+        @media (min-width: 901px) {
+          .sc-mobile-sidebar { display: none; }
+          .sc-grid-3 { grid-template-columns: repeat(3, 1fr) !important; }
         }
 
         /* ── GALLERY ── */
