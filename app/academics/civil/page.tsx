@@ -243,11 +243,10 @@ export default function CIVILPage() {
       <div className="h-20 md:h-24"></div>
 
       <div
-        className={`fixed left-1/2 -translate-x-1/2 z-50 flex flex-col items-center transition-opacity duration-300 ${
-          showExploreBtn
+        className={`fixed left-1/2 -translate-x-1/2 z-50 flex flex-col items-center transition-opacity duration-300 ${showExploreBtn
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
-        }`}
+          }`}
         style={{ bottom: `${exploreBtnBottom}px` }}
       >
         <Link
@@ -286,7 +285,7 @@ export default function CIVILPage() {
           </p>
         </div>
         <div className="w-screen relative left-1/2 -translate-x-1/2 border-y border-gray-300 shadow-2xl bg-gray-900 overflow-hidden">
-          <div className="aspect-[16/6] md:aspect-[21/9] w-full">
+          <div className="aspect-video md:aspect-[21/9] w-full">
             <video
               className="w-full h-full object-cover"
               autoPlay
@@ -567,45 +566,45 @@ export default function CIVILPage() {
             className="bg-white rounded-[2rem] shadow-2xl max-w-xl w-full max-h-[85vh] overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="bg-[#f8f9fa] p-8 pb-6 border-b border-gray-100 flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
+            <div className="bg-[#f8f9fa] p-5 md:p-8 pb-4 md:pb-6 border-b border-gray-100 flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start text-center md:text-left">
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-tr from-indigo-500 to-indigo-200 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
                 <img
                   src={selectedFaculty.photo}
-                  className="w-40 h-40 md:w-52 md:h-52 object-cover rounded-full shadow-2xl border-4 border-white relative z-10"
+                  className="w-32 h-32 md:w-52 md:h-52 object-cover rounded-full shadow-2xl border-4 border-white relative z-10"
                   alt={selectedFaculty.name}
                 />
               </div>
 
               <div className="flex-1 mt-4 md:mt-0">
-                <h3 className="text-2xl md:text-3xl font-black text-gray-900 border-b-2 border-gray-900 pb-2 inline-block italic serif">
+                <h3 className="text-xl md:text-3xl font-black text-gray-900 border-b-2 border-gray-900 pb-1 md:pb-2 inline-block italic serif">
                   {selectedFaculty.name}
                 </h3>
 
-                <div className="mt-6 space-y-3 font-sans">
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 md:gap-4 lg:gap-8">
-                    <span className="text-[11px] font-black uppercase tracking-widest text-gray-500 w-24">
+                <div className="mt-4 md:mt-6 grid grid-cols-2 md:flex md:flex-col gap-x-3 gap-y-4 md:gap-y-3 font-sans">
+                  <div className="flex flex-col gap-0.5 md:flex-row md:items-center md:gap-4">
+                    <span className="text-[10px] md:text-[11px] font-black uppercase tracking-widest text-gray-500 md:w-24">
                       Designation
                     </span>
-                    <span className="text-sm font-bold text-gray-800">
+                    <span className="text-xs md:text-sm font-bold text-gray-800">
                       {selectedFaculty.designation}
                     </span>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 md:gap-4 lg:gap-8 border-t border-gray-100 pt-3">
-                    <span className="text-[11px] font-black uppercase tracking-widest text-gray-500 w-24">
+                  <div className="flex flex-col gap-0.5 md:flex-row md:items-center md:gap-4 md:border-t md:border-gray-100 md:pt-3">
+                    <span className="text-[10px] md:text-[11px] font-black uppercase tracking-widest text-gray-500 md:w-24">
                       Email
                     </span>
-                    <span className="text-sm font-bold text-gray-800">
+                    <span className="text-xs md:text-sm font-bold text-gray-800 truncate max-w-full">
                       {selectedFaculty.email}
                     </span>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 md:gap-4 lg:gap-8 border-t border-gray-100 pt-3">
-                    <span className="text-[11px] font-black uppercase tracking-widest text-gray-500 w-24">
+                  <div className="col-span-2 flex flex-col items-center md:items-start md:flex-row md:gap-4 border-t border-gray-100 pt-2 md:pt-3">
+                    <span className="text-[10px] md:text-[11px] font-black uppercase tracking-widest text-gray-500 md:w-24">
                       Joining date
                     </span>
-                    <span className="text-sm font-bold text-gray-800">
+                    <span className="text-xs md:text-sm font-bold text-gray-800">
                       {selectedFaculty.joiningDate || "N/A"}
                     </span>
                   </div>
@@ -636,19 +635,17 @@ export default function CIVILPage() {
                         openAccordion === item.key ? null : item.key,
                       )
                     }
-                    className={`w-full flex items-center justify-between p-4 rounded-xl transition-all duration-300 text-left ${
-                      openAccordion === item.key
+                    className={`w-full flex items-center justify-between p-4 rounded-xl transition-all duration-300 text-left ${openAccordion === item.key
                         ? "bg-[#f1f3f5] shadow-sm"
                         : "bg-gray-50 hover:bg-white hover:shadow-md border border-gray-100"
-                    }`}
+                      }`}
                   >
                     <span className="text-sm font-bold text-gray-700">
                       {item.title}
                     </span>
                     <svg
-                      className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${
-                        openAccordion === item.key ? "rotate-180" : ""
-                      }`}
+                      className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${openAccordion === item.key ? "rotate-180" : ""
+                        }`}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -662,11 +659,10 @@ export default function CIVILPage() {
                     </svg>
                   </button>
                   <div
-                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                      openAccordion === item.key
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${openAccordion === item.key
                         ? "max-h-96 opacity-100 mt-2"
                         : "max-h-0 opacity-0"
-                    }`}
+                      }`}
                   >
                     <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed">
                       {selectedFaculty.details?.[
