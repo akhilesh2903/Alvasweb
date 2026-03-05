@@ -23,10 +23,16 @@ export interface Faculty {
   };
 }
 
+export interface SyllabusLink {
+  year: string;
+  id: string;
+}
+
 export interface ExploreTabData {
   title: string;
   body: string;
   highlights: string[];
+  syllabusLinks?: SyllabusLink[];
 }
 
 export interface DepartmentData {

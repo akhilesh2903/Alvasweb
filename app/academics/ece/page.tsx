@@ -668,7 +668,7 @@ export default function ECEPage() {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed">
+                    <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-950 leading-relaxed whitespace-pre-line">
                       {selectedFaculty.details?.[
                         item.key as keyof typeof selectedFaculty.details
                       ] || "Information not available."}
