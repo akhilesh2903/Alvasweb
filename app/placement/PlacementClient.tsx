@@ -743,63 +743,7 @@ export default function PlacementClient() {
         </div>
       </section>
 
-      {/* STRATEGIC DRIVE ARCHITECTURE */}
-      <section
-        ref={(el) => {
-          sectionRefs.current["team"] = el;
-          sectionRefs.current["alvas-pragathi"] = el;
-        }}
-        className="relative px-6 md:px-20 py-44 overflow-hidden bg-[#F0F4FF]"
-      >
-        <PlacementBackground />
-        <div className="max-w-7xl mx-auto relative z-10">
 
-          {/* ── Section Header ── */}
-          <motion.div
-            className="mb-24 flex flex-col items-center text-center"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <motion.span
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#F4C430]/20 border border-[#F4C430]/40 text-[#F4C430] font-black uppercase tracking-[0.35em] text-xs mb-6"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <span className="w-2 h-2 rounded-full bg-[#F4C430] animate-pulse" />
-              Strategic Recruitment Architecture
-            </motion.span>
-            <h2 className="text-6xl lg:text-7xl font-black text-[#0D1A56] mb-6 tracking-tighter leading-none">
-              A Culture of{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-500 to-[#1E2A78]">
-                Opportunity.
-              </span>
-            </h2>
-            <p className="max-w-2xl text-xl text-slate-500 font-medium leading-relaxed">
-              We engineer multi-tiered pathways that connect every student with the career they deserve — at scale.
-            </p>
-          </motion.div>
-
-          {/* ── Drive Cards Grid ── */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {drives.map((drive, idx) => (
-              <motion.div
-                key={drive.id}
-                id={drive.id}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: idx * 0.12, ease: "easeOut" }}
-              >
-                <FloatingDriveCard {...drive} accentColor={drive.color} />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* PLACEMENT TEAM */}
       <section
@@ -813,55 +757,85 @@ export default function PlacementClient() {
             Our Placement Team
           </h2>
 
-          {/* HEAD OF PLACEMENT - FEATURE CARD */}
-          <div className="relative mb-16 md:mb-24 overflow-hidden rounded-[2rem] md:rounded-3xl bg-white shadow-xl flex flex-col md:flex-row items-center">
-            {/* LEFT TEXT CONTENT */}
-            <div className="p-8 md:p-16 flex-1 text-center md:text-left">
-              <span className="inline-block px-4 py-1 rounded-full bg-[#F4C430]/10 text-[#D4AF37] font-bold text-[10px] md:text-sm uppercase tracking-widest mb-4 md:mb-6">
-                Head – Placements
-              </span>
-              <h3 className="text-2xl md:text-4xl font-extrabold text-[#1E2A78] mb-6 tracking-tight leading-tight">
-                Ms Ranjitha Raviprasad Acharya
-              </h3>
-              <div className="space-y-3 md:space-y-4 text-gray-700 text-sm md:text-base">
-                <div className="flex items-center justify-center md:justify-start gap-3">
-                  <span className="text-[#F4C430] text-lg">🎓</span>
-                  <span>
-                    <span className="font-bold text-[#1E2A78]">
-                      Qualification:
-                    </span>{" "}
-                    M.Sc, B.Ed
-                  </span>
+          {/* ── Leadership Card ── */}
+          <motion.div
+            className="mt-20 relative overflow-hidden rounded-[3rem] shadow-2xl"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            {/* animated gradient bg */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D1A56] via-[#1E2A78] to-[#1a3a8f]" />
+            {/* grid decoration */}
+            <div className="absolute inset-0 opacity-[0.04]">
+              <svg width="100%" height="100%">
+                <defs>
+                  <pattern id="lgrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.8" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#lgrid)" />
+              </svg>
+            </div>
+            {/* glowing orbs */}
+            <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#F4C430]/10 blur-3xl" />
+            <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-blue-500/10 blur-3xl" />
+
+            <div className="relative z-10 p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12">
+              {/* Text side */}
+              <div className="flex-1">
+                <span className="inline-flex items-center gap-2 text-[#F4C430] font-black uppercase tracking-[0.3em] text-xs mb-6 block">
+                  <span className="w-6 h-[2px] bg-[#F4C430]" />
+                  Head of Strategic Placements
+                </span>
+                <h3 className="text-4xl lg:text-5xl font-black text-white mb-5 tracking-tight leading-tight">
+                  Ms Ranjitha<br />Raviprasad Acharya
+                </h3>
+                <p className="text-blue-200/60 font-medium text-lg mb-10 leading-relaxed max-w-lg">
+                  Leading the charge in creating global career opportunities for the next generation of industry pioneers.
+                </p>
+                {/* Stats strip */}
+                <div className="flex flex-wrap gap-6 mb-10">
+                  {[["15+", "Years of Leadership"], ["500+", "Companies Partnered"], ["320+", "Students Placed"]].map(([n, l]) => (
+                    <div key={l} className="flex flex-col">
+                      <span className="text-3xl font-black text-[#F4C430] tracking-tighter">{n}</span>
+                      <span className="text-blue-200/50 text-xs font-bold uppercase tracking-wider">{l}</span>
+                    </div>
+                  ))}
                 </div>
-                <div className="flex items-center justify-center md:justify-start gap-3">
-                  <span className="text-[#F4C430] text-lg">📞</span>
-                  <span>
-                    <span className="font-bold text-[#1E2A78]">Phone:</span> +91
-                    9731953123
-                  </span>
+                <div className="flex flex-wrap gap-4">
+                  <a href="mailto:ranjitha@alvascollege.com" className="flex items-center gap-3 px-5 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl text-white text-sm font-bold transition-all">
+                    <span className="text-[#F4C430]">✉️</span> ranjitha@alvascollege.com
+                  </a>
+                  <a href="tel:+919731953123" className="flex items-center gap-3 px-5 py-3 bg-[#F4C430]/20 hover:bg-[#F4C430]/30 border border-[#F4C430]/30 rounded-2xl text-[#F4C430] text-sm font-bold transition-all">
+                    <span>📞</span> +91 9731953123
+                  </a>
                 </div>
-                <div className="flex items-center justify-center md:justify-start gap-3">
-                  <span className="text-[#F4C430] text-lg">✉️</span>
-                  <span>
-                    <span className="font-bold text-[#1E2A78]">Email:</span>{" "}
-                    ranjitha@alvascollege.com
-                  </span>
+              </div>
+
+              {/* Photo side */}
+              <div className="relative flex-shrink-0">
+                {/* Spinning ring */}
+                <motion.div
+                  className="absolute inset-0 rounded-[2.5rem] border-2 border-dashed border-[#F4C430]/40"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                <div className="relative w-52 h-52 lg:w-72 lg:h-72 rounded-[2.5rem] overflow-hidden border-4 border-white/20 shadow-2xl">
+                  <img
+                    src="https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/05/Rnjitha.jpg"
+                    alt="Ms Ranjitha Raviprasad Acharya"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                {/* Badge */}
+                <div className="absolute -bottom-3 -right-3 bg-[#F4C430] text-[#1E2A78] font-black text-xs px-4 py-2 rounded-2xl shadow-lg tracking-widest uppercase">
+                  Placement Head
                 </div>
               </div>
             </div>
-
-            {/* RIGHT IMAGE WITH STYLED BACKGROUND */}
-            <div className="relative w-full md:w-[420px] h-[350px] md:h-[480px] bg-[#1E2A78]">
-              <img
-                src="https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/05/Rnjitha.jpg"
-                alt="Ms Ranjitha Raviprasad Acharya"
-                className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-              />
-              {/* Decorative accent */}
-              <div className="absolute bottom-0 right-0 w-24 md:w-32 h-24 md:h-32 bg-[#F4C430] translate-x-12 md:translate-x-16 translate-y-12 md:translate-y-16 rotate-45 opacity-20"></div>
-            </div>
-          </div>
-
+          </motion.div>
           {/* TEAM MEMBERS GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -1367,85 +1341,7 @@ export default function PlacementClient() {
             </div>
           </div>
 
-          {/* ── Leadership Card ── */}
-          <motion.div
-            className="mt-20 relative overflow-hidden rounded-[3rem] shadow-2xl"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            {/* animated gradient bg */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0D1A56] via-[#1E2A78] to-[#1a3a8f]" />
-            {/* grid decoration */}
-            <div className="absolute inset-0 opacity-[0.04]">
-              <svg width="100%" height="100%">
-                <defs>
-                  <pattern id="lgrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.8" />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#lgrid)" />
-              </svg>
-            </div>
-            {/* glowing orbs */}
-            <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#F4C430]/10 blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-blue-500/10 blur-3xl" />
-
-            <div className="relative z-10 p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12">
-              {/* Text side */}
-              <div className="flex-1">
-                <span className="inline-flex items-center gap-2 text-[#F4C430] font-black uppercase tracking-[0.3em] text-xs mb-6 block">
-                  <span className="w-6 h-[2px] bg-[#F4C430]" />
-                  Head of Strategic Placements
-                </span>
-                <h3 className="text-4xl lg:text-5xl font-black text-white mb-5 tracking-tight leading-tight">
-                  Ms Ranjitha<br />Raviprasad Acharya
-                </h3>
-                <p className="text-blue-200/60 font-medium text-lg mb-10 leading-relaxed max-w-lg">
-                  Leading the charge in creating global career opportunities for the next generation of industry pioneers.
-                </p>
-                {/* Stats strip */}
-                <div className="flex flex-wrap gap-6 mb-10">
-                  {[["15+", "Years of Leadership"], ["500+", "Companies Partnered"], ["320+", "Students Placed"]].map(([n, l]) => (
-                    <div key={l} className="flex flex-col">
-                      <span className="text-3xl font-black text-[#F4C430] tracking-tighter">{n}</span>
-                      <span className="text-blue-200/50 text-xs font-bold uppercase tracking-wider">{l}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-4">
-                  <a href="mailto:ranjitha@alvascollege.com" className="flex items-center gap-3 px-5 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl text-white text-sm font-bold transition-all">
-                    <span className="text-[#F4C430]">✉️</span> ranjitha@alvascollege.com
-                  </a>
-                  <a href="tel:+919731953123" className="flex items-center gap-3 px-5 py-3 bg-[#F4C430]/20 hover:bg-[#F4C430]/30 border border-[#F4C430]/30 rounded-2xl text-[#F4C430] text-sm font-bold transition-all">
-                    <span>📞</span> +91 9731953123
-                  </a>
-                </div>
-              </div>
-
-              {/* Photo side */}
-              <div className="relative flex-shrink-0">
-                {/* Spinning ring */}
-                <motion.div
-                  className="absolute inset-0 rounded-[2.5rem] border-2 border-dashed border-[#F4C430]/40"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                />
-                <div className="relative w-52 h-52 lg:w-72 lg:h-72 rounded-[2.5rem] overflow-hidden border-4 border-white/20 shadow-2xl">
-                  <img
-                    src="https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/05/Rnjitha.jpg"
-                    alt="Ms Ranjitha Raviprasad Acharya"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-                {/* Badge */}
-                <div className="absolute -bottom-3 -right-3 bg-[#F4C430] text-[#1E2A78] font-black text-xs px-4 py-2 rounded-2xl shadow-lg tracking-widest uppercase">
-                  Placement Head
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          
         </div>
       </section>
 
