@@ -1,9 +1,93 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { Building2, Globe, Users2, Rocket } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import PlacementBackground from "./components/PlacementBackground";
+import FloatingDriveCard from "./components/FloatingDriveCard";
 import MobileMenu from "../components/MobileMenu";
+
+
+const COMPANIES = [
+  { name: "Infosys", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" },
+  { name: "TCS", logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/Tata_Consultancy_Services_Logo.svg" },
+  { name: "Wipro", logo: "https://upload.wikimedia.org/wikipedia/commons/8/84/Wipro_Primary_Logo_Color_RGB.svg" },
+  { name: "Accenture", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" },
+  { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
+  { name: "Capgemini", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_201x_logo.svg" },
+  { name: "Cognizant", logo: "https://upload.wikimedia.org/wikipedia/commons/4/43/Cognizant_logo_2022.svg" },
+  { name: "IBM", logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" },
+  { name: "HCL", logo: "https://upload.wikimedia.org/wikipedia/commons/8/83/HCL_Technologies_logo.svg" },
+  { name: "Deloitte", logo: "https://upload.wikimedia.org/wikipedia/commons/5/56/Deloitte.svg" },
+];
+
+const PlacementSlider = () => {
+  // We double the array to ensure the loop is seamless
+  const duplicatedCompanies = [...COMPANIES, ...COMPANIES];
+
+  return (
+    <section className="py-16 bg-white border-y border-gray-50 overflow-hidden">
+      {/* --- Section Header --- */}
+      <div className="flex items-center gap-4 px-6 md:px-20 mb-12">
+        <span className="h-px w-8 bg-[#F4C430] rounded-full" />
+        <p className="text-[11px] font-black uppercase tracking-[0.4em] text-gray-400">
+          Our Placement Partners
+        </p>
+        <span className="h-px flex-1 bg-gradient-to-r from-gray-100 to-transparent" />
+        <div className="flex items-center gap-2 px-3 py-1 bg-gray-50 rounded-full border border-gray-100">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          </span>
+          <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+            500+ Companies
+          </p>
+        </div>
+      </div>
+
+      {/* --- Slider Wrapper --- */}
+      <div className="relative group">
+        {/* Modern Gradient Fades (Left & Right) */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+
+        {/* --- The Animated Track --- */}
+        <div className="flex overflow-hidden">
+          <motion.div
+            className="flex flex-none gap-12 md:gap-20 items-center"
+            initial={{ x: 0 }}
+            animate={{ x: "-50%" }}
+            transition={{
+              duration: 35, // Adjust speed here (higher = slower)
+              ease: "linear",
+              repeat: Infinity,
+            }}
+            // Pauses animation when user hovers
+            whileHover={{ transition: { duration: 100000 } }}
+          >
+            {duplicatedCompanies.map((company, index) => (
+              <div
+                key={index}
+                className="flex-none h-10 md:h-12 w-auto flex items-center justify-center transition-all duration-500"
+              >
+                <img
+                  src={company.logo}
+                  alt={company.name}
+                  className="h-full w-auto object-contain grayscale opacity-30 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out cursor-pointer"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).style.display = "none";
+                  }}
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const tabs = [
   { id: "overview", label: "Overview" },
@@ -68,6 +152,7 @@ function StatCard({
     </div>
   );
 }
+
 function InfiniteSlider({
   children,
   speed = 0.7,
@@ -147,6 +232,41 @@ export default function PlacementClient() {
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const drives = [
+    {
+      id: "on-campus",
+      title: "On Campus",
+      description: "Direct recruitment drives from global giants like Amazon, IBM, and Infosys right at our doorstep.",
+      fillLevel: 92,
+      color: "#1E2A78",
+      icon: <Building2 className="w-8 h-8" />
+    },
+    {
+      id: "off-campus",
+      title: "Off Campus",
+      description: "Guided pathways and application mentorship for roles at top-tier startups and multinational corporations.",
+      fillLevel: 85,
+      color: "#3b82f6",
+      icon: <Globe className="w-8 h-8" />
+    },
+    {
+      id: "pool-campus",
+      title: "Pool Campus",
+      description: "Collaborative recruitment events bringing multiple colleges together for high-volume hiring opportunities.",
+      fillLevel: 88,
+      color: "#10b981",
+      icon: <Users2 className="w-8 h-8" />
+    },
+    {
+      id: "alvas-pragathi",
+      title: "Pragathi",
+      description: "India's premier mega-job fair hosted by Alva's, connecting thousands with their dream careers.",
+      fillLevel: 96,
+      color: "#F4C430",
+      icon: <Rocket className="w-8 h-8" />
+    }
+  ];
+
   // Hero Auto Slider
   useEffect(() => {
     const interval = setInterval(() => {
@@ -204,7 +324,6 @@ export default function PlacementClient() {
             alt="Hero Slide"
             className="w-full h-full object-cover scale-105 animate-slow-zoom"
           />
-          {/* Multi-layered Overlay: Deep Navy Vignette + Subtle Texture */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/90 via-[#0F172A]/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent" />
         </div>
@@ -273,22 +392,6 @@ export default function PlacementClient() {
                       +500
                     </div>
                   </div>
-                  <button className="text-white text-sm font-bold flex items-center gap-2 hover:text-[#F4C430] transition-colors">
-                    Read Story
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </button>
                 </div>
               </div>
             </div>
@@ -314,34 +417,21 @@ export default function PlacementClient() {
 
       <style jsx>{`
         @keyframes slow-zoom {
-          0% {
-            transform: scale(1.05);
-          }
-          100% {
-            transform: scale(1.2);
-          }
+          0% { transform: scale(1.05); }
+          100% { transform: scale(1.2); }
         }
         .animate-slow-zoom {
           animation: slow-zoom 20s infinite alternate linear;
         }
       `}</style>
+
       {/* STATS SECTION - DASHBOARD STYLE */}
       <section className="relative py-16 md:py-24 px-6 md:px-20 bg-[#F8F9FB] overflow-hidden">
         {/* Abstract Background Decoration */}
         <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
           <svg width="100%" height="100%">
-            <pattern
-              id="grid"
-              width="40"
-              height="40"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 40 0 L 0 0 0 40"
-                fill="none"
-                stroke="#1E2A78"
-                strokeWidth="1"
-              />
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1E2A78" strokeWidth="1" />
             </pattern>
             <rect width="100%" height="100%" fill="url(#grid)" />
           </svg>
@@ -367,7 +457,7 @@ export default function PlacementClient() {
             <div className="relative group bg-[#1E2A78] p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-xl md:transform lg:translate-y-8 transition-all duration-500">
               <div className="relative z-10">
                 <p className="text-white text-4xl md:text-5xl font-black tracking-tighter mb-2 italic">
-                  85<span className="text-[#F4C430] text-xl md:text-2xl ml-1">v</span>
+                  85<span className="text-[#F4C430] text-xl md:text-2xl ml-1">+</span>
                 </p>
                 <p className="text-blue-200/60 font-bold uppercase tracking-widest text-[10px] md:text-xs">
                   Recruiting Partners
@@ -449,17 +539,13 @@ export default function PlacementClient() {
                 )}
 
                 <span className="relative z-10">{tab.label}</span>
-
-                {/* Subtle Dot Indicator for non-active items on hover */}
-                {!isActive && (
-                  <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#1E2A78] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                )}
               </button>
             );
           })}
         </nav>
       </div>
 
+      {/* OVERVIEW SECTION */}
       <style jsx global>{`
         .no-scrollbar::-webkit-scrollbar {
           display: none;
@@ -472,12 +558,9 @@ export default function PlacementClient() {
 
       {/* OVERVIEW + VISION + MISSION */}
       <section
-        ref={(el) => {
-          sectionRefs.current["overview"] = el;
-        }}
+        ref={(el) => { sectionRefs.current["overview"] = el; }}
         className="px-6 md:px-20 py-32 bg-[#F8F9FB] relative overflow-hidden"
       >
-        {/* Decorative Background Element */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#1E2A78]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 
         {/* ===== OVERVIEW SECTION - ASYMMETRIC LAYOUT ===== */}
@@ -500,8 +583,6 @@ export default function PlacementClient() {
               </p>
             </div>
           </div>
-
-          {/* RIGHT: Typography-Focused Text */}
           <div className="w-full lg:w-1/2">
             <span className="text-[#F4C430] font-bold uppercase tracking-[0.3em] text-[10px] md:text-sm mb-4 block">
               Introduction
@@ -629,7 +710,65 @@ export default function PlacementClient() {
         </div>
       </section>
 
-      {/* TEAM SECTION */}
+      {/* STRATEGIC DRIVE ARCHITECTURE */}
+      <section
+        ref={(el) => {
+          sectionRefs.current["team"] = el;
+          sectionRefs.current["alvas-pragathi"] = el;
+        }}
+        className="relative px-6 md:px-20 py-44 overflow-hidden bg-[#F0F4FF]"
+      >
+        <PlacementBackground />
+        <div className="max-w-7xl mx-auto relative z-10">
+
+          {/* ── Section Header ── */}
+          <motion.div
+            className="mb-24 flex flex-col items-center text-center"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <motion.span
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#F4C430]/20 border border-[#F4C430]/40 text-[#F4C430] font-black uppercase tracking-[0.35em] text-xs mb-6"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <span className="w-2 h-2 rounded-full bg-[#F4C430] animate-pulse" />
+              Strategic Recruitment Architecture
+            </motion.span>
+            <h2 className="text-6xl lg:text-7xl font-black text-[#0D1A56] mb-6 tracking-tighter leading-none">
+              A Culture of{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-500 to-[#1E2A78]">
+                Opportunity.
+              </span>
+            </h2>
+            <p className="max-w-2xl text-xl text-slate-500 font-medium leading-relaxed">
+              We engineer multi-tiered pathways that connect every student with the career they deserve — at scale.
+            </p>
+          </motion.div>
+
+          {/* ── Drive Cards Grid ── */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {drives.map((drive, idx) => (
+              <motion.div
+                key={drive.id}
+                id={drive.id}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: idx * 0.12, ease: "easeOut" }}
+              >
+                <FloatingDriveCard {...drive} accentColor={drive.color} />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PLACEMENT TEAM */}
       <section
         ref={(el) => {
           sectionRefs.current["team"] = el;
@@ -1177,6 +1316,86 @@ export default function PlacementClient() {
               </div>
             </div>
           </div>
+
+          {/* ── Leadership Card ── */}
+          <motion.div
+            className="mt-20 relative overflow-hidden rounded-[3rem] shadow-2xl"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            {/* animated gradient bg */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D1A56] via-[#1E2A78] to-[#1a3a8f]" />
+            {/* grid decoration */}
+            <div className="absolute inset-0 opacity-[0.04]">
+              <svg width="100%" height="100%">
+                <defs>
+                  <pattern id="lgrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.8" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#lgrid)" />
+              </svg>
+            </div>
+            {/* glowing orbs */}
+            <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#F4C430]/10 blur-3xl" />
+            <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-blue-500/10 blur-3xl" />
+
+            <div className="relative z-10 p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12">
+              {/* Text side */}
+              <div className="flex-1">
+                <span className="inline-flex items-center gap-2 text-[#F4C430] font-black uppercase tracking-[0.3em] text-xs mb-6 block">
+                  <span className="w-6 h-[2px] bg-[#F4C430]" />
+                  Head of Strategic Placements
+                </span>
+                <h3 className="text-4xl lg:text-5xl font-black text-white mb-5 tracking-tight leading-tight">
+                  Ms Ranjitha<br />Raviprasad Acharya
+                </h3>
+                <p className="text-blue-200/60 font-medium text-lg mb-10 leading-relaxed max-w-lg">
+                  Leading the charge in creating global career opportunities for the next generation of industry pioneers.
+                </p>
+                {/* Stats strip */}
+                <div className="flex flex-wrap gap-6 mb-10">
+                  {[["15+", "Years of Leadership"], ["500+", "Companies Partnered"], ["320+", "Students Placed"]].map(([n, l]) => (
+                    <div key={l} className="flex flex-col">
+                      <span className="text-3xl font-black text-[#F4C430] tracking-tighter">{n}</span>
+                      <span className="text-blue-200/50 text-xs font-bold uppercase tracking-wider">{l}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-4">
+                  <a href="mailto:ranjitha@alvascollege.com" className="flex items-center gap-3 px-5 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl text-white text-sm font-bold transition-all">
+                    <span className="text-[#F4C430]">✉️</span> ranjitha@alvascollege.com
+                  </a>
+                  <a href="tel:+919731953123" className="flex items-center gap-3 px-5 py-3 bg-[#F4C430]/20 hover:bg-[#F4C430]/30 border border-[#F4C430]/30 rounded-2xl text-[#F4C430] text-sm font-bold transition-all">
+                    <span>📞</span> +91 9731953123
+                  </a>
+                </div>
+              </div>
+
+              {/* Photo side */}
+              <div className="relative flex-shrink-0">
+                {/* Spinning ring */}
+                <motion.div
+                  className="absolute inset-0 rounded-[2.5rem] border-2 border-dashed border-[#F4C430]/40"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                <div className="relative w-52 h-52 lg:w-72 lg:h-72 rounded-[2.5rem] overflow-hidden border-4 border-white/20 shadow-2xl">
+                  <img
+                    src="https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/05/Rnjitha.jpg"
+                    alt="Ms Ranjitha Raviprasad Acharya"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                {/* Badge */}
+                <div className="absolute -bottom-3 -right-3 bg-[#F4C430] text-[#1E2A78] font-black text-xs px-4 py-2 rounded-2xl shadow-lg tracking-widest uppercase">
+                  Placement Head
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -1184,3 +1403,4 @@ export default function PlacementClient() {
     </div>
   );
 }
+

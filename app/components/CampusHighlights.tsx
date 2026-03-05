@@ -25,11 +25,11 @@ export default function CampusHighlights() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [modalData, setModalData] = useState<ModalData>({ title: '', description: '', image: '', link: '' })
   const [isGridActive, setIsGridActive] = useState(false)
-  
+
   const gridRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  
+
   // --- NEW REFS FOR MANUAL DRAGGING ---
   const cylinderRef = useRef<HTMLDivElement>(null)
   const rotationRef = useRef(0)
@@ -39,13 +39,13 @@ export default function CampusHighlights() {
 
   const campusItems: CampusItem[] = [
     { id: 1, title: "Student Clubs", subtitle: "Life at Alva's", description: "Experience a vibrant campus life filled with cultural diversity, academic excellence, and endless opportunities.", link: "/about", image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80", position: 0 },
-    { id: 2, title: "Skill labs", subtitle: "Laboratories", description: "State-of-the-art innovation labs.", link: "/labs", image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800", position: 1 },
+    { id: 2, title: "Skill labs", subtitle: "Laboratories", description: "State-of-the-art innovation labs.", link: "/campus-life/labs", image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800", position: 1 },
     { id: 3, title: "Research", subtitle: "Research", description: "Groundbreaking scientific research.", link: "/research", image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800", position: 2 },
-    { id: 4, title: "Library", subtitle: "Library", description: "Digital and physical resources 24/7.", link: "/library", image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800", position: 3 },
-    { id: 5, title: "Sports", subtitle: "Sports", description: "World-class athletic facilities.", link: "/sports", image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800", position: 4 },
-    { id: 6, title: "Culture", subtitle: "Culture", description: "Celebrating diversity and art.", link: "/culture", image: "https://t3.ftcdn.net/jpg/01/54/24/96/360_F_154249693_9G4LPN3ywf3F4ZNuveNRCCPykS8GzjNz.jpg", position: 5 },
-    { id: 7, title: "MOU's", subtitle: "Community", description: "Real-world social impact.", link: "/outreach", image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800", position: 6 },
-    { id: 8, title: "Training", subtitle: "Admissions", description: "Start your journey today.", link: "/admissions", image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80", position: 7 }
+    { id: 4, title: "Library", subtitle: "Library", description: "Digital and physical resources 24/7.", link: "/campus-life/library", image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800", position: 3 },
+    { id: 5, title: "Sports & culture", subtitle: "Sports", description: "World-class athletic facilities.", link: "/campus-life/sports-and-culture", image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800", position: 4 },
+    { id: 6, title: "ATC", subtitle: "Culture", description: "Celebrating diversity and art.", link: "/campus-life/atc", image: "https://t3.ftcdn.net/jpg/01/54/24/96/360_F_154249693_9G4LPN3ywf3F4ZNuveNRCCPykS8GzjNz.jpg", position: 5 },
+    { id: 7, title: "MOU's", subtitle: "Community", description: "Real-world social impact.", link: "/campus-life/mous", image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800", position: 6 },
+    { id: 8, title: "Training", subtitle: "Admissions", description: "Start your journey today.", link: "/campus-life/training", image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80", position: 7 }
   ]
 
   // --- CYLINDER CONFIGURATION ---
@@ -64,7 +64,7 @@ export default function CampusHighlights() {
       }
       reqRef.current = requestAnimationFrame(animateCylinder);
     };
-    
+
     reqRef.current = requestAnimationFrame(animateCylinder);
     return () => cancelAnimationFrame(reqRef.current);
   }, [cylinderRadius]);
@@ -90,9 +90,9 @@ export default function CampusHighlights() {
     const currentX = getClientX(e);
     const deltaX = currentX - lastXRef.current;
     lastXRef.current = currentX;
-    
+
     rotationRef.current += deltaX * dragSensitivity;
-    
+
     if (cylinderRef.current) {
       cylinderRef.current.style.transform = `translateZ(-${cylinderRadius}px) rotateY(${rotationRef.current}deg)`;
     }
@@ -115,11 +115,11 @@ export default function CampusHighlights() {
     let width = canvas.width = window.innerWidth
     let height = canvas.height = window.innerHeight
     let increment = 0
-    
+
     const waves = [
       { y: height * 0.5, length: 0.01, amplitude: 50, speed: 0.01, color: 'rgba(15, 23, 42, 0.12)' },
       { y: height * 0.5, length: 0.02, amplitude: 30, speed: 0.02, color: 'rgba(30, 58, 138, 0.1)' },
-      { y: height * 0.55, length: 0.005, amplitude: 80, speed: 0.005, color: 'rgba(17, 24, 39, 0.08)' } 
+      { y: height * 0.55, length: 0.005, amplitude: 80, speed: 0.005, color: 'rgba(17, 24, 39, 0.08)' }
     ]
 
     const animate = () => {
@@ -172,7 +172,7 @@ export default function CampusHighlights() {
 
   const openModal = (item: CampusItem) => {
     if (isDraggingRef.current) return;
-    
+
     setModalData({ title: item.subtitle || item.title, description: item.description, image: item.image, link: item.link })
     setIsModalOpen(true)
     document.body.style.overflow = 'hidden'
@@ -185,7 +185,7 @@ export default function CampusHighlights() {
 
   return (
     <>
-    
+
       {/* desktop heading outside section */}
       <div className="hidden md:block container mx-auto px-4 relative z-50 mb-12 mt-8">
         <h3 className="text-center font-serif text-5xl font-black text-slate-900 mb-2">
@@ -196,9 +196,9 @@ export default function CampusHighlights() {
         </p>
       </div>
 
-      <section 
+      <section
         ref={containerRef}
-        id="interactive-grid-container" 
+        id="interactive-grid-container"
         className="relative min-h-[85vh] md:min-h-screen bg-slate-50 flex flex-col items-center justify-center overflow-hidden w-full max-w-full py-12 md:py-20 font-sans"
       >
         <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none opacity-80" />
@@ -215,7 +215,7 @@ export default function CampusHighlights() {
           </p>
         </div>
 
-        <div 
+        <div
           className="md:hidden flex items-center justify-center w-full h-[360px] sm:h-[400px] relative [perspective:1200px] z-10 overflow-hidden touch-pan-y"
           onPointerDown={handlePointerDown}
           onPointerMove={(e) => { e.preventDefault(); handlePointerMove(e); }}
@@ -228,7 +228,7 @@ export default function CampusHighlights() {
           onTouchCancel={handlePointerUpOrLeave}
         >
           {/* The Wrapper that spins */}
-          <div 
+          <div
             ref={cylinderRef}
             className="absolute w-[200px] h-[300px] sm:w-[240px] sm:h-[340px] [transform-style:preserve-3d] cursor-grab"
             style={{ transform: `translateZ(-${cylinderRadius}px)` }}
@@ -242,12 +242,12 @@ export default function CampusHighlights() {
                   className="absolute top-0 left-0 w-[220px] h-full rounded-[2rem] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.4)] bg-slate-900 border-2 border-white/10"
                   style={{
                     transform: `rotateY(${rotateAngle}deg) translateZ(${cylinderRadius}px)`,
-                    backfaceVisibility: 'hidden', 
+                    backfaceVisibility: 'hidden',
                   }}
                 >
                   <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover opacity-80 pointer-events-none" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent pointer-events-none"></div>
-                  
+
                   <div className="absolute bottom-0 left-0 w-full p-6 text-left pointer-events-none">
                     <span className="inline-block px-4 py-1.5 mb-2 text-[10px] font-bold uppercase tracking-widest text-slate-900 bg-yellow-400 rounded-full shadow-lg">
                       {item.subtitle}
@@ -265,13 +265,13 @@ export default function CampusHighlights() {
         {/* ========================================= */}
         {/* DESKTOP VIEW ONLY: Exploding Grid         */}
         {/* ========================================= */}
-        <div 
+        <div
           ref={gridRef}
-          id="grid-trigger" 
+          id="grid-trigger"
           className={`hidden md:block relative w-80 h-52 transition-all duration-1000 z-10 ${isGridActive ? 'is-active' : ''}`}
         >
           {/* Main Center Card */}
-          <div 
+          <div
             onClick={() => openModal(campusItems[0])}
             className="card-hover-node absolute inset-0 z-30 overflow-hidden rounded-2xl border-4 border-white shadow-2xl cursor-pointer bg-slate-900"
           >
@@ -302,20 +302,20 @@ export default function CampusHighlights() {
 
         {/* Modal UI */}
         {isModalOpen && (
-           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-             <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-md" onClick={closeModal}></div>
-             <div className="relative bg-white w-full max-w-5xl rounded-[2.5rem] overflow-hidden shadow-2xl grid md:grid-cols-2 animate-in zoom-in duration-300">
-               <button onClick={closeModal} className="absolute top-6 right-6 z-50 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-full w-10 h-10 flex items-center justify-center transition shadow-sm">
-                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-               </button>
-               <div className="relative h-64 md:h-full"><img src={modalData.image} alt={modalData.title} className="w-full h-full object-cover" /></div>
-               <div className="p-8 md:p-12 flex flex-col justify-center text-left">
-                 <h3 className="font-serif italic text-4xl text-slate-900 font-bold mb-4">{modalData.title}</h3>
-                 <p className="text-slate-600 mb-8 text-lg leading-relaxed">{modalData.description}</p>
-                 <a href={modalData.link} className="inline-flex justify-center items-center rounded-xl bg-slate-900 px-6 py-4 text-white font-bold hover:bg-blue-600 transition shadow-lg">View Full Details →</a>
-               </div>
-             </div>
-           </div>
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-md" onClick={closeModal}></div>
+            <div className="relative bg-white w-full max-w-5xl rounded-[2.5rem] overflow-hidden shadow-2xl grid md:grid-cols-2 animate-in zoom-in duration-300">
+              <button onClick={closeModal} className="absolute top-6 right-6 z-50 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-full w-10 h-10 flex items-center justify-center transition shadow-sm">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+              </button>
+              <div className="relative h-64 md:h-full"><img src={modalData.image} alt={modalData.title} className="w-full h-full object-cover" /></div>
+              <div className="p-8 md:p-12 flex flex-col justify-center text-left">
+                <h3 className="font-serif italic text-4xl text-slate-900 font-bold mb-4">{modalData.title}</h3>
+                <p className="text-slate-600 mb-8 text-lg leading-relaxed">{modalData.description}</p>
+                <a href={modalData.link} className="inline-flex justify-center items-center rounded-xl bg-slate-900 px-6 py-4 text-white font-bold hover:bg-blue-600 transition shadow-lg">View Full Details →</a>
+              </div>
+            </div>
+          </div>
         )}
 
         {/* Global & CSS Logic */}
