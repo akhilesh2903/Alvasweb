@@ -610,105 +610,11 @@ export default function PlacementClient() {
         </div>
 
         {/* ===== VISION, MISSION & CONTACT - GRID SYSTEM ===== */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Vision Card */}
-          <div className="group bg-white p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-50">
-            <div className="w-12 h-12 md:w-14 md:h-14 bg-[#F4C430]/10 rounded-xl md:rounded-2xl flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform">
-              <svg
-                className="w-6 h-6 md:w-8 md:h-8 text-[#F4C430]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                />
-              </svg>
-            </div>
-            <h3 className="text-xl md:text-2xl font-bold text-[#1E2A78] mb-4">
-              Our Vision
-            </h3>
-            <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-              To ensure every student leaves with a dream offer, fully prepared
-              to lead in a competitive global career environment.
-            </p>
-          </div>
+        
 
-          {/* Mission Card */}
-          <div className="group bg-white p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-50">
-            <div className="w-12 h-12 md:w-14 md:h-14 bg-[#1E2A78]/10 rounded-xl md:rounded-2xl flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform">
-              <svg
-                className="w-6 h-6 md:w-8 md:h-8 text-[#1E2A78]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-            </div>
-            <h3 className="text-xl md:text-2xl font-bold text-[#1E2A78] mb-4">
-              Our Mission
-            </h3>
-            <ul className="space-y-3">
-              {[
-                "Adequate internships",
-                "Skilled professionals",
-                "Corporate partnerships",
-              ].map((text, i) => (
-                <li key={i} className="flex items-center gap-3 text-gray-600 text-sm md:text-base">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#F4C430]"></div>
-                  {text}
-                </li>
-              ))}
-            </ul>
-          </div>
 
-          {/* Contact Card - High Contrast */}
-          <div className="lg:col-span-1 bg-[#13294B] rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-10 text-white relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
-
-            <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 relative z-10">
-              Get in Touch
-            </h3>
-
-            <div className="space-y-4 md:space-y-6 relative z-10">
-              <div>
-                <p className="text-[#F4C430] font-bold text-base md:text-lg">
-                  Ms Ranjitha Raviprasad Acharya
-                </p>
-                <p className="text-gray-400 text-xs md:text-sm">Head-Training & Placement</p>
-              </div>
-
-              <div className="space-y-2 pt-4 border-t border-white/10 text-xs md:text-base">
-                <p className="flex items-center gap-4 hover:text-[#F4C430] transition-colors cursor-pointer">
-                  <span className="opacity-60">Cell:</span> +91 99864 75517
-                </p>
-                <p className="flex items-center gap-4 hover:text-[#F4C430] transition-colors cursor-pointer">
-                  <span className="opacity-60">Email:</span>{" "}
-                  placements@college.edu
-                </p>
-              </div>
-
-              <button className="w-full py-3 md:py-4 mt-2 md:mt-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl md:rounded-2xl font-bold transition-all backdrop-blur-md text-sm">
-                Download Brochure
-              </button>
-            </div>
-          </div>
-        </div>
+          
+        
       </section>
 
       {/* PLACEMENT TYPES OFFERED TAB SECTION */}
