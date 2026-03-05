@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 
 import {
@@ -85,6 +86,16 @@ export default function AlvasStunningLibrary() {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6" /></svg>
           Back to Campus Life
         </a>
+
+        <div style={{ position: "absolute", top: "44px", left: "50%", transform: "translateX(-50%)", zIndex: 50 }}>
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Campus Life", href: "/campus-life" },
+              { label: "Library", active: true }
+            ]}
+          />
+        </div>
 
         <div className="relative z-10 text-center select-none pointer-events-none px-4 lib-hero-content">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full font-black text-[10px] tracking-[.3em] uppercase mb-8 lib-hero-tag">

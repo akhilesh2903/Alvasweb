@@ -4,9 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import MobileMenu from "../../components/MobileMenu";
+
 
 /* ─── DATA ───────────────────────────────────────────────────────── */
 const startups = [
@@ -307,7 +305,7 @@ const stageColor: Record<string, string> = {
 
 /* ─── PAGE ────────────────────────────────────────────────────────── */
 export default function StartupsPage() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const [activeFilter, setActiveFilter] = useState("All");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const heroImgRef = useRef<HTMLDivElement>(null);
@@ -525,11 +523,7 @@ export default function StartupsPage() {
         <div className="su-orb su-orb-3" />
       </div>
 
-      <MobileMenu
-        isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
-      />
-      <Header onMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
+
 
       {/* ── HERO ── */}
       <section className="relative h-[65vh] w-full mt-[80px] overflow-hidden z-10">
@@ -1081,7 +1075,7 @@ export default function StartupsPage() {
         </div>
       </section>
 
-      <Footer />
+
 
       <style jsx global>{`
         #main-header {

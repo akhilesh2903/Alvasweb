@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 import GallerySection from "../../components/Gallery";
 
@@ -176,13 +177,15 @@ export default function SportsAndCulturePage() {
                 </a>
 
                 <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/55 to-slate-900/85 flex flex-col items-center justify-center p-6 text-center">
-                    <nav className="flex items-center gap-2 text-white/55 text-sm mb-6 font-medium sc-breadcrumb">
-                        <Link href="/" className="hover:text-amber-400 transition">Home</Link>
-                        <i className="fas fa-chevron-right text-[9px]" />
-                        <Link href="/campus-life" className="hover:text-amber-400 transition">Campus Life</Link>
-                        <i className="fas fa-chevron-right text-[9px]" />
-                        <span className="text-amber-400">Sports &amp; Culture</span>
-                    </nav>
+                    <div className="mb-6">
+                        <Breadcrumbs
+                            items={[
+                                { label: "Home", href: "/" },
+                                { label: "Campus Life", href: "/campus-life" },
+                                { label: "Sports & Culture", active: true }
+                            ]}
+                        />
+                    </div>
                     <div className="text-center max-w-3xl sc-hero-content">
                         <div className="inline-flex items-center gap-2 bg-purple-400/20 border border-purple-400/30 text-purple-300 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5 backdrop-blur-sm sc-hero-tag">
                             <i className="fas fa-futbol" /> Sports · Arts · Culture
@@ -450,7 +453,7 @@ export default function SportsAndCulturePage() {
           .sc-hero { height: 320px !important; margin-top: 0 !important; }
           .sc-hero img { transform: scale(1.2) !important; }
           .sc-hero-parallax { background: #1e1b4b; }
-          .sc-breadcrumb, .sc-hero-tag, .sc-hero-desc, .sc-hero-btns { display: none !important; }
+          .sc-hero-tag, .sc-hero-desc, .sc-hero-btns { display: none !important; }
           
           .sc-hero-back {
             display: flex;

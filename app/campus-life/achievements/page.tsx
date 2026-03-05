@@ -2,7 +2,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // Added for navigation
+import { useRouter } from "next/navigation";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 // ── Palette ──────────────────────────────────────────────────────────────────
 const C = {
@@ -727,6 +728,15 @@ export default function Achievements() {
           <div className={`acv-ms-arrow ${isSidebarOpen ? "expanded" : ""}`}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="9 18 15 12 9 6" /></svg>
           </div>
+        </div>
+        <div style={{ position: "absolute", top: "120px", left: "50%", transform: "translateX(-50%)", zIndex: 10 }}>
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Campus Life", href: "/campus-life" },
+              { label: "Achievements", active: true }
+            ]}
+          />
         </div>
         <div className="acv-ms-nav">
           {[
@@ -1539,6 +1549,6 @@ export default function Achievements() {
       >
         ↑
       </button>
-    </div>
+    </div >
   );
 }
