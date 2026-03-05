@@ -795,7 +795,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                       </Link>
                     </div>
 
-               
+
                   </div>
 
                   {/* Column 2 - PG Programmes */}
@@ -818,7 +818,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                       </Link>
                     </div>
 
-              
+
                   </div>
 
                   {/* Column 3 - Basic Sciences */}
@@ -853,7 +853,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                       </Link>
                     </div>
 
-                
+
                   </div>
                 </div>
               </div>
@@ -862,10 +862,12 @@ export default function Header({ onMenuToggle }: HeaderProps) {
 
           {/* ============ RESEARCH - FULL WIDTH MEGA MENU ============ */}
           <div ref={researchGroupRef} className="relative group py-4">
-            <button className="nav-btn font-bold tracking-[1px] uppercase text-[1rem] py-[5px] flex items-center gap-1 group-hover:text-[#b77a00] transition relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-[#b77a00] after:transition-all after:duration-200 hover:after:w-full">
-              RESEARCH
-              <i className="fas fa-chevron-down text-[10px] ml-1 opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
-            </button>
+            <Link href="/Research">
+              <button className="nav-btn font-bold tracking-[1px] uppercase text-[1rem] py-[5px] flex items-center gap-1 group-hover:text-[#b77a00] transition relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-[#b77a00] after:transition-all after:duration-200 hover:after:w-full">
+                RESEARCH
+                <i className="fas fa-chevron-down text-[10px] ml-1 opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
+              </button>
+            </Link>
 
             <div
               ref={researchDropdownRef}
@@ -987,7 +989,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
               </button>
             </Link>
 
-          
+
           </div>
 
           {/* ============ CAMPUS LIFE - FULL WIDTH MEGA MENU ============ */}
@@ -999,7 +1001,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                 <i className=" text-[10px] ml-1 opacity-70 "></i>
               </button>
             </Link>
-            
+
           </div>
 
           {/* Contact Us - Simple link */}
@@ -1044,7 +1046,7 @@ function MobileMenu({ onMenuToggle }: { onMenuToggle?: () => void }) {
         ></i>
       </button>
 
-      
+
     </>
   );
 }

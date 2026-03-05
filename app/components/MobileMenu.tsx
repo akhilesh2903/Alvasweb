@@ -39,9 +39,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   return (
     <div
       id="mobile-menu"
-      className={`fixed inset-0 bg-[#000000bf] z-[999] transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] flex flex-col pt-20 px-8 ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      }`}
+      className={`fixed inset-0 bg-[#000000bf] z-[999] transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] flex flex-col pt-20 px-8 ${isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
     >
       {/* Close Button */}
       <button
@@ -56,7 +55,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
         {/* --- ABOUT SECTION ACCORDION --- */}
         <div className="flex flex-col border-b border-white/10 pb-2">
-          <button 
+          <button
             onClick={() => setAboutOpen(!aboutOpen)}
             className="flex justify-between items-center hover:text-[#b77a00] w-full text-left"
           >
@@ -66,10 +65,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
           {aboutOpen && (
             <div className="flex flex-col gap-3 mt-4 ml-4 text-lg font-semibold animate-in fade-in slide-in-from-top-2">
-              
+
               {/* Institution Sub-Accordion */}
               <div className="flex flex-col">
-                <button 
+                <button
                   onClick={() => setInstitutionOpen(!institutionOpen)}
                   className="flex justify-between items-center text-white/80"
                 >
@@ -87,7 +86,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
               {/* Accreditations Sub-Accordion */}
               <div className="flex flex-col">
-                <button 
+                <button
                   onClick={() => setAccreditationOpen(!accreditationOpen)}
                   className="flex justify-between items-center text-white/80"
                 >
@@ -105,7 +104,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
               {/* Mandatory Disclosure Sub-Accordion */}
               <div className="flex flex-col">
-                <button 
+                <button
                   onClick={() => setDisclosureOpen(!disclosureOpen)}
                   className="flex justify-between items-center text-white/80"
                 >
@@ -129,7 +128,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
         {/* --- OTHER LINKS --- */}
         <div className="flex flex-col border-b border-white/10 pb-2">
-          <button 
+          <button
             onClick={() => setAdmisionOpen(!admisionOpen)}
             className="flex justify-between items-center hover:text-[#b77a00] w-full text-left"
           >
@@ -139,10 +138,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
           {admisionOpen && (
             <div className="flex flex-col gap-3 mt-4 ml-4 text-lg font-semibold animate-in fade-in slide-in-from-top-2">
-              
+
               {/* Institution Sub-Accordion */}
               <div className="flex flex-col">
-                <button 
+                <button
                   onClick={() => setProcedureOpen(!procedureOpen)}
                   className="flex justify-between items-center text-white/80"
                 >
@@ -162,7 +161,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
               {/* Accreditations Sub-Accordion */}
               <div className="flex flex-col">
-                <button 
+                <button
                   onClick={() => setFeeOpen(!feeOpen)}
                   className="flex justify-between items-center text-white/80"
                 >
@@ -181,7 +180,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
               {/* Mandatory Disclosure Sub-Accordion */}
               <div className="flex flex-col">
-                <button 
+                <button
                   onClick={() => setScholarshipOpen(!scholarshipOpen)}
                   className="flex justify-between items-center text-white/80"
                 >
@@ -269,10 +268,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           )}
         </div>
 
-        
-        
+
+
 
         <Link href="/placement" onClick={onClose} className="hover:text-[#b77a00] pb-2">PLACEMENT</Link>
+        <Link href="/Research" onClick={onClose} className="hover:text-[#b77a00] pb-2">RESEARCH</Link>
         <Link href="/campus-life" onClick={onClose} className="hover:text-[#b77a00] pb-2">CAMPUS LIFE</Link>
         <Link href="/contact" onClick={onClose} className="hover:text-[#b77a00] pb-2">CONTACT US</Link>
       </div>
