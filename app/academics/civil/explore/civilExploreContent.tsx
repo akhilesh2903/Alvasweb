@@ -8,6 +8,7 @@ import { Faculty } from "@/lib/departments";
 import dynamic from "next/dynamic";
 import CivilExploreLoading from "./civilExploreLoading";
 import { motion, AnimatePresence } from "framer-motion";
+import MobileExploreNav from "@/app/components/MobileExploreNav";
 import {
   Cpu,
   CircuitBoard,
@@ -28,6 +29,18 @@ const NewsletterViewer = dynamic(
     loading: () => (
       <div className="h-96 flex items-center justify-center bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200 text-gray-400">
         Loading Newsletter Viewer...
+      </div>
+    ),
+  },
+);
+
+const SyllabusViewer = dynamic(
+  () => import("@/app/components/SyllabusViewer"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-96 flex items-center justify-center bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200 text-gray-400">
+        Loading Syllabus Viewer...
       </div>
     ),
   },
@@ -204,29 +217,42 @@ export default function CivilExploreContent() {
       {/* Main Content */}
       <div className="page-bg">
         <div className="max-w-[1500px] mx-auto px-3 md:px-5 py-10 grid lg:grid-cols-12 gap-6">
-          {/* LEFT SIDE: Tab List */}
-          <aside className="lg:col-span-3 bg-white border border-gray-300 rounded-3xl p-4 backdrop-blur-xl shadow-md">
-            <h3 className="text-lg font-black text-indigo-700 mb-4">
-              Explore Tabs
-            </h3>
+          {/* LEFT SIDE: Sidebar (Desktop) / Radial Menu (Mobile) */}
+          <aside className="lg:col-span-3">
+            {/* Desktop Sidebar */}
+            <div className="hidden lg:block bg-white border border-gray-300 rounded-3xl p-4 sticky top-28 shadow-md">
+              <h3 className="text-lg font-black text-indigo-700 mb-4 px-2 uppercase tracking-tight">
+                Explore Sections
+              </h3>
+              <div className="flex flex-col gap-2">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    className={`w-full text-left px-4 py-3 rounded-2xl border transition-all duration-300 font-bold text-sm ${
+                      activeTab === tab.id
+                        ? "bg-indigo-600 text-white border-indigo-600 shadow-lg shadow-indigo-100 translate-x-1"
+                        : "bg-gray-50 text-gray-700 border-gray-100 hover:bg-gray-100 hover:border-gray-200"
+                    }`}
+                    onClick={() => handleTabClick(tab.id)}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-            <div className="flex flex-col gap-2">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  className={`tab-btn w-full text-left px-4 py-3 rounded-2xl border border-gray-300 hover:bg-gray-200 transition font-bold text-gray-900 ${
-                    activeTab === tab.id ? "active bg-gray-100" : "bg-gray-100"
-                  }`}
-                  onClick={() => handleTabClick(tab.id)}
-                >
-                  {tab.label}
-                </button>
-              ))}
+            {/* Mobile Navigation */}
+            <div className="lg:hidden">
+              <MobileExploreNav
+                tabs={tabs}
+                activeTab={activeTab}
+                onTabClick={handleTabClick}
+              />
             </div>
           </aside>
 
           {/* RIGHT SIDE: Content Area */}
-          <section className="lg:col-span-9 bg-white border border-gray-300 rounded-3xl p-6 shadow-md overflow-hidden min-h-[600px]">
+          <section className="lg:col-span-9 bg-white border border-gray-300 rounded-3xl p-6 md:p-10 shadow-md min-h-[600px] relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -605,6 +631,10 @@ export default function CivilExploreContent() {
                       <>
                         {activeTab === "newsletter" ? (
                           <NewsletterViewer />
+                        ) : activeTab === "syllabus" ? (
+                          <SyllabusViewer
+                            syllabusLinks={currentData.syllabusLinks}
+                          />
                         ) : (
                           <div
                             className="text-sm md:text-base text-gray-800 leading-relaxed mb-6"

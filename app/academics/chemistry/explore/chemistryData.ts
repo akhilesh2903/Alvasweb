@@ -4,12 +4,11 @@ export const chemistryDepartmentData: DepartmentData = {
   id: "chemistry",
   name: "Department of Chemistry",
   title: "Department of Chemistry Engineering",
-  vision: `Centre of excellence to empower the young minds in the field of Department of Chemistry Engineering with research focus and skill development through transformative education catering to the needs of the society`,
-  mission:
-    `M1:	To create Learning Environment to enable the students for excellence in the field of Department of Chemistry Engineering.
-M2:	To empower the students with nchemistryssary skills for solving the complex technological problems.
-M3:	To inculcate Research Culture among Teaching Learning Group by guiding them towards Research activities to bridge the gap between Industry and Academia.
-M4:	By imbibing the students with human values and ethics through transformative education and make them socially responsible professionals.
+  vision: `Nurturing enthusiasm and to promote research interests by applying chemical principles to meet the needs of the society`,
+  mission: `M1:Impart quality education to achieve academic excellence through an effective teaching-learning environment.
+M2:Awaken the young minds to explore their hidden potential with high ethical standards.
+M3:Support the developmental activities of the college and make the department vibrant.
+M4:Inculcate the basic principles of Chemistry for interdisciplinary innovative research programs.
 
 
 `,
@@ -65,10 +64,16 @@ M4:	By imbibing the students with human values and ethics through transformative
   ),
   exploreData: {
     about: {
-      title: "ABOUT ELECTRONICS & COMMUNICATION ENGINEERING",
-      body: `The Department of Department of Chemistry Engineering (CHEMISTRY) is accredited by the National Board of Accreditation, New Delhi (NBA) for a continuous period of nine years, from 01 July 2019 to 30 June 2028, reflecting the department’s commitment to academic excellence and quality education.
-The Department of CHEMISTRY is one of the most sought-after and dynamic branches of engineering, playing a vital role in the technological advancement and overall development of modern society. The department focuses on the design, development, manufacturing, and application of electronic devices, its software, and intelligent systems that drive today’s digital and connected world.
-The curriculum emphasizes a strong foundation in Electronic Devices and Circuits, Computer Architecture and Communication, VLSI and Embedded Systems, Electromagnetism, Analog and Digital Communication, Digital Signal Processing, and Microwave and Broadband Communication. With a team of highly qualified, experienced, and research-oriented faculty members, the department ensures outcome-based learning, industry relevance, and career readiness for students in core and emerging areas of semiconductor industry.
+      title: "ABOUT CHEMISTRY",
+      body: `Established in 2008, the Department of Chemistry serves as a cornerstone of the engineering curriculum, providing the fundamental scientific principles necessary for all engineering disciplines.
+Academic Impact:-
+•	Foundation Support: Catering to approximately 700 students annually across all branches during their first and second semesters.
+•	Core Curriculum: Delivers comprehensive "Applied Chemistry integrated course” for CS, ME, CV and EC streams.
+•	Modern Pedagogy: Successfully implemented Outcome Based Education (OBE) since 2018 to ensure students meet specific professional and academic competencies.
+Research & Excellence:-
+•	Recognized Research Centre: Affiliated with VTU since 2011.
+•	Advanced Studies: Currently hosting three research scholars pursuing their Ph.D.
+•	Expert Faculty: Driven by a team of highly qualified and experienced staff dedicated to the department’s strategic vision and mission.
 `,
       highlights: [
         "State-of-the-art VLSI and Embedded Systems labs.",

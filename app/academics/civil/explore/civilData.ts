@@ -118,6 +118,16 @@ PSO4: The graduates will be able to demonstrate professional integrity and an ap
         "Emphasis on project-oriented learning.",
         "Regular workshops on syllabus-linked tools.",
       ],
+      syllabusLinks: [
+        {
+          year: "2022 (Scheme)",
+          id: "1DJ00Forfwc5UY_5c2xIOEZaLOlchxptw",
+        },
+        {
+          year: "2022 (Syllabus)",
+          id: "1zZ60DTLuZ7S4xHYqi0tHc40RXO7WpQrA",
+        },
+      ],
     },
     placements: {
       title: "PLACEMENT",

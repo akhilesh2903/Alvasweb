@@ -427,42 +427,42 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                           <i className="fas fa-chevron-right text-[10px] opacity-50 group-hover/sub:translate-x-1 transition-transform"></i>
                         </div>
                         <div className="submenu">
-                          <a
-                            href="#"
+                          <Link
+                            href="/about/mandatory-disclosure?tab=college-info"
                             className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
                           >
                             College Info
-                          </a>
-                          <a
-                            href="#"
+                          </Link>
+                          <Link
+                            href="/about/mandatory-disclosure?tab=aicte"
                             className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
                           >
                             AICTE
-                          </a>
-                          <a
-                            href="#"
+                          </Link>
+                          <Link
+                            href="/about/mandatory-disclosure?tab=nba"
                             className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
                           >
                             NBA
-                          </a>
-                          <a
-                            href="#"
+                          </Link>
+                          <Link
+                            href="/about/mandatory-disclosure?tab=naac"
                             className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
                           >
                             NAAC
-                          </a>
-                          <a
-                            href="#"
+                          </Link>
+                          <Link
+                            href="/about/mandatory-disclosure?tab=autonomous"
                             className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
                           >
                             Autonomous
-                          </a>
-                          <a
-                            href="#"
+                          </Link>
+                          <Link
+                            href="/about/mandatory-disclosure?tab=audit-reports"
                             className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
                           >
                             Audit Reports
-                          </a>
+                          </Link>
                         </div>
                       </div>
 
@@ -794,8 +794,6 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                         Computer Science & Design
                       </Link>
                     </div>
-
-               
                   </div>
 
                   {/* Column 2 - PG Programmes */}
@@ -817,8 +815,6 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                         M.Tech
                       </Link>
                     </div>
-
-              
                   </div>
 
                   {/* Column 3 - Basic Sciences */}
@@ -852,8 +848,6 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                         English
                       </Link>
                     </div>
-
-                
                   </div>
                 </div>
               </div>
@@ -986,8 +980,6 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                 <i className="text-[10px] ml-1 opacity-70"></i>
               </button>
             </Link>
-
-          
           </div>
 
           {/* ============ CAMPUS LIFE - FULL WIDTH MEGA MENU ============ */}
@@ -999,7 +991,6 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                 <i className=" text-[10px] ml-1 opacity-70 "></i>
               </button>
             </Link>
-            
           </div>
 
           {/* Contact Us - Simple link */}
@@ -1010,7 +1001,6 @@ export default function Header({ onMenuToggle }: HeaderProps) {
             Contact Us
           </Link>
         </div>
-
       </nav>
 
       {/* Mobile hamburger + menu component (mobile only) */}
@@ -1043,10 +1033,6 @@ function MobileMenu({ onMenuToggle }: { onMenuToggle?: () => void }) {
           style={{ color: "#ffffff" }} // 3. Set the default inline color for GSAP to start from
         ></i>
       </button>
-
-      
     </>
   );
 }
-
-

@@ -33,6 +33,18 @@ const NewsletterViewer = dynamic(
   },
 );
 
+const SyllabusViewer = dynamic(
+  () => import("@/app/components/SyllabusViewer"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-96 flex items-center justify-center bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200 text-gray-400">
+        Loading Syllabus Viewer...
+      </div>
+    ),
+  },
+);
+
 export default function MechExploreContent() {
   const department = mechDepartmentData;
 
@@ -605,6 +617,10 @@ export default function MechExploreContent() {
                       <>
                         {activeTab === "newsletter" ? (
                           <NewsletterViewer />
+                        ) : activeTab === "syllabus" ? (
+                          <SyllabusViewer
+                            syllabusLinks={currentData.syllabusLinks}
+                          />
                         ) : (
                           <div
                             className="text-sm md:text-base text-gray-800 leading-relaxed mb-6"
