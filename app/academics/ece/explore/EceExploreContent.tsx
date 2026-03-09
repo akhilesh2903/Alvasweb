@@ -220,18 +220,18 @@ export default function EceExploreContent() {
           {/* LEFT SIDE: Sidebar (Desktop) / Radial Menu (Mobile) */}
           <aside className="lg:col-span-3">
             {/* Desktop Sidebar */}
-            <div className="hidden lg:block bg-white border border-gray-300 rounded-3xl p-4 sticky top-28 shadow-md">
-              <h3 className="text-lg font-black text-indigo-700 mb-4 px-2 uppercase tracking-tight">
-                Explore Sections
+            <div className="hidden lg:block bg-white border border-gray-300 rounded-3xl p-4 sticky top-28 shadow-md backdrop-blur-xl">
+              <h3 className="text-lg font-black text-indigo-700 mb-4">
+                Explore Tabs
               </h3>
               <div className="flex flex-col gap-2">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
-                    className={`w-full text-left px-4 py-3 rounded-2xl border transition-all duration-300 font-bold text-sm ${
+                    className={`tab-btn w-full text-left px-4 py-3 rounded-2xl border border-gray-300 hover:bg-gray-200 transition font-bold text-gray-900 ${
                       activeTab === tab.id
-                        ? "bg-indigo-600 text-white border-indigo-600 shadow-lg shadow-indigo-100 translate-x-1"
-                        : "bg-gray-50 text-gray-700 border-gray-100 hover:bg-gray-100 hover:border-gray-200"
+                        ? "active bg-gray-100"
+                        : "bg-gray-100"
                     }`}
                     onClick={() => handleTabClick(tab.id)}
                   >
