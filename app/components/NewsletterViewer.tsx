@@ -75,7 +75,10 @@ export default function NewsletterViewer() {
         targetHeight = targetWidth / pdfRatio;
       }
     } else {
-      targetWidth = Math.min(500, (vWidth * 0.95) / (mobile ? 1 : 2));
+      // Standard view: Subtrack more space for container padding (approx 120px)
+      const containerPadding = mobile ? 40 : 140;
+      const availableWidth = vWidth - containerPadding;
+      targetWidth = Math.min(500, availableWidth / (mobile ? 1 : 2));
       targetHeight = targetWidth / pdfRatio;
     }
 
@@ -264,6 +267,7 @@ export default function NewsletterViewer() {
           >
             {isLoaded && (
               <HTMLFlipBook
+                key={isMobile ? "mobile" : "desktop"}
                 width={dimensions.width}
                 height={dimensions.height}
                 size="stretch"
@@ -272,7 +276,7 @@ export default function NewsletterViewer() {
                 minHeight={dimensions.height}
                 maxHeight={2533}
                 maxShadowOpacity={0.5}
-                showCover={true}
+                showCover={!isMobile}
                 mobileScrollSupport={true}
                 onFlip={onFlip}
                 className="flipbook"

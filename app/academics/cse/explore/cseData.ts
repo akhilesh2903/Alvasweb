@@ -105,6 +105,46 @@ PEO4: Inculcate Professional ethics, human values, team work for solving enginee
         "Project-oriented courses",
         "Regular workshops",
       ],
+      syllabusCategories: [
+        {
+          name: "Autonomous Scheme and Syllabus",
+          links: [
+            {
+              year: "3rd Sem Autonomous",
+              id: "1DROqwjn99tR-4Y6mROQooWfyqy41SdXm",
+            },
+            {
+              year: "4th Sem Autonomous",
+              id: "1qTEXEaN2iERppoGT-0FMC0jlESNHTByU",
+            },
+          ],
+        },
+        {
+          name: "VTU Scheme and Syllabus",
+          links: [
+            {
+              year: "3rd Sem",
+              id: "14Auyk6TGID-RWfq3xwLe9pq6G2myzYvn",
+            },
+            {
+              year: "4th Sem",
+              id: "1GFf7S0vMikQV95cMliYbuwDOKMSiZobP",
+            },
+            {
+              year: "5th Sem",
+              id: "1D6C64JiyoWvQpVR-lbpHOiAJaNW-iRgZ",
+            },
+            {
+              year: "6th Sem",
+              id: "13Z8OOXjoYNa58kjAiMTpMeTr4Lr7usmV",
+            },
+            {
+              year: "7th Sem",
+              id: "1Xdvfrx4jkY8IYO-ejZIiDC9Y5j7Utuct",
+            },
+          ],
+        },
+      ],
     },
     placements: {
       title: "PLACEMENT",

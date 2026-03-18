@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
@@ -232,6 +232,21 @@ export default function MBAPage() {
             transform: translateX(-50%);
           }
         }
+
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #94a3b8;
+        }
       `}</style>
 
       <MobileMenu
@@ -440,11 +455,9 @@ export default function MBAPage() {
                   </p>
                 </div>
               </div>
-              <p className="text-gray-600 leading-relaxed italic border-l-4 border-indigo-100 pl-6 mb-8">
-                "Welcome to the {deptData.name} program. We are committed to
-                nurturing technical excellence and professional ethics in our
-                students, preparing them for the challenges of tomorrow."
-              </p>
+              <div className="max-h-32 overflow-y-auto pr-2 custom-scrollbar text-gray-600 leading-relaxed italic border-l-4 border-indigo-100 pl-6 mb-8 text-sm md:text-base whitespace-pre-line">
+                {deptData.hod.message}
+              </div>
               <button
                 onClick={() => openFacultyModal(deptData.hod)}
                 className="bg-gray-900 text-white font-bold px-8 py-3 rounded-xl hover:bg-gray-800 transition shadow-lg active:scale-95"

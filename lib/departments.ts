@@ -9,6 +9,7 @@ export interface Faculty {
   aoi?: string;
   photo: string;
   joiningDate?: string;
+  message?: string;
   details?: {
     qualifications: string;
     pastExperience: string;
@@ -28,11 +29,17 @@ export interface SyllabusLink {
   id: string;
 }
 
+export interface SyllabusCategory {
+  name: string;
+  links: SyllabusLink[];
+}
+
 export interface ExploreTabData {
   title: string;
   body: string;
   highlights: string[];
   syllabusLinks?: SyllabusLink[];
+  syllabusCategories?: SyllabusCategory[];
 }
 
 export interface DepartmentData {

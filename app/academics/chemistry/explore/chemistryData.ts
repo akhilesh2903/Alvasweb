@@ -65,20 +65,27 @@ M4:Inculcate the basic principles of Chemistry for interdisciplinary innovative 
   exploreData: {
     about: {
       title: "ABOUT CHEMISTRY",
-      body: `Established in 2008, the Department of Chemistry serves as a cornerstone of the engineering curriculum, providing the fundamental scientific principles necessary for all engineering disciplines.
-Academic Impact:-
-•	Foundation Support: Catering to approximately 700 students annually across all branches during their first and second semesters.
-•	Core Curriculum: Delivers comprehensive "Applied Chemistry integrated course” for CS, ME, CV and EC streams.
-•	Modern Pedagogy: Successfully implemented Outcome Based Education (OBE) since 2018 to ensure students meet specific professional and academic competencies.
-Research & Excellence:-
-•	Recognized Research Centre: Affiliated with VTU since 2011.
-•	Advanced Studies: Currently hosting three research scholars pursuing their Ph.D.
-•	Expert Faculty: Driven by a team of highly qualified and experienced staff dedicated to the department’s strategic vision and mission.
-`,
+      body: `
+        <p>Established in 2008, the Department of Chemistry serves as a cornerstone of the engineering curriculum, providing the fundamental scientific principles necessary for all engineering disciplines.</p>
+
+        <h4 class="text-xl font-bold mt-6 mb-3 text-gray-900">Academic Impact</h4>
+        <ul class="list-disc pl-5 mb-4 space-y-1">
+          <li><strong>Foundation Support</strong> – Catering to approximately 700 students annually across all branches during their first and second semesters.</li>
+          <li><strong>Core Curriculum</strong> – Delivers comprehensive "Applied Chemistry integrated course" for CS, ME, CV and EC streams.</li>
+          <li><strong>Modern Pedagogy</strong> – Successfully implemented Outcome Based Education (OBE) since 2018 to ensure students meet specific professional and academic competencies.</li>
+        </ul>
+
+        <h4 class="text-xl font-bold mt-6 mb-3 text-gray-900">Research & Excellence</h4>
+        <ul class="list-disc pl-5 mb-4 space-y-1">
+          <li><strong>Recognized Research Centre</strong> – Affiliated with VTU since 2011.</li>
+          <li><strong>Advanced Studies</strong> – Currently hosting three research scholars pursuing their Ph.D.</li>
+          <li><strong>Expert Faculty</strong> – Driven by a team of highly qualified and experienced staff dedicated to the department’s strategic vision and mission.</li>
+        </ul>
+      `,
       highlights: [
-        "State-of-the-art VLSI and Embedded Systems labs.",
-        "Strong industry ties with electronics leaders.",
-        "Innovation hub for IoT and Smart Systems.",
+        "Recognized VTU Research Centre since 2011.",
+        "Outcome Based Education (OBE) implemented since 2018.",
+        "Expert faculty dedicated to academic and research excellence.",
       ],
     },
     thrust: {
@@ -140,6 +147,12 @@ PSO3: Apply modern Hardware and software tools to analyze and solve engineering 
         "Modernized credit-based system.",
         "Emphasis on project-oriented learning.",
         "Regular workshops on syllabus-linked tools.",
+      ],
+      syllabusLinks: [
+        {
+          year: "Autonomus 2025-2026",
+          id: "1EloXvjAQe1zB7J7EI8gwLFGnVy-JFhez",
+        },
       ],
     },
     placements: {

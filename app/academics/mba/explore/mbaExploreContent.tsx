@@ -33,6 +33,18 @@ const NewsletterViewer = dynamic(
   },
 );
 
+const SyllabusViewer = dynamic(
+  () => import("@/app/components/SyllabusViewer"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-96 flex items-center justify-center bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200 text-gray-400">
+        Loading Syllabus Viewer...
+      </div>
+    ),
+  },
+);
+
 export default function MbaExploreContent() {
   const department = mbaDepartmentData;
 
@@ -149,6 +161,21 @@ export default function MbaExploreContent() {
           padding-bottom: 8px !important;
           border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
         }
+
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #94a3b8;
+        }
       `}</style>
 
       {/* Header */}
@@ -253,22 +280,10 @@ export default function MbaExploreContent() {
                       ></motion.div>
                     </div>
 
-                    <div className="prose prose-indigo max-w-none">
-                      {currentData?.body
-                        .split("\n")
-                        .filter((p) => p.trim())
-                        .map((para, idx) => (
-                          <motion.p
-                            key={idx}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2 + idx * 0.1 }}
-                            className="text-gray-700 text-lg leading-relaxed font-medium mb-4"
-                          >
-                            {para}
-                          </motion.p>
-                        ))}
-                    </div>
+                    <div 
+                      className="prose prose-indigo max-w-none text-gray-700 text-lg leading-relaxed font-medium"
+                      dangerouslySetInnerHTML={{ __html: currentData?.body || "" }}
+                    />
 
                     <div className="mt-12">
                       <h3 className="text-xl font-black text-gray-900 mb-6 flex items-center gap-2">
@@ -547,11 +562,9 @@ export default function MbaExploreContent() {
                                   </p>
                                 </div>
                               </div>
-                              <p className="text-gray-600 leading-relaxed italic border-l-4 border-indigo-100 pl-4 mb-6 text-sm">
-                                "Welcome to the {department.name} program. We
-                                are committed to nurturing technical excellence
-                                and professional ethics in our students."
-                              </p>
+                              <div className="max-h-28 overflow-y-auto pr-2 custom-scrollbar text-gray-600 leading-relaxed italic border-l-4 border-indigo-100 pl-4 mb-6 text-sm whitespace-pre-line">
+                                {department.hod.message}
+                              </div>
                               <button
                                 onClick={() => openFacultyModal(department.hod)}
                                 className="bg-gray-900 text-white font-bold px-6 py-2.5 rounded-xl hover:bg-gray-800 transition shadow-md text-sm active:scale-95"
@@ -605,6 +618,10 @@ export default function MbaExploreContent() {
                       <>
                         {activeTab === "newsletter" ? (
                           <NewsletterViewer />
+                        ) : activeTab === "syllabus" ? (
+                          <SyllabusViewer
+                            syllabusLinks={currentData.syllabusLinks}
+                          />
                         ) : (
                           <div
                             className="text-sm md:text-base text-gray-800 leading-relaxed mb-6"
@@ -859,30 +876,30 @@ export default function MbaExploreContent() {
                   {selectedFaculty?.name}
                 </h3>
 
-                <div className="mt-6 space-y-3 font-sans">
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 md:gap-4 lg:gap-8">
-                    <span className="text-[11px] font-black uppercase tracking-widest text-gray-500 w-24">
+                <div className="mt-6 space-y-4 font-sans">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[11px] font-black uppercase tracking-widest text-gray-500">
                       Designation
                     </span>
-                    <span className="text-sm font-bold text-gray-800">
+                    <span className="text-sm font-bold text-gray-900">
                       {selectedFaculty?.designation}
                     </span>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 md:gap-4 lg:gap-8 border-t border-gray-100 pt-3">
-                    <span className="text-[11px] font-black uppercase tracking-widest text-gray-500 w-24">
+                  <div className="flex flex-col gap-1 border-t border-gray-100 pt-3">
+                    <span className="text-[11px] font-black uppercase tracking-widest text-gray-500">
                       Email
                     </span>
-                    <span className="text-sm font-bold text-gray-800">
+                    <span className="text-sm font-bold text-gray-900">
                       {selectedFaculty?.email}
                     </span>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 md:gap-4 lg:gap-8 border-t border-gray-100 pt-3">
-                    <span className="text-[11px] font-black uppercase tracking-widest text-gray-500 w-24">
+                  <div className="flex flex-col gap-1 border-t border-gray-100 pt-3">
+                    <span className="text-[11px] font-black uppercase tracking-widest text-gray-500">
                       Joining date
                     </span>
-                    <span className="text-sm font-bold text-gray-800">
+                    <span className="text-sm font-bold text-gray-900">
                       {selectedFaculty?.joiningDate || "N/A"}
                     </span>
                   </div>
@@ -945,7 +962,7 @@ export default function MbaExploreContent() {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed">
+                    <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm font-bold text-gray-900 leading-loose whitespace-pre-line">
                       {selectedFaculty?.details?.[
                         item.key as keyof typeof selectedFaculty.details
                       ] || "Information not available."}

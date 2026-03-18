@@ -81,6 +81,17 @@ export default function LifeAtAIET() {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const slide = params.get('slide');
+    if (slide && !isNaN(parseInt(slide, 10))) {
+      const idx = parseInt(slide, 10);
+      if (idx >= 0 && idx < CAMPUS_DATA.length) {
+        setActive(idx);
+      }
+    }
+  }, []);
+
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const onMouseMove = (e: React.MouseEvent) => {

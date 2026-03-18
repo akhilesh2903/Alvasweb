@@ -22,6 +22,18 @@ import {
   Target,
 } from "lucide-react";
 
+const SyllabusViewer = dynamic(
+  () => import("@/app/components/SyllabusViewer"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-96 flex items-center justify-center bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200 text-gray-400">
+        Loading Syllabus Viewer...
+      </div>
+    ),
+  },
+);
+
 const CseNewsletterViewer = dynamic(
   () => import("@/app/components/CseNewsletterViewer"),
   {
@@ -619,6 +631,11 @@ export default function CseExploreContent() {
                       <>
                         {activeTab === "newsletter" ? (
                           <CseNewsletterViewer />
+                        ) : activeTab === "syllabus" ? (
+                          <SyllabusViewer
+                            syllabusLinks={currentData.syllabusLinks}
+                            syllabusCategories={currentData.syllabusCategories}
+                          />
                         ) : (
                           <div
                             className="text-sm md:text-base text-gray-800 leading-relaxed mb-6"

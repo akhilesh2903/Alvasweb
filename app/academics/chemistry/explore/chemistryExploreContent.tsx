@@ -19,10 +19,7 @@ import {
   Award,
   BookOpen,
   Target,
-  ScrollText,
 } from "lucide-react";
-import MandatoryDisclosureViewer from "@/app/components/MandatoryDisclosureViewer";
-
 const NewsletterViewer = dynamic(
   () => import("@/app/components/NewsletterViewer"),
   {
@@ -35,11 +32,22 @@ const NewsletterViewer = dynamic(
   },
 );
 
+const SyllabusViewer = dynamic(
+  () => import("@/app/components/SyllabusViewer"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-96 flex items-center justify-center bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200 text-gray-400">
+        Loading Syllabus Viewer...
+      </div>
+    ),
+  },
+);
+
 export default function ChemistryExploreContent() {
   const department = chemistryDepartmentData;
 
   const [activeTab, setActiveTab] = useState("about");
-  const [aboutSubTab, setAboutSubTab] = useState("overview"); // 'overview' or 'mandatory'
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -256,91 +264,45 @@ export default function ChemistryExploreContent() {
                       ></motion.div>
                     </div>
 
-                    {/* Sub-tabs for About Section */}
-                    <div className="flex gap-4 border-b border-gray-100 pb-2">
-                      <button
-                        onClick={() => setAboutSubTab("overview")}
-                        className={`pb-2 px-4 font-black transition-all border-b-2 text-sm ${
-                          aboutSubTab === "overview"
-                            ? "border-indigo-600 text-indigo-600"
-                            : "border-transparent text-gray-400 hover:text-gray-600"
-                        }`}
-                      >
-                        OVERVIEW
-                      </button>
-                      <button
-                        onClick={() => setAboutSubTab("mandatory")}
-                        className={`pb-2 px-4 font-black transition-all border-b-2 text-sm flex items-center gap-2 ${
-                          aboutSubTab === "mandatory"
-                            ? "border-indigo-600 text-indigo-600"
-                            : "border-transparent text-gray-400 hover:text-gray-600"
-                        }`}
-                      >
-                        <ScrollText className="w-4 h-4" />
-                        MANDATORY DISCLOSURE
-                      </button>
+                    <div
+                      className="prose prose-indigo max-w-none text-gray-700 text-lg leading-relaxed font-medium mb-4"
+                      dangerouslySetInnerHTML={{ __html: currentData?.body || "" }}
+                    />
+
+                    <div className="mt-12">
+                      <h3 className="text-xl font-black text-gray-900 mb-6 flex items-center gap-2">
+                        <Award className="text-indigo-600 w-6 h-6" />
+                        KEY HIGHLIGHTS
+                      </h3>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {currentData?.highlights?.map((highlight, idx) => (
+                          <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            whileHover={{
+                              y: -5,
+                              boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+                            }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.1 }}
+                            className="bg-gradient-to-br from-white to-indigo-50/30 p-6 rounded-2xl border border-indigo-100 shadow-sm hover:border-indigo-300 transition-all group"
+                          >
+                            <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-4 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                              {idx === 0 && <Cpu className="w-6 h-6" />}
+                              {idx === 1 && (
+                                <CircuitBoard className="w-6 h-6" />
+                              )}
+                              {idx === 2 && <Zap className="w-6 h-6" />}
+                              {idx > 2 && <CheckCircle2 className="w-6 h-6" />}
+                            </div>
+                            <p className="text-gray-700 font-bold text-sm leading-relaxed">
+                              {highlight}
+                            </p>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
-
-                    {aboutSubTab === "overview" ? (
-                      <>
-                        <div className="prose prose-indigo max-w-none">
-                          {currentData?.body
-                            .split("\n")
-                            .filter((p) => p.trim())
-                            .map((para, idx) => (
-                              <motion.p
-                                key={idx}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 + idx * 0.1 }}
-                                className="text-gray-700 text-lg leading-relaxed font-medium mb-4"
-                              >
-                                {para}
-                              </motion.p>
-                            ))}
-                        </div>
-
-                        <div className="mt-12">
-                          <h3 className="text-xl font-black text-gray-900 mb-6 flex items-center gap-2">
-                            <Award className="text-indigo-600 w-6 h-6" />
-                            KEY HIGHLIGHTS
-                          </h3>
-                          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {currentData?.highlights?.map((highlight, idx) => (
-                              <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                whileHover={{
-                                  y: -5,
-                                  boxShadow:
-                                    "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
-                                }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                                className="bg-gradient-to-br from-white to-indigo-50/30 p-6 rounded-2xl border border-indigo-100 shadow-sm hover:border-indigo-300 transition-all group"
-                              >
-                                <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-4 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                                  {idx === 0 && <Cpu className="w-6 h-6" />}
-                                  {idx === 1 && (
-                                    <CircuitBoard className="w-6 h-6" />
-                                  )}
-                                  {idx === 2 && <Zap className="w-6 h-6" />}
-                                  {idx > 2 && (
-                                    <CheckCircle2 className="w-6 h-6" />
-                                  )}
-                                </div>
-                                <p className="text-gray-700 font-bold text-sm leading-relaxed">
-                                  {highlight}
-                                </p>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </div>
-                      </>
-                    ) : (
-                      <MandatoryDisclosureViewer />
-                    )}
                   </div>
                 ) : activeTab === "thrust" ? (
                   <div className="space-y-8">
@@ -642,6 +604,10 @@ export default function ChemistryExploreContent() {
                       <>
                         {activeTab === "newsletter" ? (
                           <NewsletterViewer />
+                        ) : activeTab === "syllabus" ? (
+                          <SyllabusViewer
+                            syllabusLinks={currentData.syllabusLinks}
+                          />
                         ) : (
                           <div
                             className="text-sm md:text-base text-gray-800 leading-relaxed mb-6"

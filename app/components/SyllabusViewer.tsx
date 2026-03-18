@@ -2,16 +2,40 @@
 
 import React, { useState } from "react";
 import { Download, FileText, Calendar } from "lucide-react";
-import { SyllabusLink } from "@/lib/departments";
+import { SyllabusLink, SyllabusCategory } from "@/lib/departments";
 
 interface SyllabusViewerProps {
   syllabusLinks?: SyllabusLink[];
+  syllabusCategories?: SyllabusCategory[];
 }
 
-export default function SyllabusViewer({ syllabusLinks }: SyllabusViewerProps) {
-  const [activeYear, setActiveYear] = useState(syllabusLinks?.[0]?.year || "");
+export default function SyllabusViewer({
+  syllabusLinks,
+  syllabusCategories,
+}: SyllabusViewerProps) {
+  const [activeCategory, setActiveCategory] = useState(
+    syllabusCategories?.[0]?.name || "",
+  );
+  const currentCategory = syllabusCategories?.find(
+    (c) => c.name === activeCategory,
+  );
+  const currentLinks = currentCategory ? currentCategory.links : syllabusLinks;
 
-  if (!syllabusLinks || syllabusLinks.length === 0) {
+  const [activeYear, setActiveYear] = useState("");
+
+  // Sync activeYear when category or links change
+  React.useEffect(() => {
+    if (currentLinks && currentLinks.length > 0) {
+      setActiveYear(currentLinks[0].year);
+    } else {
+      setActiveYear("");
+    }
+  }, [activeCategory, currentLinks]);
+
+  if (
+    (!currentLinks || currentLinks.length === 0) &&
+    (!syllabusCategories || syllabusCategories.length === 0)
+  ) {
     return (
       <div className="p-10 text-center text-gray-500">
         No syllabus available.
@@ -20,14 +44,64 @@ export default function SyllabusViewer({ syllabusLinks }: SyllabusViewerProps) {
   }
 
   const activeLink =
-    syllabusLinks.find((l) => l.year === activeYear) || syllabusLinks[0];
-  const pdfUrl = `/api/pdf-proxy?id=${activeLink.id}`;
+    currentLinks?.find((l: SyllabusLink) => l.year === activeYear) ||
+    currentLinks?.[0];
+
+  if (!activeLink) {
+    return (
+      <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        {syllabusCategories && (
+          <div className="flex flex-wrap gap-4 border-b border-gray-100 pb-4">
+            {syllabusCategories.map((cat) => (
+              <button
+                key={cat.name}
+                onClick={() => setActiveCategory(cat.name)}
+                className={`px-4 py-2 font-black transition-all border-b-2 text-sm ${
+                  activeCategory === cat.name
+                    ? "border-indigo-600 text-indigo-600"
+                    : "border-transparent text-gray-400 hover:text-gray-600"
+                }`}
+              >
+                {cat.name.toUpperCase()}
+              </button>
+            ))}
+          </div>
+        )}
+        <div className="p-10 text-center text-gray-500">
+          No document selected.
+        </div>
+      </div>
+    );
+  }
+
+  const pdfUrl = activeLink.id.startsWith("http")
+    ? activeLink.id
+    : `https://drive.google.com/file/d/${activeLink.id}/preview`;
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+      {/* Category Selection Tabs */}
+      {syllabusCategories && (
+        <div className="flex flex-wrap gap-4 border-b border-gray-100 pb-4">
+          {syllabusCategories.map((cat) => (
+            <button
+              key={cat.name}
+              onClick={() => setActiveCategory(cat.name)}
+              className={`px-4 py-2 font-black transition-all border-b-2 text-sm ${
+                activeCategory === cat.name
+                  ? "border-indigo-600 text-indigo-600"
+                  : "border-transparent text-gray-400 hover:text-gray-600"
+              }`}
+            >
+              {cat.name.toUpperCase()}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Year Selection Pills */}
       <div className="flex flex-wrap gap-3">
-        {syllabusLinks.map((link) => (
+        {currentLinks?.map((link: SyllabusLink) => (
           <button
             key={link.year}
             onClick={() => setActiveYear(link.year)}
