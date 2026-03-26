@@ -7,21 +7,21 @@ export const aiDepartmentData: DepartmentData = {
   vision: `Centre of excellence to empower the young minds in the field of Department of Ai Engineering with research focus and skill development through transformative education catering to the needs of the society`,
   mission:
     `M1:	To create Learning Environment to enable the students for excellence in the field of Department of Ai Engineering.
-M2:	To empower the students with naissary skills for solving the complex technological problems.
+M2:	To empower the students with necessary skills for solving the complex technological problems.
 M3:	To inculcate Research Culture among Teaching Learning Group by guiding them towards Research activities to bridge the gap between Industry and Academia.
 M4:	By imbibing the students with human values and ethics through transformative education and make them socially responsible professionals.
 
 
 `,
   hod: {
-    name: "Dr. AI HOD",
-    designation: "Professor & HOD - AI",
+    name: "Mr. Harish Kunder ",
+    designation: " Associate Professor & HOD - AI",
     qualification: "Ph.D",
     experience: "15+ Years",
     email: "hodai@alvas.edu.in",
     phone: "+91 98765 43214",
     photo:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+      "https://lh3.googleusercontent.com/pw/AP1GczOUdQPrksNhTUJt4evuejpGeDYILqM1M3oCKwFuy6_wrwmD1sejWWaDy02HEALXwp6njKFCPcTZDx4YeEFOducjAMztPSAQIrRP4zbD9yB3x_wNT8hxOZgdbxmFEsfYEDQ6ZYT5cMJcncXtxz7_iCCrFg=w600-h800-p",
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",

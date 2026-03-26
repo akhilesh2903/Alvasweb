@@ -13,14 +13,14 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
 
 `,
   hod: {
-    name: "Dr. MECH HOD",
+    name: "Dr. Satyanarayan",
     designation: "Professor & HOD - MECH",
     qualification: "Ph.D",
     experience: "15+ Years",
     email: "hodmech@alvas.edu.in",
     phone: "+91 98765 43214",
     photo:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+      "https://lh3.googleusercontent.com/pw/AP1GczN2BKovvlJ5kRKtqzqceSkCwbVtpAtZ8JWQGqAh7Q_XeL6v9nCn7B4zY6J8z_vY0hUYTeRlDSyDB3eESBhoWQO4p4qxdErc_ye6lLBcRyJ4t60dPqG0VS-0hTJ6vCVNum9mo012MnTlD6j4PPaL8q2lsw=w600-h800-p",
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",

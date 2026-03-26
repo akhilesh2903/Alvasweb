@@ -9,14 +9,14 @@ export const civilDepartmentData: DepartmentData = {
 M2: To produce civil engineers of high caliber, technical skills and ethical values, to serve the society.
 M3: To promote innovation in the minds of future engineers to face the challenges.`,
   hod: {
-    name: "Dr. CIVIL HOD",
+    name: "Mr.Durgaprasad Baliga",
     designation: "Professor & HOD - CIVIL",
     qualification: "Ph.D",
     experience: "15+ Years",
     email: "hodcivil@alvas.edu.in",
     phone: "+91 98765 43214",
     photo:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+      "https://lh3.googleusercontent.com/pw/AP1GczPBqWXshMnZaIUmITr_lVVtWDDxEstt54tyJehJu7_URc1XKfKC_ZHQBy99rARZyn_EukOYRSflTvX-zZnaUYKXeV8J5L0mtUMp6kvHSSCH5Ha5LAbRfFcuMNIuH3izSFRmIT28pMIQjoiBPuil9bJMBw=w600-h800-p",
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",

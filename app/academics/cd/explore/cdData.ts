@@ -21,7 +21,7 @@ M4:	By imbibing the students with human values and ethics through transformative
     email: "hodcd@alvas.edu.in",
     phone: "+91 98765 43214",
     photo:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+      "https://lh3.googleusercontent.com/pw/AP1GczN3UO2GfvMjulvIhsheK3G1p_0fwbwReJ6HKYSKIn285DiARGI-9sbQ3kswJF2BDUFe6sW_K0-LmJZ1z89hmHEf4yXiBtdBg8bJp9fwdG5HwX_6oFDtdpXPfDgHdiTby0f6CPqgGMUWKGNvrQ_rjQbsRA=w600-h800-p",
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",

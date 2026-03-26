@@ -1,13 +1,15 @@
 import { DepartmentData, Faculty } from "@/lib/departments";
 
+const imageProxyUrl = (url: string) =>
+  `/api/image-proxy?url=${encodeURIComponent(url)}`;
+
 export const iseDepartmentData: DepartmentData = {
   id: "ise",
   name: "Department of Ise",
   title: "Department of Ise Engineering",
   vision: `Centre of excellence to empower the young minds in the field of Department of Ise Engineering with research focus and skill development through transformative education catering to the needs of the society`,
-  mission:
-    `M1:	To create Learning Environment to enable the students for excellence in the field of Department of Ise Engineering.
-M2:	To empower the students with nisessary skills for solving the complex technological problems.
+  mission: `M1:	To create Learning Environment to enable the students for excellence in the field of Department of Ise Engineering.
+M2:	To empower the students with necessary skills for solving the complex technological problems.
 M3:	To inculcate Research Culture among Teaching Learning Group by guiding them towards Research activities to bridge the gap between Industry and Academia.
 M4:	By imbibing the students with human values and ethics through transformative education and make them socially responsible professionals.
 
@@ -20,8 +22,9 @@ M4:	By imbibing the students with human values and ethics through transformative
     experience: "15+ Years",
     email: "hodise@alvas.edu.in",
     phone: "+91 98765 43214",
-    photo:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+    photo: imageProxyUrl(
+      "https://lh3.googleusercontent.com/pw/AP1GczO6GKHN1aTRsW2lUKq187ItkeRtAjSX3ZnDutfVERNui3YAYefafOdlfWWRbPrKRvXZYA5_S_5gw8JXm-_EjlWf657mSwlTXww5FyTfO1Ln6Lly1M71aaDxNzGNOsQht7TbVNEUDUW2mk0dSImlWgVz0g=w600-h800-p",
+    ),
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",
@@ -36,33 +39,108 @@ M4:	By imbibing the students with human values and ethics through transformative
       others: "NA",
     },
   },
-  faculty: Array.from(
-    { length: 10 },
-    (_, i): Faculty => ({
-      name: `Prof. ISE Faculty ${i + 1}`,
-      designation:
-        (i + 1) % 3 === 0 ? "Associate Professor" : "Assistant Professor",
-      qualification: (i + 1) % 2 === 0 ? "M.Tech, Ph.D" : "M.Tech",
-      experience: `${5 + (i + 1)} Years`,
-      email: `faculty${i + 1}.ise@alvas.edu.in`,
-      phone: `+91 90000 000${(i + 1).toString().padStart(2, "0")}`,
-      aoi: "Specialized Research Area",
-      photo: `https://images.unsplash.com/photo-${1500000000000 + (i + 1) * 10000 + 4}?auto=format&fit=crop&w=400&q=80`,
-      joiningDate: `01-01-20${15 + ((i + 1) % 8)}`,
+  faculty: [
+    {
+      name: "Dr. Rachana P",
+      designation: "Associate Professor",
+      qualification: "B.Tech, M.E., Ph.D",
+      experience: "19 Years",
+      email: "rachana@aiet.org.in",
+      phone: "+91 90000 00001",
+      aoi: "Computer Networks, Machine Learning",
+      photo: imageProxyUrl(
+        "https://lh3.googleusercontent.com/pw/AP1GczORGdgzkyhpbSV1wV5kiNmMIYygWBenSgW-y_dubPKgX3mGlizXzO_LfyUR_TNdV7FbtBy43iR-fKYUDTanhryK2Rmf-K6GW7DZ8fdrh8ACJ5PeO4zCD29h0LEe5C79HAH7dapWr4H_1eKEFmGmqSSE5A=w413-h531-s-no-gm",
+      ),
+      joiningDate: "18-06-2024",
       details: {
-        qualifications: `BE in ISE, M.Tech in Specialization`,
-        pastExperience: "5 years in Industry, 5 years in Academics",
-        areasOfInterest: "Research, Development, Innovation",
-        achievements: "Best Faculty Award, Multiple Publications",
-        professionalMembership: "IEEE, CSI Member",
-        publications: "10+ International Journals",
-        projectsGuided: "15+ UG Projects",
-        subjectsTeaching: "Core Subjects",
-        researchPublications: "Risent Research in Domain (2023)",
+        qualifications: "B.Tech, M.E., Ph.D",
+        pastExperience: "Associate Professor at NHCE and SJEC",
+        areasOfInterest: "Networking, AI",
+        achievements: "Multiple Research Publications",
+        professionalMembership: "IEEE",
+        publications: "10+ Journals",
+        projectsGuided: "15+ Projects",
+        subjectsTeaching: "Computer Networks",
+        researchPublications: "Research in ML (2023)",
         others: "NA",
       },
-    }),
-  ),
+    },
+    {
+      name: "Mr. Pradeep Nayak",
+      designation: "Assistant Professor",
+      qualification: "B.E., M.Tech",
+      experience: "9 Years",
+      email: "nayak.pradeepk@gmail.com",
+      phone: "+91 90000 00002",
+      aoi: "Software Engineering, Cloud Computing",
+      photo: imageProxyUrl(
+        "https://lh3.googleusercontent.com/pw/AP1GczOY8sbskINoRlp1gwpF4NZ0CLPxt-uS4Btd75iKRo-lg2wwi2eNIZCUxKVozlm9n8R00BSE1y8_3uy30X5QFVKJuXmocSdfH4hLsdOVAB45mUkvyiN3gCcv5vhr_vFHRfpgNvRhl1yOz4ss-rY0QSzFAw=w413-h531-s-no-gm",
+      ),
+      joiningDate: "01-01-2015",
+      details: {
+        qualifications: "B.E., M.Tech",
+        pastExperience: "9 years in Academics",
+        areasOfInterest: "Software Engineering",
+        achievements: "Industry Certifications",
+        professionalMembership: "CSI",
+        publications: "5+ Papers",
+        projectsGuided: "10+ Projects",
+        subjectsTeaching: "Software Testing",
+        researchPublications: "Cloud Trends (2022)",
+        others: "NA",
+      },
+    },
+    {
+      name: "Mr. Nagesh U B",
+      designation: "Assistant Professor",
+      qualification: "B.E., M.Tech",
+      experience: "14 Years",
+      email: "nageshub@aiet.org.in",
+      phone: "+91 90000 00003",
+      aoi: "Database Management, Data Science",
+      photo: imageProxyUrl(
+        "https://lh3.googleusercontent.com/pw/AP1GczOTB2MZNnkJ197_m8bMUHuaUMcaC7UbCLEWdKbX0j7a4DJf4I1-aQdue8j500SGyUM0kXU6MxkBB88mXf35XqlNtMzSTmbAJZunD1iIfQfFKn-ilpCVWedoy6VMeFCkWxOvzrXYgUCTLcM8T93xawC8qg=w413-h531-s-no-gm",
+      ),
+      joiningDate: "01-08-2020",
+      details: {
+        qualifications: "B.E., M.Tech",
+        pastExperience: "Canara Engineering College, VCET",
+        areasOfInterest: "Data Science",
+        achievements: "Senior Assistant Professor",
+        professionalMembership: "ISTE",
+        publications: "8+ Journals",
+        projectsGuided: "12+ Projects",
+        subjectsTeaching: "DBMS",
+        researchPublications: "Data mining techniques (2021)",
+        others: "NA",
+      },
+    },
+    {
+      name: "Mr. Mounesh A",
+      designation: "Assistant Professor",
+      qualification: "B.E., M.Tech, (Ph.D)",
+      experience: "11 Years",
+      email: "mounesh@aiet.org.in",
+      phone: "+91 90000 00004",
+      aoi: "Artificial Intelligence, Algorithms",
+      photo: imageProxyUrl(
+        "https://lh3.googleusercontent.com/pw/AP1GczNmjIxGCgXDorAlP2f--qlMdKWo8_dmZfpj_APeIbTEW9zbBaR9ubHeKz9TuIabDn_ST0AboFsBcU6NpFaecYb9LDW_ekIGhht9fZnArFHMLQED24BfoXRwPLm044D5SUDGLXQUes-fLq6_7EaKG8yWQg=w413-h531-s-no-gm",
+      ),
+      joiningDate: "01-01-2013",
+      details: {
+        qualifications: "B.E. (CSE), M.Tech (CSE)",
+        pastExperience: "11 years in Academics",
+        areasOfInterest: "AI/ML",
+        achievements: "Pursuing Ph.D",
+        professionalMembership: "IEEE",
+        publications: "7+ Journals",
+        projectsGuided: "14+ Projects",
+        subjectsTeaching: "Design & Analysis of Algorithms",
+        researchPublications: "AI optimization (2023)",
+        others: "NA",
+      },
+    },
+  ],
   exploreData: {
     about: {
       title: "ABOUT ELECTRONICS & COMMUNICATION ENGINEERING",

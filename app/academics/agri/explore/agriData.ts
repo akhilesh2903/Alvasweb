@@ -20,8 +20,7 @@ M4:	By imbibing the students with human values and ethics through transformative
     experience: "15+ Years",
     email: "hodagri@alvas.edu.in",
     phone: "+91 98765 43214",
-    photo:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+    photo: "https://lh3.googleusercontent.com/pw/AP1GczNFWGDf2o-sG-62RzrBhb-V3kaqXdL5btch3UNWLt_d6b8CXEAMSgH429NYgoqIdB7n1F4nKPSB1VOttuyySr9KvLKsjnwuj0tbvQdsB3vbEHi5-6ny=w1000-h1000-no",
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",

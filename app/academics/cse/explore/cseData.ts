@@ -13,14 +13,14 @@ M4: By imbibing the students with human values and ethics through transformative
 
 `,
   hod: {
-    name: "Dr. CSE HOD",
+    name: "Dr. Manjunath Kotari",
     designation: "Professor & HOD - CSE",
     qualification: "Ph.D",
     experience: "15+ Years",
     email: "hodcse@alvas.edu.in",
     phone: "+91 98765 43214",
     photo:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+      "https://lh3.googleusercontent.com/pw/AP1GczMblwknQ-BkFALmcEO9It3pjbPqqh6-to_wPCQeHb9fAcBxRUYkCK_SIFKHznib8NQRKD107qd0FyEnplQYgJ6kXXRSJ1mbI-X4bCQdItc2BOxaHZC8=w600-h800-p",
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in Computer Science",

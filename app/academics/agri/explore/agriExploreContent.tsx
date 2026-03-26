@@ -505,7 +505,7 @@ export default function AgriExploreContent() {
                                 <div className="absolute inset-0 bg-indigo-600 rounded-[2rem] rotate-6 scale-95 opacity-20"></div>
                                 <img
                                   src={department.hod.photo}
-                                  className="w-full h-[320px] object-cover rounded-[2rem] shadow-xl relative z-10 border-4 border-white"
+                                  className="w-full h-[320px] object-cover object-[85%_top] rounded-[2rem] shadow-xl relative z-10 border-4 border-white"
                                   alt={department.hod.name}
                                 />
                               </div>
