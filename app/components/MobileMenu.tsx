@@ -272,6 +272,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         
         
 
+        <Link href="/Research" onClick={onClose} className="hover:text-[#b77a00] pb-2 uppercase">RESEARCH</Link>
         <Link href="/placement" onClick={onClose} className="hover:text-[#b77a00] pb-2">PLACEMENT</Link>
         <Link href="/campus-life" onClick={onClose} className="hover:text-[#b77a00] pb-2">CAMPUS LIFE</Link>
         <Link href="/contact" onClick={onClose} className="hover:text-[#b77a00] pb-2">CONTACT US</Link>

@@ -1,4 +1,7 @@
 import { DepartmentData, Faculty } from "@/lib/departments";
+ 
+const imageProxyUrl = (url: string) =>
+  `/api/image-proxy?url=${encodeURIComponent(url)}`;
 
 export const cseDepartmentData: DepartmentData = {
   id: "cse",
@@ -19,8 +22,9 @@ M4: By imbibing the students with human values and ethics through transformative
     experience: "15+ Years",
     email: "hodcse@alvas.edu.in",
     phone: "+91 98765 43214",
-    photo:
-      "https://lh3.googleusercontent.com/pw/AP1GczMblwknQ-BkFALmcEO9It3pjbPqqh6-to_wPCQeHb9fAcBxRUYkCK_SIFKHznib8NQRKD107qd0FyEnplQYgJ6kXXRSJ1mbI-X4bCQdItc2BOxaHZC8=w600-h800-p",
+    photo: imageProxyUrl(
+      "https://drive.google.com/uc?export=view&id=1VZ74s9elk5-LErpzJ5wwWly1YVQrCzZR",
+    ),
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in Computer Science",

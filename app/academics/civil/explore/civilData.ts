@@ -1,4 +1,7 @@
 import { DepartmentData, Faculty } from "@/lib/departments";
+ 
+const imageProxyUrl = (url: string) =>
+  `/api/image-proxy?url=${encodeURIComponent(url)}`;
 
 export const civilDepartmentData: DepartmentData = {
   id: "civil",
@@ -15,8 +18,9 @@ M3: To promote innovation in the minds of future engineers to face the challenge
     experience: "15+ Years",
     email: "hodcivil@alvas.edu.in",
     phone: "+91 98765 43214",
-    photo:
-      "https://lh3.googleusercontent.com/pw/AP1GczPBqWXshMnZaIUmITr_lVVtWDDxEstt54tyJehJu7_URc1XKfKC_ZHQBy99rARZyn_EukOYRSflTvX-zZnaUYKXeV8J5L0mtUMp6kvHSSCH5Ha5LAbRfFcuMNIuH3izSFRmIT28pMIQjoiBPuil9bJMBw=w600-h800-p",
+    photo: imageProxyUrl(
+      "https://drive.google.com/uc?export=view&id=1zK9JbDK8zQDFFfULljcpRDuGdOU453fh",
+    ),
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",

@@ -1,13 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const ALLOWED_HOSTNAMES = new Set(["lh3.googleusercontent.com"]);
+const ALLOWED_HOSTNAMES = new Set([
+  "lh3.googleusercontent.com",
+  "drive.google.com",
+]);
 
 function isAllowedImageUrl(url: URL): boolean {
   if (url.protocol !== "https:") return false;
   if (!ALLOWED_HOSTNAMES.has(url.hostname)) return false;
 
   // Google Photos direct links typically live under /pw/...
-  if (!url.pathname.startsWith("/pw/")) return false;
+  // Google Drive direct links live under /uc
+  if (!url.pathname.startsWith("/pw/") && !url.pathname.startsWith("/uc"))
+    return false;
 
   return true;
 }

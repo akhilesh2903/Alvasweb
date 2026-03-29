@@ -1,4 +1,7 @@
 import { DepartmentData, Faculty } from "@/lib/departments";
+ 
+const imageProxyUrl = (url: string) =>
+  `/api/image-proxy?url=${encodeURIComponent(url)}`;
 
 export const chemistryDepartmentData: DepartmentData = {
   id: "chemistry",
@@ -19,8 +22,9 @@ M4:Inculcate the basic principles of Chemistry for interdisciplinary innovative 
     experience: "15+ Years",
     email: "hodchemistry@alvas.edu.in",
     phone: "+91 98765 43214",
-    photo:
-      "https://lh3.googleusercontent.com/pw/AP1GczNQ9GkFsdoMENpk5oLzo9kK2A1L2CoilQJfpjCJ_05v5VghK7v5ZCCInFqWoF8k0ysVYmWLkj2ZoXsZy6ZUbSbzi1ic-KQSKN69li8YibZ2rwiexM2VmVZ2E8BvOhomuEu0WMl5YXvihtm-dGXIStly_w=w600-h800-p",
+    photo: imageProxyUrl(
+      "https://drive.google.com/uc?export=view&id=1w8N0fcAPPCWLfGGU6uY83qKstLHzSwoH",
+    ),
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",

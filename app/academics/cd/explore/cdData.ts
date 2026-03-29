@@ -1,12 +1,14 @@
 import { DepartmentData, Faculty } from "@/lib/departments";
+ 
+const imageProxyUrl = (url: string) =>
+  `/api/image-proxy?url=${encodeURIComponent(url)}`;
 
 export const cdDepartmentData: DepartmentData = {
   id: "cd",
   name: "Department of Cd",
   title: "Department of Cd Engineering",
   vision: `Centre of excellence to empower the young minds in the field of Department of Cd Engineering with research focus and skill development through transformative education catering to the needs of the society`,
-  mission:
-    `M1:	To create Learning Environment to enable the students for excellence in the field of Department of Cd Engineering.
+  mission: `M1:	To create Learning Environment to enable the students for excellence in the field of Department of Cd Engineering.
 M2:	To empower the students with ncdssary skills for solving the complex technological problems.
 M3:	To inculcate Research Culture among Teaching Learning Group by guiding them towards Research activities to bridge the gap between Industry and Academia.
 M4:	By imbibing the students with human values and ethics through transformative education and make them socially responsible professionals.
@@ -14,14 +16,15 @@ M4:	By imbibing the students with human values and ethics through transformative
 
 `,
   hod: {
-    name: "Dr. CD HOD",
+    name: "Dr. Pushparani K",
     designation: "Professor & HOD - CD",
     qualification: "Ph.D",
     experience: "15+ Years",
     email: "hodcd@alvas.edu.in",
     phone: "+91 98765 43214",
-    photo:
-      "https://lh3.googleusercontent.com/pw/AP1GczN3UO2GfvMjulvIhsheK3G1p_0fwbwReJ6HKYSKIn285DiARGI-9sbQ3kswJF2BDUFe6sW_K0-LmJZ1z89hmHEf4yXiBtdBg8bJp9fwdG5HwX_6oFDtdpXPfDgHdiTby0f6CPqgGMUWKGNvrQ_rjQbsRA=w600-h800-p",
+    photo: imageProxyUrl(
+      "https://drive.google.com/uc?export=view&id=1AyCYWhxBQnwLId4eDYblouH1tLJcTz-Z",
+    ),
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",

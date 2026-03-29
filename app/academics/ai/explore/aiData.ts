@@ -1,4 +1,7 @@
 import { DepartmentData, Faculty } from "@/lib/departments";
+ 
+const imageProxyUrl = (url: string) =>
+  `/api/image-proxy?url=${encodeURIComponent(url)}`;
 
 export const aiDepartmentData: DepartmentData = {
   id: "ai",
@@ -20,8 +23,9 @@ M4:	By imbibing the students with human values and ethics through transformative
     experience: "15+ Years",
     email: "hodai@alvas.edu.in",
     phone: "+91 98765 43214",
-    photo:
-      "https://lh3.googleusercontent.com/pw/AP1GczOUdQPrksNhTUJt4evuejpGeDYILqM1M3oCKwFuy6_wrwmD1sejWWaDy02HEALXwp6njKFCPcTZDx4YeEFOducjAMztPSAQIrRP4zbD9yB3x_wNT8hxOZgdbxmFEsfYEDQ6ZYT5cMJcncXtxz7_iCCrFg=w600-h800-p",
+    photo: imageProxyUrl(
+      "https://drive.google.com/uc?export=view&id=10_iBnKvNTiyqzkoHdBOn2sxyWkW0sTHV",
+    ),
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",

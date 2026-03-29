@@ -538,9 +538,9 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                     <div className="flex flex-col gap-4">
                       <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-md border-2 border-[#b77a00]/20">
                         <img
-                          src="/peter sir.webp"
+                          src={`/api/image-proxy?url=${encodeURIComponent("https://drive.google.com/uc?export=view&id=1yVLMW1xj5CjtS57vACK77reXjZeShGmm")}`}
                           alt="Principal"
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover object-[center_35%]"
                         />
                       </div>
                       <div className="min-w-0">
@@ -856,10 +856,12 @@ export default function Header({ onMenuToggle }: HeaderProps) {
 
           {/* ============ RESEARCH - FULL WIDTH MEGA MENU ============ */}
           <div ref={researchGroupRef} className="relative group py-4">
-            <button className="nav-btn font-bold tracking-[1px] uppercase text-[1rem] py-[5px] flex items-center gap-1 group-hover:text-[#b77a00] transition relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-[#b77a00] after:transition-all after:duration-200 hover:after:w-full">
-              RESEARCH
-              <i className="fas fa-chevron-down text-[10px] ml-1 opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
-            </button>
+            <Link href="/Research">
+              <button className="nav-btn font-bold tracking-[1px] uppercase text-[1rem] py-[5px] flex items-center gap-1 group-hover:text-[#b77a00] transition relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-[#b77a00] after:transition-all after:duration-200 hover:after:w-full">
+                RESEARCH
+                <i className="fas fa-chevron-down text-[10px] ml-1 opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
+              </button>
+            </Link>
 
             <div
               ref={researchDropdownRef}
@@ -872,36 +874,36 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                       Research Areas
                     </h3>
                     <div className="space-y-1">
-                      <a
-                        href="#"
+                      <Link
+                        href="/Research"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Funding
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/Research"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         IPR
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/Research"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Publication
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/Research"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Patent Application
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/Research"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Multidisciplinary Research Ideas
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -910,36 +912,36 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                       Resources
                     </h3>
                     <div className="space-y-1">
-                      <a
-                        href="#"
+                      <Link
+                        href="/Research"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Research Team
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/Research"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Research Policies
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/Research"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Research Supervisors
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/Research"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Journals
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/Research"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Conference
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -948,24 +950,24 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                       Facilities
                     </h3>
                     <div className="space-y-1">
-                      <a
-                        href="#"
+                      <Link
+                        href="/Research"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Facilities
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/Research"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         About
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/Research"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Yearwise Details
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

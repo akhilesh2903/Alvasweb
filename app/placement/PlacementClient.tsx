@@ -16,6 +16,9 @@ const tabs = [
   { id: "alvas-pragathi", label: "Alvas Pragathi" },
 ];
 
+const imageProxyUrl = (url: string) =>
+  `/api/image-proxy?url=${encodeURIComponent(url)}`;
+
 const slides = [
   {
     image: "https://picsum.photos/1600/700?random=1",
@@ -657,51 +660,86 @@ export default function PlacementClient() {
           </h2>
 
           {/* HEAD OF PLACEMENT - FEATURE CARD */}
-          <div className="relative mb-24 overflow-hidden rounded-3xl bg-white shadow-xl flex flex-col md:flex-row items-center">
-            {/* LEFT TEXT CONTENT */}
-            <div className="p-12 md:p-16 flex-1">
-              <span className="inline-block px-4 py-1 rounded-full bg-[#F4C430]/10 text-[#D4AF37] font-bold text-sm uppercase tracking-widest mb-6">
-                Head – Placements
-              </span>
-              <h3 className="text-4xl font-extrabold text-[#1E2A78] mb-6 tracking-tight leading-tight">
-                Ms Ranjitha Raviprasad Acharya
-              </h3>
-              <div className="space-y-4 text-gray-700">
-                <div className="flex items-center gap-3 text-base">
-                  <span className="text-[#F4C430] text-lg">🎓</span>
-                  <span>
-                    <span className="font-bold text-[#1E2A78]">
-                      Qualification:
-                    </span>{" "}
-                    M.Sc, B.Ed
-                  </span>
-                </div>
-                <div className="flex items-center gap-3 text-base">
-                  <span className="text-[#F4C430] text-lg">📞</span>
-                  <span>
-                    <span className="font-bold text-[#1E2A78]">Phone:</span> +91
-                    9731953123
-                  </span>
-                </div>
-                <div className="flex items-center gap-3 text-base">
-                  <span className="text-[#F4C430] text-lg">✉️</span>
-                  <span>
-                    <span className="font-bold text-[#1E2A78]">Email:</span>{" "}
-                    ranjitha@alvascollege.com
-                  </span>
+          <div className="relative mb-24 overflow-hidden rounded-3xl bg-white shadow-xl border border-gray-100">
+            {/* Soft premium background wash */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#1E2A78]/[0.06] via-transparent to-[#F4C430]/[0.10]" />
+
+            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 items-center p-10 md:p-14">
+              {/* LEFT: TEXT CONTENT */}
+              <div className="lg:col-span-7">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F4C430]/10 text-[#1E2A78] font-black text-xs uppercase tracking-[0.2em] mb-6">
+                  Head – Placements
+                </span>
+
+                <h3 className="text-4xl md:text-5xl font-black text-[#1E2A78] mb-6 tracking-tight leading-[1.1]">
+                  Ms Ranjitha Raviprasad Acharya
+                </h3>
+
+                <p className="text-gray-600 text-lg leading-relaxed mb-10 max-w-2xl">
+                  Guiding students with industry-ready training and connecting
+                  them with leading recruiters through structured placement
+                  support.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="rounded-2xl bg-white/70 border border-gray-100 p-5 shadow-sm">
+                    <p className="text-[11px] font-black tracking-[0.2em] uppercase text-gray-400 mb-2">
+                      Qualification
+                    </p>
+                    <p className="text-[#1E2A78] font-bold">M.Sc, B.Ed</p>
+                  </div>
+
+                  <div className="rounded-2xl bg-white/70 border border-gray-100 p-5 shadow-sm">
+                    <p className="text-[11px] font-black tracking-[0.2em] uppercase text-gray-400 mb-2">
+                      Phone
+                    </p>
+                    <p className="text-[#1E2A78] font-bold">+91 9731953123</p>
+                  </div>
+
+                  <div className="rounded-2xl bg-white/70 border border-gray-100 p-5 shadow-sm sm:col-span-2">
+                    <p className="text-[11px] font-black tracking-[0.2em] uppercase text-gray-400 mb-2">
+                      Email
+                    </p>
+                    <p className="text-[#1E2A78] font-bold">
+                      ranjitha@alvascollege.com
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* RIGHT IMAGE WITH STYLED BACKGROUND */}
-            <div className="relative w-full md:w-[420px] h-[480px] bg-[#1E2A78]">
-              <img
-                src="https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/05/Rnjitha.jpg"
-                alt="Ms Ranjitha Raviprasad Acharya"
-                className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-              />
-              {/* Decorative accent */}
-              <div className="absolute bottom-0 right-0 w-32 h-32 bg-[#F4C430] translate-x-16 translate-y-16 rotate-45 opacity-20"></div>
+              {/* RIGHT: PORTRAIT CARD (subject fully visible) */}
+              <div className="lg:col-span-5">
+                <div className="relative mx-auto w-full max-w-[360px]">
+                  <div className="relative rounded-3xl overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.18)] border border-gray-200 bg-[#0F172A]">
+                    {/* Blurred background fill */}
+                    <div className="absolute inset-0">
+                      <img
+                        src={imageProxyUrl("https://drive.google.com/uc?export=view&id=1afhA-eF3p7jZZgRlo1UhIaUUHsoJTqPy")}
+                        alt=""
+                        aria-hidden="true"
+                        className="w-full h-full object-cover blur-2xl scale-110 opacity-60"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/60 via-[#0F172A]/15 to-transparent" />
+                    </div>
+
+                    {/* Foreground portrait (no subject crop) */}
+                    <div className="relative aspect-[3/4] p-6 md:p-7">
+                      <img
+                        src={imageProxyUrl("https://drive.google.com/uc?export=view&id=1afhA-eF3p7jZZgRlo1UhIaUUHsoJTqPy")}
+                        alt="Ms Ranjitha Raviprasad Acharya"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover object-[68%_35%]"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Subtle highlight edge */}
+                  <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/10" />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -711,7 +749,7 @@ export default function PlacementClient() {
               {
                 name: "Mr.Samyak Jain",
                 role: "Training & Placement Officer",
-                img: "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/05/Kumar-Swamy-MC.jpg",
+                img: imageProxyUrl("https://drive.google.com/uc?export=view&id=1sb5ngI_uz9V1hfXPIsEEkQ9bqnzfrM7C"),
               },
             ].map((member, index) => (
               <div
@@ -724,7 +762,7 @@ export default function PlacementClient() {
                   <img
                     src={member.img}
                     alt={member.name}
-                    className="w-full h-full rounded-full object-cover object-top p-2"
+                    className="w-full h-full rounded-full object-contain p-2"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src =
                         "https://ui-avatars.com/api/?name=" +

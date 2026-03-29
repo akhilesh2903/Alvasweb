@@ -16,14 +16,14 @@ M4:	By imbibing the students with human values and ethics through transformative
 
 `,
   hod: {
-    name: "Dr. ISE HOD",
+    name: "Dr. Ravindra B V",
     designation: "Professor & HOD - ISE",
     qualification: "Ph.D",
     experience: "15+ Years",
     email: "hodise@alvas.edu.in",
     phone: "+91 98765 43214",
     photo: imageProxyUrl(
-      "https://lh3.googleusercontent.com/pw/AP1GczO6GKHN1aTRsW2lUKq187ItkeRtAjSX3ZnDutfVERNui3YAYefafOdlfWWRbPrKRvXZYA5_S_5gw8JXm-_EjlWf657mSwlTXww5FyTfO1Ln6Lly1M71aaDxNzGNOsQht7TbVNEUDUW2mk0dSImlWgVz0g=w600-h800-p",
+      "https://drive.google.com/uc?export=view&id=1bW8ikKQ7x61DvLBB8q9lyMLyvXBwqSjf",
     ),
     joiningDate: "12-08-2010",
     details: {
@@ -49,7 +49,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       phone: "+91 90000 00001",
       aoi: "Computer Networks, Machine Learning",
       photo: imageProxyUrl(
-        "https://lh3.googleusercontent.com/pw/AP1GczORGdgzkyhpbSV1wV5kiNmMIYygWBenSgW-y_dubPKgX3mGlizXzO_LfyUR_TNdV7FbtBy43iR-fKYUDTanhryK2Rmf-K6GW7DZ8fdrh8ACJ5PeO4zCD29h0LEe5C79HAH7dapWr4H_1eKEFmGmqSSE5A=w413-h531-s-no-gm",
+        "https://drive.google.com/uc?export=view&id=1sz92ARG7Hw72i20pOA1wtVK9uj-wQEiR",
       ),
       joiningDate: "18-06-2024",
       details: {
@@ -74,7 +74,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       phone: "+91 90000 00002",
       aoi: "Software Engineering, Cloud Computing",
       photo: imageProxyUrl(
-        "https://lh3.googleusercontent.com/pw/AP1GczOY8sbskINoRlp1gwpF4NZ0CLPxt-uS4Btd75iKRo-lg2wwi2eNIZCUxKVozlm9n8R00BSE1y8_3uy30X5QFVKJuXmocSdfH4hLsdOVAB45mUkvyiN3gCcv5vhr_vFHRfpgNvRhl1yOz4ss-rY0QSzFAw=w413-h531-s-no-gm",
+        "https://drive.google.com/uc?export=view&id=1ighmSxPyB1H3r79KhZCH86dIwmfSb5N5",
       ),
       joiningDate: "01-01-2015",
       details: {
@@ -99,7 +99,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       phone: "+91 90000 00003",
       aoi: "Database Management, Data Science",
       photo: imageProxyUrl(
-        "https://lh3.googleusercontent.com/pw/AP1GczOTB2MZNnkJ197_m8bMUHuaUMcaC7UbCLEWdKbX0j7a4DJf4I1-aQdue8j500SGyUM0kXU6MxkBB88mXf35XqlNtMzSTmbAJZunD1iIfQfFKn-ilpCVWedoy6VMeFCkWxOvzrXYgUCTLcM8T93xawC8qg=w413-h531-s-no-gm",
+        "https://drive.google.com/uc?export=view&id=1YhZ0M-WMpOC8IxWAyLzSHr4z-mIHVhMh",
       ),
       joiningDate: "01-08-2020",
       details: {
@@ -124,7 +124,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       phone: "+91 90000 00004",
       aoi: "Artificial Intelligence, Algorithms",
       photo: imageProxyUrl(
-        "https://lh3.googleusercontent.com/pw/AP1GczNmjIxGCgXDorAlP2f--qlMdKWo8_dmZfpj_APeIbTEW9zbBaR9ubHeKz9TuIabDn_ST0AboFsBcU6NpFaecYb9LDW_ekIGhht9fZnArFHMLQED24BfoXRwPLm044D5SUDGLXQUes-fLq6_7EaKG8yWQg=w413-h531-s-no-gm",
+        "https://drive.google.com/uc?export=view&id=1uF89svcpIW1MKdJNlu0VgD-JSB7sPutC",
       ),
       joiningDate: "01-01-2013",
       details: {

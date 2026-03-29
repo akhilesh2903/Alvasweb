@@ -1,4 +1,7 @@
 import { DepartmentData, Faculty } from "@/lib/departments";
+ 
+const imageProxyUrl = (url: string) =>
+  `/api/image-proxy?url=${encodeURIComponent(url)}`;
 
 export const mechDepartmentData: DepartmentData = {
   id: "mech",
@@ -19,8 +22,9 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
     experience: "15+ Years",
     email: "hodmech@alvas.edu.in",
     phone: "+91 98765 43214",
-    photo:
-      "https://lh3.googleusercontent.com/pw/AP1GczN2BKovvlJ5kRKtqzqceSkCwbVtpAtZ8JWQGqAh7Q_XeL6v9nCn7B4zY6J8z_vY0hUYTeRlDSyDB3eESBhoWQO4p4qxdErc_ye6lLBcRyJ4t60dPqG0VS-0hTJ6vCVNum9mo012MnTlD6j4PPaL8q2lsw=w600-h800-p",
+    photo: imageProxyUrl(
+      "https://drive.google.com/uc?export=view&id=1oFVvC5zN68_KLQ3XDUp6QQd40mnpJe2y",
+    ),
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",

@@ -145,7 +145,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-yellow-300 transition">
+                  <a href="/Research" className="hover:text-yellow-300 transition">
                     Research
                   </a>
                 </li>

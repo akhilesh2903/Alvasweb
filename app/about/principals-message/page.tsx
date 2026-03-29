@@ -45,9 +45,9 @@ export default function PrincipalsMessage() {
             <div className="flex flex-col md:flex-row gap-8 items-center md:items-start mb-10">
               <div className="shrink-0 w-40 h-40 rounded-2xl overflow-hidden shadow-lg border-4 border-[#b77a00]/20">
                 <img
-                  src="/peter sir.webp"
+                  src={`/api/image-proxy?url=${encodeURIComponent("https://drive.google.com/uc?export=view&id=1yVLMW1xj5CjtS57vACK77reXjZeShGmm")}`}
                   alt="Dr. Peter Fernandes – Principal"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-[center_35%]"
                 />
               </div>
               <div>

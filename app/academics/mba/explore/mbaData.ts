@@ -1,5 +1,8 @@
 import { DepartmentData, Faculty } from "@/lib/departments";
 
+const imageProxyUrl = (url: string) =>
+  `/api/image-proxy?url=${encodeURIComponent(url)}`;
+
 export const mbaDepartmentData: DepartmentData = {
   id: "mba",
   name: "Department of Business Administration",
@@ -322,7 +325,7 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "8 Months (AIET), 2 Years (Total)",
       email: "samyakjain@aiet.org.in",
       phone: "NA",
-      photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl("https://drive.google.com/uc?export=view&id=1sb5ngI_uz9V1hfXPIsEEkQ9bqnzfrM7C"),
       joiningDate: "15-07-2025",
       details: {
         qualifications: "MBA",

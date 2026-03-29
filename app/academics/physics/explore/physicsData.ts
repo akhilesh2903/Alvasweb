@@ -1,4 +1,7 @@
 import { DepartmentData, Faculty } from "@/lib/departments";
+ 
+const imageProxyUrl = (url: string) =>
+  `/api/image-proxy?url=${encodeURIComponent(url)}`;
 
 export const physicsDepartmentData: DepartmentData = {
   id: "physics",
@@ -20,8 +23,9 @@ M4:	By imbibing the students with human values and ethics through transformative
     experience: "15+ Years",
     email: "hodphysics@alvas.edu.in",
     phone: "+91 98765 43214",
-    photo:
-      "https://lh3.googleusercontent.com/pw/AP1GczOYsBBgJycVYrBXnLB7KYSgyDznrTSQZeMpcXFtgGdzGM48cOsSakDO1iYmwy20m65E7zqcrxmB1flDgb3H2aW0EdcUGjqutrA4BIe4XgtOa1e-jO04eFH04szGvwX9Q0lCD5W15VXFjCYijV75v-bedA=w600-h800-p",
+    photo: imageProxyUrl(
+      "https://drive.google.com/uc?export=view&id=1eKYIjDD6V9j6xoeiqb0WaD3yq2qOA68Z",
+    ),
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",

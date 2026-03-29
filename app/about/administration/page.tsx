@@ -86,9 +86,10 @@ export default function Administration() {
         name: "Dr. Peter Fernandes",
         role: "Principal, AIET",
         image:
-          "/peter sir.webp",
+          `/api/image-proxy?url=${encodeURIComponent("https://drive.google.com/uc?export=view&id=1yVLMW1xj5CjtS57vACK77reXjZeShGmm")}`,
         message:
           "Fostering academic rigor and research excellence to place AIET among the top technical institutions globally.",
+        objectPosition: "center 35%",
       },
     ],
   };
@@ -212,6 +213,7 @@ export default function Administration() {
                   <div className="w-40 h-40 shrink-0 overflow-hidden rounded-2xl shadow-lg">
                     <img
                       src={manager.image}
+                      style={manager.objectPosition ? { objectPosition: manager.objectPosition } : {}}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       alt={manager.name}
                     />
