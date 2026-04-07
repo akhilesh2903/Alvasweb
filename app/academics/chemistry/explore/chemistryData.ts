@@ -68,38 +68,22 @@ M4:Inculcate the basic principles of Chemistry for interdisciplinary innovative 
   ),
   exploreData: {
     about: {
-      title: "ABOUT CHEMISTRY",
-      body: `
-        <p>Established in 2008, the Department of Chemistry serves as a cornerstone of the engineering curriculum, providing the fundamental scientific principles necessary for all engineering disciplines.</p>
-
-        <h4 class="text-xl font-bold mt-6 mb-3 text-gray-900">Academic Impact</h4>
-        <ul class="list-disc pl-5 mb-4 space-y-1">
-          <li><strong>Foundation Support</strong> – Catering to approximately 700 students annually across all branches during their first and second semesters.</li>
-          <li><strong>Core Curriculum</strong> – Delivers comprehensive "Applied Chemistry integrated course" for CS, ME, CV and EC streams.</li>
-          <li><strong>Modern Pedagogy</strong> – Successfully implemented Outcome Based Education (OBE) since 2018 to ensure students meet specific professional and academic competencies.</li>
-        </ul>
-
-        <h4 class="text-xl font-bold mt-6 mb-3 text-gray-900">Research & Excellence</h4>
-        <ul class="list-disc pl-5 mb-4 space-y-1">
-          <li><strong>Recognized Research Centre</strong> – Affiliated with VTU since 2011.</li>
-          <li><strong>Advanced Studies</strong> – Currently hosting three research scholars pursuing their Ph.D.</li>
-          <li><strong>Expert Faculty</strong> – Driven by a team of highly qualified and experienced staff dedicated to the department’s strategic vision and mission.</li>
-        </ul>
-      `,
+      title: "ABOUT DEPARTMENT OF CHEMISTRY",
+      body: `The Department of Chemistry imparts fundamental and applied chemical knowledge critical for materials engineering, environmental science, and industrial applications.`,
       highlights: [
-        "Recognized VTU Research Centre since 2011.",
-        "Outcome Based Education (OBE) implemented since 2018.",
-        "Expert faculty dedicated to academic and research excellence.",
+        "Dynamic and modernized curriculum.",
+        "Focus on hands-on practical learning.",
+        "Strong industry-academia connections.",
       ],
     },
     thrust: {
       title: "THRUST AREA",
-      body: "Focusing on Next-Gen Communication, VLSI Design, and Embedded Systems.",
+      body: "Polymer Science, Nanomaterials, Environmental Chemistry, and Green Chemistry.",
       highlights: [
-        "•	Embedded Systems",
-        "•	IoT (Internet of Things)",
-        "•	VLSI Design",
-        "•	Signal Processing",
+        "• Core Domain Expertise",
+        "• Advanced Research Methodologies",
+        "• Industry-Standard Tools",
+        "• Multi-disciplinary Projects",
       ],
     },
     peo: {
@@ -161,66 +145,66 @@ PSO3: Apply modern Hardware and software tools to analyze and solve engineering 
     },
     placements: {
       title: "PLACEMENT",
-      body: "Students are placed in top companies like Bosch, Intel, Qualcomm, and more.",
+      body: "Students achieve excellent placements in top-tier multinational companies and core industries.",
       highlights: [
-        "100% placement track record for eligible students.",
-        "Highest CTC in communication domains.",
-        "MOU with top electronics conglomerates.",
+        "Dedicated placement training.",
+        "MoUs with leading corporates.",
+        "High success rate for eligible students.",
       ],
     },
     research: {
       title: "RESEARCH AND PUBLICATION",
-      body: "Highly active research community with numerous patents and international publications.",
+      body: "Active participation in research, leading to numerous publications in reputed journals and international conferences.",
       highlights: [
-        "Funded research labs (VGST).",
-        "Patent filing assistance for students.",
-        "Publication in IEEE and Springer journals.",
+        "State and National funded projects.",
+        "Student involvement in research.",
+        "High-impact journal publications.",
       ],
     },
     facultyStaff: { title: "FACULTY AND STAFF", body: "", highlights: [] },
     facilities: {
       title: "FACILITIES",
-      body: "Advanced infrastructure including specialized equipment for signal processing and microelectronics.",
+      body: "Modernized infrastructure equipped with the latest software and hardware to support advanced learning and research.",
       highlights: [
-        "Cadence VLSI bundle certification center.",
-        "Digital Signal Processing workstation lab.",
-        "Robotics and Automation center.",
+        "Well-equipped laboratories.",
+        "Access to latest software tools.",
+        "Dedicated project incubation spaces.",
       ],
     },
     workshop: {
       title: "WORKSHOP AND CONFERENCE",
-      body: "Regular hosting of national and international technical events.",
+      body: "Regularly organizing and hosting technical events, guest lectures, and national seminars.",
       highlights: [
-        "Annual Electronics Symposium.",
-        "Workshops on AI in Communication.",
-        "IEEE student chapter events.",
+        "Annual technical fests.",
+        "Workshops by industry experts.",
+        "Hands-on skill development sessions.",
       ],
     },
     clubs: {
       title: "PROFESSIONAL BODIES",
-      body: "Active membership in global engineering societies.",
+      body: "Vibrant student clubs and professional societal chapters to promote extracurricular technical growth.",
       highlights: [
-        "IEEE Signal Processing Society chapter.",
-        "Robotics Club activity center.",
-        "Student satellite program.",
+        "Active student chapters.",
+        "Peer-to-peer learning clubs.",
+        "Participation in national hackathons.",
       ],
     },
     achievements: {
       title: "ACHIEVEMENTS",
-      body: "National awards in hackathons and sports.",
+      body: "Consistent track record of academic excellence, university ranks, and winning national-level competitions.",
       highlights: [
-        "First place in National Robotics Challenge.",
-        "Best Technical Paper award at ICETE.",
-        "University ranks in top positions.",
+        "Outstanding university ranks.",
+        "Awards in technical competitions.",
+        "Recognition in sports and culture.",
       ],
     },
     activities: {
       title: "DEPARTMENT ACTIVITIES",
-      body: "Holistic development through technical and cultural activities.",
+      body: "A holistic environment encouraging students to engage in diverse co-curricular and extracurricular activities.",
       highlights: [
-        "Weekly technical seminars.",
-        "Industrial visit programs.",
-        "Cultural fest participation.",
+        "Frequent industrial visits.",
+        "Alumni interaction sessions.",
+        "Community outreach programs.",
       ],
     },
     newsletter: {

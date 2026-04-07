@@ -14,6 +14,7 @@ import ProgramsSection from './components/ProgramsSection'
 import CampusHighlights from './components/CampusHighlights'
 import CampusDiaries from './components/CampusDiaries'
 import Testimonials from './components/Testimonials'
+import AdmissionPopup from './components/AdmissionPopup'
 
 
 export default function Home() {
@@ -33,6 +34,7 @@ export default function Home() {
 
   return (
     <>
+      <AdmissionPopup />
       <IntroOverlay />
       <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
       <Header onMenuToggle={toggleMobileMenu} />

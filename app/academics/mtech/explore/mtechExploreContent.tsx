@@ -17,21 +17,13 @@ import {
   Zap,
   CheckCircle2,
   Award,
+  Newspaper,
+  Bell,
+  Sparkles,
   BookOpen,
   Target,
 } from "lucide-react";
-
-const NewsletterViewer = dynamic(
-  () => import("@/app/components/NewsletterViewer"),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="h-96 flex items-center justify-center bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200 text-gray-400">
-        Loading Newsletter Viewer...
-      </div>
-    ),
-  },
-);
+import NewsletterViewer from "@/app/components/NewsletterViewer";
 
 export default function MtechExploreContent() {
   const department = mtechDepartmentData;
@@ -604,7 +596,11 @@ export default function MtechExploreContent() {
                     ) : (
                       <>
                         {activeTab === "newsletter" ? (
-                          <NewsletterViewer />
+                          <NewsletterViewer
+                            data={[]}
+                            backPath="/academics/mtech/explore"
+                            departmentName="MTECH"
+                          />
                         ) : (
                           <div
                             className="text-sm md:text-base text-gray-800 leading-relaxed mb-6"

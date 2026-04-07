@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen:research": "node scripts/generateResearchJson.mjs"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.4.0",

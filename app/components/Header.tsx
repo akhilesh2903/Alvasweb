@@ -284,7 +284,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
             CET CODE-E169
           </span>
           <span className="hover:text-[#b77a00] cursor-pointer transition">
-            PGCET CODE-
+            
           </span>
         </div>
 
@@ -296,7 +296,12 @@ export default function Header({ onMenuToggle }: HeaderProps) {
             <i className="fas fa-cube text-lg"></i>
             360° View
           </a>
-          <a href="#" className="text-[#b77a00]">
+          <a
+            href="https://admissions.alvas.org/engineering-application-form"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#b77a00]"
+          >
             Admissions Enquiry
           </a>
         </div>
