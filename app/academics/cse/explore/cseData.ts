@@ -1,5 +1,5 @@
 import { DepartmentData, Faculty } from "@/lib/departments";
- 
+
 const imageProxyUrl = (url: string) =>
   `/api/image-proxy?url=${encodeURIComponent(url)}`;
 
@@ -7,14 +7,12 @@ export const cseDepartmentData: DepartmentData = {
   id: "cse",
   name: "Computer Science & Engineering",
   title: "Computer Science & Engineering",
-  vision: `Centre of excellence to empower the young minds in the field of Computer Science and Engineering with research focus and skill development through transformative education catering to the needs of the society`,
-  mission: `M1: To create Learning Environment to enable the students for excellence in the field of Computer Science and Engineering.
-M2: To empower the students with necessary skills for solving complex technological problems.
-M3: To inculcate Research Culture among Teaching Learning Group by guiding them towards Research activities to bridge the gap between Industry and Academia.
-M4: By imbibing the students with human values and ethics through transformative education and make them socially responsible professionals.
-
-
-`,
+  vision:
+    "Engineering competent, excellent professionals by transforming the knowledge and computing skills to individuals through modern innovative tools and techniques",
+  mission: `M1: To produce skilled, creative software developers through rigorous training.
+M2: To conduct specific technical courses to keep abreast to the latest technological developments and transformations in the domain.
+M3: To implement the ideas of research and innovations in interdisciplinary domains.
+M4: To establish Industry-Institute Interaction programs to enhance the skills of employability and entrepreneurship.`,
   hod: {
     name: "Dr. Manjunath Kotari",
     designation: "Professor & HOD - CSE",
@@ -87,14 +85,25 @@ M4: By imbibing the students with human values and ethics through transformative
     },
     peo: {
       title: "(PEO's, PO's, PSO'S)",
-      body: `PO1: Engineering Knowledge: Apply knowledge of mathematics, science, engineering fundamentals and an engineering specialization to solve complex engineering problems.
+      body: `PEO1: Exhibit the knowledge and skill sets to adapt to the dynamic technological transformations and developments in the field of Computer Science and Engineering.
+PEO2: Get adapted to a corporate working environment discharging entrusted duties competently and be able to stay updated on the emerging technological changes to initiate a start-up.
+PEO3: Get engaged in an innovative career to exploit new ideas for gaining social and economic values or to pursue higher studies in the field of research.
 
-PO2: Problem Analysis: Identify, formulate, review research literature and analyze complex engineering problems using first principles.
+PO1: Engineering Knowledge: Apply knowledge of mathematics, natural science, computing, engineering fundamentals and an engineering specialization to the solution of complex engineering problems.
+PO2: Problem Analysis: Identify, formulate, review research literature and analyse complex engineering problems reaching substantiated conclusions with consideration for sustainable development.
+PO3: Design/Development of Solutions: Design creative solutions for complex engineering problems and design/develop systems/components/processes to meet identified needs with consideration for the public health and safety, whole-life cost, net zero carbon, culture, society and environment as required.
+PO4: Conduct Investigations of Complex Problems: Conduct investigations of complex engineering problems using research-based knowledge including design of experiments, modelling, analysis & interpretation of data to provide valid conclusions.
+PO5: Engineering Tool Usage: Create, select and apply appropriate techniques, resources and modern engineering & IT tools, including prediction and modelling recognizing their limitations to solve complex engineering problems.
+PO6: The Engineer and The World: Analyse and evaluate societal and environmental aspects while solving complex engineering problems for its impact on sustainability with reference to economy, health, safety, legal framework, culture and environment.
+PO7: Ethics: Apply ethical principles and commit to professional ethics, human values, diversity and inclusion; adhere to national & international laws.
+PO8: Individual and Collaborative Team work: Function effectively as an individual, and as a member or leader in diverse/multi-disciplinary teams.
+PO9: Communication: Communicate effectively and inclusively within the engineering community and society at large, such as being able to comprehend and write effective reports and design documentation, make effective presentations considering cultural, language, and learning differences.
+PO10: Project Management and Finance: Apply knowledge and understanding of engineering management principles and economic decision-making and apply these to one’s own work, as a member and leader in a team, and to manage projects and in multidisciplinary environments.
+PO11: Life-Long Learning: Recognize the need for, and have the preparation and ability for i) independent and life-long learning ii) adaptability to new and emerging technologies and iii) critical thinking in the broadest context of technological change.
 
-PEO1: Apply mathematical, scientific and engineering skills for solving problems in the area of Computer Science and Engineering.
-PEO2: Expose to emerging technologies and excel in industries/higher studies/research.
-PEO3: Apply analytical skills in the area of Computer Science and Engineering to become competent and employable.
-PEO4: Inculcate Professional ethics, human values, team work for solving engineering problems and contribute to societal needs.`,
+PSO1: Professional Skills: The ability to understand & implement the computer programs in the areas of Computer Architecture, System Software, Database Management Systems, Web Design, Multimedia and Computer Networking.
+PSO2: Problem-Solving Skills: The ability to solve real-world problems by suitable mathematical model with strong technological concepts in rapidly growing arena of computer technology.
+PSO3: Successful Career and Entrepreneurship: Knowledge in diverse areas of Software Engineering and Management & Entrepreneurship for IT Industry, conducive in cultivating skills for successful career development.`,
       highlights: [
         "Strong foundational knowledge in computing.",
         "Project-oriented learning.",
@@ -199,8 +208,46 @@ PEO4: Inculcate Professional ethics, human values, team work for solving enginee
     },
     activities: {
       title: "DEPARTMENT ACTIVITIES",
-      body: "Workshops, internships, industrial visits and student projects.",
-      highlights: ["Weekly seminars", "Industry visits", "Project showcases"],
+      body: "From community outreach to technical workshops, the department regularly conducts activities that build awareness, skills, and responsible digital citizenship.",
+      highlights: [
+        "Over 50 participants actively engaged and shared experiences.",
+        "Participants learned practical red flags and safe digital habits.",
+        "Encouraged prompt reporting and community-led cyber awareness.",
+      ],
+      entries: [
+        {
+          title: "Cyber Security Awareness Talk",
+          topic: "On various rising cyber threats",
+          date: "06-09-2025",
+          venue: "Rotary Club Moodabidre",
+          audience: "Members of Rotary Club and local community",
+          conductedBy: "Rotary Club Moodabidre Cybersecurity Awareness Team",
+          overview:
+            "A Cybersecurity Awareness Talk was conducted at the Rotary Club, Moodabidre to spread knowledge about the rising digital threats affecting individuals and communities in coastal Karnataka. The talk aimed to empower people to recognize cyber frauds, understand local trends in cybercrime, and adopt safety measures in their day-to-day digital activities. The awareness program highlighted real-world cases from Moodabidre, Bantwala, Mangalore, and Udupi, emphasizing the importance of digital safety in native and rural areas.",
+          objectives: [
+            "To raise awareness about increasing cyber threats in local communities.",
+            "To explain concepts of phishing, vishing, and social engineering with real examples.",
+            "To share recent cyber fraud statistics, including regional loss figures.",
+            "To educate participants on best practices for online safety and secure digital habits.",
+            "To demonstrate practical methods for detecting and avoiding scams.",
+            "To train participants on identifying red flags in calls, messages, and emails.",
+            "To encourage the community to report incidents promptly to the cybercrime helpline.",
+            "To empower people to act as “cyber ambassadors” in their families and neighborhoods.",
+          ],
+          impact:
+            "Over 50 participants actively engaged in the session. Attendees shared personal experiences of being targeted by scams. Elderly citizens gained clarity on how to verify suspicious calls. Young participants pledged to spread awareness among peers.",
+          conclusion:
+            "The cybersecurity awareness session at Rotary Club Moodabidre addressed both global and local cyber threats, provided real-life examples with recent loss figures, and equipped participants with practical skills for online safety. The program created a network of individuals ready to spread awareness and reinforced the role of community-driven cybersecurity initiatives.",
+          tags: [
+            "Community Outreach",
+            "Cybersecurity",
+            "Awareness",
+            "Phishing",
+            "Vishing",
+            "Social Engineering",
+          ],
+        },
+      ],
     },
     newsletter: {
       title: "E-NEWSLETTER",
@@ -209,11 +256,11 @@ PEO4: Inculcate Professional ethics, human values, team work for solving enginee
     },
   },
   recruiters: [
-    { name: "Infosys", logo: "/logos/infosys.png" },
-    { name: "TCS", logo: "/logos/tcs.png" },
-    { name: "Wipro", logo: "/logos/wipro.png" },
-    { name: "Accenture", logo: "/logos/accenture.png" },
-    { name: "Capgemini", logo: "/logos/capgemini.png" },
-    { name: "Amazon", logo: "/logos/amazon.png" },
+    { name: "Infosys", logo: "/infosys.png" },
+    { name: "TCS", logo: "/tcs.png" },
+    { name: "Wipro", logo: "/wipro.png" },
+    { name: "Accenture", logo: "/accenture.png" },
+    { name: "Capgemini", logo: "/capgemini.png" },
+    { name: "Amazon", logo: "/amazon.png" },
   ],
 };

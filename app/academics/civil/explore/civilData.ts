@@ -205,11 +205,11 @@ PSO4: The graduates will be able to demonstrate professional integrity and an ap
     },
   },
   recruiters: [
-    { name: "Infosys", logo: "/logos/infosys.png" },
-    { name: "TCS", logo: "/logos/tcs.png" },
-    { name: "Wipro", logo: "/logos/wipro.png" },
-    { name: "Accenture", logo: "/logos/accenture.png" },
-    { name: "Capgemini", logo: "/logos/capgemini.png" },
-    { name: "Amazon", logo: "/logos/amazon.png" },
+    { name: "Infosys", logo: "/infosys.png" },
+    { name: "TCS", logo: "/tcs.png" },
+    { name: "Wipro", logo: "/wipro.png" },
+    { name: "Accenture", logo: "/accenture.png" },
+    { name: "Capgemini", logo: "/capgemini.png" },
+    { name: "Amazon", logo: "/amazon.png" },
   ],
 };

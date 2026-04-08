@@ -218,11 +218,11 @@ PSO3: Apply modern Hardware and software tools to analyze and solve engineering 
     },
   },
   recruiters: [
-    { name: "Infosys", logo: "/logos/infosys.png" },
-    { name: "TCS", logo: "/logos/tcs.png" },
-    { name: "Wipro", logo: "/logos/wipro.png" },
-    { name: "Accenture", logo: "/logos/accenture.png" },
-    { name: "Capgemini", logo: "/logos/capgemini.png" },
-    { name: "Amazon", logo: "/logos/amazon.png" },
+    { name: "Infosys", logo: "/infosys.png" },
+    { name: "TCS", logo: "/tcs.png" },
+    { name: "Wipro", logo: "/wipro.png" },
+    { name: "Accenture", logo: "/accenture.png" },
+    { name: "Capgemini", logo: "/capgemini.png" },
+    { name: "Amazon", logo: "/amazon.png" },
   ],
 };

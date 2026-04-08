@@ -3,8 +3,12 @@
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
-import { agriDepartmentData } from "./agriData";
-import { Faculty } from "@/lib/departments";
+import { agriDepartmentData } from "@/app/academics/agri/explore/agriData";
+import type {
+  DepartmentData,
+  ExploreTabData,
+  Faculty,
+} from "@/lib/departments";
 import dynamic from "next/dynamic";
 import AgriExploreLoading from "./agriExploreLoading";
 import { motion, AnimatePresence } from "framer-motion";
@@ -80,9 +84,11 @@ export default function AgriExploreContent() {
     { id: "newsletter", label: "E-NEWSLETTER" },
   ];
 
-  const currentData = department.exploreData?.[
-    activeTab as keyof typeof department.exploreData
-  ] || {
+  type ExploreTabKey = keyof NonNullable<DepartmentData["exploreData"]>;
+
+  const currentData: ExploreTabData = department.exploreData?.[
+    activeTab as ExploreTabKey
+  ] ?? {
     title: "",
     body: "Content not available for this section.",
     highlights: [],
@@ -343,6 +349,7 @@ export default function AgriExploreContent() {
                               {idx === 1 && <Lightbulb className="w-7 h-7" />}
                               {idx === 2 && <Cpu className="w-7 h-7" />}
                               {idx === 3 && <Zap className="w-7 h-7" />}
+                              {idx > 3 && <CheckCircle2 className="w-7 h-7" />}
                             </div>
                             <div>
                               <h4 className="text-xl font-black text-gray-900 leading-tight">
@@ -937,14 +944,37 @@ export default function AgriExploreContent() {
                   <div
                     className={`overflow-hidden transition-all duration-500 ease-in-out ${
                       openAccordion === item.key
-                        ? "max-h-96 opacity-100 mt-2"
+                        ? "max-h-[2000px] opacity-100 mt-2"
                         : "max-h-0 opacity-0"
                     }`}
                   >
                     <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed">
                       {selectedFaculty?.details?.[
                         item.key as keyof typeof selectedFaculty.details
-                      ] || "Information not available."}
+                      ] ? (
+                        <div className="flex flex-col gap-4">
+                          {selectedFaculty.details[
+                            item.key as keyof typeof selectedFaculty.details
+                          ]
+                            .split(/\n|(?=•)/g)
+                            .map((line) => line.trim())
+                            .filter((line) => line && line !== "•")
+                            .map((line, i) => (
+                              <div key={i} className="flex gap-3">
+                                <span className="text-indigo-600 font-bold shrink-0">
+                                  •
+                                </span>
+                                <span className="flex-1 whitespace-normal">
+                                  {line.startsWith("•")
+                                    ? line.substring(1).trim()
+                                    : line}
+                                </span>
+                              </div>
+                            ))}
+                        </div>
+                      ) : (
+                        "Information not available."
+                      )}
                     </div>
                   </div>
                 </div>
