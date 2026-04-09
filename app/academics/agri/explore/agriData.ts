@@ -29,9 +29,11 @@ M3: To develop and enhance novel technologies to address current and foreseeable
       areasOfInterest: "Bio energy, Thermal engineering",
       achievements: "Skills: AUTO CAD, Taguchi, Artificial Neural Network",
       professionalMembership: "NA",
-      publications: "10 Journal Publications, 3 International Conferences, 3 National Conferences",
+      publications:
+        "10 Journal Publications, 3 International Conferences, 3 National Conferences",
       projectsGuided: "NA",
-      subjectsTeaching: "Thermal engineering, Non-conventional energy source, ATD, BTD, Fuels and Combustion, Heat transfer and Fluid flow, Turbomachines",
+      subjectsTeaching:
+        "Thermal engineering, Non-conventional energy source, ATD, BTD, Fuels and Combustion, Heat transfer and Fluid flow, Turbomachines",
       researchPublications: `• Investigation on performance and emission characteristics of diesel engine with cardanol based hybrid bio-diesel blends, Materials Today: Proceedings 35 (2021) 378-382.\n
 • Effect of injection pressure on performance and emission of diesel engine with blends of Honge-Rice bran bio diesel, Materials Today: Proceedings 35 (2021) 489-493.\n
 • Optimum hydrogen flowrates and membrane-electrode clamping pressure in hydrogen fuel cells, Materials Today: Proceedings 35 (2021) 412-416.\n
@@ -71,17 +73,23 @@ M3: To develop and enhance novel technologies to address current and foreseeable
       email: "rahulp@aiet.org.in",
       phone: "8197025728",
       aoi: "Horticulture (Plantation, Spices, Medicinal and Aromatic crops)",
-      photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=19bbwF3spxNTl3A4muA3aaB63SsXxu5_P",
+      ),
       joiningDate: "01-08-2016",
       details: {
         qualifications: "M.Sc. Horticulture, Ph.D.",
         pastExperience: "8 Years",
-        areasOfInterest: "Horticulture (Plantation, Spices, Medicinal and Aromatic crops)",
-        achievements: "Three Design Patents registered, INSPIRE fellowship (DST, GoI), University Gold Medal (M.Sc.), University Blue, Yuva Vigyani award from Karnataka Science Federation",
+        areasOfInterest:
+          "Horticulture (Plantation, Spices, Medicinal and Aromatic crops)",
+        achievements:
+          "Three Design Patents registered, INSPIRE fellowship (DST, GoI), University Gold Medal (M.Sc.), University Blue, Yuva Vigyani award from Karnataka Science Federation",
         professionalMembership: "NA",
-        publications: "Presented eight papers in Conferences; Published four extension folders, nine articles in periodicals, one radio talk; Acted as co-organizing secretary for international conference.",
+        publications:
+          "Presented eight papers in Conferences; Published four extension folders, nine articles in periodicals, one radio talk; Acted as co-organizing secretary for international conference.",
         projectsGuided: "NA",
-        subjectsTeaching: "Fundamentals of Agriculture & Crop Production Technology, Basic concepts and applications of agro-chemicals, Social connect and responsibility, Research Methodologies and IPR, Sustainable agriculture and Food security",
+        subjectsTeaching:
+          "Fundamentals of Agriculture & Crop Production Technology, Basic concepts and applications of agro-chemicals, Social connect and responsibility, Research Methodologies and IPR, Sustainable agriculture and Food security",
         researchPublications: `• Phatak, R. S., et al., 2017, Journal of Pharmacognosy and Phytochemistry, SP3 :14-17 (NAAS 5.21).
 • Phatak, R. S., et al., 2017, International Journal of Current Microbiology and Applied Sciences, 6(12) :135-140 (NAAS 5.38).
 • Phatak, R. S., et al., 2017, IJCMAS, 7(1) :2539-2543 (NAAS 5.38).
@@ -96,7 +104,8 @@ M3: To develop and enhance novel technologies to address current and foreseeable
 • Chaitra, B. M., et al., 2015, Environment and Ecology, 33(2A) :963-966 (NAAS 4.18).
 • P. Ravi, et al., 2015, Indian Journal of Ecology, 42(2) :501-502 (NAAS 4.47).
 • Review: Phatak, R. S. and Hegde, L., 2014, HortFlora Research Spectrum, 3(3): 282-287.`,
-        others: "Technical Skills: Statistical data Analysis, Field & orchard layout, Crop management, Organic and natural farming practices. Soft skills: Good communication, Team facilitator, Organizational skills, Event management.",
+        others:
+          "Technical Skills: Statistical data Analysis, Field & orchard layout, Crop management, Organic and natural farming practices. Soft skills: Good communication, Team facilitator, Organizational skills, Event management.",
       },
     },
     {
@@ -107,17 +116,23 @@ M3: To develop and enhance novel technologies to address current and foreseeable
       email: "ysujitrao@aiet.org.in",
       phone: "+91 9730764477",
       aoi: "Farm Equipment, Electric Vehicle (EV) in protected cultivation, Precision and Smart agriculture, Robotics and Drones in Agriculture.",
-      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
+      photo:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
       joiningDate: "01-09-2022",
       details: {
-        qualifications: "B. Tech (Agri Engg.), M. Tech (Farm Machinery), Ph. D (Farm Equipment and Power)",
+        qualifications:
+          "B. Tech (Agri Engg.), M. Tech (Farm Machinery), Ph. D (Farm Equipment and Power)",
         pastExperience: "2 Years",
-        areasOfInterest: "Farm Equipment, Electric Vehicle (EV), Precision Agriculture, Robotics and Drones in Agriculture.",
-        achievements: "MS-CIT, Poster Presentation in 'Yantra Naad 2015', Digital India Literacy Programme",
+        areasOfInterest:
+          "Farm Equipment, Electric Vehicle (EV), Precision Agriculture, Robotics and Drones in Agriculture.",
+        achievements:
+          "MS-CIT, Poster Presentation in 'Yantra Naad 2015', Digital India Literacy Programme",
         professionalMembership: "NA",
-        publications: "Research Papers: 6, Books: 2, Technical Bulletins: 1, Popular Articles: 2",
+        publications:
+          "Research Papers: 6, Books: 2, Technical Bulletins: 1, Popular Articles: 2",
         projectsGuided: "NA",
-        subjectsTeaching: "Precision agriculture, AI-ML in Agriculture, Farm machinery, Theory of machine, Design of farm machinery, Fluid mechanics",
+        subjectsTeaching:
+          "Precision agriculture, AI-ML in Agriculture, Farm machinery, Theory of machine, Design of farm machinery, Fluid mechanics",
         researchPublications: `• Ergonomic evaluation of manual Nutmeg Harvesting system. Green Farming Vol. 9 (6).
 • Comparative study of physical properties of Nutmeg. International Journal of Chemical Studies 2018; 6(6).
 • Determination of Engineering Properties and Fruit Detachment Force of Nutmeg. IJCMAS (2019) 8(1).
@@ -143,7 +158,8 @@ M3: To develop and enhance novel technologies to address current and foreseeable
       email: "rakeshp@aiet.org.in",
       phone: "NA",
       aoi: "Research and NPD",
-      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      photo:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
       joiningDate: "19-09-2025",
       details: {
         qualifications: "M-Tech. Food Processing Technology",
@@ -154,7 +170,8 @@ M3: To develop and enhance novel technologies to address current and foreseeable
         publications: "1",
         projectsGuided: "NA",
         subjectsTeaching: "Food and Agriculture Aspects",
-        researchPublications: "1. Solar Powered Groundnut Decorticator: Design, Performance and Emission Reductions for Sustainable Agriculture.",
+        researchPublications:
+          "1. Solar Powered Groundnut Decorticator: Design, Performance and Emission Reductions for Sustainable Agriculture.",
         others: "NA",
       },
     },
@@ -166,7 +183,8 @@ M3: To develop and enhance novel technologies to address current and foreseeable
       email: "sharanb@aiet.org.in",
       phone: "NA",
       aoi: "Teaching and Research",
-      photo: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=400&q=80",
+      photo:
+        "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=400&q=80",
       joiningDate: "28-08-2025",
       details: {
         qualifications: "M-Tech. Farm Machinery and Power Engineering",
@@ -177,7 +195,8 @@ M3: To develop and enhance novel technologies to address current and foreseeable
         publications: "1",
         projectsGuided: "NA",
         subjectsTeaching: "Farm Machinery Equipment II, Human Engineering",
-        researchPublications: "1. Solar Powered Groundnut Decorticator: Design, Performance and Emission Reductions for Sustainable Agriculture.",
+        researchPublications:
+          "1. Solar Powered Groundnut Decorticator: Design, Performance and Emission Reductions for Sustainable Agriculture.",
         others: "NA",
       },
     },

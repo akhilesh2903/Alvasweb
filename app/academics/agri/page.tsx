@@ -404,7 +404,7 @@ export default function AGRIPage() {
                 <div className="absolute inset-0 bg-indigo-600 rounded-[2.5rem] rotate-6 scale-95 opacity-20"></div>
                 <img
                   src={deptData.hod.photo}
-                  className="w-full h-[400px] object-cover rounded-[2.5rem] shadow-2xl relative z-10 border-4 border-white"
+                  className="w-full h-[400px] object-cover object-top rounded-[2.5rem] shadow-2xl relative z-10 border-4 border-white"
                   alt={deptData.hod.name}
                 />
               </div>
@@ -498,7 +498,7 @@ export default function AGRIPage() {
                   <div className="relative overflow-hidden rounded-2xl mb-6 aspect-square">
                     <img
                       src={member.photo}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
                       alt={member.name}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -572,7 +572,7 @@ export default function AGRIPage() {
                 <div className="absolute -inset-1 bg-gradient-to-tr from-indigo-500 to-indigo-200 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
                 <img
                   src={selectedFaculty.photo}
-                  className="w-40 h-40 md:w-52 md:h-52 object-cover rounded-full shadow-2xl border-4 border-white relative z-10"
+                  className="w-40 h-40 md:w-52 md:h-52 object-cover object-top rounded-full shadow-2xl border-4 border-white relative z-10"
                   alt={selectedFaculty.name}
                 />
               </div>
@@ -664,14 +664,37 @@ export default function AGRIPage() {
                   <div
                     className={`overflow-hidden transition-all duration-500 ease-in-out ${
                       openAccordion === item.key
-                        ? "max-h-96 opacity-100 mt-2"
+                        ? "max-h-[2000px] opacity-100 mt-2"
                         : "max-h-0 opacity-0"
                     }`}
                   >
                     <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed">
                       {selectedFaculty.details?.[
                         item.key as keyof typeof selectedFaculty.details
-                      ] || "Information not available."}
+                      ] ? (
+                        <div className="flex flex-col gap-4">
+                          {selectedFaculty.details[
+                            item.key as keyof typeof selectedFaculty.details
+                          ]
+                            .split(/\n|(?=•)/g)
+                            .map((line) => line.trim())
+                            .filter((line) => line && line !== "•")
+                            .map((line, i) => (
+                              <div key={i} className="flex gap-3">
+                                <span className="text-indigo-600 font-bold shrink-0">
+                                  •
+                                </span>
+                                <span className="flex-1 whitespace-normal">
+                                  {line.startsWith("•")
+                                    ? line.substring(1).trim()
+                                    : line}
+                                </span>
+                              </div>
+                            ))}
+                        </div>
+                      ) : (
+                        "Information not available."
+                      )}
                     </div>
                   </div>
                 </div>
