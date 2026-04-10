@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaArrowLeft } from "react-icons/fa";
@@ -507,6 +507,35 @@ export default function CseExploreContent() {
   const [isFacultyModalOpen, setIsFacultyModalOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
 
+  const getPublicationCount = (text: string): number | null => {
+    const normalized = text.trim();
+
+    if (!normalized) return null;
+    if (/^(NA|N\/A|NIL)$/i.test(normalized)) return null;
+
+    const explicit = normalized.match(
+      /(?:total\s*)?publications?\s*[:\-]\s*(\d+)/i,
+    );
+    if (explicit?.[1]) return Number(explicit[1]);
+
+    const bulletOrNumbered = normalized.match(/^\s*(?:•|-|\d+[.)])\s+/gm);
+    if (bulletOrNumbered?.length) return bulletOrNumbered.length;
+
+    const paragraphs = normalized
+      .split(/\n\s*\n/)
+      .map((p) => p.trim())
+      .filter(Boolean);
+    if (paragraphs.length > 1) return paragraphs.length;
+
+    const lines = normalized
+      .split(/\n/)
+      .map((l) => l.trim())
+      .filter(Boolean);
+    if (lines.length > 1) return lines.length;
+
+    return 1;
+  };
+
   useEffect(() => {
     // Show contents
     setIsMounted(true);
@@ -532,6 +561,82 @@ export default function CseExploreContent() {
     setIsFacultyModalOpen(true);
     setOpenAccordion(null);
   };
+
+  const getQualificationGroup = (qualification: string) => {
+    const q = (qualification || "").toLowerCase();
+
+    if (q.includes("ph.d") || q.includes("phd")) return "Ph.D";
+    if (q.includes("m.tech") || q.includes("mtech")) return "M.Tech";
+    if (q.includes("m.e") || q.match(/\bm\s*e\b/)) return "M.E";
+    if (q.includes("mca")) return "MCA";
+    if (q.includes("mba")) return "MBA";
+    if (q.includes("m.sc") || q.includes("msc")) return "M.Sc";
+    if (
+      q.includes("b.e") ||
+      q.match(/\bb\s*e\b/) ||
+      q.includes("b.tech") ||
+      q.includes("btech")
+    )
+      return "B.E/B.Tech";
+
+    return "Others";
+  };
+
+  const groupedFaculty = useMemo(() => {
+    const groups = new Map<string, Faculty[]>();
+
+    for (const member of department.faculty) {
+      const group = getQualificationGroup(member.qualification);
+      const bucket = groups.get(group);
+      if (bucket) bucket.push(member);
+      else groups.set(group, [member]);
+    }
+
+    const getDesignationRank = (designation: string) => {
+      const d = (designation || "").toLowerCase();
+      if (d.includes("professor") && d.includes("hod")) return 0;
+      if (d.includes("professor")) return 1;
+      if (d.includes("senior") && d.includes("associate")) return 2;
+      if (d.includes("associate")) return 3;
+      if (d.includes("sr") && d.includes("assistant")) return 4;
+      if (d.includes("senior") && d.includes("assistant")) return 4;
+      if (d.includes("assistant professor")) return 5;
+      if (d.includes("teaching assistant")) return 6;
+      return 99;
+    };
+
+    groups.forEach((bucket) => {
+      bucket.sort((a, b) => {
+        const rankDiff =
+          getDesignationRank(a.designation) - getDesignationRank(b.designation);
+        if (rankDiff !== 0) return rankDiff;
+        return a.name.localeCompare(b.name);
+      });
+    });
+
+    const orderedKeys = [
+      "Ph.D",
+      "M.Tech",
+      "M.E",
+      "MCA",
+      "MBA",
+      "M.Sc",
+      "B.E/B.Tech",
+      "Others",
+    ];
+
+    const orderedEntries: Array<[string, Faculty[]]> = [];
+    for (const key of orderedKeys) {
+      const bucket = groups.get(key);
+      if (bucket && bucket.length) orderedEntries.push([key, bucket]);
+    }
+
+    const extraEntries = Array.from(groups.entries())
+      .filter(([key]) => !orderedKeys.includes(key))
+      .sort((a, b) => a[0].localeCompare(b[0]));
+
+    return [...orderedEntries, ...extraEntries];
+  }, [department.faculty]);
 
   const tabs = [
     { id: "about", label: "ABOUT" },
@@ -1047,31 +1152,45 @@ export default function CseExploreContent() {
                             </p>
                           </div>
 
-                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-1">
-                            {department.faculty.map(
-                              (member: Faculty, i: number) => (
-                                <div
-                                  key={i}
-                                  className="bg-white rounded-[2rem] p-4 shadow-md border border-gray-100/50 hover:shadow-xl transition-all duration-500 group cursor-pointer"
-                                  onClick={() => openFacultyModal(member)}
-                                >
-                                  <div className="relative overflow-hidden rounded-2xl mb-5 aspect-square">
-                                    <img
-                                      src={member.photo}
-                                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                      alt={member.name}
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                  </div>
-                                  <h3 className="text-base font-black text-gray-900 serif mb-0.5 group-hover:text-indigo-600 transition-colors">
-                                    {member.name}
+                          <div className="space-y-10">
+                            {groupedFaculty.map(([groupName, members]) => (
+                              <div key={groupName} className="relative">
+                                <div className="flex items-end justify-between mb-4 px-1">
+                                  <h3 className="text-lg md:text-xl font-black text-gray-900 serif">
+                                    {groupName}
                                   </h3>
-                                  <p className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">
-                                    {member.designation}
+                                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                    {members.length} member
+                                    {members.length === 1 ? "" : "s"}
                                   </p>
                                 </div>
-                              ),
-                            )}
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-1">
+                                  {members.map((member: Faculty, i: number) => (
+                                    <div
+                                      key={`${groupName}-${i}`}
+                                      className="bg-white rounded-[2rem] p-4 shadow-md border border-gray-100/50 hover:shadow-xl transition-all duration-500 group cursor-pointer"
+                                      onClick={() => openFacultyModal(member)}
+                                    >
+                                      <div className="relative overflow-hidden rounded-2xl mb-5 aspect-square">
+                                        <img
+                                          src={member.photo}
+                                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                          alt={member.name}
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                      </div>
+                                      <h3 className="text-base font-black text-gray-900 serif mb-0.5 group-hover:text-indigo-600 transition-colors">
+                                        {member.name}
+                                      </h3>
+                                      <p className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">
+                                        {member.designation}
+                                      </p>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
                           </div>
                         </div>
                       </div>
@@ -1540,7 +1659,7 @@ export default function CseExploreContent() {
             &times;
           </button>
           <div
-            className="bg-white rounded-[2rem] shadow-2xl max-w-xl w-full max-h-[85vh] overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100"
+            className="bg-white rounded-[2rem] shadow-2xl max-w-xl w-full max-h-[85vh] overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="bg-[#f8f9fa] p-8 pb-6 border-b border-gray-100 flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
@@ -1589,7 +1708,7 @@ export default function CseExploreContent() {
               </div>
             </div>
 
-            <div className="overflow-y-auto max-h-[calc(90vh-280px)] p-6 font-sans">
+            <div className="flex-1 overflow-y-auto p-6 font-sans">
               {[
                 { title: "Educational Qualifications", key: "qualifications" },
                 { title: "Past Experience", key: "pastExperience" },
@@ -1640,14 +1759,47 @@ export default function CseExploreContent() {
                   <div
                     className={`overflow-hidden transition-all duration-500 ease-in-out ${
                       openAccordion === item.key
-                        ? "max-h-96 opacity-100 mt-2"
+                        ? "max-h-[2000px] opacity-100 mt-2"
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed">
-                      {selectedFaculty?.details?.[
-                        item.key as keyof typeof selectedFaculty.details
-                      ] || "Information not available."}
+                    <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed break-words">
+                      {(() => {
+                        const value =
+                          selectedFaculty?.details?.[
+                            item.key as keyof typeof selectedFaculty.details
+                          ];
+
+                        if (!value) return "Information not available.";
+
+                        if (item.key === "publications") {
+                          const count = getPublicationCount(value);
+                          return count === null
+                            ? "Information not available."
+                            : `Total Publications: ${count}`;
+                        }
+
+                        return (
+                          <div className="flex flex-col gap-4">
+                            {value
+                              .split(/\n|(?=•)/g)
+                              .map((line) => line.trim())
+                              .filter((line) => line && line !== "•")
+                              .map((line, i) => (
+                                <div key={i} className="flex gap-3">
+                                  <span className="text-indigo-600 font-bold shrink-0">
+                                    •
+                                  </span>
+                                  <span className="flex-1 whitespace-pre-line break-words">
+                                    {line.startsWith("•")
+                                      ? line.substring(1).trim()
+                                      : line}
+                                  </span>
+                                </div>
+                              ))}
+                          </div>
+                        );
+                      })()}
                     </div>
                   </div>
                 </div>

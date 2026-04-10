@@ -27,6 +27,35 @@ export default function CSEPage() {
   const videoSectionRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
 
+  const getPublicationCount = (text: string): number | null => {
+    const normalized = text.trim();
+
+    if (!normalized) return null;
+    if (/^(NA|N\/A|NIL)$/i.test(normalized)) return null;
+
+    const explicit = normalized.match(
+      /(?:total\s*)?publications?\s*[:\-]\s*(\d+)/i,
+    );
+    if (explicit?.[1]) return Number(explicit[1]);
+
+    const bulletOrNumbered = normalized.match(/^\s*(?:•|-|\d+[.)])\s+/gm);
+    if (bulletOrNumbered?.length) return bulletOrNumbered.length;
+
+    const paragraphs = normalized
+      .split(/\n\s*\n/)
+      .map((p) => p.trim())
+      .filter(Boolean);
+    if (paragraphs.length > 1) return paragraphs.length;
+
+    const lines = normalized
+      .split(/\n/)
+      .map((l) => l.trim())
+      .filter(Boolean);
+    if (lines.length > 1) return lines.length;
+
+    return 1;
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -664,14 +693,47 @@ export default function CSEPage() {
                   <div
                     className={`overflow-hidden transition-all duration-500 ease-in-out ${
                       openAccordion === item.key
-                        ? "max-h-96 opacity-100 mt-2"
+                        ? "max-h-[2000px] opacity-100 mt-2"
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed">
-                      {selectedFaculty.details?.[
-                        item.key as keyof typeof selectedFaculty.details
-                      ] || "Information not available."}
+                    <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed break-words">
+                      {(() => {
+                        const value =
+                          selectedFaculty.details?.[
+                            item.key as keyof typeof selectedFaculty.details
+                          ];
+
+                        if (!value) return "Information not available.";
+
+                        if (item.key === "publications") {
+                          const count = getPublicationCount(value);
+                          return count === null
+                            ? "Information not available."
+                            : `Total Publications: ${count}`;
+                        }
+
+                        return (
+                          <div className="flex flex-col gap-4">
+                            {value
+                              .split(/\n|(?=•)/g)
+                              .map((line) => line.trim())
+                              .filter((line) => line && line !== "•")
+                              .map((line, i) => (
+                                <div key={i} className="flex gap-3">
+                                  <span className="text-indigo-600 font-bold shrink-0">
+                                    •
+                                  </span>
+                                  <span className="flex-1 whitespace-pre-line break-words">
+                                    {line.startsWith("•")
+                                      ? line.substring(1).trim()
+                                      : line}
+                                  </span>
+                                </div>
+                              ))}
+                          </div>
+                        );
+                      })()}
                     </div>
                   </div>
                 </div>
