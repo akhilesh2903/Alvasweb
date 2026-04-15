@@ -8,6 +8,7 @@ import { Faculty } from "@/lib/departments";
 import dynamic from "next/dynamic";
 import MbaExploreLoading from "./mbaExploreLoading";
 import { motion, AnimatePresence } from "framer-motion";
+import MobileExploreNav from "@/app/components/MobileExploreNav";
 import {
   Cpu,
   CircuitBoard,
@@ -223,24 +224,38 @@ export default function MbaExploreContent() {
       {/* Main Content */}
       <div className="page-bg">
         <div className="max-w-[1500px] mx-auto px-3 md:px-5 py-10 grid lg:grid-cols-12 gap-6">
-          {/* LEFT SIDE: Tab List */}
-          <aside className="lg:col-span-3 bg-white border border-gray-300 rounded-3xl p-4 backdrop-blur-xl shadow-md">
-            <h3 className="text-lg font-black text-indigo-700 mb-4">
-              Explore Tabs
-            </h3>
+          {/* LEFT SIDE: Sidebar (Desktop) / Hamburger Menu (Mobile) */}
+          <aside className="lg:col-span-3">
+            {/* Desktop Sidebar */}
+            <div className="hidden lg:block bg-white border border-gray-300 rounded-3xl p-4 sticky top-28 shadow-md backdrop-blur-xl">
+              <h3 className="text-lg font-black text-indigo-700 mb-4">
+                Explore Tabs
+              </h3>
 
-            <div className="flex flex-col gap-2">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  className={`tab-btn w-full text-left px-4 py-3 rounded-2xl border border-gray-300 hover:bg-gray-200 transition font-bold text-gray-900 ${
-                    activeTab === tab.id ? "active bg-gray-100" : "bg-gray-100"
-                  }`}
-                  onClick={() => handleTabClick(tab.id)}
-                >
-                  {tab.label}
-                </button>
-              ))}
+              <div className="flex flex-col gap-2">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    className={`tab-btn w-full text-left px-4 py-3 rounded-2xl border border-gray-300 hover:bg-gray-200 transition font-bold text-gray-900 ${
+                      activeTab === tab.id
+                        ? "active bg-gray-100"
+                        : "bg-gray-100"
+                    }`}
+                    onClick={() => handleTabClick(tab.id)}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile Navigation */}
+            <div className="lg:hidden">
+              <MobileExploreNav
+                tabs={tabs}
+                activeTab={activeTab}
+                onTabClick={handleTabClick}
+              />
             </div>
           </aside>
 

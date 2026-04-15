@@ -8,6 +8,7 @@ import { Faculty } from "@/lib/departments";
 import dynamic from "next/dynamic";
 import MechExploreLoading from "./mechExploreLoading";
 import { motion, AnimatePresence } from "framer-motion";
+import MobileExploreNav from "@/app/components/MobileExploreNav";
 import {
   Cpu,
   CircuitBoard,
@@ -208,24 +209,38 @@ export default function MechExploreContent() {
       {/* Main Content */}
       <div className="page-bg">
         <div className="max-w-[1500px] mx-auto px-3 md:px-5 py-10 grid lg:grid-cols-12 gap-6">
-          {/* LEFT SIDE: Tab List */}
-          <aside className="lg:col-span-3 bg-white border border-gray-300 rounded-3xl p-4 backdrop-blur-xl shadow-md">
-            <h3 className="text-lg font-black text-indigo-700 mb-4">
-              Explore Tabs
-            </h3>
+          {/* LEFT SIDE: Sidebar (Desktop) / Hamburger Menu (Mobile) */}
+          <aside className="lg:col-span-3">
+            {/* Desktop Sidebar */}
+            <div className="hidden lg:block bg-white border border-gray-300 rounded-3xl p-4 sticky top-28 shadow-md backdrop-blur-xl">
+              <h3 className="text-lg font-black text-indigo-700 mb-4">
+                Explore Tabs
+              </h3>
 
-            <div className="flex flex-col gap-2">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  className={`tab-btn w-full text-left px-4 py-3 rounded-2xl border border-gray-300 hover:bg-gray-200 transition font-bold text-gray-900 ${
-                    activeTab === tab.id ? "active bg-gray-100" : "bg-gray-100"
-                  }`}
-                  onClick={() => handleTabClick(tab.id)}
-                >
-                  {tab.label}
-                </button>
-              ))}
+              <div className="flex flex-col gap-2">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    className={`tab-btn w-full text-left px-4 py-3 rounded-2xl border border-gray-300 hover:bg-gray-200 transition font-bold text-gray-900 ${
+                      activeTab === tab.id
+                        ? "active bg-gray-100"
+                        : "bg-gray-100"
+                    }`}
+                    onClick={() => handleTabClick(tab.id)}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile Navigation */}
+            <div className="lg:hidden">
+              <MobileExploreNav
+                tabs={tabs}
+                activeTab={activeTab}
+                onTabClick={handleTabClick}
+              />
             </div>
           </aside>
 
@@ -509,7 +524,7 @@ export default function MechExploreContent() {
                                 <div className="absolute inset-0 bg-indigo-600 rounded-[2rem] rotate-6 scale-95 opacity-20"></div>
                                 <img
                                   src={department.hod.photo}
-                                  className="w-full h-[320px] object-cover rounded-[2rem] shadow-xl relative z-10 border-4 border-white"
+                                  className="w-full h-[320px] object-cover object-top rounded-[2rem] shadow-xl relative z-10 border-4 border-white"
                                   alt={department.hod.name}
                                 />
                               </div>
@@ -588,7 +603,7 @@ export default function MechExploreContent() {
                                   <div className="relative overflow-hidden rounded-2xl mb-5 aspect-square">
                                     <img
                                       src={member.photo}
-                                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
                                       alt={member.name}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -861,7 +876,7 @@ export default function MechExploreContent() {
                 <div className="absolute -inset-1 bg-gradient-to-tr from-indigo-500 to-indigo-200 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
                 <img
                   src={selectedFaculty?.photo}
-                  className="w-40 h-40 md:w-52 md:h-52 object-cover rounded-full shadow-2xl border-4 border-white relative z-10"
+                  className="w-40 h-40 md:w-52 md:h-52 object-cover object-top rounded-full shadow-2xl border-4 border-white relative z-10"
                   alt={selectedFaculty?.name}
                 />
               </div>
