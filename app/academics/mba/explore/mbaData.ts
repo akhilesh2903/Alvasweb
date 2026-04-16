@@ -918,11 +918,183 @@ PSO5: Develop graduates for corporate jobs with global outlook
     },
     activities: {
       title: "DEPARTMENT ACTIVITIES",
-      body: "Holistic development through technical and cultural activities.",
+      body: "Holistic development through aptitude training, student enrichment sessions, industry exposure, and personality development programs.",
       highlights: [
-        "Weekly technical seminars.",
-        "Industrial visit programs.",
-        "Cultural fest participation.",
+        "Aptitude training programs by 10 Seconds for first-year MBA students.",
+        "Well-being, HR, finance, entrepreneurship, and communication enrichment sessions.",
+        "Industrial exposure and personality development activities.",
+      ],
+      entries: [
+        {
+          coverImage: {
+            src: imageProxyUrl(
+              "https://drive.google.com/uc?export=view&id=18r1BoAEbOeKEarWdJOqWaFXjCXhH1jDy",
+            ),
+            alt: "3 Days Aptitude Training by 10 Seconds cover image",
+          },
+          title: "3 Days Aptitude Training by 10 Seconds",
+          topic:
+            "A three-day aptitude training program for first-year MBA students",
+          date: "16-04-2024 to 18-04-2024",
+          venue: "MBA Classroom",
+          audience: "First-year MBA students",
+          conductedBy: "10 Seconds, Bangalore",
+          overview:
+            "The PG Department of Business Administration organized a three-day aptitude training program for first-year students from 16th to 18th April 2024. The sessions were conducted by expert trainers Mr. Dhanush, Mr. Rajesh Kanan, and Ms. Jwalitha from 10 Seconds. Each day comprised three sessions running from 9:00 AM to 5:00 PM and covered quantitative and logical reasoning topics such as blood relations, number systems, LCM, HCF, coding and decoding, percentages, directions, time and work, pipes and cisterns, arrangement, sequencing, data sufficiency, syllogism, profit and loss, circular arrangement, and number series.",
+          objectives: [
+            "Enhance analytical and logical reasoning skills among students.",
+            "Improve speed and accuracy in solving aptitude-based problems.",
+            "Build confidence for competitive exams and placements through practice.",
+            "Develop practical application of mathematical concepts for academic and career success.",
+          ],
+          impact:
+            "The workshop was highly interactive and rewarding, enhancing students' prediction, observation, memory, concentration, and logical reasoning skills. A total of 180 students benefited from the program and gained valuable aptitude knowledge and techniques for future academic and professional success.",
+          conclusion:
+            "The three-day training gave students a strong foundation in aptitude problem-solving while preparing them for competitive assessments and placement preparation.",
+          tags: ["Aptitude", "Reasoning", "Placements"],
+        },
+        {
+          coverImage: {
+            src: imageProxyUrl(
+              "https://drive.google.com/uc?export=view&id=18r1BoAEbOeKEarWdJOqWaFXjCXhH1jDy",
+            ),
+            alt: "4 Days Aptitude Training by 10 Seconds cover image",
+          },
+          title: "4 Days Aptitude Training by 10 Seconds",
+          topic:
+            "A four-day aptitude training program for first-year MBA students",
+          date: "25-07-2023 to 28-07-2023",
+          venue: "MBA Classroom",
+          audience: "First-year MBA students",
+          conductedBy: "10 Seconds, Bangalore",
+          overview:
+            "The AIET MBA Department organized a four-day aptitude training program for first-year students from 25th to 28th July 2023. The sessions were held daily from 9:00 AM to 4:20 PM with three sessions each day. The training covered LCM and HCF, time-speed-distance, divisibility rules, train crossing problems, percentage, profit and loss, directions quiz, boat and stream problems, data sufficiency, time and speed shortcuts, deductive reasoning, and blood relations.",
+          objectives: [
+            "Strengthen students' quantitative aptitude and logical reasoning skills.",
+            "Improve speed, accuracy, and efficiency in solving aptitude problems.",
+            "Build confidence for competitive exams, placements, and academic assessments.",
+            "Encourage critical thinking and practical application of mathematical concepts.",
+          ],
+          impact:
+            "The workshop proved to be highly interactive and rewarding. It significantly enhanced students' skills in prediction, observation, memory, concentration, and logical reasoning. A total of 180 students actively participated and benefited from the program.",
+          conclusion:
+            "This four-day training created a strong aptitude base and helped students become better prepared for academic evaluation and placement interviews.",
+          tags: ["Aptitude", "Quantitative Skills", "Training"],
+        },
+        {
+          coverImage: {
+            src: imageProxyUrl(
+              "https://drive.google.com/uc?export=view&id=1KjXD4vIIqhKbLli8aLfdmDiTJ5gVlQsV",
+            ),
+            alt: "Stress Management and Resilience session cover image",
+          },
+          title: "Sessions on Stress Management and Resilience",
+          topic: "Well-being sessions for MBA students",
+          date: "08-02-2024",
+          venue: "MBA Auditorium and MBA Seminar Hall",
+          audience: "I year MBA students",
+          conductedBy:
+            "P.V. Bhandary, Psychiatrist, Dr. A. V. Baliga Group of Institutions; Dr. Deepa Kottari, Associate Professor in Psychology, Yenopaya (Deemed University)",
+          overview:
+            "The PG Department of Business Administration conducted a session on Stress Management in the morning and a session on Resilience and Mental Wellbeing later the same day. The first session highlighted common sources of stress in MBA programs, the consequences of unmanaged stress, and practical stress management strategies. The second session focused on the importance of resilience and mental well-being, creating a supportive environment, and helping students develop practical coping strategies for academic success and personal well-being.",
+          objectives: [
+            "Identify common sources of stress in MBA programs.",
+            "Understand the consequences of unmanaged stress and anxiety.",
+            "Equip students with practical stress management and resilience techniques.",
+            "Promote student well-being, academic success, and help-seeking behaviour.",
+          ],
+          impact:
+            "The sessions reduced stress-related concerns, improved emotional well-being, and gave students practical tools such as time management, mindfulness, emotional regulation, self-care, and support-seeking strategies. 149 students benefited from each session.",
+          conclusion:
+            "The well-being sessions helped students better understand stress and resilience, creating a healthier outlook toward academic demands and personal growth.",
+          tags: ["Wellbeing", "Stress Management", "Resilience"],
+        },
+        {
+          coverImage: {
+            src: imageProxyUrl(
+              "https://drive.google.com/uc?export=view&id=1mJeD7iqOSa4Ta7eW1tWMDPtBMG3CwkVB",
+            ),
+            alt: "MBA enrichment sessions cover image",
+          },
+          title:
+            "MBA Enrichment Sessions on HR, Finance, Entrepreneurship and Skills",
+          topic:
+            "A series of student development sessions conducted in February 2024",
+          date: "09-02-2024 to 14-02-2024",
+          venue: "MBA Auditorium and MBA Seminar Hall",
+          audience: "I and II year MBA students",
+          conductedBy:
+            "Mr. Ramani Venkat and Team; Mrs. Laxmi Shetty; Mr. Naveen Shankar Naik; Mr. Naveen; Dr. Vishwanath K.P.; Mrs. Maithiri; Sri Sundara S. M.; Mr. Karthik Alva; Mr. Samarth, Ms. Anagha and Mr. Aron; Mr. Manoj Kumar; and invited entrepreneurs from the Young Entrepreneurship Summit",
+          overview:
+            "The department organized several student enrichment sessions covering gamification, HR, statistics, accounting, entrepreneurship, professional grooming, auditing, cyber crime awareness, and entrepreneurship leadership. Students participated in team-building activities, learned corporate expectations, explored career paths in IT and HR, studied statistics and accounting basics, discussed entrepreneurship and government schemes, improved professional grooming, gained an introduction to auditing, understood cyber safety, and heard from successful entrepreneurs during the Young Entrepreneurship Summit.",
+          objectives: [
+            "Improve communication, teamwork, and professional grooming skills.",
+            "Expose students to HR, finance, accounting, and entrepreneurship careers.",
+            "Build awareness about statistics, cyber safety, and auditing fundamentals.",
+            "Encourage innovation, resilience, leadership, and entrepreneurial thinking.",
+          ],
+          impact:
+            "These sessions gave students exposure to corporate practices, practical problem-solving, leadership traits, and the mindset required for careers in management and entrepreneurship. The programs were interactive, motivating, and highly beneficial for career readiness.",
+          conclusion:
+            "The enrichment sessions created a strong bridge between classroom learning and real-world managerial practice, helping students become more confident, aware, and industry-ready.",
+          tags: ["HR", "Finance", "Entrepreneurship"],
+        },
+        {
+          coverImage: {
+            src: imageProxyUrl(
+              "https://drive.google.com/uc?export=view&id=1KjXD4vIIqhKbLli8aLfdmDiTJ5gVlQsV",
+            ),
+            alt: "Industrial Visit to Malpe Port cover image",
+          },
+          title: "Industrial Visit to Malpe Port",
+          topic:
+            "A practical exposure visit to the fishing industry and its operations",
+          date: "06-12-2023",
+          venue: "Malpe Port",
+          audience: "Second-year MBA students",
+          conductedBy: "PG Department of Business Administration",
+          overview:
+            "On 6th December 2023, the second-year MBA students visited Malpe Port to gain practical exposure to the fishing industry and understand its operations. The visit focused on fishing methods, processing, trade, supply chain activities, infrastructure requirements such as ice plants and cold storage, and the overall economic impact of the fish business on local communities and exports.",
+          objectives: [
+            "Gain practical exposure to the fishing industry and understand its operations.",
+            "Study the infrastructure and supply chain involved in fish processing and trade.",
+            "Analyze the economic impact of the fish business on local communities and exports.",
+            "Observe challenges and sustainability practices in modern and traditional fishing methods.",
+          ],
+          impact:
+            "The visit offered valuable insight into the multifaceted fish trade and highlighted the importance of industry visits in linking management concepts with local business ecosystems. Overall, 120 students benefited from the visit.",
+          conclusion:
+            "The Malpe Port visit helped students understand how a regional industry functions in practice and why sustainability and logistics matter in the seafood supply chain.",
+          tags: ["Industrial Visit", "Supply Chain", "Field Exposure"],
+        },
+        {
+          coverImage: {
+            src: imageProxyUrl(
+              "https://drive.google.com/uc?export=view&id=1mJeD7iqOSa4Ta7eW1tWMDPtBMG3CwkVB",
+            ),
+            alt: "Face Reading and Body Language Analysis cover image",
+          },
+          title: "Face Reading and Body Language Analysis",
+          topic: "A session on self-awareness and interpersonal communication",
+          date: "19-08-2023",
+          venue: "MBA Seminar Hall",
+          audience: "I year MBA students",
+          conductedBy:
+            "Mrs. Rachitha, healer, motivator, mentor and behavioural expert; Dr. Prakash Menon, practitioner of eastern healing and predicting techniques",
+          overview:
+            "The Face Reading Session for I Year MBA students was conducted to offer a unique perspective on interpersonal dynamics and self-awareness. The session introduced the history and basic principles of face reading, encouraged students to reflect on facial features such as the eyes, nose, mouth, and face shape, and highlighted the ethical considerations, cultural differences, limitations, and relevance of non-verbal communication in professional settings.",
+          objectives: [
+            "Introduce MBA students to the principles of face reading.",
+            "Enhance self-awareness and understanding of personal strengths and challenges.",
+            "Explore the applications of face reading in business and interpersonal relationships.",
+            "Improve sensitivity to non-verbal communication in professional life.",
+          ],
+          impact:
+            "The session fostered greater self-awareness and sensitivity to non-verbal cues, encouraging students to integrate these insights into their personal and professional development.",
+          conclusion:
+            "The program concluded with a thought-provoking learning experience that strengthened interpersonal communication awareness among the participants.",
+          tags: ["Communication", "Self-Awareness", "Body Language"],
+        },
       ],
     },
     newsletter: {

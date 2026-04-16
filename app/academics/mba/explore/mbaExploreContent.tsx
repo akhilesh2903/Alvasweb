@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 import { mbaDepartmentData } from "./mbaData";
-import { Faculty } from "@/lib/departments";
+import { DepartmentActivityEntry, Faculty } from "@/lib/departments";
 import dynamic from "next/dynamic";
 import MbaExploreLoading from "./mbaExploreLoading";
 import { motion, AnimatePresence } from "framer-motion";
@@ -25,6 +25,7 @@ import {
   Target,
 } from "lucide-react";
 import NewsletterViewer from "@/app/components/NewsletterViewer";
+import { MdClose } from "react-icons/md";
 
 const SyllabusViewer = dynamic(
   () => import("@/app/components/SyllabusViewer"),
@@ -50,6 +51,9 @@ export default function MbaExploreContent() {
   const [selectedFaculty, setSelectedFaculty] = useState<Faculty | null>(null);
   const [isFacultyModalOpen, setIsFacultyModalOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+  const [activeActivityIndex, setActiveActivityIndex] = useState<number | null>(
+    null,
+  );
 
   useEffect(() => {
     // Show contents
@@ -77,6 +81,12 @@ export default function MbaExploreContent() {
     setOpenAccordion(null);
   };
 
+  useEffect(() => {
+    if (activeTab !== "activities") {
+      setActiveActivityIndex(null);
+    }
+  }, [activeTab]);
+
   const tabs = [
     { id: "about", label: "ABOUT" },
     { id: "thrust", label: "THRUST AREA" },
@@ -100,6 +110,17 @@ export default function MbaExploreContent() {
     body: "Content not available for this section.",
     highlights: [],
   };
+
+  let activeActivity: DepartmentActivityEntry | null = null;
+  if (
+    activeTab === "activities" &&
+    activeActivityIndex !== null &&
+    currentData.entries?.[activeActivityIndex]
+  ) {
+    activeActivity = currentData.entries[
+      activeActivityIndex
+    ] as DepartmentActivityEntry;
+  }
 
   if (!isMounted) {
     return <MbaExploreLoading />;
@@ -635,6 +656,79 @@ export default function MbaExploreContent() {
                           <SyllabusViewer
                             syllabusLinks={currentData.syllabusLinks}
                           />
+                        ) : activeTab === "activities" &&
+                          currentData?.entries &&
+                          currentData.entries.length > 0 ? (
+                          <div className="space-y-8">
+                            {currentData?.body?.trim() && (
+                              <p className="text-gray-700 text-base md:text-lg leading-relaxed font-medium">
+                                {currentData.body}
+                              </p>
+                            )}
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                              {currentData.entries.map(
+                                (activity: DepartmentActivityEntry, idx) => (
+                                  <motion.button
+                                    key={`${activity.title}-${idx}`}
+                                    type="button"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{
+                                      duration: 0.25,
+                                      delay: idx * 0.03,
+                                    }}
+                                    onClick={() =>
+                                      setActiveActivityIndex((prev) =>
+                                        prev === idx ? null : idx,
+                                      )
+                                    }
+                                    aria-expanded={activeActivityIndex === idx}
+                                    className="text-left group"
+                                  >
+                                    <div className="relative h-48 rounded-[2rem] overflow-hidden border border-gray-200 bg-gray-100 shadow-sm">
+                                      {activity.coverImage?.src ? (
+                                        <img
+                                          src={activity.coverImage.src}
+                                          alt={
+                                            activity.coverImage.alt ||
+                                            activity.title
+                                          }
+                                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                                          loading="lazy"
+                                        />
+                                      ) : (
+                                        <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-100" />
+                                      )}
+
+                                      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
+
+                                      <div className="absolute top-0 left-0 right-0 p-4">
+                                        <h3 className="text-white text-base md:text-lg font-black leading-snug">
+                                          {activity.title}
+                                        </h3>
+                                      </div>
+
+                                      {activity.tags?.length ? (
+                                        <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-wrap gap-2">
+                                          {activity.tags
+                                            .slice(0, 3)
+                                            .map((tag) => (
+                                              <span
+                                                key={tag}
+                                                className="px-2.5 py-1 rounded-full bg-white/90 text-[10px] font-black uppercase tracking-widest text-gray-800"
+                                              >
+                                                {tag}
+                                              </span>
+                                            ))}
+                                        </div>
+                                      ) : null}
+                                    </div>
+                                  </motion.button>
+                                ),
+                              )}
+                            </div>
+                          </div>
                         ) : (
                           <div
                             className="text-sm md:text-base text-gray-800 leading-relaxed mb-6"
@@ -858,6 +952,147 @@ export default function MbaExploreContent() {
           </div>
         </div>
       </footer>
+
+      {activeActivity && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9999] flex items-center justify-center p-4 animate-in fade-in duration-300"
+          onClick={() => setActiveActivityIndex(null)}
+        >
+          <button
+            onClick={() => setActiveActivityIndex(null)}
+            className="absolute -top-12 right-0 md:-right-12 w-10 h-10 rounded-full bg-white text-gray-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition shadow-2xl z-[10000] border border-gray-100 font-bold text-xl"
+          >
+            <MdClose className="w-5 h-5" />
+          </button>
+          <div
+            className="bg-white rounded-[2rem] shadow-2xl max-w-6xl w-[96vw] max-h-[90vh] overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100 flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="bg-[#f8f9fa] p-6 md:p-8 pb-6 border-b border-gray-100 flex flex-col md:flex-row gap-6 md:items-start md:justify-between">
+              <div>
+                <h3 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight">
+                  {activeActivity.title}
+                </h3>
+                {activeActivity.topic && (
+                  <p className="text-sm md:text-base font-bold text-indigo-700 mt-2">
+                    {activeActivity.topic}
+                  </p>
+                )}
+              </div>
+
+              <div className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-indigo-50 border border-indigo-100">
+                <span className="text-[11px] font-black uppercase tracking-widest text-indigo-600">
+                  Date
+                </span>
+                <span className="text-sm font-black text-indigo-900">
+                  {activeActivity.date}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-6 md:p-8 text-sm md:text-[0.95rem]">
+              {activeActivity.coverImage?.src && (
+                <div className="mb-6 overflow-hidden rounded-[2rem] border border-gray-200 bg-gray-100">
+                  <img
+                    src={activeActivity.coverImage.src}
+                    alt={activeActivity.coverImage.alt || activeActivity.title}
+                    className="w-full h-[280px] object-cover"
+                  />
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">
+                    Venue
+                  </p>
+                  <p className="text-sm font-bold text-gray-900 mt-1">
+                    {activeActivity.venue}
+                  </p>
+                </div>
+                <div className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">
+                    Audience
+                  </p>
+                  <p className="text-sm font-bold text-gray-900 mt-1">
+                    {activeActivity.audience}
+                  </p>
+                </div>
+                <div className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">
+                    Conducted By
+                  </p>
+                  <p className="text-sm font-bold text-gray-900 mt-1">
+                    {activeActivity.conductedBy}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <h4 className="text-sm font-black uppercase tracking-widest text-gray-700">
+                  Overview
+                </h4>
+                <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                  {activeActivity.overview}
+                </p>
+              </div>
+
+              <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="bg-indigo-50/50 border border-indigo-100 rounded-3xl p-5">
+                  <h4 className="text-sm font-black uppercase tracking-widest text-indigo-700">
+                    Objectives
+                  </h4>
+                  <ul className="mt-3 space-y-2">
+                    {activeActivity.objectives.map((obj, i) => (
+                      <li
+                        key={i}
+                        className="flex gap-3 text-sm text-gray-800 leading-relaxed font-semibold"
+                      >
+                        <span className="mt-1 inline-block w-2 h-2 rounded-full bg-indigo-600 shrink-0" />
+                        <span>{obj}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="bg-gray-50 border border-gray-100 rounded-3xl p-5">
+                    <h4 className="text-sm font-black uppercase tracking-widest text-gray-700">
+                      Impact
+                    </h4>
+                    <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                      {activeActivity.impact}
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-50 border border-gray-100 rounded-3xl p-5">
+                    <h4 className="text-sm font-black uppercase tracking-widest text-gray-700">
+                      Conclusion
+                    </h4>
+                    <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                      {activeActivity.conclusion}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {activeActivity.tags?.length ? (
+                <div className="mt-8 flex flex-wrap gap-2">
+                  {activeActivity.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold uppercase tracking-wide border border-indigo-100"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Faculty Modal */}
       {isFacultyModalOpen && selectedFaculty && (
         <div

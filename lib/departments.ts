@@ -34,12 +34,18 @@ export interface SyllabusCategory {
   links: SyllabusLink[];
 }
 
+export interface YearSection {
+  year: string;
+  body: string;
+}
+
 export interface ActivityImage {
   src: string;
   alt: string;
 }
 
 export interface DepartmentActivityEntry {
+  coverImage?: ActivityImage;
   title: string;
   topic?: string;
   date: string;
@@ -58,6 +64,7 @@ export interface ExploreTabData {
   title: string;
   body: string;
   highlights: string[];
+  yearSections?: YearSection[];
   syllabusLinks?: SyllabusLink[];
   syllabusCategories?: SyllabusCategory[];
   entries?: DepartmentActivityEntry[];

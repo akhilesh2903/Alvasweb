@@ -89,6 +89,58 @@ export default function IseExploreContent() {
     highlights: [],
   };
 
+  const renderFacilitiesContent = () => {
+    const lines = (department.exploreData?.facilities?.body || "")
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean);
+
+    const [heading, ...restLines] = lines;
+    const labStartIndex = restLines.findIndex((line) =>
+      /^Computer Programming Lab$/i.test(line),
+    );
+    const introLines =
+      labStartIndex >= 0 ? restLines.slice(0, labStartIndex) : restLines;
+    const labLines =
+      labStartIndex >= 0
+        ? restLines.slice(labStartIndex, labStartIndex + 14)
+        : [];
+    const tailLines =
+      labStartIndex >= 0 ? restLines.slice(labStartIndex + 14) : [];
+
+    return (
+      <div className="space-y-6 md:space-y-8">
+        <div className="text-center space-y-3">
+          <h2 className="text-[18px] md:text-[20px] font-bold tracking-wide text-gray-900">
+            {heading || currentData?.title || "FACILITIES"}
+          </h2>
+        </div>
+
+        <div className="space-y-4 text-[15px] md:text-[16px] leading-8 text-gray-800 text-justify">
+          {introLines.map((line, idx) => (
+            <p key={`intro-${idx}`}>{line}</p>
+          ))}
+        </div>
+
+        {labLines.length > 0 && (
+          <ol className="list-decimal marker:text-black space-y-2 pl-6 md:pl-8 text-[15px] md:text-[16px] leading-8">
+            {labLines.map((lab, idx) => (
+              <li key={`lab-${idx}`} className="font-bold">
+                <span className="text-red-600">{lab}</span>
+              </li>
+            ))}
+          </ol>
+        )}
+
+        <div className="space-y-4 text-[15px] md:text-[16px] leading-8 text-gray-800 text-justify">
+          {tailLines.map((line, idx) => (
+            <p key={`tail-${idx}`}>{line}</p>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   if (!isMounted) {
     return <IseExploreLoading />;
   }
@@ -501,7 +553,9 @@ export default function IseExploreContent() {
                       {currentData?.title || "EXPLORE"}
                     </h2>
 
-                    {activeTab === "facultyStaff" ? (
+                    {activeTab === "facilities" ? (
+                      renderFacilitiesContent()
+                    ) : activeTab === "facultyStaff" ? (
                       <div className="space-y-12">
                         {/* HOD SECTION */}
                         <div className="bg-white/50 backdrop-blur-md rounded-[2.5rem] p-6 md:p-10 border border-gray-100 shadow-lg relative overflow-hidden group">

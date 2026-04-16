@@ -506,6 +506,13 @@ export default function CseExploreContent() {
   const [selectedFaculty, setSelectedFaculty] = useState<Faculty | null>(null);
   const [isFacultyModalOpen, setIsFacultyModalOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+  const [activeYearSection, setActiveYearSection] = useState<string | null>(
+    null,
+  );
+
+  const [activeActivityIndex, setActiveActivityIndex] = useState<number | null>(
+    null,
+  );
 
   const getPublicationCount = (text: string): number | null => {
     const normalized = text.trim();
@@ -551,6 +558,34 @@ export default function CseExploreContent() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [department.name]);
+
+  useEffect(() => {
+    if (activeTab !== "activities") setActiveActivityIndex(null);
+  }, [activeTab]);
+
+  useEffect(() => {
+    const activeTabData =
+      department.exploreData?.[
+        activeTab as keyof typeof department.exploreData
+      ];
+
+    if (activeTabData?.yearSections?.length) {
+      setActiveYearSection(activeTabData.yearSections[0].year);
+    } else {
+      setActiveYearSection(null);
+    }
+  }, [activeTab, department.exploreData]);
+
+  useEffect(() => {
+    if (activeActivityIndex === null) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [activeActivityIndex]);
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
@@ -662,6 +697,24 @@ export default function CseExploreContent() {
     highlights: [],
   };
 
+  const activeYearSectionData =
+    currentData.yearSections?.find(
+      (section) => section.year === activeYearSection,
+    ) ||
+    currentData.yearSections?.[0] ||
+    null;
+
+  let activeActivity: DepartmentActivityEntry | null = null;
+  if (
+    activeTab === "activities" &&
+    activeActivityIndex !== null &&
+    currentData.entries?.[activeActivityIndex]
+  ) {
+    activeActivity = currentData.entries[
+      activeActivityIndex
+    ] as DepartmentActivityEntry;
+  }
+
   if (!isMounted) {
     return <CseExploreLoading />;
   }
@@ -714,6 +767,60 @@ export default function CseExploreContent() {
           padding-top: 8px !important;
           padding-bottom: 8px !important;
           border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .cse-rich-content {
+          width: 100%;
+          font-size: 0.94rem;
+          line-height: 1.7;
+        }
+
+        .cse-rich-content table {
+          width: 100%;
+          border-collapse: collapse;
+          table-layout: fixed;
+          margin: 1rem 0 1.5rem;
+          background: #ffffff;
+        }
+
+        .cse-rich-content th,
+        .cse-rich-content td {
+          border: 1px solid rgba(148, 163, 184, 0.9);
+          padding: 0.7rem 0.75rem;
+          vertical-align: top;
+          word-break: break-word;
+          overflow-wrap: anywhere;
+        }
+
+        .cse-rich-content th {
+          background: linear-gradient(180deg, #eef2ff 0%, #e0e7ff 100%);
+          color: #1e3a8a;
+          font-weight: 800;
+          font-size: 0.72rem;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+        }
+
+        .cse-rich-content td {
+          font-size: 0.84rem;
+          color: #1f2937;
+        }
+
+        .cse-rich-content p {
+          margin: 0.7rem 0;
+          font-size: 0.92rem;
+        }
+
+        .cse-rich-content ol,
+        .cse-rich-content ul {
+          margin: 0.75rem 0;
+          padding-left: 1.5rem;
+        }
+
+        .cse-rich-content li {
+          margin: 0.35rem 0;
+          font-size: 0.88rem;
+          line-height: 1.55;
         }
       `}</style>
 
@@ -769,7 +876,7 @@ export default function CseExploreContent() {
 
       {/* Main Content */}
       <div className="page-bg">
-        <div className="max-w-[1500px] mx-auto px-3 md:px-5 py-10 grid lg:grid-cols-12 gap-6">
+        <div className="max-w-[1800px] mx-auto px-3 md:px-5 py-10 grid lg:grid-cols-12 gap-6">
           {/* LEFT SIDE: Sidebar (Desktop) / Radial Menu (Mobile) */}
           <aside className="lg:col-span-3">
             {/* Desktop Sidebar */}
@@ -805,7 +912,7 @@ export default function CseExploreContent() {
           </aside>
 
           {/* RIGHT SIDE: Content Area */}
-          <section className="lg:col-span-9 bg-white border border-gray-300 rounded-3xl p-6 md:p-10 shadow-md min-h-[600px] relative overflow-hidden">
+          <section className="lg:col-span-9 w-full min-w-0 bg-white border border-gray-300 rounded-3xl p-6 md:p-10 shadow-md min-h-[600px] relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -1266,170 +1373,118 @@ export default function CseExploreContent() {
                               </p>
                             )}
 
-                            <div className="grid gap-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                               {currentData.entries.map(
                                 (activity: DepartmentActivityEntry, idx) => (
-                                  <motion.div
+                                  <motion.button
                                     key={`${activity.title}-${idx}`}
-                                    initial={{ opacity: 0, y: 12 }}
+                                    type="button"
+                                    initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{
-                                      duration: 0.35,
-                                      delay: idx * 0.05,
+                                      duration: 0.25,
+                                      delay: idx * 0.03,
                                     }}
-                                    className="bg-white rounded-[2rem] border border-gray-200 shadow-sm overflow-hidden"
+                                    onClick={() =>
+                                      setActiveActivityIndex((prev) =>
+                                        prev === idx ? null : idx,
+                                      )
+                                    }
+                                    aria-expanded={activeActivityIndex === idx}
+                                    className="text-left group"
                                   >
-                                    <div className="p-6 md:p-8">
-                                      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                                        <div>
-                                          <h3 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight">
-                                            {activity.title}
-                                          </h3>
-                                          {activity.topic && (
-                                            <p className="text-sm md:text-base font-bold text-indigo-700 mt-1">
-                                              {activity.topic}
-                                            </p>
-                                          )}
-                                        </div>
+                                    <div className="relative h-48 rounded-[2rem] overflow-hidden border border-gray-200 bg-gray-100 shadow-sm">
+                                      {activity.coverImage?.src ? (
+                                        <img
+                                          src={activity.coverImage.src}
+                                          alt={
+                                            activity.coverImage.alt ||
+                                            activity.title
+                                          }
+                                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                                          loading="lazy"
+                                        />
+                                      ) : (
+                                        <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-100" />
+                                      )}
 
-                                        <div className="shrink-0">
-                                          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-indigo-50 border border-indigo-100">
-                                            <span className="text-[11px] font-black uppercase tracking-widest text-indigo-600">
-                                              Date
-                                            </span>
-                                            <span className="text-sm font-black text-indigo-900">
-                                              {activity.date}
-                                            </span>
-                                          </div>
-                                        </div>
+                                      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
+
+                                      <div className="absolute top-0 left-0 right-0 p-4">
+                                        <h3 className="text-white text-base md:text-lg font-black leading-snug">
+                                          {activity.title}
+                                        </h3>
                                       </div>
 
-                                      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                                        <div className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
-                                          <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">
-                                            Venue
-                                          </p>
-                                          <p className="text-sm font-bold text-gray-900 mt-1">
-                                            {activity.venue}
-                                          </p>
-                                        </div>
-                                        <div className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
-                                          <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">
-                                            Audience
-                                          </p>
-                                          <p className="text-sm font-bold text-gray-900 mt-1">
-                                            {activity.audience}
-                                          </p>
-                                        </div>
-                                        <div className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
-                                          <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">
-                                            Conducted By
-                                          </p>
-                                          <p className="text-sm font-bold text-gray-900 mt-1">
-                                            {activity.conductedBy}
-                                          </p>
-                                        </div>
-                                      </div>
-
-                                      <div className="mt-6">
-                                        <h4 className="text-sm font-black uppercase tracking-widest text-gray-700">
-                                          Overview
-                                        </h4>
-                                        <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed font-medium">
-                                          {activity.overview}
-                                        </p>
-                                      </div>
-
-                                      <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
-                                        <div className="bg-indigo-50/50 border border-indigo-100 rounded-3xl p-5">
-                                          <h4 className="text-sm font-black uppercase tracking-widest text-indigo-700">
-                                            Objectives
-                                          </h4>
-                                          <ul className="mt-3 space-y-2">
-                                            {activity.objectives.map(
-                                              (obj, i) => (
-                                                <li
-                                                  key={i}
-                                                  className="flex gap-3 text-sm text-gray-800 leading-relaxed font-semibold"
-                                                >
-                                                  <span className="mt-1 inline-block w-2 h-2 rounded-full bg-indigo-600 shrink-0" />
-                                                  <span>{obj}</span>
-                                                </li>
-                                              ),
-                                            )}
-                                          </ul>
-                                        </div>
-
-                                        <div className="space-y-4">
-                                          <div className="bg-gray-900 text-white rounded-3xl p-5">
-                                            <p className="text-[10px] font-black uppercase tracking-widest text-white/70">
-                                              Impact
-                                            </p>
-                                            <p className="mt-2 text-sm md:text-base font-bold leading-relaxed text-white/90">
-                                              {activity.impact}
-                                            </p>
-                                          </div>
-                                          <div className="bg-blue-50 border border-blue-100 rounded-3xl p-5">
-                                            <p className="text-[10px] font-black uppercase tracking-widest text-blue-700">
-                                              Conclusion
-                                            </p>
-                                            <p className="mt-2 text-sm md:text-base font-bold leading-relaxed text-blue-900">
-                                              {activity.conclusion}
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                      {activity.tags &&
-                                        activity.tags.length > 0 && (
-                                          <div className="mt-6 flex flex-wrap gap-2">
-                                            {activity.tags.map((tag) => (
+                                      {activity.tags?.length ? (
+                                        <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-wrap gap-2">
+                                          {activity.tags
+                                            .slice(0, 3)
+                                            .map((tag) => (
                                               <span
                                                 key={tag}
-                                                className="px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-widest bg-gray-100 text-gray-700 border border-gray-200"
+                                                className="px-2.5 py-1 rounded-full bg-white/90 text-[10px] font-black uppercase tracking-widest text-gray-800"
                                               >
                                                 {tag}
                                               </span>
                                             ))}
-                                          </div>
-                                        )}
-
-                                      {activity.images &&
-                                        activity.images.length > 0 && (
-                                          <div className="mt-8">
-                                            <h4 className="text-sm font-black uppercase tracking-widest text-gray-700">
-                                              Gallery
-                                            </h4>
-                                            <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                              {activity.images.map((img, i) => (
-                                                <div
-                                                  key={`${img.src}-${i}`}
-                                                  className="relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 aspect-[4/3]"
-                                                >
-                                                  <img
-                                                    src={img.src}
-                                                    alt={img.alt}
-                                                    className="w-full h-full object-cover"
-                                                    loading="lazy"
-                                                  />
-                                                </div>
-                                              ))}
-                                            </div>
-                                          </div>
-                                        )}
+                                        </div>
+                                      ) : null}
                                     </div>
-                                  </motion.div>
+                                  </motion.button>
                                 ),
                               )}
                             </div>
                           </div>
+                        ) : currentData.yearSections?.length ? (
+                          <div className="space-y-6">
+                            <div className="flex flex-wrap gap-3 rounded-2xl border border-indigo-100 bg-white/90 p-3 shadow-sm sticky top-0 z-10 backdrop-blur-sm">
+                              {currentData.yearSections.map((section) => (
+                                <button
+                                  key={section.year}
+                                  type="button"
+                                  onClick={() =>
+                                    setActiveYearSection(section.year)
+                                  }
+                                  className={`px-4 py-2 rounded-full border text-sm font-bold transition-all duration-200 ${
+                                    activeYearSection === section.year
+                                      ? "bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-200"
+                                      : "bg-white text-gray-700 border-gray-300 hover:border-indigo-300 hover:text-indigo-700"
+                                  }`}
+                                >
+                                  {section.year}
+                                </button>
+                              ))}
+                            </div>
+
+                            {activeYearSectionData && (
+                              <div className="cse-rich-content text-gray-800 mb-6">
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: activeYearSectionData.body,
+                                  }}
+                                />
+                              </div>
+                            )}
+
+                            {currentData?.body?.trim() && (
+                              <div className="cse-rich-content text-gray-800 mb-2">
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: currentData.body,
+                                  }}
+                                />
+                              </div>
+                            )}
+                          </div>
                         ) : (
-                          <div
-                            className="text-sm md:text-base text-gray-800 leading-relaxed mb-6"
-                            dangerouslySetInnerHTML={{
-                              __html: currentData?.body || "",
-                            }}
-                          />
+                          <div className="cse-rich-content text-gray-800 mb-6">
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: currentData?.body || "",
+                              }}
+                            />
+                          </div>
                         )}
 
                         <div className="mt-6 grid md:grid-cols-2 gap-4">
@@ -1647,6 +1702,136 @@ export default function CseExploreContent() {
         </div>
       </footer>
       {/* Faculty Modal */}
+      {activeActivity && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9999] flex items-center justify-center p-4 animate-in fade-in duration-300"
+          onClick={() => setActiveActivityIndex(null)}
+        >
+          <button
+            onClick={() => setActiveActivityIndex(null)}
+            className="absolute -top-12 right-0 md:-right-12 w-10 h-10 rounded-full bg-white text-gray-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition shadow-2xl z-[10000] border border-gray-100 font-bold text-xl"
+          >
+            <MdClose className="w-5 h-5" />
+          </button>
+          <div
+            className="bg-white rounded-[2rem] shadow-2xl max-w-6xl w-[96vw] max-h-[90vh] overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100 flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="bg-[#f8f9fa] p-6 md:p-8 pb-6 border-b border-gray-100 flex flex-col md:flex-row gap-6 md:items-start md:justify-between">
+              <div>
+                <h3 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight">
+                  {activeActivity.title}
+                </h3>
+                {activeActivity.topic && (
+                  <p className="text-sm md:text-base font-bold text-indigo-700 mt-2">
+                    {activeActivity.topic}
+                  </p>
+                )}
+              </div>
+
+              <div className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-indigo-50 border border-indigo-100">
+                <span className="text-[11px] font-black uppercase tracking-widest text-indigo-600">
+                  Date
+                </span>
+                <span className="text-sm font-black text-indigo-900">
+                  {activeActivity.date}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-6 md:p-8 text-sm md:text-[0.95rem]">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">
+                    Venue
+                  </p>
+                  <p className="text-sm font-bold text-gray-900 mt-1">
+                    {activeActivity.venue}
+                  </p>
+                </div>
+                <div className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">
+                    Audience
+                  </p>
+                  <p className="text-sm font-bold text-gray-900 mt-1">
+                    {activeActivity.audience}
+                  </p>
+                </div>
+                <div className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">
+                    Conducted By
+                  </p>
+                  <p className="text-sm font-bold text-gray-900 mt-1">
+                    {activeActivity.conductedBy}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <h4 className="text-sm font-black uppercase tracking-widest text-gray-700">
+                  Overview
+                </h4>
+                <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                  {activeActivity.overview}
+                </p>
+              </div>
+
+              <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="bg-indigo-50/50 border border-indigo-100 rounded-3xl p-5">
+                  <h4 className="text-sm font-black uppercase tracking-widest text-indigo-700">
+                    Objectives
+                  </h4>
+                  <ul className="mt-3 space-y-2">
+                    {activeActivity.objectives.map((obj, i) => (
+                      <li
+                        key={i}
+                        className="flex gap-3 text-sm text-gray-800 leading-relaxed font-semibold"
+                      >
+                        <span className="mt-1 inline-block w-2 h-2 rounded-full bg-indigo-600 shrink-0" />
+                        <span>{obj}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="bg-gray-50 border border-gray-100 rounded-3xl p-5">
+                    <h4 className="text-sm font-black uppercase tracking-widest text-gray-700">
+                      Impact
+                    </h4>
+                    <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                      {activeActivity.impact}
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-50 border border-gray-100 rounded-3xl p-5">
+                    <h4 className="text-sm font-black uppercase tracking-widest text-gray-700">
+                      Conclusion
+                    </h4>
+                    <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                      {activeActivity.conclusion}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {activeActivity.tags?.length ? (
+                <div className="mt-8 flex flex-wrap gap-2">
+                  {activeActivity.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold uppercase tracking-wide border border-indigo-100"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      )}
+
       {isFacultyModalOpen && selectedFaculty && (
         <div
           className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9999] flex items-center justify-center p-4 animate-in fade-in duration-300"
@@ -1659,7 +1844,7 @@ export default function CseExploreContent() {
             &times;
           </button>
           <div
-            className="bg-white rounded-[2rem] shadow-2xl max-w-xl w-full max-h-[85vh] overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100 flex flex-col"
+            className="bg-white rounded-[2rem] shadow-2xl max-w-4xl w-[96vw] max-h-[90vh] overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="bg-[#f8f9fa] p-8 pb-6 border-b border-gray-100 flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">

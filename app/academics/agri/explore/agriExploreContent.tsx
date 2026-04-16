@@ -42,6 +42,9 @@ export default function AgriExploreContent() {
   const [selectedFaculty, setSelectedFaculty] = useState<Faculty | null>(null);
   const [isFacultyModalOpen, setIsFacultyModalOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+  const [activeAchievementSection, setActiveAchievementSection] = useState<
+    "student" | "faculty"
+  >("student");
 
   useEffect(() => {
     // Show contents
@@ -61,6 +64,9 @@ export default function AgriExploreContent() {
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
+    if (tabId === "achievements") {
+      setActiveAchievementSection("student");
+    }
   };
 
   const openFacultyModal = (faculty: Faculty) => {
@@ -94,6 +100,26 @@ export default function AgriExploreContent() {
     body: "Content not available for this section.",
     highlights: [],
   };
+
+  const extractAchievementSection = (
+    body: string,
+    section: "student" | "faculty",
+  ) => {
+    const sectionRegex = new RegExp(
+      `<section[^>]*data-achievement=["']${section}["'][^>]*>[\\s\\S]*?<\\/section>`,
+      "i",
+    );
+    const match = body.match(sectionRegex);
+    return match ? match[0] : "";
+  };
+
+  const activeAchievementHtml =
+    activeTab === "achievements"
+      ? extractAchievementSection(
+          currentData?.body || "",
+          activeAchievementSection,
+        )
+      : "";
 
   if (!isMounted) {
     return <AgriExploreLoading />;
@@ -147,6 +173,22 @@ export default function AgriExploreContent() {
           padding-top: 8px !important;
           padding-bottom: 8px !important;
           border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+        }
+
+        section[data-achievement] ol li {
+          padding: 10px 12px;
+          border-radius: 12px;
+          border: 1px solid #dbeafe;
+        }
+
+        section[data-achievement] ol li:nth-child(odd) {
+          background: #eef6ff;
+          border-left: 5px solid #3b82f6;
+        }
+
+        section[data-achievement] ol li:nth-child(even) {
+          background: #f0fdf4;
+          border-left: 5px solid #22c55e;
         }
       `}</style>
 
@@ -623,6 +665,45 @@ export default function AgriExploreContent() {
                             backPath="/academics/agri/explore"
                             departmentName="AGRI"
                           />
+                        ) : activeTab === "achievements" ? (
+                          <div className="space-y-5">
+                            <div className="flex flex-wrap gap-3 rounded-2xl border border-indigo-100 bg-white/90 p-3 shadow-sm">
+                              <button
+                                onClick={() =>
+                                  setActiveAchievementSection("student")
+                                }
+                                className={`px-5 py-2.5 rounded-xl text-sm font-black tracking-wide transition-all ${
+                                  activeAchievementSection === "student"
+                                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-200"
+                                    : "bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+                                }`}
+                              >
+                                Student Achievement
+                              </button>
+                              <button
+                                onClick={() =>
+                                  setActiveAchievementSection("faculty")
+                                }
+                                className={`px-5 py-2.5 rounded-xl text-sm font-black tracking-wide transition-all ${
+                                  activeAchievementSection === "faculty"
+                                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-200"
+                                    : "bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+                                }`}
+                              >
+                                Faculty Achievement
+                              </button>
+                            </div>
+
+                            <div
+                              className="text-sm md:text-base text-gray-800 leading-relaxed mb-6"
+                              dangerouslySetInnerHTML={{
+                                __html:
+                                  activeAchievementHtml ||
+                                  currentData?.body ||
+                                  "",
+                              }}
+                            />
+                          </div>
                         ) : (
                           <div
                             className="text-sm md:text-base text-gray-800 leading-relaxed mb-6"

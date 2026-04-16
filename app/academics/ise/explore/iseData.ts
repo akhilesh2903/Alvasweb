@@ -5,16 +5,13 @@ const imageProxyUrl = (url: string) =>
 
 export const iseDepartmentData: DepartmentData = {
   id: "ise",
-  name: "Department of Ise",
-  title: "Department of Ise Engineering",
-  vision: `Centre of excellence to empower the young minds in the field of Department of Ise Engineering with research focus and skill development through transformative education catering to the needs of the society`,
-  mission: `M1:	To create Learning Environment to enable the students for excellence in the field of Department of Ise Engineering.
-M2:	To empower the students with necessary skills for solving the complex technological problems.
-M3:	To inculcate Research Culture among Teaching Learning Group by guiding them towards Research activities to bridge the gap between Industry and Academia.
-M4:	By imbibing the students with human values and ethics through transformative education and make them socially responsible professionals.
-
-
-`,
+  name: "Department of Information Science and Engineering",
+  title: "Department of Information Science and Engineering",
+  vision: `To impart quality learning and nurture students to become successful technocrats by achieving excellence in Information Science and Engineering for addressing the evolving needs of the industry as well as society.`,
+  mission: `M1: To provide quality technical education and research training for preparing competent professionals in the Information Technology field.
+M2: To provide suitable infrastructure and an environment that inculcates best engineering practices for the socio-economic development of society.
+M3: To foster students to become successful technocrats to meet global competency in the IT industry.
+M4: To develop entrepreneurship skills with active research and innovation by inculcating ethical values among students.`,
   hod: {
     name: "Dr. Ravindra B V",
     designation: "Professor & HOD - ISE",
@@ -144,11 +141,11 @@ M4:	By imbibing the students with human values and ethics through transformative
   exploreData: {
     about: {
       title: "ABOUT DEPARTMENT OF INFORMATION SCIENCE & ENGINEERING",
-      body: `The Department of Information Science & Engineering covers the entire lifecycle of software systems, focusing on robust architecture, cloud computing, and efficient data retrieval.`,
+      body: `The Department was started in the year 2008 with an intake of 60 for the undergraduate program. The course has become popular among students because of their achievements and academic rigor. The department has well-qualified, experienced, and committed faculty members to provide quality industry-tuned education. Faculty members regularly participate in workshops, faculty development programs, and seminars to stay updated with cutting-edge technologies. They also publish research papers in renowned journals and conferences. The department has well-equipped laboratories with state-of-the-art infrastructure, including fully networked computer systems with latest configurations and software for application and development areas. The department is affiliated with Visvesvaraya Technological University (VTU), Belagavi.`,
       highlights: [
-        "Dynamic and modernized curriculum.",
-        "Focus on hands-on practical learning.",
-        "Strong industry-academia connections.",
+        "Established in 2008 with an intake of 60 for UG program.",
+        "Experienced faculty with active participation in FDPs, workshops, and research publications.",
+        "State-of-the-art, fully networked labs and latest software tools; affiliated to VTU, Belagavi.",
       ],
     },
     thrust: {
@@ -163,44 +160,22 @@ M4:	By imbibing the students with human values and ethics through transformative
     },
     peo: {
       title: "(PEO's, PO's, PSO'S)",
-      body: `PO1: Engineering Knowledge: Apply knowledge of mathematics, science, engineering fundamentals and an engineering specialization to solve complex engineering problems.
+      body: `PEOs
 
-PO2:	Problem Analysis: Identify, formulate, review research literature and analyze complex engineering problems using first principles of mathematics, natural sciences and engineering sciences.
+PEO1: Apply the principles of Information Science and Engineering and fundamentals of mathematics to provide solutions to societal needs.
+PEO2: Pursue higher education and engage in research to meet the challenges of cutting-edge technologies.
+PEO3: Design and develop reliable software systems to satisfy industrial needs through multidisciplinary projects.
+PEO4: Work in various IT-related fields and contribute to society.
 
-PO3:	Design and Development of solutions: Design solutions for complex engineering problems and digital systems, components or processes that meet specified needs with appropriate consideration for public health and safety and cultural, societal and environmental considerations.
+PSOs
 
-PO4:	Conduct Investigations: Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data and synthesis of the information to provide valid conclusions.
-
-PO5:	Modern Tool Usage: Create, select and apply appropriate techniques, resources and modern engineering and IT tools to complex engineering activities with an understanding of the limitations.
-
-PO6:	The Engineer and Society: Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.
-
-PO7:	Environment and sustainability: Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.
-
-PO8:	Ethics: Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.
-
-PO9:	Individual and team work: Function effectively as an individual and as a member or leader in diverse teams, and in multidisciplinary settings.
-
-PO10:	Communication: Communicate effectively on complex engineering activities with the engineering community and with society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations and give and riseive clear instructions.
-
-PO11:	Project management and finance: Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.
-
-PO12:	Life-long learning: Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change.
-
-PEO1:	Apply mathematical, scientific and engineering skills for solving problems in the area of Department of Ise Engineering.
-PEO2: Expose to emerging technologies and excel in industries/higher studies/research.
-PEO3:	Apply analytical skills in the area of Department of Ise Engineering to become competent and employable.
-PEO4:	Inculcate Professional ethics, human values, team work for solving engineering problems and contribute to societal needs.
-
-PSO1: Understand and apply the principles of Department of Ise Engineering in various domains of Analog and Digital systems.
-
-PSO2: Design and implement systems using the concepts of Electronics, Signal Processing, Embedded Systems and Semiconductor Technology.
-
-PSO3: Apply modern Hardware and software tools to analyze and solve engineering Problems.`,
+PSO1: Design, develop, test, and maintain software systems that satisfy the needs of the IT industry.
+PSO2: Apply the knowledge of computer networking, databases, and computation to provide solutions to real-world engineering problems.
+PSO3: Develop programs and projects using modern software tools for industrial and scientific applications.`,
       highlights: [
-        "Strong foundational knowledge in electronics.",
-        "Practical application of theoretical concepts.",
-        "Leadership and ethical engineering practices.",
+        "Strong software design and development orientation.",
+        "Emphasis on research, higher education, and multidisciplinary projects.",
+        "Industry-ready IT skills with societal and ethical responsibility.",
       ],
     },
     syllabus: {
@@ -233,11 +208,32 @@ PSO3: Apply modern Hardware and software tools to analyze and solve engineering 
     facultyStaff: { title: "FACULTY AND STAFF", body: "", highlights: [] },
     facilities: {
       title: "FACILITIES",
-      body: "Modernized infrastructure equipped with the latest software and hardware to support advanced learning and research.",
+      body: `COMPUTER LABORATORIES
+
+The Department is well equipped with hardware as well as software facilities. The department has more than 850 computer systems and fully air-conditioned programming labs, internet laboratories. The labs consist of advanced i5, i3, Dual Core and Core 2 Duo, 4th, 6th and 7th generation Lenovo and Dell systems with Ubuntu and Fedora Linux operating systems and servers with Windows Server 2003. Hardware facilities supporting the labs are equipped with Assembly kits, Interfacing kit, Emulators, Cross-compilers, Micro-controller, and DSP kit.
+
+All the labs are LAN connected with licensed software packages related to latest global techniques. A 400 Mbps leased line internet with Wi-Fi facility is provided so that the students can develop and sharpen their technical skills. Students have opportunities to work on live projects received from reputed national and international companies. The department has the following labs with latest software and configurations:
+
+Computer Programming Lab
+Data Structure Lab
+Electronic Circuits & Logic Design Lab
+Algorithms Lab
+Micro Processor Lab
+Database Application Lab
+System Software & Operating System Lab
+Computer Graphics & Visualization Lab
+Networks Lab
+Web Programming Lab
+Project Lab
+Internet Lab
+Intel Intelligence Lab
+Apple Lab
+
+Computing facility labs have software and utilities such as Windows Vista, Windows Advanced Server 2003, Windows XP, Windows 2000 Professional, Windows 98, Red Hat Linux 9.0, Ubuntu LTS 14.0, Fedora 22, LibreOffice, Oracle 8i, MS Visual Studio, Borland C++, Turbo C++, assemblers like MASM and TASM, etc.`,
       highlights: [
-        "Well-equipped laboratories.",
-        "Access to latest software tools.",
-        "Dedicated project incubation spaces.",
+        "More than 850 computer systems across programming and internet laboratories.",
+        "400 Mbps leased line internet with Wi-Fi and LAN-connected labs.",
+        "Wide range of labs, software packages, and live-project support.",
       ],
     },
     workshop: {
