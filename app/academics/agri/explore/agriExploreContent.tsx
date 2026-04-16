@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
@@ -13,6 +13,7 @@ import dynamic from "next/dynamic";
 import AgriExploreLoading from "./agriExploreLoading";
 import { motion, AnimatePresence } from "framer-motion";
 import MobileExploreNav from "@/app/components/MobileExploreNav";
+import Footer from "@/app/components/Footer";
 import {
   Cpu,
   CircuitBoard,
@@ -248,7 +249,7 @@ export default function AgriExploreContent() {
           {/* LEFT SIDE: Sidebar (Desktop) / Hamburger Menu (Mobile) */}
           <aside className="lg:col-span-3">
             {/* Desktop Sidebar */}
-            <div className="hidden lg:block bg-white border border-gray-300 rounded-3xl p-4 sticky top-28 shadow-md backdrop-blur-xl">
+            <div className="hidden lg:block bg-white border border-gray-300 rounded-3xl p-4 sticky top-28 shadow-md backdrop-blur-xl max-h-[calc(100vh-9rem)] overflow-y-auto overscroll-contain">
               <h3 className="text-lg font-black text-indigo-700 mb-4">
                 Explore Tabs
               </h3>
@@ -410,7 +411,7 @@ export default function AgriExploreContent() {
                             </div>
                             <div>
                               <h4 className="text-xl font-black text-gray-900 leading-tight">
-                                {item.replace("•\t", "")}
+                                {item.replace("â€¢\t", "")}
                               </h4>
                             </div>
                           </motion.div>
@@ -756,177 +757,7 @@ export default function AgriExploreContent() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-[#071a34] text-white pt-16 pb-6 mt-16">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-            {/* Logo + Contact */}
-            <div className="lg:col-span-2">
-              <div className="flex items-center gap-4 mb-6">
-                <img
-                  src="https://alvascentralschool001.42web.io/wp-content/uploads/2026/01/logo.png"
-                  alt="Alvas Logo"
-                  className="w-16 h-16 object-contain drop-shadow-xl"
-                />
-                <div>
-                  <h3 className="text-xl font-black leading-tight">
-                    ALVAS
-                    <span className="block text-sm font-bold tracking-widest text-white/80">
-                      INSTITUTE OF ENGINEERING AND TECHNOLOGY
-                    </span>
-                  </h3>
-                  <p className="text-xs text-white/60 font-semibold mt-1">
-                    (An Autonomous Institution)
-                  </p>
-                </div>
-              </div>
-
-              <div className="space-y-5 text-sm text-white/70 font-medium">
-                <div className="flex gap-3">
-                  <p className="font-extrabold text-white w-20">Phone</p>
-                  <p>
-                    +91 98765 43210 <br />
-                    +91 98765 43211
-                  </p>
-                </div>
-
-                <div className="flex gap-3">
-                  <p className="font-extrabold text-white w-20">Email</p>
-                  <p>
-                    info@alvas.edu.in <br />
-                    principal@alvas.edu.in
-                  </p>
-                </div>
-
-                <div className="flex gap-3">
-                  <p className="font-extrabold text-white w-20">Address</p>
-                  <p>
-                    Alva&apos;s Campus, Moodbidri <br />
-                    Karnataka, India - 574227
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Facilities */}
-            <div>
-              <h4 className="text-sm font-black tracking-widest uppercase mb-5 text-white">
-                Facilities
-              </h4>
-              <ul className="space-y-3 text-sm text-white/70 font-semibold">
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    Placements
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    Campus
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    Library
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    Hostel
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    Transportation
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    CSR
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    Core Facilities
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Academics */}
-            <div>
-              <h4 className="text-sm font-black tracking-widest uppercase mb-5 text-white">
-                Academics
-              </h4>
-              <ul className="space-y-3 text-sm text-white/70 font-semibold">
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    Academics
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    Courses Offered
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    Academic Calendar
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    Research
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    Value Added Courses
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    Results
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-yellow-300 transition">
-                    Useful Links
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Map */}
-            <div>
-              <h4 className="text-sm font-black tracking-widest uppercase mb-5 text-white">
-                Location
-              </h4>
-              <a
-                href="https://www.google.com/maps/place/Alva's+Institute+of+Engineering+and+Technology/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <iframe
-                  src="https://www.google.com/maps?q=Alva's+Institute+of+Engineering+and+Technology&output=embed"
-                  className="w-full h-44 rounded-lg border border-white/10 hover:opacity-90 transition"
-                  loading="lazy"
-                  title="Alvas Institute Location"
-                ></iframe>
-              </a>
-            </div>
-          </div>
-
-          <div className="mt-14 pt-6 border-t border-white/10 text-center">
-            <p className="text-xs text-white/50 font-semibold tracking-wide">
-              © {new Date().getFullYear()} Alvas Institute of Engineering and
-              Technology. All Rights Reserved.
-            </p>
-            <p className="text-xs text-white/40 font-semibold mt-2">
-              Managed by{" "}
-              <span className="text-yellow-300">Alva&apos;s Web Team</span>
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
       {/* Faculty Modal */}
       {isFacultyModalOpen && selectedFaculty && (
         <div
@@ -1052,16 +883,16 @@ export default function AgriExploreContent() {
                           {selectedFaculty.details[
                             item.key as keyof typeof selectedFaculty.details
                           ]
-                            .split(/\n|(?=•)/g)
+                            .split(/\n|(?=â€¢)/g)
                             .map((line) => line.trim())
-                            .filter((line) => line && line !== "•")
+                            .filter((line) => line && line !== "â€¢")
                             .map((line, i) => (
                               <div key={i} className="flex gap-3">
                                 <span className="text-indigo-600 font-bold shrink-0">
-                                  •
+                                  â€¢
                                 </span>
                                 <span className="flex-1 whitespace-normal">
-                                  {line.startsWith("•")
+                                  {line.startsWith("â€¢")
                                     ? line.substring(1).trim()
                                     : line}
                                 </span>
@@ -1082,3 +913,9 @@ export default function AgriExploreContent() {
     </>
   );
 }
+
+
+
+
+
+
