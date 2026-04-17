@@ -83,7 +83,7 @@ export default function LifeAtAIET() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const slide = params.get('slide');
+    const slide = params.get("slide");
     if (slide && !isNaN(parseInt(slide, 10))) {
       const idx = parseInt(slide, 10);
       if (idx >= 0 && idx < CAMPUS_DATA.length) {
@@ -222,7 +222,7 @@ export default function LifeAtAIET() {
           height: 100vh;
           background: #000;
           overflow: hidden;
-          font-family: "Inter", sans-serif;
+          font-family: var(--font-manrope), sans-serif;
         }
 
         .immersive-bg {
@@ -356,12 +356,14 @@ export default function LifeAtAIET() {
         .card-title {
           font-size: 2.2rem;
           font-weight: 900;
+          font-family: var(--font-playfair), serif;
           color: white;
           margin: 0 0 10px 0;
         }
 
         .card-desc {
           font-size: 0.9rem;
+          font-family: var(--font-manrope), sans-serif;
           color: rgba(255, 255, 255, 0.4);
           margin-bottom: 20px;
         }

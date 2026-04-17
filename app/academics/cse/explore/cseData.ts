@@ -41,8 +41,9 @@ export const cseDepartmentData: DepartmentData = {
       email: "alvas125@aiet.org.in",
       phone: "NA",
       aoi: "Mobile Adhoc Networks, Wireless Sensor Networks, Machine Learning, Deep Learning, Data Analytics",
-      photo:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1LfrCs2CMOlIc_fs4VgZfEKy_ul5VDnC7",
+      ),
       joiningDate: "14-11-2016",
       details: {
         qualifications: `PhD ΓÇô 2016 ME ΓÇô 2008, Anna University, Chennai AMIE ΓÇô 2004, IEI Kolkatta`,
@@ -99,8 +100,9 @@ export const cseDepartmentData: DepartmentData = {
       email: "senthil@aiet.org.in",
       phone: "NA",
       aoi: "Artificial Intelligence and Machine Learning & Deep Learning, Cloud Computing, Design and Analysis of Algorithm, Image Processing (Diabetic Retinopathy Vessel Detection)",
-      photo:
-        "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1KZT0AJ9TycFOh4211nttVC216ohneN98",
+      ),
       joiningDate: "10-04-2023",
       details: {
         qualifications: `Graduation: B.E., in CSE from Tamandu College of Engineering and Technology, Coimbatore, India, 2006.
@@ -156,15 +158,16 @@ R.Senthilkumar, Dr.A.Bharathi â€œGray-Level Co-Occurrence Matrix With Orient
       },
     },
     {
-      name: "Deepika Kamath",
+      name: "Dr.Deepika Kamath",
       designation: "Sr. Assistant Professor",
       qualification: "BE, M.Tech, (PH.D)",
       experience: "15",
       email: "deepika@aiet.org.in",
       phone: "NA",
       aoi: "Algorithms",
-      photo:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1GWzL8mn62ALT0YPjEe5yhbNZ63_MUuDa",
+      ),
       joiningDate: "16-08-2021",
       details: {
         qualifications: "BE, M.Tech, (PH.D)",
@@ -555,8 +558,9 @@ B.E in Computer Science and Engineering from Jawaharlal Nehru National College o
       email: "harshavardhan@aiet.org.in",
       phone: "NA",
       aoi: "Software Engineering, Computer Networks, Artificial Intelligence and Machine Learning.",
-      photo:
-        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1PD56uOgAFmYAoTpm_0LJtH4YpZOrxJL6",
+      ),
       joiningDate: "31-07-2023",
       details: {
         qualifications: `M.Tech in Computer Science and Engineering from MIT, Manipal.
@@ -636,8 +640,9 @@ Database Management System`,
       email: "abhijithlkotian@gmail.com",
       phone: "NA",
       aoi: "Image Processing, AI, ML, Internet of Things (IoT)",
-      photo:
-        "https://images.unsplash.com/photo-1557862951-ef757a68ea23?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1TC1szy6hfGvme61EnEF1aRTKwAVpr1VG",
+      ),
       joiningDate: "15-11-2021",
       details: {
         qualifications: `M.Tech - N.M.A.M Institute of Technology, Nitte

@@ -24,6 +24,10 @@ import {
   Sparkles,
   BookOpen,
   Target,
+  Trophy,
+  GraduationCap,
+  Medal,
+  CalendarDays,
 } from "lucide-react";
 import NewsletterViewer from "@/app/components/NewsletterViewer";
 import { MdClose } from "react-icons/md";
@@ -40,6 +44,770 @@ const SyllabusViewer = dynamic(
   },
 );
 
+type AchievementCategory = "faculty" | "student";
+
+type FacultyAchievement = {
+  title: string;
+  person: string;
+  event: string;
+  year: string;
+  outcome: string;
+  details: string;
+};
+
+type StudentAchievement = {
+  names: string;
+  event: string;
+  category: string;
+  outcome: string;
+};
+
+type StudentAchievementYear = {
+  year: string;
+  entries: StudentAchievement[];
+};
+
+const mbaFacultyAchievements: FacultyAchievement[] = [
+  {
+    title: "Best Paper Presentation - IIT Roorkee",
+    person: "Mr. Neeraj Sudhakar Rai",
+    event:
+      "International Conference on Shaping the Future of Management Education for Sustainable Emerging Economies, Department of Management Studies, IIT Roorkee",
+    year: "2024",
+    outcome:
+      "Presented the paper 'Impact of Fear of Missing Out Response on Purchase Intentions'.",
+    details:
+      "Recognized for quality research contribution in consumer behaviour and purchase intention studies.",
+  },
+  {
+    title: "Best Paper Award - KIET School of Management",
+    person: "Mr. Neeraj Sudhakar Rai",
+    event:
+      "7th Online International Conference on Advances in Global Business, Economics, Finance and Social Sciences",
+    year: "2024",
+    outcome: "Won Best Paper award.",
+    details:
+      "Award received for an international-level management research presentation.",
+  },
+  {
+    title: "Best Professor in Human Resource Management",
+    person: "Dr. Guruprasad Pai B",
+    event: "Asia Pacific HRM Congress",
+    year: "2021",
+    outcome: "Conferred Best Professor in HRM on 26 October 2021.",
+    details:
+      "Award recognizes excellence in HR teaching, research output, and academic leadership.",
+  },
+  {
+    title: "Young Achiever Award",
+    person: "Dr. Guruprasad Pai B",
+    event:
+      "International Research Awards on Science, Technology and Management",
+    year: "2022",
+    outcome: "Received Young Achiever Award on 14-15 May 2022.",
+    details:
+      "Honored for research contributions and consistent academic performance in management studies.",
+  },
+  {
+    title: "Best Paper Award - Innovation in Education Industry",
+    person: "Mrs. Harshitha V Shetty",
+    event:
+      "One Day Online International Conference, Kala Research and Skill Training Organisation, Vijayapura",
+    year: "2023",
+    outcome:
+      "Won Best Paper for 'A Study on Triangular Arbitrage Possibilities in Developed and Emerging Markets'.",
+    details:
+      "Award received on 26 November 2023 for research quality and practical relevance.",
+  },
+  {
+    title: "Invited Talk - KPMG Network of Women, UK",
+    person: "Dr. Claret Mendonca",
+    event: "KPMG Network of Women, United Kingdom",
+    year: "2018",
+    outcome:
+      "Invited speaker on women entrepreneurs and access to finance in Karnataka.",
+    details:
+      "Shared research insights and entrepreneurial journeys during the event on 19 April 2018.",
+  },
+  {
+    title: "International Conference Presentation - Dublin",
+    person: "Dr. Claret Mendonca",
+    event:
+      "Second Ireland India Institute Conference on South Asia 2018, Dublin City University, Ireland",
+    year: "2018",
+    outcome:
+      "Presented paper: 'Challenges Facing Female Entrepreneurs Seeking Access to Finance in India'.",
+    details: "Paper presented at the conference held on 26-27 April 2018.",
+  },
+  {
+    title: "KPMG UK Event - Women Entrepreneurs Research Talk",
+    person: "Dr. Claret Mendonca",
+    event: "KPMG's Network of Women, United Kingdom",
+    year: "2018",
+    outcome:
+      "Shared research on women entrepreneurs in SMEs and access to finance in Karnataka.",
+    details:
+      "Spoke on successful women entrepreneurs and challenges in entrepreneurship pathways during the 19 April 2018 UK event.",
+  },
+  {
+    title: "Best Paper Award - SDG in Action",
+    person: "Dr. Guruprasad Pai B and Mrs. Harshitha V Shetty",
+    event:
+      "One Day International Conference on Sustainable Development Goals in Action (MSNIM with INTI University, MAHE and Manipal School of Commerce and Economics)",
+    year: "2025",
+    outcome:
+      "Won Best Paper for 'Tech Lives, Personal Struggles: A Narrative Exploration of Work-Life Balance in Indian Women with Reference to the IT Sector'.",
+    details: "Award received at MSNIM, Mangalore on 26 June 2025.",
+  },
+  {
+    title: "Keynote Speaker - Digital Transformation",
+    person: "Dr. Catherine Nirmala",
+    event:
+      "International Conference on Digital Transformation in Commerce, Mahalakshmi Women's College of Arts and Science (Affiliated to University of Madras)",
+    year: "2025",
+    outcome:
+      "Delivered keynote on 'Digitalisation of Commerce - An Indian Perspective'.",
+    details: "Session delivered in Chennai on 30 July 2025.",
+  },
+  {
+    title: "PhD Awardee",
+    person: "Dr. Guruprasad Pai",
+    event: "Faculty Achievement - PhD Awardee",
+    year: "2024-25",
+    outcome:
+      "Completed PhD on faculty attrition in self-financing engineering institutes in Karnataka.",
+    details:
+      "Topic: 'A study on attrition rate of faculty members among self-financing engineering institutes in Karnataka'.",
+  },
+  {
+    title: "Conference Participation - Environmental Sustainability",
+    person: "Mrs. Priya Sequeira",
+    event:
+      "The Second International Conference on Environmental Sciences and Engineering for Sustainable Development, University of Technology and Applied Sciences",
+    year: "2024-25",
+    outcome:
+      "Presented paper: Mediating Role of Human Behavior in Societal Influences on Environmental Sustainability.",
+    details: "Conference country: Oman (2024).",
+  },
+  {
+    title: "Conference Participation - NAV Method in Valuation",
+    person: "Dr. Catherine",
+    event:
+      "International Conference on Sustainable Finance and Financial Resilience, Accountancy, Responsible Finance, Christ University",
+    year: "2024-25",
+    outcome:
+      "Presented paper: A Critical Analysis of the Relevance of NAV Method in Valuation of Shares.",
+    details: "Conference country: India (2024).",
+  },
+  {
+    title: "Conference Participation - Career Break and Re-entry",
+    person: "Dr. Catherine",
+    event: "International Research Conference on Reimagining People Management",
+    year: "2024-25",
+    outcome:
+      "Presented paper: Career Break and Re-entry Challenges Faced by Women with Reference to Karnataka.",
+    details: "Conference country: India (2024).",
+  },
+  {
+    title: "Conference Participation - Digital Marketing Impact",
+    person: "Mrs. Harshitha V Shetty",
+    event:
+      "International Conference on Business and Banking Revolutions in Industry 4.0 Era, Mangalore University",
+    year: "2024-25",
+    outcome:
+      "Presented paper: A Study on the Impact of Digital Marketing on Small and Medium Scale Food Industries.",
+    details: "Conference country: India (2024).",
+  },
+  {
+    title: "Conference Participation - Online Shopping Impact",
+    person: "Mrs. Harshitha V Shetty",
+    event:
+      "International Conference on Business and Banking Revolutions in Industry 4.0 Era, Mangalore University",
+    year: "2024-25",
+    outcome:
+      "Presented paper: A Study on the Impact of Online Shopping on Retail Business with Reference to Textile in India.",
+    details: "Conference country: India (2024).",
+  },
+];
+
+const mbaStudentAchievementsByYear: StudentAchievementYear[] = [
+  {
+    year: "2025-2027",
+    entries: [
+      {
+        names: "Shetty Disha and Sujan D Shetty",
+        event: "NITK",
+        category: "Management Fest - Marketing",
+        outcome: "Second Place",
+      },
+      {
+        names: "Ujwal S Shetty and Ankitha Ansha Paradkar",
+        event: "SDMIMD Mysore",
+        category: "Management Fest - Marketing",
+        outcome: "Third Place",
+      },
+      {
+        names: "Ujwal S Shetty and Panchami",
+        event: "NITK",
+        category: "Management Fest - Marketing",
+        outcome: "First Place",
+      },
+      {
+        names: "Ujwal S Shetty",
+        event: "AJ Institute of Management",
+        category: "Management Fest - Marketing",
+        outcome: "First Place",
+      },
+      {
+        names: "Panchami Jogi and Ankitha Ansha Paradkar",
+        event: "Mangalore University",
+        category: "Management Fest - Marketing",
+        outcome: "First Place",
+      },
+    ],
+  },
+  {
+    year: "2024-2026",
+    entries: [
+      {
+        names: "M K Ameya Upadhyaya and Dhanyashree",
+        event: "St Agnes College, Mangalore",
+        category: "Management Fest - Human Resource",
+        outcome: "Achieved top position",
+      },
+      {
+        names: "Krithik",
+        event: "Reva Engineering College, Bangalore",
+        category: "Karate",
+        outcome: "Achievement recorded",
+      },
+      {
+        names: "Samyak C Shetty",
+        event: "Xavier Institute of Management and Entrepreneurship, Bangalore",
+        category: "Photography / Reel Making / Movie Making",
+        outcome: "Achievement recorded",
+      },
+    ],
+  },
+  {
+    year: "2023-2025",
+    entries: [
+      {
+        names: "Mervin J Kennedy, Adarsh V and Kotian Likhith",
+        event: "Justice K S Hegde Institute of Management (JKSHIM), Nitte",
+        category: "Management Fest - Marketing",
+        outcome: "First Place",
+      },
+      {
+        names: "K R Vivek and Suraksha S Rai",
+        event: "Srinivas University, Pandeshwar, Mangalore",
+        category: "Management Fest - Finance",
+        outcome: "First Place",
+      },
+      {
+        names: "K R Vivek and Deekshitha Poojary",
+        event: "Srinivas Institute of Technology, Valachil, Mangalore",
+        category: "Management Fest - Finance",
+        outcome: "First Place",
+      },
+      {
+        names: "K R Vivek and Deekshitha Poojary",
+        event: "SIT Valachil, Mangalore",
+        category: "Management Fest - Finance",
+        outcome: "Second Place",
+      },
+      {
+        names: "Nataraj J",
+        event: "Senior Federation Cup 2023, Ranchi",
+        category: "Athletics",
+        outcome:
+          "Participated; Dasara Sports State 2nd, Division 1st, District 1st, Taluk 1st, VTU Decathlon 3rd",
+      },
+      {
+        names: "Shwetha Shenoy",
+        event: "VTU State Level Ball Badminton Women's 2025-26",
+        category: "Sports",
+        outcome: "Runners Up",
+      },
+      {
+        names: "Sharavan",
+        event: "VTU Inter Collegiate Rest of Bengaluru Division",
+        category: "Sports",
+        outcome: "Secured Third Position",
+      },
+      {
+        names: "MBA Team",
+        event: "St Agnes College, Mangaluru - National Level Management Fest",
+        category: "Overall Team",
+        outcome: "Runners",
+      },
+      {
+        names: "MBA Team",
+        event:
+          "Shri Dharmasthala Manjunatheshwara College of Business Management, Mangalore",
+        category: "Overall Team",
+        outcome: "Winners",
+      },
+      {
+        names: "Sindhu",
+        event: "VTU 26th State Level Inter Collegiate Athletic Meet 2024-26",
+        category: "Pole Vault",
+        outcome: "First Place",
+      },
+    ],
+  },
+  {
+    year: "2022-2024",
+    entries: [
+      {
+        names: "Shraddha S Shetty and Hithesh",
+        event: "St Aloysius",
+        category: "Management Fest - Human Resource",
+        outcome: "Winning title",
+      },
+      {
+        names: "Nithin, Suzana and Prahlad",
+        event: "Shree Devi Institute of Technology",
+        category: "Photography / Reel Making / Movie Making",
+        outcome: "Winning title",
+      },
+      {
+        names: "Sandeep, Adarsh and Jenisha",
+        event: "Shree Devi Institute of Technology - ECHELON 2024",
+        category: "Best Entrepreneurs",
+        outcome: "Winning title",
+      },
+      {
+        names: "Sandeep and Samyak",
+        event: "NITK - INCIDENT 2024",
+        category: "Marketing",
+        outcome: "Second Prize",
+      },
+      {
+        names: "Sandeep, Shravan and Rithesh",
+        event: "SDM College of Business Management, Mangalore - Shreshta 2024",
+        category: "Best Management Team",
+        outcome: "Winning title",
+      },
+      {
+        names:
+          "Sushan S Shetty, Arjun S V, Rakshith V Shetty, Shrikantta Rao, Josith P Shetty, Nishanth S Sapaliga, HG Shamprasad, Sandeep Raviprasad Acharya, Shravan Acharya, Rithesh B, Yogish, Yash Raj and Jithesh",
+        event: "SDM College of Business Management, Mangalore - Shreshta 2024",
+        category: "Overall Runners",
+        outcome: "Runners Up",
+      },
+      {
+        names: "Sandeep, Keerthan, Shreshta, Divyashree and Rakshith",
+        event: "Mangalore University Evening College - Equinox 2023",
+        category: "Best Management Team",
+        outcome: "Winning title",
+      },
+      {
+        names: "Pranava Swaroopa",
+        event: "Sri Devi MBA College",
+        category: "Best Manager",
+        outcome: "First Prize",
+      },
+      {
+        names: "Pranava Swaroopa",
+        event: "St Aloysius College of Management",
+        category: "Best Manager",
+        outcome: "First Prize",
+      },
+    ],
+  },
+  {
+    year: "2026",
+    entries: [
+      {
+        names: "Shetty Disha and Sujan D Shetty",
+        event: "NITK Management Fest",
+        category: "Marketing",
+        outcome: "Second Place",
+      },
+      {
+        names: "Ujwal S Shetty, Ankitha Ansha Paradkar",
+        event: "SDMIMD Mysore",
+        category: "Marketing",
+        outcome: "Third Place",
+      },
+      {
+        names: "Ujwal S Shetty and Panchami",
+        event: "NITK",
+        category: "Marketing",
+        outcome: "First Place",
+      },
+      {
+        names: "Ujwal S Shetty and Panchami",
+        event: "AJ Institute of Management",
+        category: "Marketing",
+        outcome: "First Place",
+      },
+      {
+        names: "Panchami Jogi and Ankitha Ansha Paradkar",
+        event: "Mangalore University",
+        category: "Marketing",
+        outcome: "First Place",
+      },
+    ],
+  },
+  {
+    year: "2025",
+    entries: [
+      {
+        names: "Sindhu Raghupathi Bhat",
+        event: "Pole Vault - JNN College of Engineering, Shivamogga",
+        category: "Athletics",
+        outcome: "First Place",
+      },
+      {
+        names: "Natraj",
+        event: "Decathlon - JNN College of Engineering, Shivamogga",
+        category: "Athletics",
+        outcome: "Third Place",
+      },
+      {
+        names: "Kaushal Rao T J and Shrivastsa Gangadhar Hegde",
+        event: "VTU State Level Youth Festival INTERACT 2025",
+        category: "Folk Orchestra",
+        outcome: "Second Place",
+      },
+      {
+        names:
+          "Shrivastsa Gangadhar Hegde, Revan Pinto, Josith P Shetty, Shrikantta Rao",
+        event: "VTU State Level Youth Festival INTERACT 2025",
+        category: "Skit",
+        outcome: "First Place",
+      },
+      {
+        names: "Mervin J K and Adarsh V",
+        event: "Justice K S Hegde Institute of Management, Nitte",
+        category: "MAR-QUEE",
+        outcome: "First Place",
+      },
+      {
+        names: "Vivek and Deekshitha",
+        event: "Srinivas Institute of Technology, Mangalore",
+        category: "Finance",
+        outcome: "First Place",
+      },
+      {
+        names: "Bhoomika Patil and Lohith Nayak",
+        event: "Justice K S Hegde Institute of Management, Nitte",
+        category: "HR Sphere",
+        outcome: "Second Place",
+      },
+      {
+        names: "Jithesh Devadiga",
+        event: "Management Fest - SYNERGY, SDM College, Mangalore",
+        category: "Judging",
+        outcome: "Participated as Judge",
+      },
+      {
+        names: "Jithesh Devadiga",
+        event: "NITK, Surathkal",
+        category: "Reel Making",
+        outcome: "Second Place",
+      },
+      {
+        names: "Sunil and Prithi Hegde",
+        event: "Srinivas Institute of Technology, Mangalore",
+        category: "Public Relation",
+        outcome: "Second Place",
+      },
+    ],
+  },
+  {
+    year: "2024",
+    entries: [
+      {
+        names: "Sandeep, Adarsh and Jenisha",
+        event: "Shree Devi Institute of Technology - ECHELON 2024",
+        category: "Best Entrepreneurs",
+        outcome: "Winners",
+      },
+      {
+        names: "Sandeep and Samyak",
+        event: "NITK - INCIDENT 2024",
+        category: "Marketing",
+        outcome: "Second Place",
+      },
+      {
+        names: "Sandeep, Shravan and Rithesh",
+        event: "SDM College of Business Management, Mangalore - Shreshta 2024",
+        category: "Best Management Team",
+        outcome: "Winners",
+      },
+      {
+        names:
+          "Sushan S Shetty, Arjun S V, Rakshith V Shetty, Shrikantta Rao and team",
+        event: "SDM College of Business Management, Mangalore - Shreshta 2024",
+        category: "Overall Runners",
+        outcome: "Runners Up",
+      },
+      {
+        names: "Pranava Swaroopa",
+        event:
+          "Sridevi Institute of Technology and St. Aloysius College of Management",
+        category: "Best Manager",
+        outcome: "First Place",
+      },
+      {
+        names: "Nataraj",
+        event: "Dasara Sports and Division Athletics Meets",
+        category: "4 x 400 Relay / Decathlon",
+        outcome:
+          "Multiple top positions including First Place and State podium",
+      },
+      {
+        names: "Sathyajit H Rao and Shreevastsa",
+        event: "AJ Institute of Engineering and Technology, Mangalore",
+        category: "MAD AD's",
+        outcome: "Second Place",
+      },
+      {
+        names: "Sandeep Raviprasad, Adarsh and Jenisha Lasard",
+        event: "Sridevi Institute of Technology, Mangalore",
+        category: "Spark Tank",
+        outcome: "First Place",
+      },
+      {
+        names: "Akshatha M and Prajna",
+        event: "Sridevi Institute of Technology, Mangalore",
+        category: "Brand Rangoli",
+        outcome: "Second Place",
+      },
+      {
+        names: "Prahlad V Acharya, Pooja C and Suzana Sheikh",
+        event: "Sridevi Institute of Technology, Mangalore",
+        category: "Movie Making",
+        outcome: "Second Place",
+      },
+    ],
+  },
+  {
+    year: "2023",
+    entries: [
+      {
+        names: "Satyajith",
+        event: "Mangalore University Directorate of Students Welfare",
+        category: "Light Vocal Solo",
+        outcome: "First Place",
+      },
+      {
+        names: "Satyajith",
+        event: "Mangalore University Directorate of Students Welfare",
+        category: "Folk Orchestra",
+        outcome: "First Place",
+      },
+      {
+        names: "Nithin, Suzana and Prahlad",
+        event: "Shree Devi Institute of Technology",
+        category: "Photography / Reel Making / Movie Making",
+        outcome: "Winners in management fest events",
+      },
+    ],
+  },
+];
+
+const mbaNptelAchievementsByBatch = [
+  {
+    batch: "2024-26",
+    results: [
+      "Pushparaj J Shetty - Financial Statement Analysis and Reporting - 78%",
+      "Ria Natasha Rodrigues - Business Analytics for Management Decision - 76%",
+      "Sapthami - Consumer Behaviour - 75%",
+    ],
+  },
+  {
+    batch: "2023-25",
+    results: [
+      "K R Vivek - Financial Accounting and Analysis - 82%",
+      "Swathi Shenoy - Business and Sustainable Development - 76%",
+      "Rashmi Priya N - Advances in Strategic Human Resource Management - 72%",
+    ],
+  },
+  {
+    batch: "2022-24",
+    results: [
+      "Shreya - Financial Accounting and Analysis - 91.60%",
+      "Chethan - Financial Accounting and Analysis - 78.80%",
+      "Shreshta Jain - Financial Accounting and Analysis - 77.50%",
+    ],
+  },
+];
+
+const mbaFacultySubmittedNotesByYear = [
+  {
+    year: "2018",
+    note: `Dr Claret Mendonca was invited to speak on her research, "Women Entrepreneurs in Small and Medium Enterprises and Their Access to Finance" at KPMG's Network of Women, UK, hosted on 19 April 2018.
+
+Event: Second Ireland India Institute Conference on South Asia 2018, Dublin City University, Dublin, Ireland.
+Dr Claret Mendonca presented "Challenges Facing Female Entrepreneurs Seeking Access to Finance in India" on 26 and 27 April 2018.
+
+Event: KPMG's Network of Women, United Kingdom.
+She also shared stories of successful women entrepreneurs and challenges faced along the path of entrepreneurship.`,
+  },
+  {
+    year: "2021",
+    note: `Dr. Guruprasad Pai B was awarded Best Professor in HRM by Asia Pacific HRM Congress.
+The award was conferred on 26 October 2021 for outstanding contribution to teaching, research, and academic leadership in Human Resource Management.`,
+  },
+  {
+    year: "2022",
+    note: `Event: International Research Awards on Science, Technology and Management.
+Dr. Guruprasad Pai B received the Young Achiever Award on 14 and 15 May 2022 for significant research contributions and academic excellence in management.`,
+  },
+  {
+    year: "2023",
+    note: `Name: Mrs Harshitha V Shetty.
+Event: One Day Online International Conference on Innovation in Education Industry organized by Kala Research and Skill Training Organisation, Vijayapura.
+Received Best Paper Award for "A Study on Triangular Arbitrage Possibilities in Developed and Emerging Markets" on 26 November 2023.`,
+  },
+  {
+    year: "2024",
+    note: `Mr. Neeraj Sudhakar Rai presented the technical paper "Impact of Fear of Missing Out Response on Purchase Intentions" at an International Conference on Shaping the Future of Management Education for Sustainable Emerging Economies organized by Department of Management Studies, IIT Roorkee.
+
+The same work won Best Paper in the 7th Online International Conference on Advances in Global Business, Economics, Finance and Social Sciences conducted by KIET School of Management, Delhi NCR.`,
+  },
+  {
+    year: "2024-25",
+    note: `ACHIEVEMENTS OF FACULTIES - Ph.D. Awardee 2024-25:
+Dr. Guruprasad Pai.
+Topic: "A study on attrition rate of faculty members among self-financing engineering institutes in Karnataka."
+
+List of Faculties Participated in National and International Conference during 2024-25:
+1. Mrs. Priya Sequeira - "Mediating Role of Human Behavior in Societal Influences on Environmental Sustainability" - The Second International Conference on Environmental Sciences and Engineering for Sustainable Development - Oman (2024).
+2. Dr Catherine - "A critical analysis of the relevance of NAV method in valuation of shares" - International Conference on Sustainable Finance and Financial Resilience, Christ University - India (2024).
+3. Dr Catherine - "Career break and re-entry challenges faced by women with reference to Karnataka" - International Research Conference on Reimagining People Management - India (2024).
+4. Mrs. Harshitha V Shetty - "A study on the impact of digital marketing on small and medium scale food industries" - International Conference on Business and Banking Revolutions in Industry 4.0 Era, Mangalore University - India (2024).
+5. Mrs. Harshitha V Shetty - "A study on the impact of online shopping on retail business with reference to textile in India" - International Conference on Business and Banking Revolutions in Industry 4.0 Era, Mangalore University - India (2024).`,
+  },
+  {
+    year: "2025",
+    note: `Name: Dr Guruprasad Pai B and Mrs Harshitha V Shetty.
+Event: One Day International Conference on Sustainable Development Goals in Action held at MSNIM in collaboration with INTI International University, Malaysia and in association with Manipal School of Commerce and Economics and MAHE.
+Received Best Paper Award for "Tech Lives, Personal Struggles: A Narrative Exploration of Work-Life Balance in Indian Women with Reference to the IT Sector" on 26 June 2025.
+
+Name: Dr Catherine Nirmala.
+Event: International Conference on Digital Transformation in Commerce organized by Mahalakshmi Women's College of Arts and Science (Affiliated to University of Madras).
+Delivered keynote on "Digitalisation of Commerce - An Indian Perspective" on 30 July 2025.`,
+  },
+];
+
+const mbaStudentSubmittedNotesByYear = [
+  {
+    year: "2022-2024",
+    note: `Student Achievements (Year 2022-2024):
+Shraddha S Shetty and Hithesh - Human Resource - St Aloysius.
+Nithin, Suzana and Prahlad - Photography, Reel Making and Movie Making - Shree Devi Institute of Technology.
+Sandeep, Adarsh, Jenisha - Best Entrepreneurs - Shree Devi Institute of Technology (ECHELON 2024).
+Sandeep and Samyak - Marketing - NITK INCIDENT 2024 (Won 2nd Prize).
+Sandeep, Shravan and Rithesh - Best Management Team - SDM, Mangalore (Shreshta 2024).
+Sushan S Shetty, Arjun SV, Rakshith V Shetty, Shrikantta Rao, Josith P Shetty, Nishanth S Sapaliga, HG Shamprasad, Sandeep Raviprasad Acharya, Shravan Acharya, Rithesh B, Yogish, Yash Raj, Jithesh - Overall Runners - SDM, Mangalore (Shreshta 2024).
+Sandeep, Keerthan, Shreshta, Divyashree, Rakshith - Best Management Team - Mangalore University Evening College (Equinox 2023).
+Pranava Swaroopa - Best Manager - Sri Devi MBA College (1st Prize).
+Pranava Swaroopa - Best Manager - St Aloysius College of Management (1st Prize).`,
+  },
+  {
+    year: "2023-2025",
+    note: `Student Achievements (Year 2023-2025):
+Mervin J Kennedy, Adarsh V and Kotian Likhith - Marketing - JKSHIM, Nitte (1st Prize).
+K R Vivek, Suraksha S Rai, Deekshitha Poojary - Finance - Srinivas University / Srinivas Institute of Technology (1st Prize in both events).
+K R Vivek and Deekshitha Poojary - Finance - SIT Valachil (2nd Prize).
+Nataraj J - Senior Federation Cup 2023 Ranchi participation; Dasara Sports State 2nd; Division 1st; District 1st; Taluk 1st; VTU Decathlon 3rd.
+Shwetha Shenoy - VTU State Level Ball Badminton Women's 2025-26 - Runners Up.
+Sharavan - VTU Inter Collegiate Rest of Bengaluru Division - Third Position.
+Overall Runners - St Agnes College, Mangaluru National Level Management Fest.
+Overall Winners - SDM College of Business Management, Mangalore.
+Sindhu - VTU 26th State Level Inter Collegiate Athletic Meet 2024-26 - Pole Vault - First Place.`,
+  },
+  {
+    year: "2024-2026",
+    note: `Student Achievements (Year 2024-2026):
+M K Ameya Upadhyaya and Dhanyashree - Human Resource - St Agnes College Mangalore.
+Krithik - Karate - Reva Engineering College Bangalore.
+Samyak C Shetty - Photography, Reel Making and Movie Making - Xavier Institute of Management and Entrepreneurship, Bangalore.`,
+  },
+  {
+    year: "2025-2027",
+    note: `Student Achievements (Year 2025-2027):
+Shetty Disha and Sujan D Shetty - Marketing - NITK.
+Ujwal S Shetty and Ankitha Ansha Paradkar - Marketing - SDMIMD Mysore (3rd Prize).
+Ujwal S Shetty and Panchami - Marketing - NITK (1st Prize).
+Ujwal S Shetty - Marketing - AJ Institute of Management (1st Prize).
+Panchami Jogi and Ankitha Ansha Paradkar - Marketing - Mangalore University (1st Prize).`,
+  },
+  {
+    year: "2026",
+    note: `ACHIEVEMENTS OF STUDENTS 2026:
+1. Shetty Disha and Sujan D Shetty - NITK Management Fest Marketing - Second Place.
+2. Ujwal S Shetty and Ankitha Ansha Paradkar - SDMIMD Mysore Management Fest Marketing - Third Place.
+3. Ujwal S Shetty and Panchami - NITK Management Fest Marketing - First Place.
+4. Ujwal S Shetty and Panchami - AJ Institute of Management Management Fest Marketing - First Place.
+5. Panchami Jogi and Ankitha Ansha Paradkar - Mangalore University Management Fest Marketing - First Place.
+6. Ujwal S Shetty and Panchami - Shree Devi Institute of Technology ECHELON 2024 Management Fest Marketing - First Place.`,
+  },
+  {
+    year: "2025",
+    note: `ACHIEVEMENTS OF STUDENTS 2025:
+1. Sindhu Raghupathi Bhat - Pole Vault, JNN College of Engineering Shivamogga - First Place.
+2. Natraj - Decathlon, JNN College of Engineering Shivamogga - Third Place.
+3. Kaushal Rao T J - Folk Orchestra, VTU 2024 State Level Youth Festival INTERACT 2025 - Second Place.
+4. Shrivastsa Gangadhar Hegde - Folk Orchestra, VTU 2024 State Level Youth Festival INTERACT 2025 - Second Place.
+5. Shrivastsa Gangadhar Hegde - Skit, VTU 2024 State Level Youth Festival INTERACT 2025 - First Place.
+6. Revan Pinto - Skit, VTU 2024 State Level Youth Festival INTERACT 2025 - First Place.
+7. Josith P Shetty - Skit, VTU 2024 State Level Youth Festival INTERACT 2025 - First Place.
+8. Shrikantta Rao - Skit, VTU 2024 State Level Youth Festival INTERACT 2025 - First Place.
+9. Jithesh Devadiga - Judge in Management Fest SYNERGY SDM College Mangalore.
+10. Jithesh Devadiga - Reel Making, NITK Surathkal - Second Place.
+11. Sunil - Public Relation, Srinivas Institute of Technology Mangalore - Second Place.
+12. Prithi Hegde - Public Relation, Srinivas Institute of Technology Mangalore - Second Place.
+13. Vivek - Finance, Srinivas Institute of Technology Mangalore - First Place.
+14. Deekshitha - Finance, Srinivas Institute of Technology Mangalore - First Place.
+15. Bhoomika Patil - HR Sphere, Justice K S Hegde Institute of Management Nitte - Second Place.
+16. Lohith Nayak - HR Sphere, Justice K S Hegde Institute of Management Nitte - Second Place.
+17. Mervin JK - MAR-QUEE, Justice K S Hegde Institute of Management Nitte - First Place.
+18. Adarsh V - MAR-QUEE, Justice K S Hegde Institute of Management Nitte - First Place.`,
+  },
+  {
+    year: "2024",
+    note: `ACHIEVEMENTS OF STUDENTS 2024:
+1. Natraj - 4 x 400 metre Relay, Moodabidri Dasara Sports - First Place.
+2. Natraj - 4 x 400 metre Relay, Mysore Division Dasara Sports - First Place.
+3. Natraj - 4 x 400 metre Relay, Dasara CM Cup - Second Place.
+4. Sathyajit H Rao - MAD AD's, AJ Institute of Engineering and Technology Mangalore - Second Place.
+5. Shreevastsa - MAD AD's, AJ Institute of Engineering and Technology Mangalore - Second Place.
+6. Pranava Swaroopa - Best Manager, Sridevi Institute of Technology Mangalore - First Place.
+7. Sandeep Raviprasad - Spark Tank, Sridevi Institute of Technology Mangalore - First Place.
+8. Adarsh - Spark Tank, Sridevi Institute of Technology Mangalore - First Place.
+9. Jenisha Lasard - Spark Tank, Sridevi Institute of Technology Mangalore - First Place.
+10. Akshatha M - Brand Rangoli, Sridevi Institute of Technology Mangalore - Second Place.
+11. Prajna - Brand Rangoli, Sridevi Institute of Technology Mangalore - Second Place.
+12. Prahlad V Acharya - Movie Making, Sridevi Institute of Technology Mangalore - Second Place.
+13. Pooja C - Movie Making, Sridevi Institute of Technology Mangalore - Second Place.
+14. Suzana Sheikh - Movie Making, Sridevi Institute of Technology Mangalore - Second Place.`,
+  },
+  {
+    year: "2023",
+    note: `ACHIEVEMENTS OF STUDENTS 2023:
+1. Satyajith - Light Vocal Solo, Mangalore University Directorate of Students Welfare - First Place.
+2. Satyajith - Folk Orchestra, Mangalore University Directorate of Students Welfare - First Place.`,
+  },
+  {
+    year: "NPTEL",
+    note: `NPTEL COURSE ACHIEVEMENTS:
+2024-26 Batch: Pushparaj J Shetty (Financial Statement Analysis and Reporting - 78%), Ria Natasha Rodrigues (Business Analytics for Management Decision - 76%), Sapthami (Consumer Behaviour - 75%).
+2023-25 Batch: K R Vivek (Financial Accounting and Analysis - 82%), Swathi Shenoy (Business and Sustainable Development - 76%), Rashmi Priya N (Advances in Strategic Human Resource Management - 72%).
+2022-24 Batch: Shreya (Financial Accounting and Analysis - 91.60%), Chethan (Financial Accounting and Analysis - 78.80%), Shreshta Jain (Financial Accounting and Analysis - 77.50%).
+
+Additional listing repeated in submission:
+2022-24: First Place Shreya (91.60%), Second Place Chethan (78.80%), Second Place Chethan (78.80%).
+2023-25: First Place K R Vivek (82%), Second Place Swathi Shenoy (76%), Second Place Rashmi Priya N (72%).
+2024-26: First Place Pushparaj J Shetty (78%), Second Place Ria Natasha Rodrigues (76%), Second Place Sapthami (75%).`,
+  },
+];
+
 export default function MbaExploreContent() {
   const department = mbaDepartmentData;
 
@@ -55,6 +823,8 @@ export default function MbaExploreContent() {
   const [activeActivityIndex, setActiveActivityIndex] = useState<number | null>(
     null,
   );
+  const [achievementCategory, setAchievementCategory] =
+    useState<AchievementCategory>("faculty");
 
   useEffect(() => {
     // Show contents
@@ -85,6 +855,10 @@ export default function MbaExploreContent() {
   useEffect(() => {
     if (activeTab !== "activities") {
       setActiveActivityIndex(null);
+    }
+
+    if (activeTab !== "achievements") {
+      setAchievementCategory("faculty");
     }
   }, [activeTab]);
 
@@ -123,6 +897,15 @@ export default function MbaExploreContent() {
     ] as DepartmentActivityEntry;
   }
 
+  const facultyYearOrder = [
+    ...new Set(mbaFacultyAchievements.map((a) => a.year)),
+  ].sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
+
+  const facultyAchievementsByYear = facultyYearOrder.map((year) => ({
+    year,
+    records: mbaFacultyAchievements.filter((item) => item.year === year),
+  }));
+
   if (!isMounted) {
     return <MbaExploreLoading />;
   }
@@ -134,6 +917,11 @@ export default function MbaExploreContent() {
           background:
             radial-gradient(
               circle at top left,
+              {names: "Ujwal S Shetty and Panchami",
+              event: "Shree Devi Institute of Technology - ECHELON 2024",
+              category: "Management Fest - Marketing",
+              outcome: "First Place",
+              },
               rgba(251, 191, 36, 0.12),
               transparent 55%
             ),
@@ -551,7 +1339,7 @@ export default function MbaExploreContent() {
                                 <div className="absolute inset-0 bg-indigo-600 rounded-[2rem] rotate-6 scale-95 opacity-20"></div>
                                 <img
                                   src={department.hod.photo}
-                                  className="w-full h-[320px] object-cover rounded-[2rem] shadow-xl relative z-10 border-4 border-white"
+                                  className="w-full h-[320px] object-cover object-top rounded-[2rem] shadow-xl relative z-10 border-4 border-white"
                                   alt={department.hod.name}
                                 />
                               </div>
@@ -628,7 +1416,7 @@ export default function MbaExploreContent() {
                                   <div className="relative overflow-hidden rounded-2xl mb-5 aspect-square">
                                     <img
                                       src={member.photo}
-                                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
                                       alt={member.name}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -730,6 +1518,318 @@ export default function MbaExploreContent() {
                               )}
                             </div>
                           </div>
+                        ) : activeTab === "achievements" ? (
+                          <div className="space-y-8">
+                            {currentData?.body?.trim() && (
+                              <p className="text-gray-700 text-base md:text-lg leading-relaxed font-medium">
+                                {currentData.body}
+                              </p>
+                            )}
+
+                            <div className="rounded-3xl border border-gray-200 bg-gradient-to-br from-white to-indigo-50/40 p-4 md:p-6">
+                              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                <div>
+                                  <p className="text-[11px] font-black uppercase tracking-[0.14em] text-indigo-700">
+                                    Achievement Explorer
+                                  </p>
+                                  <h3 className="text-xl md:text-2xl font-black text-gray-900 mt-1">
+                                    MBA Department Performance Highlights
+                                  </h3>
+                                </div>
+
+                                <div className="inline-flex p-1.5 rounded-2xl bg-gray-100 border border-gray-200 gap-1.5 w-full md:w-auto">
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      setAchievementCategory("faculty")
+                                    }
+                                    className={`flex-1 md:flex-none px-4 py-2.5 rounded-xl text-xs md:text-sm font-black uppercase tracking-wider transition-all ${
+                                      achievementCategory === "faculty"
+                                        ? "bg-indigo-600 text-white shadow"
+                                        : "bg-transparent text-gray-700 hover:bg-white"
+                                    }`}
+                                  >
+                                    Faculty Achievements
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      setAchievementCategory("student")
+                                    }
+                                    className={`flex-1 md:flex-none px-4 py-2.5 rounded-xl text-xs md:text-sm font-black uppercase tracking-wider transition-all ${
+                                      achievementCategory === "student"
+                                        ? "bg-indigo-600 text-white shadow"
+                                        : "bg-transparent text-gray-700 hover:bg-white"
+                                    }`}
+                                  >
+                                    Student Achievements
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+
+                            {achievementCategory === "faculty" ? (
+                              <>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                  <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-4">
+                                    <p className="text-[11px] font-black uppercase tracking-widest text-indigo-600">
+                                      Total Faculty Records
+                                    </p>
+                                    <p className="text-2xl font-black text-indigo-900 mt-2">
+                                      {mbaFacultyAchievements.length}
+                                    </p>
+                                  </div>
+                                  <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4">
+                                    <p className="text-[11px] font-black uppercase tracking-widest text-amber-700">
+                                      Year Buckets
+                                    </p>
+                                    <p className="text-2xl font-black text-amber-900 mt-2">
+                                      {facultyAchievementsByYear.length}
+                                    </p>
+                                  </div>
+                                  <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-4">
+                                    <p className="text-[11px] font-black uppercase tracking-widest text-emerald-700">
+                                      Focus Areas
+                                    </p>
+                                    <p className="text-sm font-black text-emerald-900 mt-2 leading-relaxed">
+                                      Research, keynote talks, HRM excellence,
+                                      and best paper awards
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <div className="space-y-5">
+                                  {facultyAchievementsByYear.map((group) => (
+                                    <section
+                                      key={group.year}
+                                      className="rounded-3xl border border-gray-200 overflow-hidden bg-white"
+                                    >
+                                      <div className="px-5 py-4 bg-gradient-to-r from-indigo-50 to-blue-50 border-b border-gray-200 flex items-center justify-between gap-3">
+                                        <h4 className="text-lg font-black text-gray-900 flex items-center gap-2.5">
+                                          <CalendarDays className="w-5 h-5 text-indigo-700" />
+                                          Faculty Achievements - {group.year}
+                                        </h4>
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-indigo-100 text-xs font-black uppercase tracking-wide text-indigo-700">
+                                          <Trophy className="w-3.5 h-3.5" />
+                                          {group.records.length} records
+                                        </span>
+                                      </div>
+
+                                      <div className="p-4 md:p-5 grid grid-cols-1 xl:grid-cols-2 gap-5">
+                                        {group.records.map((item, idx) => (
+                                          <motion.article
+                                            key={`${group.year}-${item.title}-${idx}`}
+                                            initial={{ opacity: 0, y: 10 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: idx * 0.03 }}
+                                            className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm"
+                                          >
+                                            <h5 className="text-lg font-black text-gray-900 leading-snug">
+                                              {item.title}
+                                            </h5>
+                                            <p className="text-sm font-bold text-indigo-700 mt-1">
+                                              {item.person}
+                                            </p>
+
+                                            <p className="text-xs md:text-sm text-gray-600 font-semibold mt-4 leading-relaxed">
+                                              {item.event}
+                                            </p>
+
+                                            <div className="mt-4 rounded-2xl bg-gray-50 border border-gray-100 p-4 space-y-2">
+                                              <p className="text-sm font-bold text-gray-900 leading-relaxed">
+                                                {item.outcome}
+                                              </p>
+                                              <p className="text-sm text-gray-700 font-medium leading-relaxed">
+                                                {item.details}
+                                              </p>
+                                            </div>
+                                          </motion.article>
+                                        ))}
+                                      </div>
+                                    </section>
+                                  ))}
+                                </div>
+
+                                <section className="rounded-3xl border border-gray-200 bg-white p-5 md:p-6">
+                                  <h4 className="text-lg font-black text-gray-900 flex items-center gap-2">
+                                    <BookOpen className="w-5 h-5 text-indigo-600" />
+                                    Submitted Detailed Notes (Year-wise)
+                                  </h4>
+                                  <div className="mt-4 space-y-4">
+                                    {mbaFacultySubmittedNotesByYear.map(
+                                      (item) => (
+                                        <div
+                                          key={`faculty-note-${item.year}`}
+                                          className="rounded-2xl border border-gray-200 bg-gray-50 p-4"
+                                        >
+                                          <p className="text-xs font-black uppercase tracking-widest text-indigo-700 mb-2">
+                                            {item.year}
+                                          </p>
+                                          <p className="text-sm text-gray-700 leading-relaxed font-medium whitespace-pre-line">
+                                            {item.note}
+                                          </p>
+                                        </div>
+                                      ),
+                                    )}
+                                  </div>
+                                </section>
+                              </>
+                            ) : (
+                              <>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                  <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4">
+                                    <p className="text-[11px] font-black uppercase tracking-widest text-blue-600">
+                                      Year Buckets
+                                    </p>
+                                    <p className="text-2xl font-black text-blue-900 mt-2">
+                                      {mbaStudentAchievementsByYear.length}
+                                    </p>
+                                  </div>
+                                  <div className="bg-purple-50 border border-purple-100 rounded-2xl p-4">
+                                    <p className="text-[11px] font-black uppercase tracking-widest text-purple-600">
+                                      Focus Areas
+                                    </p>
+                                    <p className="text-sm font-black text-purple-900 mt-2 leading-relaxed">
+                                      Management fests, athletics, cultural
+                                      events, and competitions
+                                    </p>
+                                  </div>
+                                  <div className="bg-rose-50 border border-rose-100 rounded-2xl p-4">
+                                    <p className="text-[11px] font-black uppercase tracking-widest text-rose-600">
+                                      Achievement Types
+                                    </p>
+                                    <p className="text-sm font-black text-rose-900 mt-2 leading-relaxed">
+                                      First place, podium finishes, runners-up,
+                                      and participation credits
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <div className="space-y-5">
+                                  {mbaStudentAchievementsByYear.map((group) => (
+                                    <section
+                                      key={group.year}
+                                      className="rounded-3xl border border-gray-200 overflow-hidden bg-white"
+                                    >
+                                      <div className="px-5 py-4 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200 flex items-center justify-between gap-3">
+                                        <div className="flex items-center gap-2.5">
+                                          <GraduationCap className="w-5 h-5 text-indigo-700" />
+                                          <h4 className="text-lg font-black text-gray-900">
+                                            Student Achievements - {group.year}
+                                          </h4>
+                                        </div>
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-indigo-100 text-xs font-black uppercase tracking-wide text-indigo-700">
+                                          <Trophy className="w-3.5 h-3.5" />
+                                          {group.entries.length} records
+                                        </span>
+                                      </div>
+
+                                      <div className="p-4 md:p-5 overflow-x-auto">
+                                        <table className="w-full min-w-[680px] text-left border-collapse">
+                                          <thead>
+                                            <tr className="bg-gray-50 border border-gray-200">
+                                              <th className="px-3 py-2 text-[10px] font-black uppercase tracking-widest text-gray-600">
+                                                Students
+                                              </th>
+                                              <th className="px-3 py-2 text-[10px] font-black uppercase tracking-widest text-gray-600">
+                                                Event / College
+                                              </th>
+                                              <th className="px-3 py-2 text-[10px] font-black uppercase tracking-widest text-gray-600">
+                                                Category
+                                              </th>
+                                              <th className="px-3 py-2 text-[10px] font-black uppercase tracking-widest text-gray-600">
+                                                Result
+                                              </th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {group.entries.map((entry, idx) => (
+                                              <tr
+                                                key={`${group.year}-${idx}`}
+                                                className="border-x border-b border-gray-200"
+                                              >
+                                                <td className="px-3 py-3 text-sm font-bold text-gray-900 align-top">
+                                                  {entry.names}
+                                                </td>
+                                                <td className="px-3 py-3 text-sm text-gray-700 font-semibold align-top">
+                                                  {entry.event}
+                                                </td>
+                                                <td className="px-3 py-3 text-sm text-gray-700 font-semibold align-top">
+                                                  {entry.category}
+                                                </td>
+                                                <td className="px-3 py-3 text-sm align-top">
+                                                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 font-black text-[11px] uppercase tracking-wide">
+                                                    <Medal className="w-3.5 h-3.5" />
+                                                    {entry.outcome}
+                                                  </span>
+                                                </td>
+                                              </tr>
+                                            ))}
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </section>
+                                  ))}
+                                </div>
+
+                                <section className="rounded-3xl border border-gray-200 bg-white p-5 md:p-6">
+                                  <h4 className="text-lg font-black text-gray-900 flex items-center gap-2">
+                                    <Award className="w-5 h-5 text-indigo-600" />
+                                    NPTEL Course Achievements
+                                  </h4>
+                                  <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    {mbaNptelAchievementsByBatch.map(
+                                      (batch) => (
+                                        <div
+                                          key={batch.batch}
+                                          className="rounded-2xl border border-indigo-100 bg-indigo-50/40 p-4"
+                                        >
+                                          <p className="text-xs font-black uppercase tracking-widest text-indigo-700">
+                                            Batch {batch.batch}
+                                          </p>
+                                          <ul className="mt-3 space-y-2">
+                                            {batch.results.map((result) => (
+                                              <li
+                                                key={result}
+                                                className="text-xs md:text-sm text-gray-700 font-semibold leading-relaxed"
+                                              >
+                                                {result}
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        </div>
+                                      ),
+                                    )}
+                                  </div>
+                                </section>
+
+                                <section className="rounded-3xl border border-gray-200 bg-white p-5 md:p-6">
+                                  <h4 className="text-lg font-black text-gray-900 flex items-center gap-2">
+                                    <BookOpen className="w-5 h-5 text-indigo-600" />
+                                    Submitted Detailed Notes (Year-wise)
+                                  </h4>
+                                  <div className="mt-4 space-y-4">
+                                    {mbaStudentSubmittedNotesByYear.map(
+                                      (item) => (
+                                        <div
+                                          key={`student-note-${item.year}`}
+                                          className="rounded-2xl border border-gray-200 bg-gray-50 p-4"
+                                        >
+                                          <p className="text-xs font-black uppercase tracking-widest text-indigo-700 mb-2">
+                                            {item.year}
+                                          </p>
+                                          <p className="text-sm text-gray-700 leading-relaxed font-medium whitespace-pre-line">
+                                            {item.note}
+                                          </p>
+                                        </div>
+                                      ),
+                                    )}
+                                  </div>
+                                </section>
+                              </>
+                            )}
+                          </div>
                         ) : (
                           <div
                             className="text-sm md:text-base text-gray-800 leading-relaxed mb-6"
@@ -739,37 +1839,41 @@ export default function MbaExploreContent() {
                           />
                         )}
 
-                        <div className="mt-6 grid md:grid-cols-2 gap-4">
-                          <div className="bg-gray-100 border border-gray-300 rounded-2xl p-4">
-                            <p className="text-[11px] font-bold uppercase tracking-widest text-gray-600">
-                              Highlights
-                            </p>
-                            <p className="font-semibold text-gray-900 mt-2">
-                              {currentData?.highlights?.[0] ||
-                                "Regular student activities and project-based learning."}
-                            </p>
-                          </div>
+                        {activeTab !== "achievements" && (
+                          <>
+                            <div className="mt-6 grid md:grid-cols-2 gap-4">
+                              <div className="bg-gray-100 border border-gray-300 rounded-2xl p-4">
+                                <p className="text-[11px] font-bold uppercase tracking-widest text-gray-600">
+                                  Highlights
+                                </p>
+                                <p className="font-semibold text-gray-900 mt-2">
+                                  {currentData?.highlights?.[0] ||
+                                    "Regular student activities and project-based learning."}
+                                </p>
+                              </div>
 
-                          <div className="bg-gray-100 border border-gray-300 rounded-2xl p-4">
-                            <p className="text-[11px] font-bold uppercase tracking-widest text-gray-600">
-                              Outcome
-                            </p>
-                            <p className="font-semibold text-gray-900 mt-2">
-                              {currentData?.highlights?.[1] ||
-                                "Industry-ready skills and strong placement performance."}
-                            </p>
-                          </div>
-                        </div>
+                              <div className="bg-gray-100 border border-gray-300 rounded-2xl p-4">
+                                <p className="text-[11px] font-bold uppercase tracking-widest text-gray-600">
+                                  Outcome
+                                </p>
+                                <p className="font-semibold text-gray-900 mt-2">
+                                  {currentData?.highlights?.[1] ||
+                                    "Industry-ready skills and strong placement performance."}
+                                </p>
+                              </div>
+                            </div>
 
-                        {currentData?.highlights?.[2] && (
-                          <div className="mt-4 bg-blue-50 border border-blue-200 rounded-2xl p-4">
-                            <p className="text-[11px] font-bold uppercase tracking-widest text-blue-600">
-                              Additional Information
-                            </p>
-                            <p className="font-semibold text-blue-900 mt-2">
-                              {currentData.highlights[2]}
-                            </p>
-                          </div>
+                            {currentData?.highlights?.[2] && (
+                              <div className="mt-4 bg-blue-50 border border-blue-200 rounded-2xl p-4">
+                                <p className="text-[11px] font-bold uppercase tracking-widest text-blue-600">
+                                  Additional Information
+                                </p>
+                                <p className="font-semibold text-blue-900 mt-2">
+                                  {currentData.highlights[2]}
+                                </p>
+                              </div>
+                            )}
+                          </>
                         )}
                       </>
                     )}
@@ -822,16 +1926,6 @@ export default function MbaExploreContent() {
             </div>
 
             <div className="flex-1 overflow-y-auto p-6 md:p-8 text-sm md:text-[0.95rem]">
-              {activeActivity.coverImage?.src && (
-                <div className="mb-6 overflow-hidden rounded-[2rem] border border-gray-200 bg-gray-100">
-                  <img
-                    src={activeActivity.coverImage.src}
-                    alt={activeActivity.coverImage.alt || activeActivity.title}
-                    className="w-full h-[280px] object-cover"
-                  />
-                </div>
-              )}
-
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
                   <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">
@@ -945,7 +2039,7 @@ export default function MbaExploreContent() {
                 <div className="absolute -inset-1 bg-gradient-to-tr from-indigo-500 to-indigo-200 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
                 <img
                   src={selectedFaculty?.photo}
-                  className="w-40 h-40 md:w-52 md:h-52 object-cover rounded-full shadow-2xl border-4 border-white relative z-10"
+                  className="w-40 h-40 md:w-52 md:h-52 object-cover object-top rounded-full shadow-2xl border-4 border-white relative z-10"
                   alt={selectedFaculty?.name}
                 />
               </div>
@@ -1056,9 +2150,3 @@ export default function MbaExploreContent() {
     </>
   );
 }
-
-
-
-
-
-

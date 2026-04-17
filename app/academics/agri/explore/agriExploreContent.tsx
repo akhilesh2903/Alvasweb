@@ -28,8 +28,33 @@ import {
   Sparkles,
   BookOpen,
   Target,
+  Droplets,
+  Leaf,
+  Sprout,
 } from "lucide-react";
 import NewsletterViewer from "@/app/components/NewsletterViewer";
+
+const imageProxyUrl = (url: string) =>
+  `/api/image-proxy?url=${encodeURIComponent(url)}`;
+
+const hydroponicsShowcase = [
+  {
+    title: "Hydroponics Overview",
+    description:
+      "A controlled soilless cultivation model focused on clean, efficient and scalable crop growth.",
+    image: imageProxyUrl(
+      "https://drive.google.com/uc?export=view&id=1QWL5LeRDfYD4jfZeILORY6-Qo8O0rf3P",
+    ),
+  },
+  {
+    title: "NFT and DWC Systems",
+    description:
+      "The selected methods for this project, balancing oxygen delivery, nutrient flow and beginner-friendly maintenance.",
+    image: imageProxyUrl(
+      "https://drive.google.com/uc?export=view&id=1TOKSJvIgD5neA-eUs7fopcmGy2-cWfJn",
+    ),
+  },
+];
 
 export default function AgriExploreContent() {
   const department = agriDepartmentData;
@@ -359,6 +384,131 @@ export default function AgriExploreContent() {
                           </motion.div>
                         ))}
                       </div>
+                    </div>
+                  </div>
+                ) : activeTab === "research" ? (
+                  <div className="grid lg:grid-cols-5 gap-6 mt-2">
+                    <div className="lg:col-span-3 space-y-4">
+                      <div className="rounded-[2rem] border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-blue-50 p-6 md:p-8 shadow-sm">
+                        <div className="flex items-start gap-4 mb-5">
+                          <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-200">
+                            <Leaf className="w-6 h-6" />
+                          </div>
+                          <div>
+                            <p className="text-[11px] font-black uppercase tracking-[0.25em] text-emerald-600">
+                              Research Spotlight
+                            </p>
+                            <h3 className="text-2xl md:text-3xl font-black text-gray-900 mt-1">
+                              Adoption of Hydroponics for Sustainable Plant
+                              Cultivation
+                            </h3>
+                          </div>
+                        </div>
+
+                        <div className="space-y-4 text-gray-700 leading-relaxed text-base md:text-lg font-medium whitespace-pre-line">
+                          <p>
+                            {currentData?.body?.split("\n\n")[1]?.trim() ||
+                              "Hydroponics is a soilless cultivation method designed for efficient, controlled plant growth."}
+                          </p>
+                          <p>
+                            This project focuses on water-efficient,
+                            space-saving farming with faster growth and cleaner
+                            production outcomes.
+                          </p>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 gap-3 mt-6">
+                          {currentData?.highlights?.slice(0, 4).map((item) => (
+                            <div
+                              key={item}
+                              className="rounded-2xl bg-white/80 border border-emerald-100 p-4 shadow-sm"
+                            >
+                              <p className="text-sm font-bold text-emerald-900 leading-relaxed">
+                                {item}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="rounded-[1.75rem] border border-gray-100 bg-white p-5 shadow-sm">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-11 h-11 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center">
+                              <Droplets className="w-5 h-5" />
+                            </div>
+                            <div>
+                              <p className="text-[10px] font-black uppercase tracking-[0.25em] text-blue-500">
+                                System 01
+                              </p>
+                              <h4 className="text-lg font-black text-gray-900">
+                                Nutrient Film Technique (NFT)
+                              </h4>
+                            </div>
+                          </div>
+                          <p className="text-sm text-gray-600 leading-relaxed">
+                            A thin nutrient stream flows over the roots in
+                            sloped channels, helping leafy crops grow with
+                            strong oxygen access.
+                          </p>
+                        </div>
+
+                        <div className="rounded-[1.75rem] border border-gray-100 bg-white p-5 shadow-sm">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-11 h-11 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center">
+                              <Sprout className="w-5 h-5" />
+                            </div>
+                            <div>
+                              <p className="text-[10px] font-black uppercase tracking-[0.25em] text-teal-500">
+                                System 02
+                              </p>
+                              <h4 className="text-lg font-black text-gray-900">
+                                Deep Water Culture (DWC)
+                              </h4>
+                            </div>
+                          </div>
+                          <p className="text-sm text-gray-600 leading-relaxed">
+                            Roots remain suspended in oxygenated nutrient water,
+                            making the system simple to maintain and
+                            beginner-friendly.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="lg:col-span-2 space-y-4">
+                      {hydroponicsShowcase.map((card, index) => (
+                        <motion.div
+                          key={card.title}
+                          initial={{ opacity: 0, y: 16 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.12 }}
+                          className="group overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-lg"
+                        >
+                          <div className="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                            <img
+                              src={card.image}
+                              alt={card.title}
+                              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent"></div>
+                            <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                              <p className="text-[10px] font-black uppercase tracking-[0.25em] text-white/80 mb-1">
+                                Hydroponics Project
+                              </p>
+                              <h4 className="text-xl font-black leading-tight">
+                                {card.title}
+                              </h4>
+                            </div>
+                          </div>
+                          <div className="p-5">
+                            <p className="text-sm text-gray-600 leading-relaxed">
+                              {card.description}
+                            </p>
+                          </div>
+                        </motion.div>
+                      ))}
                     </div>
                   </div>
                 ) : activeTab === "thrust" ? (
@@ -913,9 +1063,3 @@ export default function AgriExploreContent() {
     </>
   );
 }
-
-
-
-
-
-

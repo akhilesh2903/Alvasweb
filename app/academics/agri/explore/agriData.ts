@@ -287,11 +287,38 @@ PSO3: Take the initiative in the growth of Agriculture Engineering and related b
     },
     research: {
       title: "RESEARCH AND PUBLICATION",
-      body: "Active participation in research, leading to numerous publications in reputed journals and international conferences.",
+      body: `Adoption of Hydroponics for Sustainable Plant Cultivation
+
+Hydroponics is a soilless method of growing plants using mineral nutrient solutions in water. This modern agricultural approach has been adopted due to rising concerns about land degradation, water scarcity, and food security. The ability to grow crops efficiently in controlled environments makes hydroponics highly relevant today.
+
+The main reasons behind choosing hydroponics are:
+• Water Efficiency: Hydroponics uses up to 90% less water than traditional soil farming.
+• Space Saving: It allows vertical and compact farming, suitable for urban and small-scale growers.
+• Faster Growth: Plants receive direct nutrients and grow faster with higher yields.
+• No Soil Needed: Eliminates issues related to soil-borne diseases and pests.
+• Climate Control: Plants can be grown year-round regardless of external weather.
+
+We have selected the Nutrient Film Technique (NFT) and Deep Water Culture (DWC) systems for this project.
+
+NFT (Nutrient Film Technique):
+• A thin stream of nutrient solution is continuously circulated over the plant roots placed in sloped channels.
+• Roots absorb nutrients efficiently while having access to oxygen.
+• Best for leafy vegetables like lettuce and spinach.
+
+DWC (Deep Water Culture):
+• Plant roots are suspended directly in a nutrient-rich, oxygenated water solution.
+• Suitable for fast-growing plants like herbs, tomatoes, and peppers.
+• Simple to maintain and ideal for beginners.
+
+Conclusion:
+Hydroponics is a future-ready solution that addresses key challenges in agriculture. With proper nutrient management and monitoring, it promises cleaner, faster, and sustainable crop production. By adopting NFT and DWC systems, I aim to explore efficient plant growth and contribute toward innovative farming practices.`,
       highlights: [
-        "State and National funded projects.",
-        "Student involvement in research.",
-        "High-impact journal publications.",
+        "Water-efficient soilless cultivation.",
+        "Ideal for urban and compact farming.",
+        "NFT and DWC system implementation.",
+        "Faster growth with direct nutrient delivery.",
+        "Year-round climate-controlled cultivation.",
+        "Reduced soil-borne disease and pest issues.",
       ],
     },
     facultyStaff: { title: "FACULTY AND STAFF", body: "", highlights: [] },
@@ -324,52 +351,54 @@ PSO3: Take the initiative in the growth of Agriculture Engineering and related b
     },
     achievements: {
       title: "ACHIEVEMENTS",
-      body: `<h3 style="font-size:1.1rem;margin:0 0 0.75rem 0;"><strong>Academic Year 2024-25</strong></h3>
-
-<section data-achievement="student" style="border:1px solid #d1d5db;border-radius:14px;padding:14px 14px 10px 14px;margin-bottom:16px;background:#f8fafc;">
-  <h4 style="margin:0 0 10px 0;color:#1e40af;"><strong>Student Achievements</strong></h4>
-  <ol style="margin:0;padding-left:18px;line-height:1.65;display:grid;gap:10px;">
-    <li><strong>Participants:</strong> Mr. Guruprasd N, Esha, Prajna Shree Jain, Deepika Y, Nihar Acharya, Nikitha, Suma, Thrupthi S Rai, Prapthi N S (3rd year). <strong>Program:</strong> Two-week training on Farm Equipment Design and Manufacturing. <strong>Venue:</strong> University of Agricultural Sciences, Bangalore. <strong>Duration:</strong> 14 Oct 2024 to 26 Oct 2024.</li>
-    <li><strong>Participants:</strong> N. Hariyanth Kumar, Mr. Deepak J (3rd year). <strong>Program:</strong> One-week training on Drone Usage in Smart Agriculture. <strong>Venue:</strong> University of Agricultural Sciences, Bangalore. <strong>Duration:</strong> 21 Oct 2024 to 26 Oct 2024.</li>
-    <li><strong>Participants:</strong> N. Hariyanth Kumar, Mr. Deepak J (3rd year). <strong>Program:</strong> One-week training on Agriculture Automation and Machine Control. <strong>Venue:</strong> University of Agricultural Sciences, Bangalore. <strong>Duration:</strong> 14 Oct 2024 to 19 Oct 2024.</li>
-    <li><strong>Participant:</strong> N. Hariyanth Kumar (3rd year). <strong>Event:</strong> The Viksit Bharat Quiz. <strong>Organizers:</strong> Ministry of Youth Affairs and Sports, MyGov.</li>
-    <li><strong>Participant:</strong> Ms. Kasturi (3rd year). <strong>Program:</strong> Drone Usage in Smart Agriculture. <strong>Venue:</strong> University of Agricultural Sciences, Bangalore. <strong>Duration:</strong> 21 Oct 2024 to 26 Oct 2024.</li>
-    <li><strong>Participant:</strong> Ms. Kasturi (3rd year). <strong>Program:</strong> Agriculture Automation and Machine Control. <strong>Venue:</strong> University of Agricultural Sciences, Bangalore. <strong>Duration:</strong> 14 Oct 2024 to 19 Oct 2024.</li>
-    <li><strong>Participant:</strong> Ms. Kasturi (3rd year). <strong>Event:</strong> ATC/CATC NCC Camp. <strong>Venue:</strong> Canara High School, Mangalore. <strong>Duration:</strong> 13 May 2024 to 23 May 2024.</li>
-    <li><strong>Participant:</strong> Ms. Kasturi (3rd year). <strong>Event:</strong> Firing practice. <strong>Venue:</strong> NITK Surathkal. <strong>Date:</strong> 17 Apr 2025.</li>
-    <li><strong>Participant:</strong> Aditya Bhat (2nd year). <strong>Workshop:</strong> AI for Students - Build Your Own Generative AI Model. <strong>Organizer:</strong> NXT WAVE. <strong>Date:</strong> 1 Dec 2024.</li>
-    <li><strong>Participant:</strong> Mr. Deepak J (2nd year). <strong>Course:</strong> Geospatial Analysis with ArcGIS Online. <strong>Type:</strong> Online non-credit course. <strong>Authorized by:</strong> University of California.</li>
-    <li><strong>Participant:</strong> Mr. Deepak J (2nd year). <strong>Course:</strong> Remote Sensing and Mapping for Coral Reef Conservation. <strong>Type:</strong> Online non-credit course. <strong>Authorized by:</strong> University of Queensland.</li>
-    <li><strong>Participants:</strong> Mr. Vishwanath D C, Mr. Deepak J, Thrupthi S Rai, Prapthi N S (2nd year). <strong>Training:</strong> 3D Printing / 3D Scanning / Reverse Engineering. <strong>Venue:</strong> First National Conference on Emerging Trends in Engineering and Technology 2024, NIT Puducherry. <strong>Dates:</strong> 15 to 16 Feb 2024.</li>
-    <li><strong>Participants:</strong> Mr. Vishwanath D C, Mr. Deepak J, Thrupthi S Rai, Prapthi N S (2nd year). <strong>Training:</strong> Augmented Reality for Design and Manufacturing Applications. <strong>Venue:</strong> First National Conference on Emerging Trends in Engineering and Technology 2024, NIT Puducherry. <strong>Dates:</strong> 15 to 16 Feb 2024.</li>
-    <li><strong>Participant:</strong> Mr. Tejas Kumar. <strong>Event:</strong> Open Agri Quiz, NITTE-MANAGE Agribusiness Conclave 2024. <strong>Venue:</strong> Nitte Institute of Technology, Karkala. <strong>Outcome:</strong> Won <strong>Rs. 5,000</strong> cash prize.</li>
-    <li><strong>Participants:</strong> Mr. Santhosh M, Mr. Shreeharsha K S, Ms. Monisha S, Ms. Sahana M Gowda (4th year). <strong>Program:</strong> Srishti Incubation Support Program by Yuvaka Sangha. <strong>Outcome:</strong> Selected with mentorship and <strong>Rs. 50,000</strong> funding support.</li>
-    <li><strong>Participants:</strong> Mr. Chandan B M, Mr. Santhosh M, Mr. Shreeharsha K S (4th year). <strong>Program:</strong> Buhler Academy specialized education on Rice Milling. <strong>Venue:</strong> Buhler India Private Limited, Bangalore.</li>
-    <li><strong>Participant:</strong> Mr. Chandan B M (4th year). <strong>Program:</strong> Three-day online national training on Drone Technology. <strong>Organizer:</strong> Agri Youth Story. <strong>Duration:</strong> 13 to 15 Sep 2024.</li>
-    <li><strong>Participant:</strong> Mr. Mansoor P. A. <strong>Event:</strong> VTU State-Level Cross Country Inter-Collegiate Championship. <strong>Venue:</strong> Bahubali College of Engineering, Shravanabelagola. <strong>Duration:</strong> 14 to 16 Jun 2024. <strong>Outcome:</strong> Secured <strong>Third Place</strong>.</li>
-    <li><strong>Participant:</strong> Mr. Mansoor P. A. <strong>Event:</strong> Football Inter-Collegiate Mangalore Division Tournament. <strong>Venue:</strong> PA College of Engineering. <strong>Duration:</strong> 22 to 23 May 2024. <strong>Outcome:</strong> Secured <strong>Second Place</strong>.</li>
-    <li><strong>Participants:</strong> Mr. Chandan B M, Mr. Mansoor P. A. (4th year). <strong>Event:</strong> Lake Conference 2024.</li>
-    <li><strong>Participant:</strong> Ms. Pranusha (2nd year). <strong>Event:</strong> VTU 24th State-Level Youth Festival INTERACT-2025. <strong>Venue:</strong> Global Academy of Technology, Bengaluru. <strong>Duration:</strong> 24 to 27 Mar 2024. <strong>Outcome:</strong> Secured <strong>First Place (Skit)</strong>.</li>
-    <li><strong>Participant:</strong> Mr. Tejas Kumar with co-authors Tarun K., Deepak R., Dr. Shashikumar, Dr. Rahul Phatak. <strong>Award:</strong> Best Research Paper. <strong>Paper:</strong> Autonomous Disease Detection and Spraying Agri-Bot. <strong>Event:</strong> GCSH-2025, University of Horticultural Sciences, Bagalkot. <strong>Duration:</strong> 12 to 14 Feb 2025.</li>
-    <li><strong>Participant:</strong> Ms. Keerhana M Ram. <strong>Event:</strong> VTU Inter-Collegiate State-Level Swimming Tournament. <strong>Venue:</strong> R.V. Institute of Technology and Management. <strong>Duration:</strong> 19 to 20 Jun 2024. <strong>Outcome:</strong> Secured <strong>Runner-up Third Position</strong>.</li>
-    <li><strong>Participant:</strong> Mr. Shreeharsha K S (final year). <strong>Program:</strong> Summer School International Training Program. <strong>Venue:</strong> Konda Laxman Telangana State Horticultural University, Telangana. <strong>Duration:</strong> 15 Jul 2024 to 15 Aug 2024.</li>
-    <li><strong>Participant:</strong> Mr. Shreeharsha K S (final year). <strong>Program:</strong> Basics of Remote Sensing and Geographic Information System. <strong>Venue:</strong> AIET. <strong>Duration:</strong> 28 Aug 2024 to 30 Aug 2024.</li>
-    <li><strong>Participant:</strong> Mr. Shreeharsha K S (final year). <strong>Program:</strong> Rice Milling training. <strong>Organizer:</strong> Buhler India Limited, Bangalore. <strong>Duration:</strong> 9 Sep 2024 to 20 Sep 2024.</li>
-    <li><strong>Participants:</strong> Mr. Santhosh M, Mr. Shreeharsha K S, Ms. Monisha, Ms. Sahana. <strong>Event:</strong> Shreesti Hackathon-24, Atria Institute of Technology, Bangalore. <strong>Date:</strong> May 2024. <strong>Outcome:</strong> Won <strong>Second Place</strong> with <strong>Rs. 15,000</strong>.</li>
-    <li><strong>Participant:</strong> Mr. Mansoor P. E. with co-authors Vinay S., Dr. Rahul Phatak. <strong>Award:</strong> Best Research Paper under ICTs and AI in Horticulture. <strong>Paper:</strong> Geospatial Intelligence for Arecanut Suitability Mapping: A Remote Sensing and Machine Learning Approach. <strong>Event:</strong> GCSH-2025, University of Horticultural Sciences, Bagalkot.</li>
-  </ol>
-</section>
-
-<section data-achievement="faculty" style="border:1px solid #d1d5db;border-radius:14px;padding:14px 14px 10px 14px;background:#f8fafc;">
-  <h4 style="margin:0 0 10px 0;color:#1e40af;"><strong>Faculty Achievements (2024-25)</strong></h4>
-  <ol style="margin:0;padding-left:18px;line-height:1.65;display:grid;gap:10px;">
-    <li><strong>Faculty:</strong> Dr. Rahul Phatak. <strong>Presentation:</strong> Technological Advancements in Indian Horticulture. <strong>Conference:</strong> GCSH-2025. <strong>Venue:</strong> College of Horticultural Sciences, Bagalkot, Karnataka.</li>
-    <li><strong>Faculty:</strong> Dr. Shashikumar and Dr. Rahul Phatak. <strong>Program:</strong> One-week Faculty Train-the-Trainers Program. <strong>Venue:</strong> Buhler India, Bangalore. <strong>Duration:</strong> 12 Feb 2024 to 16 Feb 2024.</li>
-    <li><strong>Faculty:</strong> Dr. Rahul Phatak. <strong>Event:</strong> Open Agri Quiz, NITTE-MANAGE Agribusiness Conclave 2024. <strong>Venue:</strong> Nitte Institute of Technology, Karkala. <strong>Outcome:</strong> Won <strong>Rs. 5,000</strong> cash prize.</li>
-    <li><strong>Faculty:</strong> Dr. Shashikumar. <strong>Program:</strong> One-month online FDP on Solar PV Plant Design. <strong>Organizer:</strong> Skill Desire in collaboration with AICTE. <strong>Duration:</strong> 1 Jun 2024 to 30 Jun 2024.</li>
-    <li><strong>Faculty:</strong> Dr. Shashikumar. <strong>Paper Presented:</strong> Overview of Azolla and Its Importance. <strong>Conference:</strong> 4th International Conference on Recent Trends in Engineering, Technology and Management 2024. <strong>Dates:</strong> 5 to 6 Apr 2024. <strong>Organizer:</strong> Suguna College of Engineering, Coimbatore.</li>
-  </ol>
-</section>`,
+      body: [
+        '<h3 style="font-size:1.1rem;margin:0 0 0.75rem 0;"><strong>Academic Year 2024-25</strong></h3>',
+        "",
+        '<section data-achievement="student" style="border:1px solid #d1d5db;border-radius:14px;padding:14px 14px 10px 14px;margin-bottom:16px;background:#f8fafc;">',
+        '  <h4 style="margin:0 0 10px 0;color:#1e40af;"><strong>Student Achievements</strong></h4>',
+        '  <ol style="margin:0;padding-left:18px;line-height:1.65;display:grid;gap:10px;">',
+        "    <li><strong>Participants:</strong> Mr. Guruprasd N, Esha, Prajna Shree Jain, Deepika Y, Nihar Acharya, Nikitha, Suma, Thrupthi S Rai, Prapthi N S (3rd year). <strong>Program:</strong> Two-week training on Farm Equipment Design and Manufacturing. <strong>Venue:</strong> University of Agricultural Sciences, Bangalore. <strong>Duration:</strong> 14 Oct 2024 to 26 Oct 2024.</li>",
+        "    <li><strong>Participants:</strong> N. Hariyanth Kumar, Mr. Deepak J (3rd year). <strong>Program:</strong> One-week training on Drone Usage in Smart Agriculture. <strong>Venue:</strong> University of Agricultural Sciences, Bangalore. <strong>Duration:</strong> 21 Oct 2024 to 26 Oct 2024.</li>",
+        "    <li><strong>Participants:</strong> N. Hariyanth Kumar, Mr. Deepak J (3rd year). <strong>Program:</strong> One-week training on Agriculture Automation and Machine Control. <strong>Venue:</strong> University of Agricultural Sciences, Bangalore. <strong>Duration:</strong> 14 Oct 2024 to 19 Oct 2024.</li>",
+        "    <li><strong>Participant:</strong> N. Hariyanth Kumar (3rd year). <strong>Event:</strong> The Viksit Bharat Quiz. <strong>Organizers:</strong> Ministry of Youth Affairs and Sports, MyGov.</li>",
+        "    <li><strong>Participant:</strong> Ms. Kasturi (3rd year). <strong>Program:</strong> Drone Usage in Smart Agriculture. <strong>Venue:</strong> University of Agricultural Sciences, Bangalore. <strong>Duration:</strong> 21 Oct 2024 to 26 Oct 2024.</li>",
+        "    <li><strong>Participant:</strong> Ms. Kasturi (3rd year). <strong>Program:</strong> Agriculture Automation and Machine Control. <strong>Venue:</strong> University of Agricultural Sciences, Bangalore. <strong>Duration:</strong> 14 Oct 2024 to 19 Oct 2024.</li>",
+        "    <li><strong>Participant:</strong> Ms. Kasturi (3rd year). <strong>Event:</strong> ATC/CATC NCC Camp. <strong>Venue:</strong> Canara High School, Mangalore. <strong>Duration:</strong> 13 May 2024 to 23 May 2024.</li>",
+        "    <li><strong>Participant:</strong> Ms. Kasturi (3rd year). <strong>Event:</strong> Firing practice. <strong>Venue:</strong> NITK Surathkal. <strong>Date:</strong> 17 Apr 2025.</li>",
+        "    <li><strong>Participant:</strong> Aditya Bhat (2nd year). <strong>Workshop:</strong> AI for Students - Build Your Own Generative AI Model. <strong>Organizer:</strong> NXT WAVE. <strong>Date:</strong> 1 Dec 2024.</li>",
+        "    <li><strong>Participant:</strong> Mr. Deepak J (2nd year). <strong>Course:</strong> Geospatial Analysis with ArcGIS Online. <strong>Type:</strong> Online non-credit course. <strong>Authorized by:</strong> University of California.</li>",
+        "    <li><strong>Participant:</strong> Mr. Deepak J (2nd year). <strong>Course:</strong> Remote Sensing and Mapping for Coral Reef Conservation. <strong>Type:</strong> Online non-credit course. <strong>Authorized by:</strong> University of Queensland.</li>",
+        "    <li><strong>Participants:</strong> Mr. Vishwanath D C, Mr. Deepak J, Thrupthi S Rai, Prapthi N S (2nd year). <strong>Training:</strong> 3D Printing / 3D Scanning / Reverse Engineering. <strong>Venue:</strong> First National Conference on Emerging Trends in Engineering and Technology 2024, NIT Puducherry. <strong>Dates:</strong> 15 to 16 Feb 2024.</li>",
+        "    <li><strong>Participants:</strong> Mr. Vishwanath D C, Mr. Deepak J, Thrupthi S Rai, Prapthi N S (2nd year). <strong>Training:</strong> Augmented Reality for Design and Manufacturing Applications. <strong>Venue:</strong> First National Conference on Emerging Trends in Engineering and Technology 2024, NIT Puducherry. <strong>Dates:</strong> 15 to 16 Feb 2024.</li>",
+        "    <li><strong>Participant:</strong> Mr. Tejas Kumar. <strong>Event:</strong> Open Agri Quiz, NITTE-MANAGE Agribusiness Conclave 2024. <strong>Venue:</strong> Nitte Institute of Technology, Karkala. <strong>Outcome:</strong> Won <strong>Rs. 5,000</strong> cash prize.</li>",
+        "    <li><strong>Participants:</strong> Mr. Santhosh M, Mr. Shreeharsha K S, Ms. Monisha S, Ms. Sahana M Gowda (4th year). <strong>Program:</strong> Srishti Incubation Support Program by Yuvaka Sangha. <strong>Outcome:</strong> Selected with mentorship and <strong>Rs. 50,000</strong> funding support.</li>",
+        "    <li><strong>Participants:</strong> Mr. Chandan B M, Mr. Santhosh M, Mr. Shreeharsha K S (4th year). <strong>Program:</strong> Buhler Academy specialized education on Rice Milling. <strong>Venue:</strong> Buhler India Private Limited, Bangalore.</li>",
+        "    <li><strong>Participant:</strong> Mr. Chandan B M (4th year). <strong>Program:</strong> Three-day online national training on Drone Technology. <strong>Organizer:</strong> Agri Youth Story. <strong>Duration:</strong> 13 to 15 Sep 2024.</li>",
+        "    <li><strong>Participant:</strong> Mr. Mansoor P. A. <strong>Event:</strong> VTU State-Level Cross Country Inter-Collegiate Championship. <strong>Venue:</strong> Bahubali College of Engineering, Shravanabelagola. <strong>Duration:</strong> 14 to 16 Jun 2024. <strong>Outcome:</strong> Secured <strong>Third Place</strong>.</li>",
+        "    <li><strong>Participant:</strong> Mr. Mansoor P. A. <strong>Event:</strong> Football Inter-Collegiate Mangalore Division Tournament. <strong>Venue:</strong> PA College of Engineering. <strong>Duration:</strong> 22 to 23 May 2024. <strong>Outcome:</strong> Secured <strong>Second Place</strong>.</li>",
+        "    <li><strong>Participants:</strong> Mr. Chandan B M, Mr. Mansoor P. A. (4th year). <strong>Event:</strong> Lake Conference 2024.</li>",
+        "    <li><strong>Participant:</strong> Ms. Pranusha (2nd year). <strong>Event:</strong> VTU 24th State-Level Youth Festival INTERACT-2025. <strong>Venue:</strong> Global Academy of Technology, Bengaluru. <strong>Duration:</strong> 24 to 27 Mar 2024. <strong>Outcome:</strong> Secured <strong>First Place (Skit)</strong>.</li>",
+        "    <li><strong>Participant:</strong> Mr. Tejas Kumar with co-authors Tarun K., Deepak R., Dr. Shashikumar, Dr. Rahul Phatak. <strong>Award:</strong> Best Research Paper. <strong>Paper:</strong> Autonomous Disease Detection and Spraying Agri-Bot. <strong>Event:</strong> GCSH-2025, University of Horticultural Sciences, Bagalkot. <strong>Duration:</strong> 12 to 14 Feb 2025.</li>",
+        "    <li><strong>Participant:</strong> Ms. Keerhana M Ram. <strong>Event:</strong> VTU Inter-Collegiate State-Level Swimming Tournament. <strong>Venue:</strong> R.V. Institute of Technology and Management. <strong>Duration:</strong> 19 to 20 Jun 2024. <strong>Outcome:</strong> Secured <strong>Runner-up Third Position</strong>.</li>",
+        "    <li><strong>Participant:</strong> Mr. Shreeharsha K S (final year). <strong>Program:</strong> Summer School International Training Program. <strong>Venue:</strong> Konda Laxman Telangana State Horticultural University, Telangana. <strong>Duration:</strong> 15 Jul 2024 to 15 Aug 2024.</li>",
+        "    <li><strong>Participant:</strong> Mr. Shreeharsha K S (final year). <strong>Program:</strong> Basics of Remote Sensing and Geographic Information System. <strong>Venue:</strong> AIET. <strong>Duration:</strong> 28 Aug 2024 to 30 Aug 2024.</li>",
+        "    <li><strong>Participant:</strong> Mr. Shreeharsha K S (final year). <strong>Program:</strong> Rice Milling training. <strong>Organizer:</strong> Buhler India Limited, Bangalore. <strong>Duration:</strong> 9 Sep 2024 to 20 Sep 2024.</li>",
+        "    <li><strong>Participants:</strong> Mr. Santhosh M, Mr. Shreeharsha K S, Ms. Monisha, Ms. Sahana. <strong>Event:</strong> Shreesti Hackathon-24, Atria Institute of Technology, Bangalore. <strong>Date:</strong> May 2024. <strong>Outcome:</strong> Won <strong>Second Place</strong> with <strong>Rs. 15,000</strong>.</li>",
+        "    <li><strong>Participant:</strong> Mr. Mansoor P. E. with co-authors Vinay S., Dr. Rahul Phatak. <strong>Award:</strong> Best Research Paper under ICTs and AI in Horticulture. <strong>Paper:</strong> Geospatial Intelligence for Arecanut Suitability Mapping: A Remote Sensing and Machine Learning Approach. <strong>Event:</strong> GCSH-2025, University of Horticultural Sciences, Bagalkot.</li>",
+        "  </ol>",
+        "</section>",
+        "",
+        '<section data-achievement="faculty" style="border:1px solid #d1d5db;border-radius:14px;padding:14px 14px 10px 14px;background:#f8fafc;">',
+        '  <h4 style="margin:0 0 10px 0;color:#1e40af;"><strong>Faculty Achievements (2024-25)</strong></h4>',
+        '  <ol style="margin:0;padding-left:18px;line-height:1.65;display:grid;gap:10px;">',
+        "    <li><strong>Faculty:</strong> Dr. Rahul Phatak. <strong>Presentation:</strong> Technological Advancements in Indian Horticulture. <strong>Conference:</strong> GCSH-2025. <strong>Venue:</strong> College of Horticultural Sciences, Bagalkot, Karnataka.</li>",
+        "    <li><strong>Faculty:</strong> Dr. Shashikumar and Dr. Rahul Phatak. <strong>Program:</strong> One-week Faculty Train-the-Trainers Program. <strong>Venue:</strong> Buhler India, Bangalore. <strong>Duration:</strong> 12 Feb 2024 to 16 Feb 2024.</li>",
+        "    <li><strong>Faculty:</strong> Dr. Rahul Phatak. <strong>Event:</strong> Open Agri Quiz, NITTE-MANAGE Agribusiness Conclave 2024. <strong>Venue:</strong> Nitte Institute of Technology, Karkala. <strong>Outcome:</strong> Won <strong>Rs. 5,000</strong> cash prize.</li>",
+        "    <li><strong>Faculty:</strong> Dr. Shashikumar. <strong>Program:</strong> One-month online FDP on Solar PV Plant Design. <strong>Organizer:</strong> Skill Desire in collaboration with AICTE. <strong>Duration:</strong> 1 Jun 2024 to 30 Jun 2024.</li>",
+        "    <li><strong>Faculty:</strong> Dr. Shashikumar. <strong>Paper Presented:</strong> Overview of Azolla and Its Importance. <strong>Conference:</strong> 4th International Conference on Recent Trends in Engineering, Technology and Management 2024. <strong>Dates:</strong> 5 to 6 Apr 2024. <strong>Organizer:</strong> Suguna College of Engineering, Coimbatore.</li>",
+        "  </ol>",
+        "</section>",
+      ].join("\n"),
       highlights: [
         "Student achievements are presented first with complete 2024-25 entries.",
         "Faculty achievements are shown in a dedicated 2024-25 section.",
@@ -378,11 +407,55 @@ PSO3: Take the initiative in the growth of Agriculture Engineering and related b
     },
     activities: {
       title: "DEPARTMENT ACTIVITIES",
-      body: "A holistic environment encouraging students to engage in diverse co-curricular and extracurricular activities.",
+      body: [
+        '<div style="display:grid;gap:16px;">',
+        '  <div style="border:1px solid #c7d2fe;border-radius:18px;padding:18px 18px 14px 18px;background:linear-gradient(135deg,#eff6ff 0%,#ffffff 100%);box-shadow:0 8px 24px rgba(79,70,229,0.08);">',
+        '    <p style="margin:0 0 8px 0;font-size:0.72rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#4f46e5;">Learning Environment</p>',
+        '    <h4 style="margin:0 0 10px 0;font-size:1.15rem;line-height:1.35;color:#111827;"><strong>Best learning environment to enable students to face real-world agricultural challenges</strong></h4>',
+        '    <p style="margin:0;color:#374151;line-height:1.7;">The department provides hands-on exposure, industry-linked learning, and field-oriented training so students are prepared for the realistic challenges faced by farmers in agriculture.</p>',
+        "  </div>",
+        "",
+        '  <div style="border:1px solid #dbeafe;border-radius:18px;padding:18px;background:#ffffff;">',
+        '    <p style="margin:0 0 10px 0;font-size:0.72rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#2563eb;">Quick Facts</p>',
+        '    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">',
+        '      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:14px;">',
+        '        <p style="margin:0 0 6px 0;font-weight:800;color:#0f172a;">Faculty Strength</p>',
+        '        <p style="margin:0;color:#475569;line-height:1.65;">6 Doctorates and 1 M.Tech faculty.</p>',
+        "      </div>",
+        '      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:14px;">',
+        '        <p style="margin:0 0 6px 0;font-weight:800;color:#0f172a;">Experience</p>',
+        '        <p style="margin:0;color:#475569;line-height:1.65;">2 faculty members with more than 30 years of teaching experience.</p>',
+        "      </div>",
+        '      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:14px;">',
+        '        <p style="margin:0 0 6px 0;font-weight:800;color:#0f172a;">Research Output</p>',
+        '        <p style="margin:0;color:#475569;line-height:1.65;">30+ research publications in referred journals and conferences, along with 4 patents.</p>',
+        "      </div>",
+        '      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:14px;">',
+        '        <p style="margin:0 0 6px 0;font-weight:800;color:#0f172a;">Innovation</p>',
+        '        <p style="margin:0;color:#475569;line-height:1.65;">Hydroponic lab established and a startup-like initiative, VORMICMPOST, was set up in 2024-25.</p>',
+        "      </div>",
+        "    </div>",
+        "  </div>",
+        "",
+        '  <div style="border:1px solid #e5e7eb;border-radius:18px;padding:18px;background:#ffffff;">',
+        '    <p style="margin:0 0 10px 0;font-size:0.72rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#0f766e;">Department Highlights</p>',
+        '    <ul style="margin:0;padding-left:18px;display:grid;gap:10px;color:#374151;line-height:1.7;">',
+        "      <li>Three MOUs signed, including one with Keladi Shivappa Nayak University of Agriculture and Horticulture Science, Shivamogga, one with Mila University, Malaysia, and one with Buhler India Company, Bangalore.</li>",
+        "      <li>Students are encouraged to pursue internships through MOUs and academic collaborations, with successful internships completed at KVK Brahmavar, GKVK Bangalore, Hebbuvu Ltd Bangalore, Akshaya Kalpa, SLN Coffee, and Buhler India.</li>",
+        "      <li>Students are encouraged to take NPTEL and MOOCS online courses and participate in technical events organized by premier organizations.</li>",
+        "      <li>The department has AGRONOVA forum, through which various technical programs and activities are conducted.</li>",
+        "      <li>Our department students achieved 4 ranks in VTU Belagavi during their first batch (2021-2025).</li>",
+        "    </ul>",
+        "  </div>",
+        "</div>",
+      ].join("\n"),
       highlights: [
-        "Frequent industrial visits.",
-        "Alumni interaction sessions.",
-        "Community outreach programs.",
+        "Strong practical learning environment for real-world agricultural challenges.",
+        "6 Doctorates and 1 M.Tech faculty with strong academic depth.",
+        "Three active MOUs with agriculture and industry partners.",
+        "Internships at KVK, GKVK, Hebbuvu, Akshaya Kalpa, SLN Coffee and Buhler India.",
+        "30+ publications, 4 patents and 2 senior faculty with 30+ years of experience.",
+        "AGRONOVA forum, NPTEL/MOOCS participation and 4 VTU ranks in the first batch.",
       ],
     },
     newsletter: {

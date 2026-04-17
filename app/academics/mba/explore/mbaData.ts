@@ -22,8 +22,9 @@ M4: To develop in them a strong commitment to embrace cross cultural diversity a
     experience: "7 Years (AIET)",
     email: "priyasequiera@aiet.org.in",
     phone: "NA",
-    photo:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+    photo: imageProxyUrl(
+      "https://drive.google.com/uc?export=view&id=1MlAkIBN73StAKaKCtRYhsLOVW72VQ2ua",
+    ),
     joiningDate: "22-May-2019",
     message: `Welcome to the Master of Business Administration (MBA) program. We are committed to nurturing technical excellence and professional ethics in our students.
 
@@ -202,8 +203,9 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "4 Years (AIET), 13 Years (Total)",
       email: "harshithashetty@aiet.org.in",
       phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1lCCXSUOgjGwrY-8FypzebfIBUI0Jwdbu",
+      ),
       joiningDate: "09-11-2021",
       details: {
         qualifications:
