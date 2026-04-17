@@ -898,7 +898,7 @@ export default function MbaExploreContent() {
   }
 
   const facultyYearOrder = Array.from(
-    new Set(mbaFacultyAchievements.map((a) => a.year))
+    new Set(mbaFacultyAchievements.map((a) => a.year)),
   ).sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
 
   const facultyAchievementsByYear = facultyYearOrder.map((year) => ({
