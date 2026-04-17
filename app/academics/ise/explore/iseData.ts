@@ -180,11 +180,26 @@ PSO3: Develop programs and projects using modern software tools for industrial a
     },
     syllabus: {
       title: "SCHEME & SYLLABUS",
-      body: "Latest VTU curriculum with advanced elective courses in specialization tracks.",
+      body: "Latest autonomous curriculum with advanced elective courses in specialization tracks.",
       highlights: [
-        "Modernized credit-based system.",
+        "Autonomous credit-based system.",
         "Emphasis on project-oriented learning.",
-        "Regular workshops on syllabus-linked tools.",
+        "Continuous curriculum refinement aligned with industry needs.",
+      ],
+      syllabusCategories: [
+        {
+          name: "Autonomous Scheme and Syllabus",
+          links: [
+            {
+              year: "3rd Sem Autonomous",
+              id: "1DROqwjn99tR-4Y6mROQooWfyqy41SdXm",
+            },
+            {
+              year: "4th Sem Autonomous",
+              id: "1qTEXEaN2iERppoGT-0FMC0jlESNHTByU",
+            },
+          ],
+        },
       ],
     },
     placements: {
@@ -247,11 +262,77 @@ Computing facility labs have software and utilities such as Windows Vista, Windo
     },
     clubs: {
       title: "PROFESSIONAL BODIES",
-      body: "Vibrant student clubs and professional societal chapters to promote extracurricular technical growth.",
+      body: "TechGeekz, the ISE student forum, organizes intercollegiate technical events in association with AIET student chapters to build leadership, teamwork, and professional technical competence.",
       highlights: [
-        "Active student chapters.",
-        "Peer-to-peer learning clubs.",
-        "Participation in national hackathons.",
+        "Intercollegiate events organized through TechGeekz forum.",
+        "Strong participation from multiple institutions.",
+        "Leadership, teamwork, and technical problem-solving focus.",
+      ],
+      entries: [
+        {
+          coverImage: {
+            src: imageProxyUrl(
+              "https://drive.google.com/uc?export=view&id=1rcxRikSWANSBw42IRsWigk52Y-ZE4wlp",
+            ),
+            alt: "Alvas Appathon 2K19 thumbnail",
+          },
+          title: "Alvas Appathon ",
+          topic:
+            "Intercollegiate technical event by TechGeekz in association with AIET-ISE Student Chapter (KA-136)",
+          date: "14 October 2019",
+          venue: "AIET, Moodbidri",
+          audience: "Intercollegiate student teams and ISE forum members",
+          conductedBy:
+            "TechGeekz - Student Forum of Information Science and Engineering Department",
+          overview:
+            "Alvas-Appathon 2K19 was organized as an intercollegiate technical platform to showcase innovation, app-building ability, and collaborative problem solving. The event was inaugurated by Dr. Dattathreya G, Dr. Praveen J, Mr. Jayantkumar A Rathod, Mr. Sudarshana K, and Mr. Vishak Amin. Ms. Gangothri NV hosted the event and Mr. Vishak Amin presented the scheduled activities.",
+          objectives: [
+            "Provide a competitive platform for app-based innovation.",
+            "Encourage intercollegiate collaboration and technical exposure.",
+            "Strengthen event leadership and organization skills among students.",
+            "Promote design thinking and implementation under time constraints.",
+          ],
+          impact:
+            "Twenty-eight teams participated from various colleges. First prize was won by Mr. Charan and Ms. Raksha of SDMIT Ujire, while second prize was won by Ms. Ramyashree Shetty and Ms. Spoorthi of AIET Moodbidri.",
+          conclusion:
+            "The event successfully demonstrated the technical capability and coordination strength of TechGeekz while creating meaningful intercollegiate engagement. ",
+          tags: ["TechGeekz", "Appathon", "Intercollegiate", "Innovation"],
+        },
+        {
+          coverImage: {
+            src: imageProxyUrl(
+              "https://drive.google.com/uc?export=view&id=1-hUXnVkkLajYeToiHKDSPny9XMg-qVjC",
+            ),
+            alt: "TechCrunch 2K19 thumbnail",
+          },
+          title: "TechCrunch ",
+          topic:
+            "Intercollegiate technical event by TechGeekz in association with AIET-ISTE Student Chapter (KA-136)",
+          date: "6 September 2019",
+          venue: "AIET, Moodbidri",
+          audience:
+            "More than 130 participants from various higher educational institutions",
+          conductedBy:
+            "TechGeekz - Forum of Information Science and Engineering Department",
+          overview:
+            "TechCrunch 2K19 was inaugurated in the presence of Dr. Peter Fernandes, Dr. Praveen J, Mr. Jayantkumar A Rathod, Mr. Sudarshana K, and Mr. Rakesh MR. In the presidential address, Dr. Peter Fernandes highlighted responsibility, critical thinking, programming, and innovation through student-led events. Mr. Vivek Alva addressed the gathering on fundamental engineering knowledge, application skills, and professional attitude.",
+          objectives: [
+            "Expose students to technical competition and teamwork.",
+            "Develop critical thinking and problem-analysis ability.",
+            "Build confidence in communication and technical presentation.",
+            "Nurture responsible and industry-ready technicians.",
+          ],
+          impact:
+            "The event attracted more than 130 participants. First prize in TechCrunch 2K19 was won by Mr. Subramanya M and Mr. Sanath L S from SDMIT Ujire, second prize by Mr. K Samarth and Mr. Elton G Pinto of SCEM Mangalore, and technical group discussion first prize by Mr. Faheem Ahammed and Mr. Asuthosh Kumar from SMVITM Udupi.",
+          conclusion:
+            "TechCrunch 2K19 reinforced the department's commitment to student-led technical culture and intercollegiate excellence. ",
+          tags: [
+            "TechGeekz",
+            "TechCrunch",
+            "Technical Event",
+            "Student Chapter",
+          ],
+        },
       ],
     },
     achievements: {
@@ -265,11 +346,82 @@ Computing facility labs have software and utilities such as Windows Vista, Windo
     },
     activities: {
       title: "DEPARTMENT ACTIVITIES",
-      body: "A holistic environment encouraging students to engage in diverse co-curricular and extracurricular activities.",
+      body: "Forum activities under Techgeekz combine social commitment, cultural heritage, and technology awareness to develop responsible and community-oriented engineers.",
       highlights: [
-        "Frequent industrial visits.",
-        "Alumni interaction sessions.",
-        "Community outreach programs.",
+        "Activity cards now open detailed event popups for easier browsing.",
+        "Initiatives include agriculture-awareness and charitable fundraising.",
+        "Events blend cultural participation with social and technical impact.",
+      ],
+      entries: [
+        {
+          coverImage: {
+            src: imageProxyUrl(
+              "https://drive.google.com/uc?export=view&id=1RDGVX4u9_nug0zuACrF1azrh2zBY0BV3",
+            ),
+            alt: "AVANI - KESARD ONJI DINA activity thumbnail",
+          },
+          title: "AVANI - KESARD ONJI DINA",
+          topic:
+            "Technology for agriculture awareness through cultural and educational engagement",
+          date: "Department Forum Activity",
+          venue: "AIET Campus, Moodbidri",
+          audience: "ISE students, faculty, and invited guests",
+          conductedBy:
+            "Department of Information Science and Engineering in collaboration with Techgeekz Student Forum",
+          overview:
+            "AVANI - KESARD ONJI DINA was hosted to raise awareness about the impact of technology on agriculture. Inspired by the challenges faced by rural farmers, the event highlighted issues such as climate unpredictability, crop selection, and limited technological accessibility. It created an educational and cultural platform to connect traditional agriculture with modern IT-driven solutions and aligned with AIET's mission of community-centric education.",
+          objectives: [
+            "Sensitize students to real-world agricultural challenges in rural India.",
+            "Promote practical use of IT for sustainable farming support.",
+            "Encourage empathy, responsibility, and innovation for community development.",
+            "Create awareness on how technology can improve crop planning and productivity.",
+            "Integrate local cultural identity with modern engineering problem solving.",
+          ],
+          impact:
+            "The event helped students understand rural farming realities, triggered meaningful discussions on technology adoption in agriculture, and strengthened student commitment toward socially relevant engineering solutions.",
+          conclusion:
+            "The activity successfully bridged cultural heritage and technological awareness. Through procession, interactions, and thematic engagement, participants gained deeper insight into rural issues and their role in addressing them as future engineers. ",
+          tags: [
+            "Forum Activity",
+            "Agriculture",
+            "Technology Awareness",
+            "Community",
+            "Tulu Culture",
+          ],
+        },
+        {
+          coverImage: {
+            src: imageProxyUrl(
+              "https://drive.google.com/uc?export=view&id=1oCdrvYVa33WxoHGZ-YXcZC4fh2PTco37",
+            ),
+            alt: "Alva's Film Fest 2022-23 activity thumbnail",
+          },
+          title: "Alva's Film Fest 2022-23",
+          topic: "Charitable fundraising event through movie screenings",
+          date: "Nov-Dec 2022 (Six weekends)",
+          venue: "AIET Campus, Moodbidri",
+          audience: "Students, faculty, and campus community",
+          conductedBy:
+            "Department of Information Science and Engineering Forum - Techgeeks",
+          overview:
+            "Alva's Film Fest charitable movie show was organized to raise funds for a social cause through entertainment. The event ran on six weekends from November to December 2022, with popular socially relevant films screened on two screens. The inauguration was led by Dr. Peter Fernandes, Principal, in the presence of Prof. Sudheer Shetty, forum coordinators, student forum office bearers, staff, and students.",
+          objectives: [
+            "Raise charitable funds through engaging and inclusive campus activity.",
+            "Promote student-led social responsibility initiatives.",
+            "Use entertainment as a platform for meaningful contribution.",
+            "Strengthen teamwork and leadership through forum coordination.",
+          ],
+          impact:
+            "The initiative collected Rs 1,06,000 and donated the amount to the International Cultural Jamboree of Scouts and Guides organized at Alva's Campus, demonstrating strong student participation and social commitment.",
+          conclusion:
+            "The Film Fest stands out as a successful example of how student forums can convert creative engagement into measurable social impact. ",
+          tags: [
+            "Forum Activity",
+            "Charity",
+            "Fundraising",
+            "Student Leadership",
+          ],
+        },
       ],
     },
     newsletter: {

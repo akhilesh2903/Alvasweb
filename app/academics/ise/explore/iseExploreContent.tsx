@@ -4,12 +4,13 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 import { iseDepartmentData } from "./iseData";
-import { Faculty } from "@/lib/departments";
+import { DepartmentActivityEntry, Faculty } from "@/lib/departments";
 import dynamic from "next/dynamic";
 import IseExploreLoading from "./iseExploreLoading";
 import { motion, AnimatePresence } from "framer-motion";
 import MobileExploreNav from "@/app/components/MobileExploreNav";
 import Footer from "@/app/components/Footer";
+import { MdClose } from "react-icons/md";
 import {
   Cpu,
   CircuitBoard,
@@ -24,13 +25,188 @@ import {
   Sparkles,
   BookOpen,
   Target,
+  Trophy,
+  GraduationCap,
+  Medal,
+  CalendarDays,
 } from "lucide-react";
 import NewsletterViewer from "@/app/components/NewsletterViewer";
+
+const SyllabusViewer = dynamic(
+  () => import("@/app/components/SyllabusViewer"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-96 flex items-center justify-center bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200 text-gray-400">
+        Loading Syllabus Viewer...
+      </div>
+    ),
+  },
+);
+
+type AchievementCategory = "faculty" | "student";
+
+type FacultyFundingProject = {
+  title: string;
+  amount: string;
+  agency: string;
+  guide: string;
+  status: string;
+  note: string;
+};
+
+type FacultyPublication = {
+  title: string;
+  authors: string;
+  venue: string;
+  year: string;
+  doi?: string;
+};
+
+type StudentInitiative = {
+  title: string;
+  details: string;
+};
+
+type KscstProject = {
+  title: string;
+  guide: string;
+  students: string[];
+};
+
+const iseFacultyFundingProject: FacultyFundingProject = {
+  title:
+    "Detection of Artificially Ripened Fruits using Spectrometric Techniques",
+  amount: "Rs 5 Lakhs",
+  agency: "VGST, Government of Karnataka",
+  guide: "Dr. Roopalakshmi R",
+  status: "Ongoing",
+  note: "Certificate reference is available with the department records.",
+};
+
+const iseFacultyPublications: FacultyPublication[] = [
+  {
+    title: "A New Automated Medicine Prescription System for Plant Diseases",
+    authors: "K. Sudarshana",
+    venue:
+      "Proceedings of the International Conference on ISMAC in Computational Vision and Bio-Engineering 2018 (ISMAC-CVB), Lecture Notes in Computational Vision and Biomechanics",
+    year: "2019",
+  },
+  {
+    title: "A Survey on Deep Learning Techniques Used for Quality Process",
+    authors: "Ms. Vanyashree Mardi",
+    venue: "IGI Global",
+    year: "2019",
+    doi: "10.4018/978-1-5225-7862-8.ch008",
+  },
+  {
+    title: "RFID-Based Smart Traffic Control Framework for Emergency Vehicles",
+    authors: "Divya Ravi N",
+    venue:
+      "Proceedings of the 2nd International Conference on Inventive Communication and Computational Technologies (ICICCT 2018), IEEE Xplore Compliant, CFP18BAC-ART; ISBN: 978-1-5386-1974-2",
+    year: "2018",
+  },
+  {
+    title:
+      "IoT-Based Framework for Automobile Theft Detection and Driver Identification",
+    authors: "Ms. Kaveri B Kari",
+    venue:
+      "Smys et al. (eds.), International Conference on Computer Networks and Communication Technologies, Lecture Notes on Data Engineering and Communications Technologies 15",
+    year: "2019",
+    doi: "https://doi.org/10.1007/978-981-10-8681-6_56",
+  },
+  {
+    title:
+      "Detection of Chemically Ripened Fruits Based on Visual Features and Non-destructive Sensor Techniques",
+    authors: "Dr. Roopalakshmi R",
+    venue:
+      "Pandian et al. (eds.), Proceedings of the International Conference on ISMAC in Computational Vision and Bio-Engineering 2018 (ISMAC-CVB), Lecture Notes in Computational Vision and Biomechanics 30",
+    year: "2019",
+    doi: "https://doi.org/10.1007/978-3-030-00665-5_84865",
+  },
+  {
+    title: "Driver Drowsiness Detection System Based on Visual Features",
+    authors: "Mr. Jayantkumar A Rathod",
+    venue:
+      "Proceedings of the 2nd International Conference on Inventive Communication and Computational Technologies (ICICCT 2018), IEEE Xplore Compliant, CFP18BAC-ART; ISBN: 978-1-5386-1974-2",
+    year: "2018",
+  },
+  {
+    title: "IoT-Based Patient Remote Health Monitoring in Ambulance Services",
+    authors: "Mr. Sharan L Pais",
+    venue:
+      "Smys et al. (eds.), International Conference on Computer Networks and Communication Technologies, Lecture Notes on Data Engineering and Communications Technologies 15",
+    year: "2019",
+    doi: "https://doi.org/10.1007/978-981-10-8681-6_38",
+  },
+  {
+    title:
+      "Spam Reviews Detection Framework Based on Heterogeneous Information Network",
+    authors: "Mrs. Suviksha V Shetty",
+    venue:
+      "Proceedings of the 2nd International Conference on Inventive Communication and Computational Technologies (ICICCT 2018), IEEE Xplore Compliant, CFP18BAC-ART; ISBN: 978-1-5386-1974-2",
+    year: "2018",
+  },
+  {
+    title:
+      "A Novel Framework for Automated Energy Meter Reading and Theft Detection",
+    authors: "Mrs. Swapnalaxmi K",
+    venue:
+      "Bhattacharyya et al. (eds.), International Conference on Innovative Computing and Communications, Lecture Notes in Networks and Systems 56",
+    year: "2019",
+    doi: "https://doi.org/10.1007/978-981-13-2354-6_53",
+  },
+  {
+    title:
+      "New Automated Vehicle Crash Avoidance System Based on Dipping and RF Techniques",
+    authors: "Mr. Manjunath H R",
+    venue: "Hemanth et al. (eds.), ICICI 2018, LNDECT 26, pp. 565-1572",
+    year: "2019",
+    doi: "https://doi.org/10.1007/978-3-030-03146-6_183",
+  },
+];
+
+const iseHonorsStudents = [
+  "Koushik Achar",
+  "Manoj M U",
+  "Kelvin Dmello",
+  "Pragathi G Gowda",
+  "Chandana N M",
+  "Anagha Udupa Y N",
+];
+
+const iseStudentInitiatives: StudentInitiative[] = [
+  {
+    title: "Government-recognized crowdfunding portal - Namagagi",
+    details:
+      "Mohammad Yamin and Mr. Syed Saleha (Final Year ISE), under the guidance of Mr. Pradeep Nayak, Assistant Professor, developed Namagagi. The portal is adopted by the Government of Karnataka through Dakshina Kannada Administration and has mobilized Rs 1.85 lakhs to support government schools with essential resources.",
+  },
+  {
+    title: "Student-led startup - Vithsutra Technologies Pvt. Ltd.",
+    details:
+      "Mr. Sathwik KD and Mr. Srujan KM (Final Year ISE) are part of Vithsutra Technologies Pvt. Ltd. with products including a Biometric Attendance Monitoring System, an IoT-enabled Dryer and Boiler Monitoring System, and ESP-based Telecommunication and Billing Software.",
+  },
+];
+
+const iseKscstProjects: KscstProject[] = [
+  {
+    title: "AgriChain: Blockchain-Enabled Agricultural Supply Chain",
+    guide: "Ms. Suma J",
+    students: [
+      "4AL21IS027 - Manjunath R",
+      "4AL21IS049 - Shashidhar Mahadev Patgar",
+      "4AL21IS057 - Srujan K M",
+      "4AL21IS050 - Shravan R Poojary",
+    ],
+  },
+];
 
 export default function IseExploreContent() {
   const department = iseDepartmentData;
 
   const [activeTab, setActiveTab] = useState("about");
+  const [achievementCategory, setAchievementCategory] =
+    useState<AchievementCategory>("faculty");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -39,6 +215,9 @@ export default function IseExploreContent() {
   const [selectedFaculty, setSelectedFaculty] = useState<Faculty | null>(null);
   const [isFacultyModalOpen, setIsFacultyModalOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+  const [activeActivityIndex, setActiveActivityIndex] = useState<number | null>(
+    null,
+  );
 
   useEffect(() => {
     // Show contents
@@ -58,6 +237,12 @@ export default function IseExploreContent() {
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
+    if (tabId !== "activities") {
+      setActiveActivityIndex(null);
+    }
+    if (tabId === "achievements") {
+      setAchievementCategory("faculty");
+    }
   };
 
   const openFacultyModal = (faculty: Faculty) => {
@@ -89,6 +274,17 @@ export default function IseExploreContent() {
     body: "Content not available for this section.",
     highlights: [],
   };
+
+  let activeActivity: DepartmentActivityEntry | null = null;
+  if (
+    (activeTab === "activities" || activeTab === "clubs") &&
+    activeActivityIndex !== null &&
+    currentData.entries?.[activeActivityIndex]
+  ) {
+    activeActivity = currentData.entries[
+      activeActivityIndex
+    ] as DepartmentActivityEntry;
+  }
 
   const renderFacilitiesContent = () => {
     const lines = (department.exploreData?.facilities?.body || "")
@@ -671,6 +867,401 @@ export default function IseExploreContent() {
                             backPath="/academics/ise/explore"
                             departmentName="ISE"
                           />
+                        ) : activeTab === "syllabus" ? (
+                          <SyllabusViewer
+                            syllabusLinks={currentData.syllabusLinks}
+                            syllabusCategories={currentData.syllabusCategories}
+                          />
+                        ) : (activeTab === "activities" ||
+                            activeTab === "clubs") &&
+                          currentData?.entries &&
+                          currentData.entries.length > 0 ? (
+                          <div className="space-y-8">
+                            {currentData?.body?.trim() && (
+                              <p className="text-gray-700 text-base md:text-lg leading-relaxed font-medium">
+                                {currentData.body}
+                              </p>
+                            )}
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                              {currentData.entries.map(
+                                (activity: DepartmentActivityEntry, idx) => (
+                                  <motion.button
+                                    key={`${activity.title}-${idx}`}
+                                    type="button"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{
+                                      duration: 0.25,
+                                      delay: idx * 0.03,
+                                    }}
+                                    onClick={() =>
+                                      setActiveActivityIndex((prev) =>
+                                        prev === idx ? null : idx,
+                                      )
+                                    }
+                                    aria-expanded={activeActivityIndex === idx}
+                                    className="text-left group"
+                                  >
+                                    <div
+                                      className={`relative ${
+                                        activeTab === "clubs" ? "h-56" : "h-48"
+                                      } rounded-[2rem] overflow-hidden border border-gray-200 bg-gray-100 shadow-sm`}
+                                    >
+                                      {activity.coverImage?.src ? (
+                                        <img
+                                          src={activity.coverImage.src}
+                                          alt={
+                                            activity.coverImage.alt ||
+                                            activity.title
+                                          }
+                                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                                          loading="lazy"
+                                        />
+                                      ) : (
+                                        <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-100" />
+                                      )}
+
+                                      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
+
+                                      <div className="absolute top-0 left-0 right-0 p-4">
+                                        <h3 className="text-white text-base md:text-lg font-black leading-snug">
+                                          {activity.title}
+                                        </h3>
+                                      </div>
+
+                                      {activity.tags?.length ? (
+                                        <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-wrap gap-2">
+                                          {activity.tags
+                                            .slice(0, 3)
+                                            .map((tag) => (
+                                              <span
+                                                key={tag}
+                                                className="px-2.5 py-1 rounded-full bg-white/90 text-[10px] font-black uppercase tracking-widest text-gray-800"
+                                              >
+                                                {tag}
+                                              </span>
+                                            ))}
+                                        </div>
+                                      ) : null}
+                                    </div>
+                                  </motion.button>
+                                ),
+                              )}
+                            </div>
+                          </div>
+                        ) : activeTab === "achievements" ? (
+                          <div className="space-y-8">
+                            <p className="text-gray-700 text-base md:text-lg leading-relaxed font-medium">
+                              The accomplishments of students and faculty
+                              reflect the department&apos;s academic strength,
+                              innovation culture, and collaborative ecosystem.
+                              This section presents notable achievements in
+                              research, academics, innovation, and social impact
+                              initiatives.
+                            </p>
+
+                            <div className="rounded-3xl border border-gray-200 bg-gradient-to-br from-white to-indigo-50/40 p-4 md:p-6">
+                              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                <div>
+                                  <p className="text-[11px] font-black uppercase tracking-[0.14em] text-indigo-700">
+                                    Achievement Explorer
+                                  </p>
+                                  <h3 className="text-xl md:text-2xl font-black text-gray-900 mt-1">
+                                    ISE Department Performance Highlights
+                                  </h3>
+                                </div>
+
+                                <div className="inline-flex p-1.5 rounded-2xl bg-gray-100 border border-gray-200 gap-1.5 w-full md:w-auto">
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      setAchievementCategory("faculty")
+                                    }
+                                    className={`flex-1 md:flex-none px-4 py-2.5 rounded-xl text-xs md:text-sm font-black uppercase tracking-wider transition-all ${
+                                      achievementCategory === "faculty"
+                                        ? "bg-indigo-600 text-white shadow"
+                                        : "bg-transparent text-gray-700 hover:bg-white"
+                                    }`}
+                                  >
+                                    Faculty Achievement
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      setAchievementCategory("student")
+                                    }
+                                    className={`flex-1 md:flex-none px-4 py-2.5 rounded-xl text-xs md:text-sm font-black uppercase tracking-wider transition-all ${
+                                      achievementCategory === "student"
+                                        ? "bg-indigo-600 text-white shadow"
+                                        : "bg-transparent text-gray-700 hover:bg-white"
+                                    }`}
+                                  >
+                                    Student Achievement
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+
+                            {achievementCategory === "faculty" ? (
+                              <>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                  <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-4">
+                                    <p className="text-[11px] font-black uppercase tracking-widest text-indigo-600">
+                                      Funding Projects
+                                    </p>
+                                    <p className="text-2xl font-black text-indigo-900 mt-2">
+                                      1
+                                    </p>
+                                  </div>
+                                  <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4">
+                                    <p className="text-[11px] font-black uppercase tracking-widest text-amber-700">
+                                      Publications Listed
+                                    </p>
+                                    <p className="text-2xl font-black text-amber-900 mt-2">
+                                      {iseFacultyPublications.length}
+                                    </p>
+                                  </div>
+                                  <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-4">
+                                    <p className="text-[11px] font-black uppercase tracking-widest text-emerald-700">
+                                      Focus Areas
+                                    </p>
+                                    <p className="text-sm font-black text-emerald-900 mt-2 leading-relaxed">
+                                      Funded research, Springer and IEEE indexed
+                                      scholarly output
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <section className="rounded-3xl border border-gray-200 overflow-hidden bg-white">
+                                  <div className="px-5 py-4 bg-gradient-to-r from-indigo-50 to-blue-50 border-b border-gray-200 flex items-center justify-between gap-3">
+                                    <h4 className="text-lg font-black text-gray-900 flex items-center gap-2.5">
+                                      <CalendarDays className="w-5 h-5 text-indigo-700" />
+                                      Funded Project
+                                    </h4>
+                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-indigo-100 text-xs font-black uppercase tracking-wide text-indigo-700">
+                                      <Trophy className="w-3.5 h-3.5" />
+                                      Ongoing
+                                    </span>
+                                  </div>
+                                  <div className="p-5 space-y-3">
+                                    <h5 className="text-lg font-black text-gray-900 leading-snug">
+                                      {iseFacultyFundingProject.title}
+                                    </h5>
+                                    <p className="text-sm font-bold text-indigo-700">
+                                      Guide: {iseFacultyFundingProject.guide}
+                                    </p>
+                                    <p className="text-sm text-gray-700 font-semibold">
+                                      Agency: {iseFacultyFundingProject.agency}
+                                    </p>
+                                    <p className="text-sm text-gray-700 font-semibold">
+                                      Funding Amount:{" "}
+                                      {iseFacultyFundingProject.amount}
+                                    </p>
+                                    <div className="rounded-2xl bg-gray-50 border border-gray-100 p-4 space-y-1">
+                                      <p className="text-sm font-bold text-gray-900">
+                                        Status:{" "}
+                                        {iseFacultyFundingProject.status}
+                                      </p>
+                                      <p className="text-sm text-gray-700 font-medium leading-relaxed">
+                                        {iseFacultyFundingProject.note}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </section>
+
+                                <section className="rounded-3xl border border-gray-200 overflow-hidden bg-white">
+                                  <div className="px-5 py-4 bg-gradient-to-r from-indigo-50 to-blue-50 border-b border-gray-200 flex items-center justify-between gap-3">
+                                    <div className="flex items-center gap-2.5">
+                                      <BookOpen className="w-5 h-5 text-indigo-700" />
+                                      <h4 className="text-lg font-black text-gray-900">
+                                        Faculty Publications
+                                      </h4>
+                                    </div>
+                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-indigo-100 text-xs font-black uppercase tracking-wide text-indigo-700">
+                                      <Trophy className="w-3.5 h-3.5" />
+                                      {iseFacultyPublications.length} records
+                                    </span>
+                                  </div>
+
+                                  <div className="p-4 md:p-5 space-y-4">
+                                    {iseFacultyPublications.map((item, idx) => (
+                                      <motion.article
+                                        key={`${item.title}-${idx}`}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: idx * 0.03 }}
+                                        className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm"
+                                      >
+                                        <p className="text-xs font-black uppercase tracking-widest text-indigo-700">
+                                          Publication {idx + 1}
+                                        </p>
+                                        <h5 className="text-lg font-black text-gray-900 leading-snug mt-2">
+                                          {item.title}
+                                        </h5>
+                                        <p className="text-sm font-bold text-indigo-700 mt-1">
+                                          {item.authors}
+                                        </p>
+                                        <p className="text-xs md:text-sm text-gray-600 font-semibold mt-4 leading-relaxed">
+                                          {item.venue}
+                                        </p>
+                                        <div className="mt-4 rounded-2xl bg-gray-50 border border-gray-100 p-4 space-y-2">
+                                          <p className="text-sm font-bold text-gray-900 leading-relaxed">
+                                            Year: {item.year}
+                                          </p>
+                                          {item.doi ? (
+                                            <p className="text-sm text-gray-700 font-medium leading-relaxed break-all">
+                                              DOI / Link: {item.doi}
+                                            </p>
+                                          ) : null}
+                                        </div>
+                                      </motion.article>
+                                    ))}
+                                  </div>
+                                </section>
+                              </>
+                            ) : (
+                              <>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                  <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4">
+                                    <p className="text-[11px] font-black uppercase tracking-widest text-blue-600">
+                                      Honors Degree Awardees
+                                    </p>
+                                    <p className="text-2xl font-black text-blue-900 mt-2">
+                                      {iseHonorsStudents.length}
+                                    </p>
+                                  </div>
+                                  <div className="bg-purple-50 border border-purple-100 rounded-2xl p-4">
+                                    <p className="text-[11px] font-black uppercase tracking-widest text-purple-600">
+                                      Featured Initiatives
+                                    </p>
+                                    <p className="text-2xl font-black text-purple-900 mt-2">
+                                      {iseStudentInitiatives.length}
+                                    </p>
+                                  </div>
+                                  <div className="bg-rose-50 border border-rose-100 rounded-2xl p-4">
+                                    <p className="text-[11px] font-black uppercase tracking-widest text-rose-600">
+                                      Funded KSCST Projects
+                                    </p>
+                                    <p className="text-2xl font-black text-rose-900 mt-2">
+                                      {iseKscstProjects.length}
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <section className="rounded-3xl border border-gray-200 overflow-hidden bg-white">
+                                  <div className="px-5 py-4 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200 flex items-center justify-between gap-3">
+                                    <div className="flex items-center gap-2.5">
+                                      <GraduationCap className="w-5 h-5 text-indigo-700" />
+                                      <h4 className="text-lg font-black text-gray-900">
+                                        VTU Honors Degree (2024-25)
+                                      </h4>
+                                    </div>
+                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-indigo-100 text-xs font-black uppercase tracking-wide text-indigo-700">
+                                      <Medal className="w-3.5 h-3.5" />
+                                      18 Credits Earned
+                                    </span>
+                                  </div>
+                                  <div className="p-5">
+                                    <p className="text-sm text-gray-700 font-semibold leading-relaxed mb-4">
+                                      The following Final Year ISE students
+                                      earned 18 credits toward the B.E Honors
+                                      Degree from VTU, Belagavi for Academic
+                                      Year 2024-25.
+                                    </p>
+                                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                                      {iseHonorsStudents.map((name) => (
+                                        <div
+                                          key={name}
+                                          className="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold text-gray-900"
+                                        >
+                                          {name}
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                </section>
+
+                                <section className="rounded-3xl border border-gray-200 bg-white p-5 md:p-6">
+                                  <h4 className="text-lg font-black text-gray-900 flex items-center gap-2">
+                                    <Sparkles className="w-5 h-5 text-indigo-600" />
+                                    Student and Startup Initiatives
+                                  </h4>
+                                  <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                    {iseStudentInitiatives.map((item) => (
+                                      <article
+                                        key={item.title}
+                                        className="rounded-2xl border border-gray-200 bg-gray-50 p-4"
+                                      >
+                                        <h5 className="text-base font-black text-gray-900 leading-snug">
+                                          {item.title}
+                                        </h5>
+                                        <p className="text-sm text-gray-700 font-medium leading-relaxed mt-3">
+                                          {item.details}
+                                        </p>
+                                      </article>
+                                    ))}
+                                  </div>
+                                </section>
+
+                                <section className="rounded-3xl border border-gray-200 overflow-hidden bg-white">
+                                  <div className="px-5 py-4 bg-gradient-to-r from-rose-50 to-amber-50 border-b border-gray-200">
+                                    <h4 className="text-lg font-black text-gray-900 flex items-center gap-2">
+                                      <Trophy className="w-5 h-5 text-rose-600" />
+                                      KSCST Funded Student Project
+                                    </h4>
+                                  </div>
+                                  <div className="p-5 space-y-6">
+                                    {iseKscstProjects.map((project) => (
+                                      <article
+                                        key={project.title}
+                                        className="rounded-2xl border border-gray-200 bg-gray-50 p-5"
+                                      >
+                                        <h5 className="text-base md:text-lg font-black text-gray-900 leading-snug">
+                                          {project.title}
+                                        </h5>
+                                        <p className="text-sm font-bold text-indigo-700 mt-2">
+                                          Guide: {project.guide}
+                                        </p>
+                                        <div className="mt-4 overflow-x-auto">
+                                          <table className="w-full min-w-[520px] text-left border-collapse">
+                                            <thead>
+                                              <tr className="bg-white border border-gray-200">
+                                                <th className="px-3 py-2 text-[10px] font-black uppercase tracking-widest text-gray-600">
+                                                  Sl. No
+                                                </th>
+                                                <th className="px-3 py-2 text-[10px] font-black uppercase tracking-widest text-gray-600">
+                                                  USN and Name
+                                                </th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              {project.students.map(
+                                                (student, idx) => (
+                                                  <tr
+                                                    key={student}
+                                                    className="border-x border-b border-gray-200"
+                                                  >
+                                                    <td className="px-3 py-3 text-sm font-bold text-gray-900 align-top">
+                                                      {idx + 1}
+                                                    </td>
+                                                    <td className="px-3 py-3 text-sm text-gray-700 font-semibold align-top">
+                                                      {student}
+                                                    </td>
+                                                  </tr>
+                                                ),
+                                              )}
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                      </article>
+                                    ))}
+                                  </div>
+                                </section>
+                              </>
+                            )}
+                          </div>
                         ) : (
                           <div
                             className="text-sm md:text-base text-gray-800 leading-relaxed mb-6"
@@ -724,6 +1315,135 @@ export default function IseExploreContent() {
 
       {/* Footer */}
       <Footer />
+      {activeActivity && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9999] flex items-center justify-center p-4 animate-in fade-in duration-300"
+          onClick={() => setActiveActivityIndex(null)}
+        >
+          <button
+            onClick={() => setActiveActivityIndex(null)}
+            className="absolute -top-12 right-0 md:-right-12 w-10 h-10 rounded-full bg-white text-gray-900 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition shadow-2xl z-[10000] border border-gray-100 font-bold text-xl"
+          >
+            <MdClose className="w-5 h-5" />
+          </button>
+          <div
+            className="bg-white rounded-[2rem] shadow-2xl max-w-6xl w-[96vw] max-h-[90vh] overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100 flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="bg-[#f8f9fa] p-6 md:p-8 pb-6 border-b border-gray-100 flex flex-col md:flex-row gap-6 md:items-start md:justify-between">
+              <div>
+                <h3 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight">
+                  {activeActivity.title}
+                </h3>
+                {activeActivity.topic && (
+                  <p className="text-sm md:text-base font-bold text-indigo-700 mt-2">
+                    {activeActivity.topic}
+                  </p>
+                )}
+              </div>
+
+              <div className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-indigo-50 border border-indigo-100">
+                <span className="text-[11px] font-black uppercase tracking-widest text-indigo-600">
+                  Date
+                </span>
+                <span className="text-sm font-black text-indigo-900">
+                  {activeActivity.date}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-6 md:p-8 text-sm md:text-[0.95rem]">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">
+                    Venue
+                  </p>
+                  <p className="text-sm font-bold text-gray-900 mt-1">
+                    {activeActivity.venue}
+                  </p>
+                </div>
+                <div className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">
+                    Audience
+                  </p>
+                  <p className="text-sm font-bold text-gray-900 mt-1">
+                    {activeActivity.audience}
+                  </p>
+                </div>
+                <div className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">
+                    Conducted By
+                  </p>
+                  <p className="text-sm font-bold text-gray-900 mt-1">
+                    {activeActivity.conductedBy}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <h4 className="text-sm font-black uppercase tracking-widest text-gray-700">
+                  Overview
+                </h4>
+                <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                  {activeActivity.overview}
+                </p>
+              </div>
+
+              <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="bg-indigo-50/50 border border-indigo-100 rounded-3xl p-5">
+                  <h4 className="text-sm font-black uppercase tracking-widest text-indigo-700">
+                    Objectives
+                  </h4>
+                  <ul className="mt-3 space-y-2">
+                    {activeActivity.objectives.map((obj, i) => (
+                      <li
+                        key={i}
+                        className="flex gap-3 text-sm text-gray-800 leading-relaxed font-semibold"
+                      >
+                        <span className="mt-1 inline-block w-2 h-2 rounded-full bg-indigo-600 shrink-0" />
+                        <span>{obj}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="bg-gray-50 border border-gray-100 rounded-3xl p-5">
+                    <h4 className="text-sm font-black uppercase tracking-widest text-gray-700">
+                      Impact
+                    </h4>
+                    <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                      {activeActivity.impact}
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-50 border border-gray-100 rounded-3xl p-5">
+                    <h4 className="text-sm font-black uppercase tracking-widest text-gray-700">
+                      Conclusion
+                    </h4>
+                    <p className="mt-2 text-sm md:text-base text-gray-700 leading-relaxed font-medium whitespace-pre-line break-words">
+                      {activeActivity.conclusion}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {activeActivity.tags?.length ? (
+                <div className="mt-8 flex flex-wrap gap-2">
+                  {activeActivity.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold uppercase tracking-wide border border-indigo-100"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      )}
       {/* Faculty Modal */}
       {isFacultyModalOpen && selectedFaculty && (
         <div
@@ -856,9 +1576,3 @@ export default function IseExploreContent() {
     </>
   );
 }
-
-
-
-
-
-
