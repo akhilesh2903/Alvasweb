@@ -283,9 +283,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
           <span className="hover:text-[#b77a00] cursor-pointer transition">
             CET CODE-E169
           </span>
-          <span className="hover:text-[#b77a00] cursor-pointer transition">
-            
-          </span>
+          <span className="hover:text-[#b77a00] cursor-pointer transition"></span>
         </div>
 
         <div className="flex gap-6 tracking-wide items-center font-bold">
@@ -1027,10 +1025,12 @@ function MobileMenu({ onMenuToggle }: { onMenuToggle?: () => void }) {
   return (
     <>
       <button
-        className="absolute right-4 top-3 lg:hidden text-2xl cursor-pointer z-50 p-2 "
+        type="button"
+        className="absolute right-4 top-3 lg:hidden text-2xl cursor-pointer z-[60] p-3 touch-manipulation"
         id="hamburger-btn"
         onClick={toggle}
         aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
       >
         <i
           // 1. Added "nav-btn" class so GSAP targets it automatically

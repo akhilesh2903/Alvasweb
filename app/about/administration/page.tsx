@@ -50,8 +50,7 @@ export default function Administration() {
     chairman: {
       name: "Dr. M. Mohan Alva",
       role: "Chairman, Alva's Education Foundation",
-      image:
-        "/Dr.Mohan-Alva-1.jpg", // Using placeholder logic or actual if available
+      image: "/Dr.Mohan-Alva-1.jpg", // Using placeholder logic or actual if available
       message:
         "Our vision is to mold students into innovative leaders with strong cultural and ethical values. Alva's Institute of Engineering & Technology remains committed to academic excellence and social responsibility, ensuring every graduate is prepared to serve the global community.",
     },
@@ -59,16 +58,14 @@ export default function Administration() {
       {
         name: "Mr. Vivek Alva",
         role: "Trustee, AEF",
-        image:
-          "/vivek.jpg",
+        image: "/vivek.jpg",
         message:
           "Empowering young minds with modern technology while staying rooted in our traditions is the hallmark of Alva's education.",
       },
       {
         name: "Mr. Vinay Alva",
         role: "Trustee, AEF",
-        image:
-          "/vinay sir.webp",
+        image: "/vinay sir.webp",
         message:
           "Consistency in quality and dedication to student success drives our administrative decisions at every level.",
       },
@@ -85,8 +82,7 @@ export default function Administration() {
       {
         name: "Dr. Peter Fernandes",
         role: "Principal, AIET",
-        image:
-          `/api/image-proxy?url=${encodeURIComponent("https://drive.google.com/uc?export=view&id=1yVLMW1xj5CjtS57vACK77reXjZeShGmm")}`,
+        image: `/api/image-proxy?url=${encodeURIComponent("https://drive.google.com/uc?export=view&id=1yVLMW1xj5CjtS57vACK77reXjZeShGmm")}`,
         message:
           "Fostering academic rigor and research excellence to place AIET among the top technical institutions globally.",
         objectPosition: "center 35%",
@@ -100,7 +96,7 @@ export default function Administration() {
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
       />
-      <Header onMenuToggle={() => setIsMobileMenuOpen(true)} />
+      <Header onMenuToggle={() => setIsMobileMenuOpen((prev) => !prev)} />
 
       {/* Premium Liquid Mesh Background */}
       <div
@@ -213,7 +209,11 @@ export default function Administration() {
                   <div className="w-40 h-40 shrink-0 overflow-hidden rounded-2xl shadow-lg">
                     <img
                       src={manager.image}
-                      style={manager.objectPosition ? { objectPosition: manager.objectPosition } : {}}
+                      style={
+                        manager.objectPosition
+                          ? { objectPosition: manager.objectPosition }
+                          : {}
+                      }
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       alt={manager.name}
                     />

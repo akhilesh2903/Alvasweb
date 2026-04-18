@@ -267,7 +267,7 @@ export default function CSEPage() {
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
       />
-      <Header onMenuToggle={() => setIsMobileMenuOpen(true)} />
+      <Header onMenuToggle={() => setIsMobileMenuOpen((prev) => !prev)} />
 
       <div className="h-20 md:h-24"></div>
 

@@ -1,13 +1,16 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function AboutSection() {
+  const [isTourOpen, setIsTourOpen] = useState(false);
   const virtualTourImage = `/api/image-proxy?url=${encodeURIComponent(
     "https://drive.google.com/uc?export=view&id=1UgoPupivLPhEcYoRc-QyWP6rE7uJXv4x",
   )}`;
+  const virtualTourVideo =
+    "https://www.youtube.com/embed/zB9gO40DBOc?autoplay=1&rel=0";
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -97,6 +100,26 @@ export default function AboutSection() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsTourOpen(false);
+      }
+    };
+
+    if (isTourOpen) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleEsc);
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [isTourOpen]);
+
   return (
     <section
       id="about-section"
@@ -175,12 +198,17 @@ export default function AboutSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-90"></div>
 
             <div className="absolute inset-0 flex items-center justify-center transform translate-z-20">
-              <div className="relative w-20 h-20 group-hover:scale-110 transition-transform duration-300">
+              <button
+                type="button"
+                onClick={() => setIsTourOpen(true)}
+                aria-label="Play campus virtual tour"
+                className="relative w-20 h-20 group-hover:scale-110 transition-transform duration-300"
+              >
                 <div className="absolute inset-0 bg-white/30 rounded-full animate-ping"></div>
                 <div className="absolute inset-0 bg-white/20 backdrop-blur-md rounded-full border border-white/60 flex items-center justify-center shadow-2xl">
                   <i className="fas fa-play text-2xl text-white ml-1 drop-shadow-md"></i>
                 </div>
-              </div>
+              </button>
             </div>
 
             <div className="absolute bottom-0 left-0 w-full p-8 transform translate-z-10">
@@ -199,6 +227,36 @@ export default function AboutSection() {
           </div>
         </div>
       </div>
+
+      {isTourOpen && (
+        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 md:p-8">
+          <button
+            aria-label="Close virtual tour"
+            onClick={() => setIsTourOpen(false)}
+            className="absolute inset-0 bg-slate-950/50 backdrop-blur-md"
+          />
+
+          <div className="relative w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/20">
+            <button
+              onClick={() => setIsTourOpen(false)}
+              className="absolute right-3 top-3 z-10 h-10 w-10 rounded-full bg-white/85 text-slate-900 hover:bg-white transition font-bold text-lg"
+              aria-label="Close"
+            >
+              ×
+            </button>
+            <div className="aspect-video w-full">
+              <iframe
+                src={virtualTourVideo}
+                title="Alva's Campus Virtual Tour"
+                className="h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
