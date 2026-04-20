@@ -29,6 +29,8 @@ import {
   GraduationCap,
   Medal,
   CalendarDays,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import NewsletterViewer from "@/app/components/NewsletterViewer";
 
@@ -73,6 +75,18 @@ type KscstProject = {
   guide: string;
   students: string[];
 };
+
+type PlacementYear = "2024-2025" | "2023-2024" | "2022-2023";
+
+type PlacementPoster = {
+  id: string;
+  imageSrc: string;
+};
+
+const drivePosterUrl = (driveId: string) =>
+  `/api/image-proxy?url=${encodeURIComponent(
+    `https://drive.google.com/uc?export=view&id=${driveId}`,
+  )}`;
 
 const iseFacultyFundingProject: FacultyFundingProject = {
   title:
@@ -201,6 +215,61 @@ const iseKscstProjects: KscstProject[] = [
   },
 ];
 
+const isePlacementPostersByYear: Record<PlacementYear, PlacementPoster[]> = {
+  "2024-2025": [
+    {
+      id: "1j9xUiCPIRQ3Yixdvpr9oOHiLQzqjuLAx",
+      imageSrc: drivePosterUrl("1j9xUiCPIRQ3Yixdvpr9oOHiLQzqjuLAx"),
+    },
+    {
+      id: "1n1CYB4X_KeX0HgcHZnvMnDEmp3RpcI1M",
+      imageSrc: drivePosterUrl("1n1CYB4X_KeX0HgcHZnvMnDEmp3RpcI1M"),
+    },
+    {
+      id: "1OHtMC2LpxHL6Z6-2l34FlPplXR1iCnnE",
+      imageSrc: drivePosterUrl("1OHtMC2LpxHL6Z6-2l34FlPplXR1iCnnE"),
+    },
+    {
+      id: "1WOsk3F-GLeBIb_PRwHqpc1zx7qzvQCrb",
+      imageSrc: drivePosterUrl("1WOsk3F-GLeBIb_PRwHqpc1zx7qzvQCrb"),
+    },
+    {
+      id: "1oE5MJnSN38BomXzedvFFhooxdVAGfXsM",
+      imageSrc: drivePosterUrl("1oE5MJnSN38BomXzedvFFhooxdVAGfXsM"),
+    },
+    {
+      id: "1Y-INRKxcLT_ajs5j4xpu8LN_sYbLDHAg",
+      imageSrc: drivePosterUrl("1Y-INRKxcLT_ajs5j4xpu8LN_sYbLDHAg"),
+    },
+    {
+      id: "17f5Rag1ytpFvnhCuvA6gOpctgj2NpD7b",
+      imageSrc: drivePosterUrl("17f5Rag1ytpFvnhCuvA6gOpctgj2NpD7b"),
+    },
+    {
+      id: "1vm82CSnFYtw6JhAJoy9-TG3p8eOAuByV",
+      imageSrc: drivePosterUrl("1vm82CSnFYtw6JhAJoy9-TG3p8eOAuByV"),
+    },
+    {
+      id: "1FvcJQo_CuLE-gMjtU51L8R4MYca9GTrS",
+      imageSrc: drivePosterUrl("1FvcJQo_CuLE-gMjtU51L8R4MYca9GTrS"),
+    },
+    {
+      id: "17hPyH5se-wJ3S9eKe_r_cO6mldyHslpT",
+      imageSrc: drivePosterUrl("17hPyH5se-wJ3S9eKe_r_cO6mldyHslpT"),
+    },
+    {
+      id: "1dgSliYU3tsa0z3GOfDekiiuuGSAmNwGG",
+      imageSrc: drivePosterUrl("1dgSliYU3tsa0z3GOfDekiiuuGSAmNwGG"),
+    },
+    {
+      id: "1kKfKJgLWNJ-jL6JYcF28BrudNCRpnQNq",
+      imageSrc: drivePosterUrl("1kKfKJgLWNJ-jL6JYcF28BrudNCRpnQNq"),
+    },
+  ],
+  "2023-2024": [],
+  "2022-2023": [],
+};
+
 export default function IseExploreContent() {
   const department = iseDepartmentData;
 
@@ -218,6 +287,11 @@ export default function IseExploreContent() {
   const [activeActivityIndex, setActiveActivityIndex] = useState<number | null>(
     null,
   );
+  const [activePlacementYear, setActivePlacementYear] =
+    useState<PlacementYear>("2024-2025");
+  const [selectedPlacementPosterIndex, setSelectedPlacementPosterIndex] =
+    useState<number | null>(null);
+  const posterSliderRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     // Show contents
@@ -251,6 +325,17 @@ export default function IseExploreContent() {
     setOpenAccordion(null);
   };
 
+  const scrollPlacementStrip = (direction: "left" | "right") => {
+    if (!posterSliderRef.current) {
+      return;
+    }
+    const step = Math.max(260, posterSliderRef.current.clientWidth * 0.82);
+    posterSliderRef.current.scrollBy({
+      left: direction === "left" ? -step : step,
+      behavior: "smooth",
+    });
+  };
+
   const tabs = [
     { id: "about", label: "ABOUT" },
     { id: "thrust", label: "THRUST AREA" },
@@ -274,6 +359,12 @@ export default function IseExploreContent() {
     body: "Content not available for this section.",
     highlights: [],
   };
+
+  const activePlacementPosters = isePlacementPostersByYear[activePlacementYear];
+  const selectedPlacementPoster =
+    selectedPlacementPosterIndex !== null
+      ? activePlacementPosters[selectedPlacementPosterIndex]
+      : null;
 
   let activeActivity: DepartmentActivityEntry | null = null;
   if (
@@ -872,6 +963,134 @@ export default function IseExploreContent() {
                             syllabusLinks={currentData.syllabusLinks}
                             syllabusCategories={currentData.syllabusCategories}
                           />
+                        ) : activeTab === "placements" ? (
+                          <div className="space-y-8">
+                            <p className="text-gray-700 text-base md:text-lg leading-relaxed font-medium">
+                              Year-wise placement posters for ISE students are
+                              listed below. Use the year buttons to switch and
+                              browse posters in a sliding strip. Click any
+                              poster to open a larger horizontal popup viewer.
+                            </p>
+
+                            <div className="rounded-3xl border border-gray-200 bg-gradient-to-br from-white to-emerald-50/40 p-4 md:p-6">
+                              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                                <div>
+                                  <p className="text-[11px] font-black uppercase tracking-[0.14em] text-emerald-700">
+                                    Placement Archive
+                                  </p>
+                                  <h3 className="text-xl md:text-2xl font-black text-gray-900 mt-1">
+                                    ISE Placed Students Posters
+                                  </h3>
+                                </div>
+
+                                <div className="inline-flex p-1.5 rounded-2xl bg-gray-100 border border-gray-200 gap-1.5 w-full md:w-auto">
+                                  {(
+                                    [
+                                      "2024-2025",
+                                      "2023-2024",
+                                      "2022-2023",
+                                    ] as PlacementYear[]
+                                  ).map((year) => (
+                                    <button
+                                      key={year}
+                                      type="button"
+                                      onClick={() => {
+                                        setActivePlacementYear(year);
+                                        setSelectedPlacementPosterIndex(null);
+                                      }}
+                                      className={`flex-1 md:flex-none px-4 py-2.5 rounded-xl text-xs md:text-sm font-black uppercase tracking-wider transition-all ${
+                                        activePlacementYear === year
+                                          ? "bg-emerald-600 text-white shadow"
+                                          : "bg-transparent text-gray-700 hover:bg-white"
+                                      }`}
+                                    >
+                                      {year}
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+
+                            {activePlacementPosters.length > 0 ? (
+                              <section className="rounded-3xl border border-gray-200 overflow-hidden bg-white">
+                                <div className="px-5 py-4 bg-gradient-to-r from-emerald-50 to-cyan-50 border-b border-gray-200 flex items-center justify-between gap-3">
+                                  <div>
+                                    <h4 className="text-lg font-black text-gray-900">
+                                      Placed Students - {activePlacementYear}
+                                    </h4>
+                                    <p className="text-xs font-bold text-gray-600 mt-1">
+                                      Total posters:{" "}
+                                      {activePlacementPosters.length}
+                                    </p>
+                                  </div>
+
+                                  <div className="hidden sm:flex items-center gap-2">
+                                    <button
+                                      type="button"
+                                      onClick={() =>
+                                        scrollPlacementStrip("left")
+                                      }
+                                      className="w-9 h-9 rounded-full border border-gray-300 bg-white text-gray-800 hover:bg-emerald-50 transition flex items-center justify-center"
+                                      aria-label="Scroll posters left"
+                                    >
+                                      <ChevronLeft className="w-4 h-4" />
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() =>
+                                        scrollPlacementStrip("right")
+                                      }
+                                      className="w-9 h-9 rounded-full border border-gray-300 bg-white text-gray-800 hover:bg-emerald-50 transition flex items-center justify-center"
+                                      aria-label="Scroll posters right"
+                                    >
+                                      <ChevronRight className="w-4 h-4" />
+                                    </button>
+                                  </div>
+                                </div>
+
+                                <div
+                                  ref={posterSliderRef}
+                                  className="p-5 overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-thin"
+                                >
+                                  {activePlacementPosters.map((poster, idx) => (
+                                    <button
+                                      key={poster.id}
+                                      type="button"
+                                      onClick={() =>
+                                        setSelectedPlacementPosterIndex(idx)
+                                      }
+                                      className="shrink-0 w-[250px] sm:w-[290px] rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all text-left snap-start group"
+                                    >
+                                      <div className="relative h-[340px] bg-gray-100">
+                                        <img
+                                          src={poster.imageSrc}
+                                          alt={`Placed student poster ${idx + 1}`}
+                                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                                          loading="lazy"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                                        <div className="absolute bottom-0 left-0 right-0 p-3">
+                                          <p className="text-[11px] font-black tracking-widest uppercase text-white/80">
+                                            {activePlacementYear}
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </button>
+                                  ))}
+                                </div>
+                              </section>
+                            ) : (
+                              <div className="rounded-3xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center">
+                                <p className="text-lg font-black text-gray-800">
+                                  No posters uploaded for {activePlacementYear}
+                                </p>
+                                <p className="text-sm font-semibold text-gray-600 mt-2">
+                                  Posters for this academic year will be added
+                                  soon.
+                                </p>
+                              </div>
+                            )}
+                          </div>
                         ) : (activeTab === "activities" ||
                             activeTab === "clubs") &&
                           currentData?.entries &&
@@ -1315,6 +1534,33 @@ export default function IseExploreContent() {
 
       {/* Footer */}
       <Footer />
+      {selectedPlacementPosterIndex !== null && selectedPlacementPoster && (
+        <div
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[9999] flex items-center justify-center p-4 animate-in fade-in duration-300"
+          onClick={() => setSelectedPlacementPosterIndex(null)}
+        >
+          <div
+            className="relative w-[90vw] max-w-xl md:max-w-2xl h-[88vh] max-h-[88vh] overflow-hidden animate-in zoom-in duration-300 scale-95 md:scale-100"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setSelectedPlacementPosterIndex(null)}
+              className="absolute top-3 right-3 w-9 h-9 rounded-full border border-gray-300 bg-white/95 text-gray-800 hover:bg-white transition flex items-center justify-center z-10"
+              aria-label="Close poster popup"
+            >
+              <MdClose className="w-5 h-5" />
+            </button>
+
+            <img
+              src={selectedPlacementPoster.imageSrc}
+              alt={`Placed student poster ${selectedPlacementPosterIndex + 1}`}
+              className="w-full h-full object-contain rounded-2xl bg-white"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      )}
       {activeActivity && (
         <div
           className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9999] flex items-center justify-center p-4 animate-in fade-in duration-300"

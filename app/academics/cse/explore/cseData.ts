@@ -875,11 +875,17 @@ Skilled in digital asset analysis and ICT-based trading strategies to support in
     },
     thrust: {
       title: "THRUST AREA",
-      body: "Focusing on AI/ML, Data Science, Distributed Systems and Cybersecurity.",
+      body: "Key thrust areas of the CSE department:",
       highlights: [
-        "â€¢ AI / Machine Learning",
-        "â€¢ Data Science",
-        "â€¢ Distributed Systems",
+        "Cyber Security & Internet of Things",
+        "UI/UX Design with iOS Application Development",
+        "Artificial Intelligence & Machine Learning",
+        "Data Science & Big Data Analytics",
+        "Digital Design & Communication and Computer Architecture",
+        "Data Structures & Algorithms",
+        "Databases & Information Retrieval",
+        "Software Engineering & Cloud Computing",
+        "Human-Computer Interaction (HCI) and Image Processing",
       ],
     },
     peo: {
