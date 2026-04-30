@@ -14,26 +14,87 @@ M4:	By imbibing the students with human values and ethics through transformative
 
 `,
   hod: {
-    name: "Dr. DS HOD",
-    designation: "Professor & HOD - DS",
-    qualification: "Ph.D",
-    experience: "15+ Years",
-    email: "hodds@alvas.edu.in",
+    name: "Prof. Harish Kunder",
+    designation: "Associate Professor & Head",
+    qualification: "Ph.D (Thesis Submitted)",
+    experience: "22+ Years",
+    email: "aietaiml08@aiet.org.in",
     phone: "+91 98765 43214",
     photo:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+      "/api/image-proxy?url=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Dview%26id%3D10_iBnKvNTiyqzkoHdBOn2sxyWkW0sTHV",
     joiningDate: "12-08-2010",
     details: {
-      qualifications: "Ph.D in VLSI",
-      pastExperience: "15 years",
-      areasOfInterest: "VLSI, Embedded Systems",
-      achievements: "Best Teacher Award",
-      professionalMembership: "IEEE",
-      publications: "15 Journals",
-      projectsGuided: "12 Projects",
-      subjectsTeaching: "VLSI Design",
-      researchPublications: "VLSI Trends (2022)",
-      others: "NA",
+      qualifications: `• Ph.D. in Computer Science & Engineering - VTU (2026 - Thesis Submitted)
+• M.Tech in Computer Science & Engineering - VTU (2012)
+• B.E in Computer Science & Engineering - VTU (2004)
+• Ph.D. Title: An Efficient Method For Handling Non-Convex Optimization Problems In Deep Learning
+• Research Area: Deep learning
+• Supervisor: Dr. Manjunath Kotari`,
+      pastExperience: `• Associate Professor & Head - Dept. of CSD, DS & AIML
+• Total Experience: 22+ Years Teaching Experience
+• Specialized in Artificial Intelligence, Machine Learning, Data Science, Cryptography, Network Security, and Non-Convex Optimization
+• Published research in IEEE, Springer, CRC Press, and Wiley
+• Patent holder (UK & Indian patents)
+• Certified Innovation Ambassador (MoE & AICTE)
+• NVIDIA Lab Grant recipient
+• VTU MOOC Nodal Officer`,
+      areasOfInterest: `• Artificial Intelligence
+• Machine Learning
+• Data Science
+• Generative AI
+• Transfer Learning
+• Cryptography
+• Network Security
+• Non-Convex Optimization`,
+      achievements: `• Bhishma Acharya Award – Bharath Education Excellence (2025)
+• NVIDIA Grant (₹9 Lakhs) for AI Lab Setup
+• KSCST Project Funding (5 Projects)
+• Certified Innovation Ambassador – MoE & AICTE
+• Google Cloud Career Launchpad Recognition – 2025
+• SSRN Top Downloads Recognition
+• UK Patent Granted: Precision Digital Micrometer (March 2024)
+• Indian Patent (2024): Advanced Udder Health Monitoring & Intervention System`,
+      professionalMembership: `• Indian Society for Technical Education (ISTE) – LM 50134
+• Computer Society of India (CSI) – F8002369
+• IEEE - 102113149
+• IAENG (International Association of Engineers) - 300383`,
+      publications: `• Book Chapter: AI-Enabled Businesses: Strategy for Innovation – John Wiley & Sons, 2025
+• Book Chapter: Data Science & Exploration in Artificial Intelligence – CRC Press, 2025
+• Patent: Precision Digital Micrometer – UK Patent (Granted: March 2024)
+• Patent: Advanced Udder Health Monitoring & Intervention System – Indian Patent (2024)`,
+      projectsGuided: `• KSCST Project Funding (5 Projects)
+• Student mini and major projects addressing real-world challenges
+• Mentors research in Deep Learning, Optimization, and AI in Healthcare`,
+      subjectsTeaching: `• Finite Automata & Formal Languages
+• System Simulation & Modelling
+• Operations Research
+• Compiler Design
+• Graph Theory
+• Discrete Mathematical Structures
+• Logic Design
+• Analysis and Design of Algorithms
+• Data Base Management Systems
+• Operating System
+• Data Structures
+• OOPs with C++
+• Computer Graphics
+• Generative AI Lab`,
+      researchPublications: `• Journal: Monkeypox disease detection using deep learning, Indian Journal of Science and Technology, 2025
+• Journal: Exploration of non-convex optimization challenges, International Journal of Computational & Digital Systems, 2024
+• Journal: A structured approach with RASP data perturbation for confidential queries in cloud, IJMRD, 2015
+• Conference: Autonomous Path-Finding System using Q-Learning Algorithm – CRC Press, 2025
+• Conference: The BUNK – Advanced Voice Assistant using NLP & AI – AIDE Conference, 2025
+• Conference: Music Genre Classification Using CNN & MobileNetV2 – IEEE ICCCNT 2024
+• Conference: Warehouse Inventory Management using Drone & Raspberry Pi – IEEE CONECCT 2024
+• Conference: IoAHT Framework for Mastitis Detection – ICRAIS 2023`,
+      others: `• FDP: ATAL FDP on Introduction to Deep Learning – UVCE Bengaluru – 2021
+• FDP: ATAL FDP on AI & ML for Healthcare – COEP Pune – 2021
+• FDP: ATAL FDP on Cyber Security – NITTTR Chandigarh – 2020
+• Workshop: Online Course on Remote Sensing & GIS Technology – ISRO – 2020
+• Workshop: National Level Workshop on Artificial Intelligence – 2020
+• Workshop: Network Simulation using NS-3 – AIET – 2015
+• Seminar: IEEE ICCCNT 2024
+• Seminar: International Conference on AI & Data Engineering`,
     },
   },
   faculty: Array.from(
