@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
@@ -14,7 +14,6 @@ const deptData = civilDepartmentData;
 export default function CIVILPage() {
   const deptId = "civil";
 
-  const [activeFacultyIndex, setActiveFacultyIndex] = useState(0);
   const [selectedFaculty, setSelectedFaculty] = useState<Faculty | null>(null);
   const [isFacultyModalOpen, setIsFacultyModalOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
@@ -81,18 +80,14 @@ export default function CIVILPage() {
   }, [deptData]);
 
   const nextFaculty = () => {
-    if (deptData.faculty.length > 3) {
-      setActiveFacultyIndex(
-        (prev) => (prev + 1) % (deptData.faculty.length - 2),
-      );
+    if (facultyTrackRef.current) {
+      facultyTrackRef.current.scrollBy({ left: 304, behavior: "smooth" });
     }
   };
 
   const prevFaculty = () => {
-    if (deptData.faculty.length > 3) {
-      setActiveFacultyIndex((prev) =>
-        prev === 0 ? deptData.faculty.length - 3 : prev - 1,
-      );
+    if (facultyTrackRef.current) {
+      facultyTrackRef.current.scrollBy({ left: -304, behavior: "smooth" });
     }
   };
 
@@ -231,6 +226,14 @@ export default function CIVILPage() {
           100% {
             transform: translateX(-50%);
           }
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
 
@@ -481,18 +484,15 @@ export default function CIVILPage() {
             </div>
           </div>
 
-          <div className="relative overflow-hidden px-2">
+          <div className="relative px-2">
             <div
               ref={facultyTrackRef}
-              className="flex gap-6 transition-transform duration-700"
-              style={{
-                transform: `translateX(-${activeFacultyIndex * 300}px)`,
-              }}
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4"
             >
               {deptData.faculty.map((member, i) => (
                 <div
                   key={i}
-                  className="min-w-[280px] bg-white rounded-[2rem] p-5 shadow-lg border border-gray-100/50 hover:shadow-2xl transition-all duration-500 group cursor-pointer"
+                  className="min-w-[280px] snap-start bg-white rounded-[2rem] p-5 shadow-lg border border-gray-100/50 hover:shadow-2xl transition-all duration-500 group cursor-pointer"
                   onClick={() => openFacultyModal(member)}
                 >
                   <div className="relative overflow-hidden rounded-2xl mb-6 aspect-square">
@@ -564,7 +564,7 @@ export default function CIVILPage() {
             &times;
           </button>
           <div
-            className="bg-white rounded-[2rem] shadow-2xl max-w-xl w-full max-h-[85vh] overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100"
+            className="bg-white rounded-[2rem] shadow-2xl max-w-xl w-full max-h-[85vh] flex flex-col overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="bg-[#f8f9fa] p-8 pb-6 border-b border-gray-100 flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
@@ -613,7 +613,10 @@ export default function CIVILPage() {
               </div>
             </div>
 
-            <div className="overflow-y-auto max-h-[calc(90vh-280px)] p-6 font-sans">
+            <div 
+              className="flex-1 overflow-y-auto p-6 font-sans"
+              style={{ WebkitOverflowScrolling: 'touch' }}
+            >
               {[
                 { title: "Educational Qualifications", key: "qualifications" },
                 { title: "Past Experience", key: "pastExperience" },

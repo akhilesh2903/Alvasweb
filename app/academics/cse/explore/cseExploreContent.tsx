@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
@@ -1724,7 +1724,10 @@ export default function CseExploreContent() {
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-6 font-sans">
+            <div 
+              className="flex-1 overflow-y-auto p-6 font-sans"
+              style={{ WebkitOverflowScrolling: 'touch' }}
+            >
               {[
                 { title: "Educational Qualifications", key: "qualifications" },
                 { title: "Past Experience", key: "pastExperience" },

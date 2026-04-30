@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
@@ -689,7 +689,7 @@ export default function ChemistryExploreContent() {
             &times;
           </button>
           <div
-            className="bg-white rounded-[2rem] shadow-2xl max-w-xl w-full max-h-[85vh] overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100"
+            className="bg-white rounded-[2rem] shadow-2xl max-w-xl w-full max-h-[85vh] flex flex-col overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="bg-[#f8f9fa] p-8 pb-6 border-b border-gray-100 flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
@@ -738,7 +738,10 @@ export default function ChemistryExploreContent() {
               </div>
             </div>
 
-            <div className="overflow-y-auto max-h-[calc(90vh-280px)] p-6 font-sans">
+            <div 
+              className="flex-1 overflow-y-auto p-6 font-sans"
+              style={{ WebkitOverflowScrolling: 'touch' }}
+            >
               {[
                 { title: "Educational Qualifications", key: "qualifications" },
                 { title: "Past Experience", key: "pastExperience" },

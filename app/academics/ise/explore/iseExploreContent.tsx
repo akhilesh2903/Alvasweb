@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
@@ -584,11 +584,11 @@ export default function IseExploreContent() {
               >
                 {activeTab === "about" ? (
                   <div className="space-y-8">
-                    <div className="relative inline-block">
+                    <div className="relative inline-block max-w-full">
                       <motion.h2
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-3xl md:text-4xl font-black bg-gradient-to-r from-indigo-700 via-purple-700 to-blue-700 bg-clip-text text-transparent mb-2 leading-tight uppercase"
+                        className="text-[clamp(1.05rem,2.15vw,2.15rem)] font-black bg-gradient-to-r from-indigo-700 via-purple-700 to-blue-700 bg-clip-text text-transparent mb-2 leading-none uppercase whitespace-nowrap"
                       >
                         {currentData?.title}
                       </motion.h2>
@@ -610,7 +610,7 @@ export default function IseExploreContent() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 + idx * 0.1 }}
-                            className="text-gray-700 text-lg leading-relaxed font-medium mb-4"
+                            className="text-gray-700 text-[0.95rem] md:text-base lg:text-lg leading-relaxed font-medium mb-4"
                           >
                             {para}
                           </motion.p>
@@ -965,12 +965,7 @@ export default function IseExploreContent() {
                           />
                         ) : activeTab === "placements" ? (
                           <div className="space-y-8">
-                            <p className="text-gray-700 text-base md:text-lg leading-relaxed font-medium">
-                              Year-wise placement posters for ISE students are
-                              listed below. Use the year buttons to switch and
-                              browse posters in a sliding strip. Click any
-                              poster to open a larger horizontal popup viewer.
-                            </p>
+                            <p className="text-gray-700 text-se md:text-lg leading-relaxed font-medium"></p>
 
                             <div className="rounded-3xl border border-gray-200 bg-gradient-to-br from-white to-emerald-50/40 p-4 md:p-6">
                               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -1703,7 +1698,7 @@ export default function IseExploreContent() {
             &times;
           </button>
           <div
-            className="bg-white rounded-[2rem] shadow-2xl max-w-xl w-full max-h-[85vh] overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100"
+            className="bg-white rounded-[2rem] shadow-2xl max-w-xl w-full max-h-[85vh] flex flex-col overflow-hidden relative animate-in zoom-in duration-300 scale-95 md:scale-100"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="bg-[#f8f9fa] p-8 pb-6 border-b border-gray-100 flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
@@ -1752,7 +1747,10 @@ export default function IseExploreContent() {
               </div>
             </div>
 
-            <div className="overflow-y-auto max-h-[calc(90vh-280px)] p-6 font-sans">
+            <div 
+              className="flex-1 overflow-y-auto p-6 font-sans"
+              style={{ WebkitOverflowScrolling: 'touch' }}
+            >
               {[
                 { title: "Educational Qualifications", key: "qualifications" },
                 { title: "Past Experience", key: "pastExperience" },
