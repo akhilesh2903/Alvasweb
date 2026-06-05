@@ -389,6 +389,32 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                         </div>
                       </div>
 
+
+                      {/* MOU – direct link, no arrow */}
+
+                      <Link
+                        href="/about/mou"
+                        className="about-nav-link flex items-center text-[0.95rem] font-bold tracking-[0.03em] font-sans text-[#1e293b] hover:text-[#b77a00] py-2.5 px-3 rounded-lg hover:bg-[#f8fafc] transition-all"
+                      >
+                        MOU
+                      </Link>
+
+                      {/* AEF – internal page */}
+                      <Link
+                        href="/about/aef"
+                        className="about-nav-link flex items-center text-[0.95rem] font-bold tracking-[0.03em] font-sans text-[#1e293b] hover:text-[#b77a00] py-2.5 px-3 rounded-lg hover:bg-[#f8fafc] transition-all"
+                      >
+                        AEF
+                      </Link>
+
+                      {/* ADMINISTRATION – direct link, no arrow */}
+                      <Link
+                        href="/about/administration"
+                        className="about-nav-link flex items-center text-[0.95rem] font-bold tracking-[0.03em] font-sans text-[#1e293b] hover:text-[#b77a00] py-2.5 px-3 rounded-lg hover:bg-[#f8fafc] transition-all"
+                      >
+                        ADMINISTRATION
+                      </Link>
+
                       {/* ACCREDITATIONS – expandable, keeps arrow */}
                       <div className="has-submenu group/sub">
                         <div className="flex items-center justify-between text-[0.95rem] font-bold tracking-[0.03em] font-sans text-[#1e293b] hover:text-[#b77a00] cursor-pointer py-2.5 px-3 rounded-lg hover:bg-[#f8fafc] transition-all">
@@ -396,30 +422,30 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                           <i className="fas fa-chevron-right text-[10px] opacity-50 group-hover/sub:translate-x-1 transition-transform"></i>
                         </div>
                         <div className="submenu">
-                          <a
-                            href="#"
+                          <Link
+                            href="/about/accreditations/aicte"
                             className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
                           >
                             AICTE
-                          </a>
-                          <a
-                            href="#"
+                          </Link>
+                          <Link
+                            href="/about/accreditations/nba"
                             className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
                           >
                             NBA
-                          </a>
-                          <a
-                            href="#"
+                          </Link>
+                          <Link
+                            href="/about/accreditations/naac"
                             className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
                           >
                             NAAC
-                          </a>
-                          <a
-                            href="#"
+                          </Link>
+                          <Link
+                            href="/about/accreditations/autonomous"
                             className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] py-2"
                           >
                             Autonomous
-                          </a>
+                          </Link>
                         </div>
                       </div>
 
@@ -468,31 +494,6 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                           </Link>
                         </div>
                       </div>
-
-                      {/* MOU – direct link, no arrow */}
-
-                      <Link
-                        href="/about/mou"
-                        className="about-nav-link flex items-center text-[0.95rem] font-bold tracking-[0.03em] font-sans text-[#1e293b] hover:text-[#b77a00] py-2.5 px-3 rounded-lg hover:bg-[#f8fafc] transition-all"
-                      >
-                        MOU
-                      </Link>
-
-                      {/* AEF – internal page */}
-                      <Link
-                        href="/about/aef"
-                        className="about-nav-link flex items-center text-[0.95rem] font-bold tracking-[0.03em] font-sans text-[#1e293b] hover:text-[#b77a00] py-2.5 px-3 rounded-lg hover:bg-[#f8fafc] transition-all"
-                      >
-                        AEF
-                      </Link>
-
-                      {/* ADMINISTRATION – direct link, no arrow */}
-                      <Link
-                        href="/about/administration"
-                        className="about-nav-link flex items-center text-[0.95rem] font-bold tracking-[0.03em] font-sans text-[#1e293b] hover:text-[#b77a00] py-2.5 px-3 rounded-lg hover:bg-[#f8fafc] transition-all"
-                      >
-                        ADMINISTRATION
-                      </Link>
                     </div>
                   </div>
 
@@ -583,7 +584,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
               className="dropdown-menu transition-all duration-200 z-[9999]"
             >
               <div className="bg-white border border-[#edf2f7] border-t-[3px] border-t-[#b77a00] rounded-xl shadow-lg p-8">
-                <div className="grid grid-cols-3 gap-10">
+                <div className="grid grid-cols-2 gap-10">
                   {/* Column 1 - Admission Procedure */}
                   <div>
                     <div
@@ -602,85 +603,40 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                       ADMISSION PROCEDURE
                     </div>
                     <div className="space-y-1">
-                      <a
-                        href="#"
+                      <Link
+                        href="/admissions/kcet"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Admission Through KCET
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/admissions/comedk"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Admission Through COMED-K
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/admissions/management"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Admission Through Management
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/admissions/documents-required"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Documents Required
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/admissions/eligibility-criteria"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         Disclaimer – Eligibility Criteria
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
-                  {/* Column 2 - Fees Structures */}
-                  <div>
-                    <div
-                      style={{
-                        color: "#b77a00",
-                        fontWeight: "800",
-                        fontSize: "1.1rem",
-                        marginBottom: "1rem",
-                        borderBottom: "2px solid #e2e8f0",
-                        paddingBottom: "0.5rem",
-                        display: "block",
-                        visibility: "visible",
-                        opacity: 1,
-                      }}
-                    >
-                      FEES STRUCTURES
-                    </div>
-                    <div className="space-y-1">
-                      <a
-                        href="#"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        KCET Students
-                      </a>
-                      <a
-                        href="#"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        COMED-K Students
-                      </a>
-                      <a
-                        href="#"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        Management
-                      </a>
-                      <a
-                        href="#"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        Tuition Fees 2025–26
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Column 3 - Scholarships */}
+                  {/* Column 2 - Scholarships */}
                   <div>
                     <div
                       style={{

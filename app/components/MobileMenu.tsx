@@ -133,6 +133,32 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 )}
               </div>
 
+
+
+              <Link
+                href="/about/mou"
+                onClick={onClose}
+                className="text-white/80"
+              >
+                MOUs
+              </Link>
+              
+              <Link
+                href="/about/aef"
+                onClick={onClose}
+                className="text-white/80"
+              >
+                AEF
+              </Link>
+
+              <Link
+                href="/about/administration"
+                onClick={onClose}
+                className="text-white/80"
+              >
+                ADMINISTRATION
+              </Link>
+
               {/* Accreditations Sub-Accordion */}
               <div className="flex flex-col">
                 <button
@@ -147,14 +173,17 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 </button>
                 {accreditationOpen && (
                   <div className="flex flex-col gap-2 ml-4 mt-2 text-white/60 text-base">
-                    <Link href="#" onClick={onClose}>
+                    <Link href="/about/accreditations/aicte" onClick={onClose}>
                       AICTE
                     </Link>
-                    <Link href="#" onClick={onClose}>
+                    <Link href="/about/accreditations/nba" onClick={onClose}>
                       NBA
                     </Link>
-                    <Link href="#" onClick={onClose}>
+                    <Link href="/about/accreditations/naac" onClick={onClose}>
                       NAAC
+                    </Link>
+                    <Link href="/about/accreditations/autonomous" onClick={onClose}>
+                      Autonomous
                     </Link>
                   </div>
                 )}
@@ -183,14 +212,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   </div>
                 )}
               </div>
-
-              <Link
-                href="/about/mou"
-                onClick={onClose}
-                className="text-white/80"
-              >
-                MOUs
-              </Link>
             </div>
           )}
         </div>
@@ -224,54 +245,26 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 </button>
                 {procedureOpen && (
                   <div className="flex flex-col gap-2 ml-4 mt-2 text-white/60 text-base">
-                    <Link href="#" onClick={onClose}>
+                    <Link href="/admissions/kcet" onClick={onClose}>
                       Admission Through KCET
                     </Link>
-                    <Link href="#" onClick={onClose}>
+                    <Link href="/admissions/comedk" onClick={onClose}>
                       Admission Through COMED-K
                     </Link>
-                    <Link href="#" onClick={onClose}>
+                    <Link href="/admissions/management" onClick={onClose}>
                       Admission Through Management
                     </Link>
-                    <Link href="#" onClick={onClose}>
+                    <Link href="/admissions/documents-required" onClick={onClose}>
                       Documents Required
                     </Link>
-                    <Link href="#" onClick={onClose}>
-                      Deaclaimer-Eligibility Criteria
+                    <Link href="/admissions/eligibility-criteria" onClick={onClose}>
+                      Disclaimer – Eligibility Criteria
                     </Link>
                   </div>
                 )}
               </div>
 
-              {/* Accreditations Sub-Accordion */}
-              <div className="flex flex-col">
-                <button
-                  type="button"
-                  onClick={() => setFeeOpen(!feeOpen)}
-                  className="flex justify-between items-center text-white/80 py-1"
-                >
-                  FEES STRUCTURES
-                  <i
-                    className={`fas fa-chevron-${feeOpen ? "up" : "down"} text-xs`}
-                  ></i>
-                </button>
-                {feeOpen && (
-                  <div className="flex flex-col gap-2 ml-4 mt-2 text-white/60 text-base">
-                    <Link href="#" onClick={onClose}>
-                      KCET Students
-                    </Link>
-                    <Link href="#" onClick={onClose}>
-                      COMED-K Students
-                    </Link>
-                    <Link href="#" onClick={onClose}>
-                      Managements
-                    </Link>
-                    <Link href="#" onClick={onClose}>
-                      Tution Fees 2025-26
-                    </Link>
-                  </div>
-                )}
-              </div>
+
 
               {/* Mandatory Disclosure Sub-Accordion */}
               <div className="flex flex-col">
