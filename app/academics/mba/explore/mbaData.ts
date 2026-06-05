@@ -68,8 +68,9 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "5 Years (AIET), 25 Years (Total)",
       email: "drvpkn@aiet.org.in",
       phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1h_KAVK7mEAyLDULdcVcoBDWVwcYMqZTB",
+      ),
       joiningDate: "01-10-2020",
       details: {
         qualifications:
@@ -96,8 +97,9 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "4 Years 5 Months (AIET), 30+ Years (Total)",
       email: "catherine@aiet.org.in",
       phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1j0tJ2qcTIsdgyJ_EcIGPkOr4wirf7_f8",
+      ),
       joiningDate: "15-09-2021",
       details: {
         qualifications:
@@ -125,8 +127,9 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "6 Years (AIET), 15 Years (Total)",
       email: "guruprasadpai@aiet.org.in",
       phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1Dr4_Zvxb0K0bnPp05za4o4HSAwwYUSII",
+      ),
       joiningDate: "19-02-2020",
       details: {
         qualifications:
@@ -152,8 +155,9 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "1 Year (AIET), 16 Years (Total)",
       email: "vijayjoshi@aiet.org.in",
       phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1K1X7c0OSJcWDmF0oO_fEg3OkIFfNTZ4D",
+      ),
       joiningDate: "06-01-2025",
       details: {
         qualifications:
@@ -179,8 +183,9 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "14 Years (AIET), 15 Years (Total)",
       email: "johnsonfernandes@aiet.org.in",
       phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1bIfTDPiBXQyQKnLMDWVDQKkWeWCQUQ3D",
+      ),
       joiningDate: "24-07-2012",
       details: {
         qualifications: "MBA",
@@ -204,7 +209,7 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       email: "harshithashetty@aiet.org.in",
       phone: "NA",
       photo: imageProxyUrl(
-        "https://drive.google.com/uc?export=view&id=1lCCXSUOgjGwrY-8FypzebfIBUI0Jwdbu",
+        "https://drive.google.com/uc?export=view&id=1QQf5-uiHM1jR9hoxpGZfK15yfzoZogED",
       ),
       joiningDate: "09-11-2021",
       details: {
@@ -231,8 +236,9 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "2.3 Years (AIET), 13+ Years (Total)",
       email: "ashokurao@gmail.com",
       phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=15tWu5qQagwp8vZh34t93vwRS-SqlIBlF",
+      ),
       joiningDate: "24-11-2023",
       details: {
         qualifications: "• B.Com - SBC Karkala (2008)\n• MBA - SJEC (2010)",
@@ -256,8 +262,9 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "2 Years (AIET), 3 Years (Total)",
       email: "archana@aiet.org.in",
       phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1EkJbtxyRTpo4L-mkubsUFdEanIoWN1Fc",
+      ),
       joiningDate: "12-02-2024",
       details: {
         qualifications:
@@ -281,8 +288,9 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "2 Years (AIET), 6 Years (Total)",
       email: "princyfrancis@aiet.org.in",
       phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1531123897727-8f129e16fd3c?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1En3QfNoOe1LGLEzQU2ZIZ1Md8ND_onoy",
+      ),
       joiningDate: "20-03-2024",
       details: {
         qualifications:
@@ -307,8 +315,9 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "13 Years (Total)",
       email: "justinpais024@gmail.com",
       phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=18eklSPbK28-eSbTISz_ZcAwFxVdA7LWg",
+      ),
       joiningDate: "01-06-2024",
       details: {
         qualifications:
@@ -332,8 +341,9 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "1 Year (AIET), 14 Years (Total)",
       email: "sushmitha@aiet.org.in",
       phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1o6H8MwaQ1GL7GBBUXwprZGrZNOoasEpy",
+      ),
       joiningDate: "04-12-2024",
       details: {
         qualifications:
@@ -358,8 +368,9 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "1 Year (AIET), 9 Years (Total)",
       email: "pavithrajn@gmail.com",
       phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1MFB5kXD20r3aK0Wo3_yh-tGlY2M1RDqz",
+      ),
       joiningDate: "01-01-2025",
       details: {
         qualifications: "• M.Com - SDM College Ujire (2011)",
@@ -408,8 +419,9 @@ Let us work together to create leaders who do not just succeed, but make a diffe
       experience: "5 Years (AIET), 25+ Years (Total)",
       email: "ruchir@aiet.org.in",
       phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1557862951-ef757a68ea23?auto=format&fit=crop&w=400&q=80",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1xuTFMwPYXp3IrpDEaQtggASRli0jj2tm",
+      ),
       joiningDate: "12-02-2025",
       details: {
         qualifications:
@@ -424,30 +436,6 @@ Let us work together to create leaders who do not just succeed, but make a diffe
         projectsGuided: "NA",
         subjectsTeaching:
           "• Operations Research\n• Statistics for Management\n• Business Communications\n• Services Marketing\n• Supply Chain and Logistics\n• Security Analysis and Portfolio management",
-        researchPublications: "NA",
-        others: "NA",
-      },
-    },
-    {
-      name: "Ms. Javeria Muskan",
-      designation: "Assistant Professor",
-      qualification: "MBA",
-      experience: "1.3 Years (AIET)",
-      email: "javeriamuskan@aiet.org.in",
-      phone: "NA",
-      photo:
-        "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=400&q=80",
-      joiningDate: "08-11-2024",
-      details: {
-        qualifications: "MBA",
-        pastExperience: "• Rinex Company (2 months)",
-        areasOfInterest: "• Human Resource Management",
-        achievements: "NA",
-        professionalMembership: "NA",
-        publications: "1",
-        projectsGuided: "nil",
-        subjectsTeaching:
-          "• Management and organisation behaviour\n• Managerial communication\n• Human Resource Management\n• Conflict & Negotiation Management\n• International Business Environment\n• Soft skills",
         researchPublications: "NA",
         others: "NA",
       },

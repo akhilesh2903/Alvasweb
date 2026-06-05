@@ -7,6 +7,8 @@ const LABS = [
   { id: "ios",   label: "Apple iOS Lab"   },
   { id: "mems",  label: "MEMS Lab"        },
   { id: "future",label: "Future Ready Labs"},
+  { id: "innovation", label: "Innovation Lab" },
+  { id: "nvidia", label: "Nvidia Lab" },
 ];
 
 export default function SkillLabsPage() {
@@ -349,6 +351,8 @@ export default function SkillLabsPage() {
         .sl-lab-icon-ios   { background:linear-gradient(135deg,#555,#111); }
         .sl-lab-icon-mems  { background:linear-gradient(135deg,#003580,#0052cc); }
         .sl-lab-icon-future{ background:linear-gradient(135deg,#1a472a,#2d7a45); }
+        .sl-lab-icon-innovation { background:linear-gradient(135deg,#7c2d12,#dc2626); }
+        .sl-lab-icon-nvidia { background:linear-gradient(135deg,#1e1b4b,#3b0764); }
 
         .sl-lab-title-group h2 {
           font-family:'DM Serif Display',serif;font-size:34px;color:var(--dark);margin-bottom:6px;
@@ -482,6 +486,16 @@ export default function SkillLabsPage() {
                 Future Ready Labs
                 <span className="sl-nav-arrow">›</span>
               </div>
+              <div className={`sl-nav-item ${active === "innovation" ? "active" : ""}`} onClick={() => setActive("innovation")}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L15.09 8.26h6.79L17.66 12.61l2.85 6.36-5.54-4.04-5.54 4.04 2.85-6.36-6.22-4.35h6.79z" /></svg>
+                Innovation Lab
+                <span className="sl-nav-arrow">›</span>
+              </div>
+              <div className={`sl-nav-item ${active === "nvidia" ? "active" : ""}`} onClick={() => setActive("nvidia")}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
+                Nvidia Lab
+                <span className="sl-nav-arrow">›</span>
+              </div>
             </div>
 
             <div className="sl-sidebar-icon">🏆</div>
@@ -595,6 +609,60 @@ export default function SkillLabsPage() {
                 <div className="sl-info-item"><div className="sl-info-label">Capacity</div><div className="sl-info-val">60 Students</div></div>
                 <div className="sl-info-item"><div className="sl-info-label">Available</div><div className="sl-info-val">8 AM – 9 PM</div></div>
                 <div className="sl-info-item"><div className="sl-info-label">Certification</div><div className="sl-info-val">NVIDIA / AWS AI</div></div>
+                <div className="sl-info-item"><div className="sl-info-label">Established</div><div className="sl-info-val">2023</div></div>
+              </div>
+            </div>
+
+            {/* INNOVATION LAB */}
+            <div className={`sl-lab-panel ${active === "innovation" ? "active" : ""}`}>
+              <div className="sl-lab-header">
+                <div className="sl-lab-icon-wrap sl-lab-icon-innovation">⭐</div>
+                <div className="sl-lab-title-group">
+                  <span className="sl-lab-tag">Startup · Prototyping · Innovation</span>
+                  <h2>Innovation Lab</h2>
+                  <p className="sl-lab-subtitle">Turning ideas into reality through rapid prototyping</p>
+                </div>
+              </div>
+              <p className="sl-lab-desc">
+                The Innovation Lab is a collaborative innovation space designed to nurture entrepreneurship and creative problem-solving. Students and faculty collaborate on startup ideas, product development, and emerging technologies. Equipped with 3D printers, laser cutters, and makerspaces, this lab supports the entire innovation journey from ideation to market-ready prototypes.
+              </p>
+              <div className="sl-lab-features">
+                <div className="sl-feature-card"><div className="sl-fc-icon">🖨️</div><h4>3D Printing Suite</h4><p>FDM and SLA 3D printers for rapid prototyping and product design iteration.</p></div>
+                <div className="sl-feature-card"><div className="sl-fc-icon">✂️</div><h4>Laser Cutting &amp; Engraving</h4><p>CO2 and fiber lasers for precision cutting and custom material work.</p></div>
+                <div className="sl-feature-card"><div className="sl-fc-icon">🔧</div><h4>Electronics Workbench</h4><p>Soldering stations, oscilloscopes, and embedded system development kits.</p></div>
+                <div className="sl-feature-card"><div className="sl-fc-icon">🎯</div><h4>Mentor Network</h4><p>Access to startup founders, investors, and industry experts for guidance.</p></div>
+              </div>
+              <div className="sl-info-strip">
+                <div className="sl-info-item"><div className="sl-info-label">Capacity</div><div className="sl-info-val">50 Students</div></div>
+                <div className="sl-info-item"><div className="sl-info-label">Available</div><div className="sl-info-val">8 AM – 8 PM</div></div>
+                <div className="sl-info-item"><div className="sl-info-label">Focus Area</div><div className="sl-info-val">Startups &amp; Ideas</div></div>
+                <div className="sl-info-item"><div className="sl-info-label">Established</div><div className="sl-info-val">2023</div></div>
+              </div>
+            </div>
+
+            {/* NVIDIA LAB */}
+            <div className={`sl-lab-panel ${active === "nvidia" ? "active" : ""}`}>
+              <div className="sl-lab-header">
+                <div className="sl-lab-icon-wrap sl-lab-icon-nvidia">⚡</div>
+                <div className="sl-lab-title-group">
+                  <span className="sl-lab-tag">GPU Computing · CUDA · Deep Learning</span>
+                  <h2>Nvidia Lab</h2>
+                  <p className="sl-lab-subtitle">Advanced GPU computing &amp; accelerated AI development</p>
+                </div>
+              </div>
+              <p className="sl-lab-desc">
+                The NVIDIA Lab is a specialized computing environment featuring enterprise-grade GPU clusters and specialized training in CUDA, parallel computing, and accelerated AI inference. Students work with the latest NVIDIA hardware and software to develop high-performance AI applications, real-time rendering solutions, and GPU-accelerated data analytics.
+              </p>
+              <div className="sl-lab-features">
+                <div className="sl-feature-card"><div className="sl-fc-icon">🎮</div><h4>GPU Cluster</h4><p>Enterprise NVIDIA GPUs (A100, RTX 6000) for parallel computing and deep learning.</p></div>
+                <div className="sl-feature-card"><div className="sl-fc-icon">📊</div><h4>CUDA Development</h4><p>Complete CUDA toolkit, cuDNN, and tensorRT for optimized GPU programming.</p></div>
+                <div className="sl-feature-card"><div className="sl-fc-icon">🤖</div><h4>Deep Learning Frameworks</h4><p>PyTorch, TensorFlow, and other frameworks optimized on GPU infrastructure.</p></div>
+                <div className="sl-feature-card"><div className="sl-fc-icon">🔍</div><h4>Performance Analytics</h4><p>Profiling tools and monitoring dashboards for GPU optimization.</p></div>
+              </div>
+              <div className="sl-info-strip">
+                <div className="sl-info-item"><div className="sl-info-label">Capacity</div><div className="sl-info-val">45 Students</div></div>
+                <div className="sl-info-item"><div className="sl-info-label">Available</div><div className="sl-info-val">9 AM – 9 PM</div></div>
+                <div className="sl-info-item"><div className="sl-info-label">Certification</div><div className="sl-info-val">NVIDIA DLI</div></div>
                 <div className="sl-info-item"><div className="sl-info-label">Established</div><div className="sl-info-val">2023</div></div>
               </div>
             </div>

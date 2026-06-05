@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 
 const TABS = [
   { id: "technical",     label: "Technical Clubs"     },
-  { id: "cultural",      label: "Cultural & Arts"     },
-  { id: "service",       label: "Service & Outreach"  },
-  { id: "sports-clubs",  label: "Sports Clubs"        },
+  { id: "non-technical", label: "Non-Technical Clubs" },
+  { id: "cultural",      label: "Cultural Clubs"      },
+  { id: "arts-creative", label: "Arts & Creative"     },
 ];
 
 export default function ClubsActivityPage() {
@@ -219,9 +219,15 @@ export default function ClubsActivityPage() {
         .ca-feature-card:hover::before { opacity:1; }
         .ca-feature-card:hover { box-shadow:0 8px 32px rgba(120,50,180,.12);border-color:rgba(120,50,180,.3);transform:translateY(-3px); }
         .ca-panel.active .ca-feature-card:nth-child(1) { animation:caCardIn .5s 0.05s both; }
-        .ca-panel.active .ca-feature-card:nth-child(2) { animation:caCardIn .5s 0.15s both; }
-        .ca-panel.active .ca-feature-card:nth-child(3) { animation:caCardIn .5s 0.25s both; }
-        .ca-panel.active .ca-feature-card:nth-child(4) { animation:caCardIn .5s 0.35s both; }
+        .ca-panel.active .ca-feature-card:nth-child(2) { animation:caCardIn .5s 0.10s both; }
+        .ca-panel.active .ca-feature-card:nth-child(3) { animation:caCardIn .5s 0.15s both; }
+        .ca-panel.active .ca-feature-card:nth-child(4) { animation:caCardIn .5s 0.20s both; }
+        .ca-panel.active .ca-feature-card:nth-child(5) { animation:caCardIn .5s 0.25s both; }
+        .ca-panel.active .ca-feature-card:nth-child(6) { animation:caCardIn .5s 0.30s both; }
+        .ca-panel.active .ca-feature-card:nth-child(7) { animation:caCardIn .5s 0.35s both; }
+        .ca-panel.active .ca-feature-card:nth-child(8) { animation:caCardIn .5s 0.40s both; }
+        .ca-panel.active .ca-feature-card:nth-child(9) { animation:caCardIn .5s 0.45s both; }
+        .ca-panel.active .ca-feature-card:nth-child(10) { animation:caCardIn .5s 0.50s both; }
         @keyframes caCardIn { from{opacity:0;transform:translateY(20px) scale(.97)} to{opacity:1;transform:translateY(0) scale(1)} }
         .ca-fc-icon { font-size:28px;margin-bottom:12px; }
         .ca-feature-card h4 { font-size:14px;font-weight:700;margin-bottom:8px;color:var(--dark); }
@@ -286,19 +292,19 @@ export default function ClubsActivityPage() {
                 Technical Clubs
                 <span className="ca-nav-arrow">›</span>
               </div>
+              <div className={`ca-nav-item ${active === "non-technical" ? "active" : ""}`} onClick={() => setActive("non-technical")}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
+                Non-Technical Clubs
+                <span className="ca-nav-arrow">›</span>
+              </div>
               <div className={`ca-nav-item ${active === "cultural" ? "active" : ""}`} onClick={() => setActive("cultural")}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><line x1="9" y1="9" x2="9.01" y2="9" /><line x1="15" y1="9" x2="15.01" y2="9" /></svg>
-                Cultural &amp; Arts
+                Cultural Clubs
                 <span className="ca-nav-arrow">›</span>
               </div>
-              <div className={`ca-nav-item ${active === "service" ? "active" : ""}`} onClick={() => setActive("service")}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
-                Service &amp; Outreach
-                <span className="ca-nav-arrow">›</span>
-              </div>
-              <div className={`ca-nav-item ${active === "sports-clubs" ? "active" : ""}`} onClick={() => setActive("sports-clubs")}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" /></svg>
-                Sports Clubs
+              <div className={`ca-nav-item ${active === "arts-creative" ? "active" : ""}`} onClick={() => setActive("arts-creative")}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" /></svg>
+                Arts &amp; Creative Clubs
                 <span className="ca-nav-arrow">›</span>
               </div>
             </div>
@@ -313,25 +319,56 @@ export default function ClubsActivityPage() {
               <div className="ca-panel-header">
                 <div className="ca-icon-wrap ca-icon-tech">💻</div>
                 <div className="ca-title-group">
-                  <span className="ca-tag-label">Coding · AI · Robotics</span>
+                  <span className="ca-tag-label">Coding · Systems · Mechanical</span>
                   <h2>Technical Clubs</h2>
-                  <p className="ca-subtitle">Innovation through code, circuits &amp; computation</p>
+                  <p className="ca-subtitle">Innovation through code, circuits &amp; mechanical design</p>
                 </div>
               </div>
               <p className="ca-desc">
-                AIET&apos;s technical clubs are the heartbeat of campus innovation. From competitive programming and hackathons to robotics championships and AI research, these clubs bridge classroom theory with real-world tech. Students build autonomous systems, develop full-stack apps, train ML models, and compete nationally — gaining portfolios and skills that top employers value.
+                AIET&apos;s technical clubs are the heartbeat of campus innovation. These clubs bridge classroom theory with real-world tech, helping students build autonomous systems, develop apps, and learn modern technologies.
               </p>
               <div className="ca-features">
-                <div className="ca-feature-card"><div className="ca-fc-icon">🤖</div><h4>Robotics Club</h4><p>120+ members building autonomous systems, competing in national robot combat events.</p></div>
-                <div className="ca-feature-card"><div className="ca-fc-icon">👨‍💻</div><h4>Coding Club</h4><p>250+ members. 24-hour hackathons, algorithm challenges &amp; open-source contributions.</p></div>
-                <div className="ca-feature-card"><div className="ca-fc-icon">🧠</div><h4>AI &amp; ML Society</h4><p>Neural networks, Kaggle competitions, CoreML projects &amp; AI ethics debates.</p></div>
-                <div className="ca-feature-card"><div className="ca-fc-icon">🔐</div><h4>Cybersecurity Club</h4><p>CTF tournaments, penetration testing, security awareness &amp; certification paths.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🐧</div><h4>Edwin Linux Lab</h4><p>Open source computing, Linux system administration, and network security.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">👨‍💻</div><h4>Algoris Club</h4><p>Algorithmic thinking, competitive programming, and problem-solving strategies.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🍎</div><h4>Apple iOS Lab</h4><p>iOS app development, Swift programming, and building within the Apple ecosystem.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🚗</div><h4>Auto Club</h4><p>Automobile engineering, vehicle design, mechanical workshops, and racing events.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🗣️</div><h4>Language Lab</h4><p>Technical communication, soft skills, and mastering foreign languages for global careers.</p></div>
               </div>
               <div className="ca-info-strip">
                 <div className="ca-info-item"><div className="ca-info-label">Clubs</div><div className="ca-info-val">5 Active</div></div>
-                <div className="ca-info-item"><div className="ca-info-label">Members</div><div className="ca-info-val">550+</div></div>
-                <div className="ca-info-item"><div className="ca-info-label">Events/Year</div><div className="ca-info-val">25+</div></div>
-                <div className="ca-info-item"><div className="ca-info-label">Awards</div><div className="ca-info-val">40+ National</div></div>
+                <div className="ca-info-item"><div className="ca-info-label">Focus</div><div className="ca-info-val">Technology &amp; Skills</div></div>
+                <div className="ca-info-item"><div className="ca-info-label">Events</div><div className="ca-info-val">Monthly</div></div>
+              </div>
+            </div>
+
+            {/* NON-TECHNICAL */}
+            <div className={`ca-panel ${active === "non-technical" ? "active" : ""}`}>
+              <div className="ca-panel-header">
+                <div className="ca-icon-wrap ca-icon-service">🤝</div>
+                <div className="ca-title-group">
+                  <span className="ca-tag-label">NSS · NCC · Community</span>
+                  <h2>Non-Technical Clubs</h2>
+                  <p className="ca-subtitle">Building responsible citizens through service and personal development</p>
+                </div>
+              </div>
+              <p className="ca-desc">
+                AIET encourages every student to grow personally and give back to the community. These clubs instill discipline, leadership, physical fitness, and environmental responsibility through various activities.
+              </p>
+              <div className="ca-features">
+                <div className="ca-feature-card"><div className="ca-fc-icon">🌿</div><h4>NSS</h4><p>National Service Scheme - Community service, health camps, and rural development.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🪖</div><h4>NCC</h4><p>National Cadet Corps - Discipline, leadership, adventure camps, and patriotism.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🧹</div><h4>Swachh Mijar</h4><p>Cleanliness drives, environmental protection, and community hygiene awareness.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🛡️</div><h4>SSB Club</h4><p>Service Selection Board preparation, guidance, and career building in defense forces.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🧘</div><h4>Life Skills</h4><p>Focusing on Yoga, Physical Fitness, and Personal Hygiene for holistic development.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🏕️</div><h4>Rovers and Rangers</h4><p>Scouting, camping, adventure activities, and outdoor survival skills.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">👩‍🎓</div><h4>Women Empowerment Cell</h4><p>Promoting gender equality, women&apos;s leadership, and organizing empowering workshops.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🌊</div><h4>Lake2024</h4><p>Environmental conservation, water body restoration, and eco-awareness initiatives.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🕉️</div><h4>Adyathma</h4><p>Spiritual well-being, mindfulness, meditation, and inner peace sessions.</p></div>
+              </div>
+              <div className="ca-info-strip">
+                <div className="ca-info-item"><div className="ca-info-label">Clubs</div><div className="ca-info-val">9 Active</div></div>
+                <div className="ca-info-item"><div className="ca-info-label">Focus</div><div className="ca-info-val">Service &amp; Life Skills</div></div>
+                <div className="ca-info-item"><div className="ca-info-label">Impact</div><div className="ca-info-val">Campus Wide</div></div>
               </div>
             </div>
 
@@ -340,79 +377,51 @@ export default function ClubsActivityPage() {
               <div className="ca-panel-header">
                 <div className="ca-icon-wrap ca-icon-cultural">🎭</div>
                 <div className="ca-title-group">
-                  <span className="ca-tag-label">Drama · Music · Fine Arts</span>
-                  <h2>Cultural &amp; Arts</h2>
-                  <p className="ca-subtitle">Creativity, expression &amp; storytelling</p>
+                  <span className="ca-tag-label">Tradition · Literature · Nature</span>
+                  <h2>Cultural Clubs</h2>
+                  <p className="ca-subtitle">Celebrating heritage, literature, and the environment</p>
                 </div>
               </div>
               <p className="ca-desc">
-                AIET&apos;s cultural clubs nurture the creative spirit of every student. The Drama &amp; Theater Club stages powerful productions, the Music Society fills the campus with melody, the Photography Club captures moments through the lens, and the Fine Arts Club brings visual imagination to life. These spaces build confidence, empathy, and creative thinking.
+                AIET&apos;s cultural clubs nurture the creative and traditional spirit of every student. They provide platforms for linguistic pride, public speaking, literature appreciation, and deep connections with nature.
               </p>
               <div className="ca-features">
-                <div className="ca-feature-card"><div className="ca-fc-icon">🎵</div><h4>Music Society</h4><p>100+ musicians. Acoustic nights, battle of bands, vocal workshops &amp; studio recording.</p></div>
-                <div className="ca-feature-card"><div className="ca-fc-icon">🎭</div><h4>Drama &amp; Theater</h4><p>55 members staging everything from classical dramas to experimental street plays.</p></div>
-                <div className="ca-feature-card"><div className="ca-fc-icon">📸</div><h4>Photography Club</h4><p>70 visual storytellers. Photo walks, editing labs &amp; annual exhibitions.</p></div>
-                <div className="ca-feature-card"><div className="ca-fc-icon">🎨</div><h4>Fine Arts Club</h4><p>Painting, sketching, sculpture &amp; digital art workshops throughout the year.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🪔</div><h4>Prajna Sanskriti Club</h4><p>Promoting Indian culture, ancient traditions, and celebrating our rich heritage.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">💛</div><h4>Kannada Sangha</h4><p>Celebrating Kannada language, literature, poetry, and regional art forms.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🥁</div><h4>Tulu Sangha</h4><p>Preserving and promoting Tulu culture, folklore, and local traditions.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🎤</div><h4>Rostrum</h4><p>Public speaking, debate, elocution competitions, and developing oratorical skills.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">📚</div><h4>Readers Club</h4><p>Book discussions, literature reviews, sharing ideas, and cultivating reading habits.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🐦</div><h4>Chirpp Club</h4><p>Nature appreciation, bird watching excursions, and wildlife documentation.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🌳</div><h4>Srishti – The Nature Club</h4><p>Environmental protection, nature walks, and fostering an eco-friendly campus.</p></div>
               </div>
               <div className="ca-info-strip">
-                <div className="ca-info-item"><div className="ca-info-label">Clubs</div><div className="ca-info-val">4 Active</div></div>
-                <div className="ca-info-item"><div className="ca-info-label">Members</div><div className="ca-info-val">265+</div></div>
-                <div className="ca-info-item"><div className="ca-info-label">Productions</div><div className="ca-info-val">8/Year</div></div>
-                <div className="ca-info-item"><div className="ca-info-label">Fest</div><div className="ca-info-val">Annual Cultural</div></div>
+                <div className="ca-info-item"><div className="ca-info-label">Clubs</div><div className="ca-info-val">7 Active</div></div>
+                <div className="ca-info-item"><div className="ca-info-label">Focus</div><div className="ca-info-val">Culture &amp; Nature</div></div>
+                <div className="ca-info-item"><div className="ca-info-label">Activities</div><div className="ca-info-val">Regular Meets</div></div>
               </div>
             </div>
 
-            {/* SERVICE */}
-            <div className={`ca-panel ${active === "service" ? "active" : ""}`}>
+            {/* ARTS & CREATIVE */}
+            <div className={`ca-panel ${active === "arts-creative" ? "active" : ""}`}>
               <div className="ca-panel-header">
-                <div className="ca-icon-wrap ca-icon-service">🤝</div>
+                <div className="ca-icon-wrap ca-icon-sports">🎨</div>
                 <div className="ca-title-group">
-                  <span className="ca-tag-label">NSS · NCC · Eco</span>
-                  <h2>Service &amp; Outreach</h2>
-                  <p className="ca-subtitle">Building responsible citizens through social impact</p>
+                  <span className="ca-tag-label">Visual Arts · Photography</span>
+                  <h2>Arts &amp; Creative Clubs</h2>
+                  <p className="ca-subtitle">Expression through art and lenses</p>
                 </div>
               </div>
               <p className="ca-desc">
-                AIET encourages every student to give back to the community. The NSS Wing organizes health camps, literacy drives, and rural development projects. The NCC Battalion instils discipline, patriotism, and leadership. The Eco Club champions sustainability with tree plantation drives and awareness campaigns. The Debate Society sharpens critical thinking for responsible civic participation.
+                Unleash your creativity and capture the world from unique perspectives. The Arts &amp; Creative clubs provide a platform for students to explore visual storytelling, painting, sketching, and professional photography techniques.
               </p>
               <div className="ca-features">
-                <div className="ca-feature-card"><div className="ca-fc-icon">🪖</div><h4>NCC Battalion</h4><p>150+ cadets. Republic Day parades, adventure camps, and leadership training.</p></div>
-                <div className="ca-feature-card"><div className="ca-fc-icon">🌿</div><h4>NSS Wing</h4><p>200+ volunteers. Blood donation drives, rural camps &amp; community health projects.</p></div>
-                <div className="ca-feature-card"><div className="ca-fc-icon">♻️</div><h4>Eco Club</h4><p>Tree plantation drives, plastic-free campus campaigns &amp; environmental awareness.</p></div>
-                <div className="ca-feature-card"><div className="ca-fc-icon">🗣️</div><h4>Debate Society</h4><p>45 members. MUN, parliamentary debates &amp; inter-college championships.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">🖌️</div><h4>Fine Art</h4><p>Sketching, painting, digital art, sculpture, and exploring various visual arts mediums.</p></div>
+                <div className="ca-feature-card"><div className="ca-fc-icon">📸</div><h4>Photography Club</h4><p>Visual storytelling, photo walks, editing workshops, and capturing campus life events.</p></div>
               </div>
               <div className="ca-info-strip">
-                <div className="ca-info-item"><div className="ca-info-label">Volunteers</div><div className="ca-info-val">400+</div></div>
-                <div className="ca-info-item"><div className="ca-info-label">Camps</div><div className="ca-info-val">12/Year</div></div>
-                <div className="ca-info-item"><div className="ca-info-label">Trees Planted</div><div className="ca-info-val">2,000+</div></div>
-                <div className="ca-info-item"><div className="ca-info-label">Blood Drives</div><div className="ca-info-val">4/Year</div></div>
-              </div>
-            </div>
-
-            {/* SPORTS CLUBS */}
-            <div className={`ca-panel ${active === "sports-clubs" ? "active" : ""}`}>
-              <div className="ca-panel-header">
-                <div className="ca-icon-wrap ca-icon-sports">⚽</div>
-                <div className="ca-title-group">
-                  <span className="ca-tag-label">Cricket · Football · Athletics</span>
-                  <h2>Sports Clubs</h2>
-                  <p className="ca-subtitle">Compete, train &amp; achieve sporting excellence</p>
-                </div>
-              </div>
-              <p className="ca-desc">
-                AIET&apos;s sports clubs provide professional coaching, championship-level facilities, and regular inter-college tournament participation. From Cricket and Football to Badminton and Athletics, students train with certified coaches on dedicated grounds, building fitness, discipline, and teamwork alongside their academic journey.
-              </p>
-              <div className="ca-features">
-                <div className="ca-feature-card"><div className="ca-fc-icon">🏏</div><h4>Cricket Club</h4><p>Inter-college tournaments, net practice sessions &amp; professional coaching staff.</p></div>
-                <div className="ca-feature-card"><div className="ca-fc-icon">⚽</div><h4>Football Club</h4><p>Regular league matches, fitness drills &amp; state-level competition participation.</p></div>
-                <div className="ca-feature-card"><div className="ca-fc-icon">🏸</div><h4>Badminton Club</h4><p>Indoor courts, ranking tournaments &amp; coaching for district-level competition.</p></div>
-                <div className="ca-feature-card"><div className="ca-fc-icon">🏃</div><h4>Athletics Club</h4><p>Track &amp; field, cross-country running &amp; annual sports day championships.</p></div>
-              </div>
-              <div className="ca-info-strip">
-                <div className="ca-info-item"><div className="ca-info-label">Sports</div><div className="ca-info-val">10+ Disciplines</div></div>
-                <div className="ca-info-item"><div className="ca-info-label">Athletes</div><div className="ca-info-val">300+</div></div>
-                <div className="ca-info-item"><div className="ca-info-label">Tournaments</div><div className="ca-info-val">15/Year</div></div>
-                <div className="ca-info-item"><div className="ca-info-label">Coaches</div><div className="ca-info-val">Professional</div></div>
+                <div className="ca-info-item"><div className="ca-info-label">Clubs</div><div className="ca-info-val">2 Active</div></div>
+                <div className="ca-info-item"><div className="ca-info-label">Focus</div><div className="ca-info-val">Art &amp; Media</div></div>
+                <div className="ca-info-item"><div className="ca-info-label">Exhibitions</div><div className="ca-info-val">Annual</div></div>
               </div>
             </div>
 
