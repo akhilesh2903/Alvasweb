@@ -303,22 +303,21 @@ export default function MBAPage() {
             Watch a quick overview about the course.
           </p>
         </div>
-        <div className="w-screen relative left-1/2 -translate-x-1/2 border-y border-gray-300 shadow-2xl bg-gray-900 overflow-hidden">
-          <div className="aspect-[16/6] md:aspect-[21/9] w-full">
-            <video
-              className="w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
-              <source
-                src="/videos/vecteezy_inside-a-massive-data-center-showing-rows-of-servers-and-cables_71747904.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+        <div className="max-w-6xl mx-auto rounded-xl shadow-2xl overflow-hidden aspect-video bg-black flex items-center justify-center relative">
+          <video
+            className="-rotate-90 object-contain"
+            style={{ width: '56.25%', height: '177.77%', minWidth: '56.25%', minHeight: '177.77%' }}
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source
+              src="/api/video-proxy?url=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D1NZLifo_9ixlS0MhjpCikfe0UlmKvYSzl"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
         </div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="divider mt-10"></div>

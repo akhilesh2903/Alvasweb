@@ -29,7 +29,7 @@ import {
   Medal,
   CalendarDays,
 } from "lucide-react";
-import NewsletterViewer from "@/app/components/NewsletterViewer";
+import NewsletterViewer from "../../../components/NewsletterViewer";
 import { MdClose } from "react-icons/md";
 
 const SyllabusViewer = dynamic(
@@ -808,12 +808,27 @@ Additional listing repeated in submission:
   },
 ];
 
+const newsletterData = [
+  {
+    year: "2025-2026",
+    semesters: [
+      {
+        name: "E-Newsletter",
+        id: "1CpTiYlkqI8NHFnA3z6OYP1kYhUDTghKe",
+      },
+    ],
+  },
+];
+
 export default function MbaExploreContent() {
   const department = mbaDepartmentData;
 
   const [activeTab, setActiveTab] = useState("about");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [selectedNewsletterYear, setSelectedNewsletterYear] = useState<
+    string | null
+  >(newsletterData?.[0]?.year ?? null);
 
   // Faculty Section States
   const [activeFacultyIndex, setActiveFacultyIndex] = useState(0);
@@ -1436,11 +1451,33 @@ export default function MbaExploreContent() {
                     ) : (
                       <>
                         {activeTab === "newsletter" ? (
-                          <NewsletterViewer
-                            data={[]}
-                            backPath="/academics/mba/explore"
-                            departmentName="MBA"
-                          />
+                          <>
+                            <div className="mb-4 flex items-center gap-3">
+                              {newsletterData.map((y) => (
+                                <button
+                                  key={y.year}
+                                  onClick={() => {
+                                    setSelectedNewsletterYear(y.year);
+                                    setActiveTab("newsletter");
+                                  }}
+                                  className={`px-3 py-1 rounded-full border text-sm font-bold ${
+                                    selectedNewsletterYear === y.year
+                                      ? "bg-indigo-600 text-white"
+                                      : "bg-white text-gray-700"
+                                  }`}
+                                >
+                                  {y.year}
+                                </button>
+                              ))}
+                            </div>
+
+                            <NewsletterViewer
+                              data={newsletterData}
+                              backPath="/academics/mba/explore"
+                              departmentName="MBA"
+                              selectedYear={selectedNewsletterYear ?? undefined}
+                            />
+                          </>
                         ) : activeTab === "syllabus" ? (
                           <SyllabusViewer
                             syllabusLinks={currentData.syllabusLinks}
@@ -2080,9 +2117,9 @@ export default function MbaExploreContent() {
               </div>
             </div>
 
-            <div 
+            <div
               className="flex-1 overflow-y-auto p-6 font-sans"
-              style={{ WebkitOverflowScrolling: 'touch' }}
+              style={{ WebkitOverflowScrolling: "touch" }}
             >
               {[
                 { title: "Educational Qualifications", key: "qualifications" },

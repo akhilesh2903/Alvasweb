@@ -233,7 +233,7 @@ export default function ResearchPage() {
           </div>
 
           {/* Quick Stats Grid */}
-          <div className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-4">
+          <div className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-3">
             {[
               {
                 label: "Publications",
@@ -241,13 +241,6 @@ export default function ResearchPage() {
                 icon: BookOpen,
                 color: "text-blue-600",
                 bg: "bg-blue-50",
-              },
-              {
-                label: "Global Citations",
-                value: stats.citations,
-                icon: Trophy,
-                color: "text-amber-600",
-                bg: "bg-amber-50",
               },
               {
                 label: "Elite Faculty",

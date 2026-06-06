@@ -33,7 +33,7 @@ export default function ProgramsSection() {
       id: 2,
       title: "Mechanical Engg.",
       level: "ug",
-      image: "https://surya.ac.in/img/ac6.jpg",
+      image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop",
       description: "B.E Program",
       link: "/academics/mech",
     },
@@ -69,7 +69,7 @@ export default function ProgramsSection() {
       title: "Electronics & Comm.",
       level: "ug",
       image:
-        "https://media.licdn.com/dms/image/v2/D5612AQGhX6wfxBVL6A/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1689843321154?e=2147483487&v=beta&t=UyhQvQtBiBgu5BppYzDZ094SwGJXDggwUCOuGTrv_7A",
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop",
       description: "B.E Program",
       link: "/academics/ece",
     },

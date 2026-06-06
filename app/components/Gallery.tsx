@@ -1,8 +1,7 @@
-﻿"use client";
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import "./Gallery.css";
-import Footer from "./Footer";
-import { div } from "framer-motion/client";
+// Footer removed from Gallery to avoid duplicate footers on pages
 
 const GALLERY_IMAGES = [
   "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop",
@@ -274,8 +273,7 @@ const Gallery = () => {
         </div>
       </section>
 
-      <Footer />
-
+      {/* Footer intentionally omitted here; pages should render Footer once */}
       {/* Lightbox Modal */}
       {selectedImage && (
         <div

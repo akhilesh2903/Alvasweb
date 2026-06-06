@@ -120,7 +120,11 @@ export default function Header({ onMenuToggle }: HeaderProps) {
       dd.style.position = "fixed";
       dd.style.left = "50%";
       dd.style.width = "100%";
-      dd.style.maxWidth = "1200px";
+      if (dd.id === "academics-dropdown") {
+        dd.style.setProperty("max-width", "700px", "important");
+      } else {
+        dd.style.setProperty("max-width", "1200px", "important");
+      }
 
       // ✅ Anchor dropdown to NAV (stable height)
       dd.style.setProperty("top", `${navRect.bottom - 0.5}px`, "important");
@@ -681,11 +685,12 @@ export default function Header({ onMenuToggle }: HeaderProps) {
             </button>
 
             <div
+              id="academics-dropdown"
               ref={academicsDropdownRef}
               className="dropdown-menu transition-all duration-200 z-[9999]"
             >
               <div className="bg-white border border-[#edf2f7] border-t-[3px] border-t-[#b77a00] rounded-xl shadow-lg p-8">
-                <div className="grid grid-cols-3 gap-10">
+                <div className="grid grid-cols-2 gap-10">
                   {/* Column 1 - UG Programmes */}
                   <div>
                     <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
@@ -767,16 +772,18 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                       >
                         MBA Programme
                       </Link>
+                      {/*
                       <Link
                         href="/academics/mtech"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
                         M.Tech
                       </Link>
+                      */}
                     </div>
                   </div>
 
-                  {/* Column 3 - Basic Sciences */}
+                  {/* Column 3 - Basic Sciences
                   <div>
                     <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
                       Basic Sciences
@@ -808,130 +815,19 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                       </Link>
                     </div>
                   </div>
+                  */}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* ============ RESEARCH - FULL WIDTH MEGA MENU ============ */}
+          {/* ============ RESEARCH - DIRECT LINK ============ */}
           <div ref={researchGroupRef} className="relative group py-4">
             <Link href="/Research">
               <button className="nav-btn font-bold tracking-[1px] uppercase text-[1rem] py-[5px] flex items-center gap-1 group-hover:text-[#b77a00] transition relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-[#b77a00] after:transition-all after:duration-200 hover:after:w-full">
                 RESEARCH
-                <i className="fas fa-chevron-down text-[10px] ml-1 opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
               </button>
             </Link>
-
-            <div
-              ref={researchDropdownRef}
-              className="dropdown-menu transition-all duration-200 z-[9999]"
-            >
-              <div className="bg-white border border-[#edf2f7] border-t-[3px] border-t-[#b77a00] rounded-xl shadow-lg p-8">
-                <div className="grid grid-cols-3 gap-10">
-                  <div>
-                    <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
-                      Research Areas
-                    </h3>
-                    <div className="space-y-1">
-                      <Link
-                        href="/Research"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        Funding
-                      </Link>
-                      <Link
-                        href="/Research"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        IPR
-                      </Link>
-                      <Link
-                        href="/Research"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        Publication
-                      </Link>
-                      <Link
-                        href="/Research"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        Patent Application
-                      </Link>
-                      <Link
-                        href="/Research"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        Multidisciplinary Research Ideas
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
-                      Resources
-                    </h3>
-                    <div className="space-y-1">
-                      <Link
-                        href="/Research"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        Research Team
-                      </Link>
-                      <Link
-                        href="/Research"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        Research Policies
-                      </Link>
-                      <Link
-                        href="/Research"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        Research Supervisors
-                      </Link>
-                      <Link
-                        href="/Research"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        Journals
-                      </Link>
-                      <Link
-                        href="/Research"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        Conference
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
-                      Facilities
-                    </h3>
-                    <div className="space-y-1">
-                      <Link
-                        href="/Research"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        Facilities
-                      </Link>
-                      <Link
-                        href="/Research"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        About
-                      </Link>
-                      <Link
-                        href="/Research"
-                        className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
-                      >
-                        Yearwise Details
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div ref={placementsGroupRef} className="relative group py-4">
