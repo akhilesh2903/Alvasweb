@@ -3,50 +3,42 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Gallery.css";
 // Footer removed from Gallery to avoid duplicate footers on pages
 
-const GALLERY_IMAGES = [
-  "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1541339907198-e08756ebafe3?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1525921429624-479b6a26d84d?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1521791136064-7986c29596ad?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1544928147-79a2dbc1f389?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1507537362145-59049198642e?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1520333789090-1afc82db536a?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=600&h=400&fit=crop",
-];
+const GENERAL_IMAGES = [
+  "https://drive.google.com/uc?export=view&id=1m2WBwb6jPhAIIQY6_iOT3zUEMoPUNs1r",
+  "https://drive.google.com/uc?export=view&id=1qSjGRKUWd7Ut5dMDUPeP5yHj7_esV1Q2",
+  "https://drive.google.com/uc?export=view&id=1diQ-cnIOcqsbvTeK6_pGoPDhCVy1UiMq",
+  "https://drive.google.com/uc?export=view&id=1ryfeOyTx_3ZlAhLv0u8Z6fOPMxwqU3He",
+  "https://drive.google.com/uc?export=view&id=1Eu6upqX9U3ht9uosTRIo6sC0QwaaN-CJ",
+  "https://drive.google.com/uc?export=view&id=1EiklHsVXSi4nY5NKekxUP1OmSVmsorIc",
+  "https://drive.google.com/uc?export=view&id=1ILyEqliXsB_OTbeCkr9eac35OwrMMZqH",
+  "https://drive.google.com/uc?export=view&id=1mcXKrRQ7gxsdTOC_18By_xUJszsqkcmB",
+  "https://drive.google.com/uc?export=view&id=1hKSf2BTnLM9B8H34cFVDhm9V6Wg0YaHt",
+  "https://drive.google.com/uc?export=view&id=1vLyXhvO5bGNWtCDjw_GcEDrNXULVs-_m",
+  "https://drive.google.com/uc?export=view&id=18zyP6UPl7XzG4fyaUBbsK5oysTtiHawo",
+  "https://drive.google.com/uc?export=view&id=11zf832bf03FmM1o6-J9968kpzg3bNlQ3",
+  "https://drive.google.com/uc?export=view&id=1GP1idg1ZemDJTHQJN-CnD3lWCnLwXeBY",
+  "https://drive.google.com/uc?export=view&id=1aftu6x5uYob7WiVq0Ddt4BDc1g9VDyrU",
+].map(url => `/api/image-proxy?url=${encodeURIComponent(url)}`);
 
-// Reusing same split logic, plus extra for verticals
-const ROW_SIZE = 8;
-const row1 = GALLERY_IMAGES.slice(0, ROW_SIZE);
-const row2 = GALLERY_IMAGES.slice(ROW_SIZE, ROW_SIZE * 2);
+const CAMPUS_IMAGES = [
+  "https://drive.google.com/uc?export=view&id=1xFd869eQSW50mIzZoQjmd_-oEUrYDSqK",
+  "https://drive.google.com/uc?export=view&id=1sCPUwsXQAMWYirR-wnPTgt7KgyIzeRDz",
+  "https://drive.google.com/uc?export=view&id=1ldeRwZYL1_qlbVb4q-lfzel0jLVEZ4gS",
+  "https://drive.google.com/uc?export=view&id=1iSj6_DiHpC1Fyrf4H9dX1Ipd_Z1VhQC0",
+  "https://drive.google.com/uc?export=view&id=1XYbBV0iw_ohASqTqf6JhmyGcG4QoiHG1",
+  "https://drive.google.com/uc?export=view&id=1eUNdiIIa2Jg9n75-3BJKSm2Njzot-jf1",
+  "https://drive.google.com/uc?export=view&id=1uDce9nrQbNQ8SQIXgxwH7zkz0on5ikNl",
+  "https://drive.google.com/uc?export=view&id=1I4yjTfTzf9pDR3ohgbNWLyGEWaRb0fJc",
+].map(url => `/api/image-proxy?url=${encodeURIComponent(url)}`);
+
+// Setup Rows and Columns
+const row1 = GENERAL_IMAGES.slice(0, 8);
+const row2 = [...GENERAL_IMAGES.slice(8, 14), ...GENERAL_IMAGES.slice(0, 2)];
 // Cylinder images
-const row4 = GALLERY_IMAGES.slice(ROW_SIZE * 2, ROW_SIZE * 2 + 8);
-// Vertical columns - reuse some
-const leftColImages = GALLERY_IMAGES.slice(0, 10);
-const rightColImages = GALLERY_IMAGES.slice(10, 20);
+const row4 = CAMPUS_IMAGES;
+// Vertical columns
+const leftColImages = [...GENERAL_IMAGES.slice(2, 12)];
+const rightColImages = [...GENERAL_IMAGES.slice(12, 14), ...GENERAL_IMAGES.slice(0, 8)];
 
 const ROTATIONS = [3, -2, 4, -3, 2, -4, 3, -2];
 

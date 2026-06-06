@@ -18,6 +18,9 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const imageProxyUrl = (url: string) =>
+  `/api/image-proxy?url=${encodeURIComponent(url)}`;
+
 export default function AlvasStunningLibrary() {
   const containerRef = useRef(null);
   const sliderRef = useRef(null);
@@ -31,17 +34,20 @@ export default function AlvasStunningLibrary() {
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut",
-      stagger: 2
+      stagger: 2,
+      force3D: true
     });
 
     // 2. Infinite Hero Image Slider
-    const images = gsap.utils.toArray('.slider-item');
-    gsap.to(images, {
-      xPercent: -100 * (images.length / 2),
-      ease: "none",
-      duration: 30,
-      repeat: -1,
-    });
+    if (sliderRef.current) {
+      gsap.to(sliderRef.current, {
+        xPercent: -50,
+        ease: "none",
+        duration: 30,
+        repeat: -1,
+        force3D: true
+      });
+    }
 
     // 3. Scroll Reveal for Sections
     gsap.utils.toArray('.reveal').forEach((el: any) => {
@@ -61,33 +67,30 @@ export default function AlvasStunningLibrary() {
   }, []);
 
   const dummyPhotos = [
-    "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2020/08/Library4.jpg",
-    "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2020/08/Library1.jpg",
-    "https://www.aiet.org.in/wp-content/uploads/2020/08/Library2.jpg",
-    "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2020/08/Library3.jpg",
-    "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2020/08/Library8.jpg",
-    "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2020/08/IMG_20200703_114737.jpg",
-    "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2020/08/Library5.jpg",
-    "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2020/08/Library6.jpg",
-    "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2020/08/Library7.jpg",
+    imageProxyUrl("https://drive.google.com/uc?export=view&id=1AFBUVM3NCDtQ0kdCKPF6NgQOYXkSSIVh"),
+    imageProxyUrl("https://drive.google.com/uc?export=view&id=1bS3YRbLmc7LspJ0ukgICuGYxiAk3jIXD"),
+    imageProxyUrl("https://drive.google.com/uc?export=view&id=1gzX-F1ubMfW4wbzVmGwH_AQm1hhHnLWp"),
+    imageProxyUrl("https://drive.google.com/uc?export=view&id=19HpTUf7dQp7k2DkQPmqHZvR-3HX4smHv"),
+    imageProxyUrl("https://drive.google.com/uc?export=view&id=1Q0OuBtY6JarNeVKez4BzsHDOSwyArMZ0"),
+    imageProxyUrl("https://drive.google.com/uc?export=view&id=1z-GiJvTGu8x6UBCw3j41QYRdQzb7D-7h"),
   ];
 
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-[#fcfdfd] text-slate-900 overflow-hidden font-sans">
+    <div ref={containerRef} className="relative min-h-screen bg-[#fcfdfd] text-slate-900 overflow-hidden font-sans pt-24 z-0">
       <Header />
       
       {/* --- DYNAMIC BACKGROUND SHAPES --- */}
-      <div className="fixed inset-0 pointer-events-none z-0">
+      <div className="fixed inset-0 pointer-events-none z-[-1]">
         <div className="bg-blob absolute top-[-5%] left-[-5%] w-[45vw] h-[45vw] bg-emerald-100/40 rounded-full blur-[120px]" />
         <div className="bg-blob absolute bottom-[5%] right-[-5%] w-[35vw] h-[35vw] bg-red-100/30 rounded-full blur-[100px]" />
       </div>
 
       {/* --- SECTION 1: HERO SLIDER --- */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[calc(100vh-6rem)] w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0 flex items-center opacity-30">
-          <div ref={sliderRef} className="flex gap-12 whitespace-nowrap">
+          <div ref={sliderRef} className="flex gap-12 whitespace-nowrap will-change-transform w-max">
             {[...dummyPhotos, ...dummyPhotos].map((src, i) => (
-              <div key={i} className="slider-item w-[400px] h-[580px] rounded-[4rem] overflow-hidden flex-shrink-0 shadow-2xl transition-all duration-1000">
+              <div key={i} className="slider-item w-[400px] h-[580px] rounded-[4rem] overflow-hidden flex-shrink-0 shadow-2xl">
                 <img src={src} alt="Library Hall" className="w-full h-full object-cover" />
               </div>
             ))}
@@ -122,7 +125,7 @@ export default function AlvasStunningLibrary() {
           </div>
           <div className="relative">
             <div className="rounded-[4rem] overflow-hidden shadow-2xl border-[16px] border-white transform rotate-2">
-              <img src="https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2020/08/Library1.jpg" alt="Library" className="w-full h-[600px] object-cover" />
+              <img src={imageProxyUrl("https://drive.google.com/uc?export=view&id=1z-GiJvTGu8x6UBCw3j41QYRdQzb7D-7h")} alt="Library" className="w-full h-[600px] object-cover" />
             </div>
           </div>
         </div>
@@ -197,26 +200,36 @@ export default function AlvasStunningLibrary() {
         </div>
 
         {/* Unique Masonry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-[1200px] md:h-[700px]">
+        <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-3 gap-4 h-[1800px] md:h-[1050px]">
           <GalleryItem 
-            src="https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2020/08/Library4.jpg" 
+            src={imageProxyUrl("https://drive.google.com/uc?export=view&id=1AFBUVM3NCDtQ0kdCKPF6NgQOYXkSSIVh")} 
             className="md:col-span-2 md:row-span-2" 
             label="Main Reading Hall" 
           />
           <GalleryItem 
-            src="https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2020/08/Library3.jpg" 
+            src={imageProxyUrl("https://drive.google.com/uc?export=view&id=1bS3YRbLmc7LspJ0ukgICuGYxiAk3jIXD")} 
             className="md:col-span-2 md:row-span-1" 
             label="Digital Reference Section" 
           />
           <GalleryItem 
-            src="https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2020/08/Library5.jpg" 
+            src={imageProxyUrl("https://drive.google.com/uc?export=view&id=1gzX-F1ubMfW4wbzVmGwH_AQm1hhHnLWp")} 
             className="md:col-span-1 md:row-span-1" 
             label="E-Journal Lab" 
           />
           <GalleryItem 
-            src="https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2020/08/Library6.jpg" 
+            src={imageProxyUrl("https://drive.google.com/uc?export=view&id=19HpTUf7dQp7k2DkQPmqHZvR-3HX4smHv")} 
             className="md:col-span-1 md:row-span-1" 
             label="Archive Stacks" 
+          />
+          <GalleryItem 
+            src={imageProxyUrl("https://drive.google.com/uc?export=view&id=1Q0OuBtY6JarNeVKez4BzsHDOSwyArMZ0")} 
+            className="md:col-span-2 md:row-span-1" 
+            label="Group Study Area" 
+          />
+          <GalleryItem 
+            src={imageProxyUrl("https://drive.google.com/uc?export=view&id=1z-GiJvTGu8x6UBCw3j41QYRdQzb7D-7h")} 
+            className="md:col-span-2 md:row-span-1" 
+            label="Library Overview" 
           />
         </div>
       </section>
