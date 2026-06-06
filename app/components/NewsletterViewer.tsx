@@ -139,13 +139,7 @@ export default function NewsletterViewer({
     }
   }, [selectedYear, data]);
 
-  // If parent passes a selectedYear, switch to it
-  useEffect(() => {
-    // @ts-ignore - optional prop may not exist on runtime type
-    const sel: string | undefined =
-      (arguments && arguments[0] && arguments[0].selectedYear) || undefined;
-    // alternative: check location.search? but parent should pass prop; we'll handle via prop in call site
-  }, []);
+
   const [numPages, setNumPages] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [isLoaded, setIsLoaded] = useState(false);
