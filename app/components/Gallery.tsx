@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import "./Gallery.css";
 // Footer removed from Gallery to avoid duplicate footers on pages
 
@@ -75,7 +76,7 @@ const GalleryRow: React.FC<GalleryRowProps> = ({
               onClick={() => onImageClick(src)}
             >
               <div className="gallery-card-inner">
-                <img src={src} alt={`Campus moment ${idx}`} loading="lazy" />
+                <Image src={src} alt={`Campus moment ${idx}`} fill sizes="(max-width: 768px) 50vw, 30vw" className="object-cover" />
                 <div className="gallery-card-overlay">
                   <span className="gallery-card-label">
                     ALVA&apos;S / MOMENTS
@@ -115,10 +116,10 @@ const GalleryVerticalColumn: React.FC<GalleryVerticalColumnProps> = ({
         {doubled.map((src, idx) => (
           <div
             key={idx}
-            className="vertical-card"
+            className="vertical-card relative"
             onClick={() => onImageClick(src)}
           >
-            <img src={src} alt={`Side moment ${idx}`} loading="lazy" />
+            <Image src={src} alt={`Side moment ${idx}`} fill sizes="(max-width: 768px) 0vw, 20vw" className="object-cover" />
           </div>
         ))}
       </div>
@@ -155,7 +156,7 @@ const GalleryCylinder: React.FC<GalleryCylinderProps> = ({
             onClick={() => onImageClick(src)}
           >
             <div className="cylinder-item-inner">
-              <img src={src} alt={`Cylinder item ${i}`} loading="lazy" />
+              <Image src={src} alt={`Cylinder item ${i}`} fill sizes="(max-width: 768px) 50vw, 20vw" className="object-cover" />
               <div className="cylinder-overlay">
                 <span>VIEW</span>
               </div>

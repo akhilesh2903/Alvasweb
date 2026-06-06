@@ -11,6 +11,7 @@ import {
   ArrowDown, GraduationCap, Sparkles,
   Search, Camera
 } from 'lucide-react';
+import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -90,8 +91,8 @@ export default function AlvasStunningLibrary() {
         <div className="absolute inset-0 z-0 flex items-center opacity-30">
           <div ref={sliderRef} className="flex gap-12 whitespace-nowrap will-change-transform w-max">
             {[...dummyPhotos, ...dummyPhotos].map((src, i) => (
-              <div key={i} className="slider-item w-[400px] h-[580px] rounded-[4rem] overflow-hidden flex-shrink-0 shadow-2xl">
-                <img src={src} alt="Library Hall" className="w-full h-full object-cover" />
+              <div key={i} className="slider-item relative w-[400px] h-[580px] rounded-[4rem] overflow-hidden flex-shrink-0 shadow-2xl">
+                <Image src={src} alt="Library Hall" fill sizes="(max-width: 768px) 100vw, 30vw" className="object-cover" />
               </div>
             ))}
           </div>
@@ -124,8 +125,8 @@ export default function AlvasStunningLibrary() {
             </p>
           </div>
           <div className="relative">
-            <div className="rounded-[4rem] overflow-hidden shadow-2xl border-[16px] border-white transform rotate-2">
-              <img src={imageProxyUrl("https://drive.google.com/uc?export=view&id=1z-GiJvTGu8x6UBCw3j41QYRdQzb7D-7h")} alt="Library" className="w-full h-[600px] object-cover" />
+            <div className="relative h-[600px] rounded-[4rem] overflow-hidden shadow-2xl border-[16px] border-white transform rotate-2">
+              <Image src={imageProxyUrl("https://drive.google.com/uc?export=view&id=1z-GiJvTGu8x6UBCw3j41QYRdQzb7D-7h")} alt="Library" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
             </div>
           </div>
         </div>
@@ -263,15 +264,11 @@ function StatTile({ icon, count, label, className }: { icon: React.ReactNode, co
   );
 }
 
-function GalleryItem({ src, className, label }: { src: string, className?: string, label: string }) {
+function GalleryItem({ src, className, label }: { src: string, className: string, label: string }) {
   return (
     <div className={`group relative overflow-hidden rounded-[3rem] bg-slate-200 ${className}`}>
-      <img 
-        src={src} 
-        alt={label} 
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+      <Image src={src} alt={label} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
         <div>
           <div className="flex items-center gap-2 mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
             <div className="w-8 h-[1px] bg-red-500" />

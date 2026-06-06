@@ -44,8 +44,7 @@ export async function GET(request: NextRequest) {
       headers: {
         Accept: "image/avif,image/webp,image/*,*/*",
       },
-      // Avoid caching issues for signed URLs by letting upstream decide; we add client cache below.
-      cache: "no-store",
+      next: { revalidate: 86400 },
     });
 
     if (!upstream.ok) {
