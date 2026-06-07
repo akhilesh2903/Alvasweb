@@ -3,16 +3,20 @@
 import { useEffect, useRef, useState } from "react";
 
 const LABS = [
-  { id: "linux", label: "Edwin Linux Lab" },
-  { id: "ios",   label: "Apple iOS Lab"   },
-  { id: "mems",  label: "MEMS Lab"        },
-  { id: "future",label: "Future Ready Labs"},
-  { id: "innovation", label: "Innovation Lab" },
+  { id: "hydrogen", label: "Hydrogen Fuel Cell Lab" },
+  { id: "idea", label: "Idea Lab" },
+  { id: "smt", label: "SMT Line" },
   { id: "nvidia", label: "Nvidia Lab" },
+  { id: "ios", label: "Apple iOS Lab" },
+  { id: "edwin", label: "Edwin Lab" },
+  { id: "mems", label: "MEMS Lab" },
+  { id: "beta", label: "Beta Lab" },
+  { id: "toyota", label: "Toyota Lab" },
+  { id: "hydroponics", label: "Hydroponics Lab" },
 ];
 
 export default function SkillLabsPage() {
-  const [active, setActive] = useState<string>("linux");
+  const [active, setActive] = useState<string>("hydrogen");
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   /* ── Hero scrollIntoView ── */
@@ -347,12 +351,16 @@ export default function SkillLabsPage() {
           width:72px;height:72px;border-radius:16px;display:flex;
           align-items:center;justify-content:center;font-size:32px;flex-shrink:0;
         }
-        .sl-lab-icon-linux { background:#1a1a1a; }
-        .sl-lab-icon-ios   { background:linear-gradient(135deg,#555,#111); }
-        .sl-lab-icon-mems  { background:linear-gradient(135deg,#003580,#0052cc); }
-        .sl-lab-icon-future{ background:linear-gradient(135deg,#1a472a,#2d7a45); }
-        .sl-lab-icon-innovation { background:linear-gradient(135deg,#7c2d12,#dc2626); }
+                .sl-lab-icon-hydrogen { background:linear-gradient(135deg,#0ea5e9,#0284c7); }
+        .sl-lab-icon-idea { background:linear-gradient(135deg,#7c2d12,#dc2626); }
+        .sl-lab-icon-smt { background:linear-gradient(135deg,#d97706,#b45309); }
         .sl-lab-icon-nvidia { background:linear-gradient(135deg,#1e1b4b,#3b0764); }
+        .sl-lab-icon-ios { background:linear-gradient(135deg,#555,#111); }
+        .sl-lab-icon-edwin { background:#1a1a1a; }
+        .sl-lab-icon-mems { background:linear-gradient(135deg,#003580,#0052cc); }
+        .sl-lab-icon-beta { background:linear-gradient(135deg,#4f46e5,#3730a3); }
+        .sl-lab-icon-toyota { background:linear-gradient(135deg,#be123c,#881337); }
+        .sl-lab-icon-hydroponics { background:linear-gradient(135deg,#16a34a,#15803d); }
 
         .sl-lab-title-group h2 {
           font-family:'DM Serif Display',serif;font-size:34px;color:var(--dark);margin-bottom:6px;
@@ -465,37 +473,22 @@ export default function SkillLabsPage() {
             <div className="sl-sidebar-label">Browse</div>
             <div className="sl-sidebar-title">All Skill Labs</div>
 
-            <div>
-              <div className={`sl-nav-item ${active === "linux" ? "active" : ""}`} onClick={() => setActive("linux")}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" /><polyline points="9,11 12,14 22,4" /></svg>
-                Edwin Linux Lab
-                <span className="sl-nav-arrow">›</span>
-              </div>
-              <div className={`sl-nav-item ${active === "ios" ? "active" : ""}`} onClick={() => setActive("ios")}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="2" width="14" height="20" rx="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>
-                Apple iOS Lab
-                <span className="sl-nav-arrow">›</span>
-              </div>
-              <div className={`sl-nav-item ${active === "mems" ? "active" : ""}`} onClick={() => setActive("mems")}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" /></svg>
-                MEMS Lab
-                <span className="sl-nav-arrow">›</span>
-              </div>
-              <div className={`sl-nav-item ${active === "future" ? "active" : ""}`} onClick={() => setActive("future")}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12,2 22,20 2,20" /></svg>
-                Future Ready Labs
-                <span className="sl-nav-arrow">›</span>
-              </div>
-              <div className={`sl-nav-item ${active === "innovation" ? "active" : ""}`} onClick={() => setActive("innovation")}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L15.09 8.26h6.79L17.66 12.61l2.85 6.36-5.54-4.04-5.54 4.04 2.85-6.36-6.22-4.35h6.79z" /></svg>
-                Innovation Lab
-                <span className="sl-nav-arrow">›</span>
-              </div>
-              <div className={`sl-nav-item ${active === "nvidia" ? "active" : ""}`} onClick={() => setActive("nvidia")}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
-                Nvidia Lab
-                <span className="sl-nav-arrow">›</span>
-              </div>
+                        <div>
+              {LABS.map((lab) => (
+                <div
+                  key={lab.id}
+                  className={`sl-nav-item ${active === lab.id ? "active" : ""}`}
+                  onClick={() => setActive(lab.id)}
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 16 16 12 12 8" />
+                    <line x1="8" y1="12" x2="16" y2="12" />
+                  </svg>
+                  {lab.label}
+                  <span className="sl-nav-arrow">›</span>
+                </div>
+              ))}
             </div>
 
             <div className="sl-sidebar-icon">🏆</div>
@@ -503,140 +496,58 @@ export default function SkillLabsPage() {
           </aside>
 
           {/* CONTENT */}
-          <main className="sl-content">
-
-            {/* LINUX */}
-            <div className={`sl-lab-panel ${active === "linux" ? "active" : ""}`}>
+                    <main className="sl-content">
+            {/* HYDROGEN */}
+            <div className={`sl-lab-panel ${active === "hydrogen" ? "active" : ""}`}>
               <div className="sl-lab-header">
-                <div className="sl-lab-icon-wrap sl-lab-icon-linux">🐧</div>
+                <div className="sl-lab-icon-wrap sl-lab-icon-hydrogen">💧</div>
                 <div className="sl-lab-title-group">
-                  <span className="sl-lab-tag">Open Source · Systems</span>
-                  <h2>Edwin Linux Lab</h2>
-                  <p className="sl-lab-subtitle">Mastering open-source computing &amp; system administration</p>
+                  <span className="sl-lab-tag">Clean Energy · Sustainability</span>
+                  <h2>Hydrogen Fuel Cell Lab</h2>
+                  <p className="sl-lab-subtitle">Research in clean energy and hydrogen power systems</p>
                 </div>
               </div>
               <p className="sl-lab-desc">
-                The Edwin Linux Lab is a dedicated open-source computing environment where students gain deep expertise in Linux-based operating systems, shell scripting, system administration, networking, and cloud infrastructure. Named in honor of a distinguished alumnus, this lab prepares students for careers in DevOps, cloud computing, and enterprise IT operations.
+                The Hydrogen Fuel Cell Lab focuses on the development, testing, and optimization of hydrogen fuel cells and clean energy solutions. Students engage in cutting-edge research to build sustainable energy systems for the future.
               </p>
-              <div className="sl-lab-features">
-                <div className="sl-feature-card"><div className="sl-fc-icon">🖥️</div><h4>50+ Linux Workstations</h4><p>High-performance Ubuntu &amp; Fedora machines for intensive computing tasks.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">☁️</div><h4>Cloud Lab Access</h4><p>Hands-on AWS, GCP &amp; Azure integration for real-world cloud workflows.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">🔒</div><h4>Cybersecurity Tools</h4><p>Kali Linux, Wireshark, and security audit toolkits pre-installed.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">⚙️</div><h4>DevOps Pipeline</h4><p>Docker, Kubernetes, Jenkins, and CI/CD workflow training environments.</p></div>
-              </div>
-              <div className="sl-info-strip">
-                <div className="sl-info-item"><div className="sl-info-label">Capacity</div><div className="sl-info-val">52 Students</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Available</div><div className="sl-info-val">9 AM – 8 PM</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Certification</div><div className="sl-info-val">RHCSA / LPIC</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Established</div><div className="sl-info-val">2019</div></div>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
               </div>
             </div>
 
-            {/* iOS */}
-            <div className={`sl-lab-panel ${active === "ios" ? "active" : ""}`}>
+            {/* IDEA LAB */}
+            <div className={`sl-lab-panel ${active === "idea" ? "active" : ""}`}>
               <div className="sl-lab-header">
-                <div className="sl-lab-icon-wrap sl-lab-icon-ios">🍎</div>
-                <div className="sl-lab-title-group">
-                  <span className="sl-lab-tag">Mobile · Swift · Xcode</span>
-                  <h2>Apple iOS Lab</h2>
-                  <p className="sl-lab-subtitle">Building next-generation iOS &amp; macOS applications</p>
-                </div>
-              </div>
-              <p className="sl-lab-desc">
-                The Apple iOS Lab is an authorized Apple Development Center equipped with the latest MacBook Pros, iPads, and iPhones. Students learn Swift, SwiftUI, and Objective-C while building real-world applications for the App Store. The lab also covers ARKit, CoreML, and Apple&apos;s suite of developer tools — preparing graduates for high-demand iOS development roles globally.
-              </p>
-              <div className="sl-lab-features">
-                <div className="sl-feature-card"><div className="sl-fc-icon">💻</div><h4>Apple MacBook Pro Fleet</h4><p>M2 and M3 MacBook Pros with Xcode and full Apple developer toolchain.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">📱</div><h4>Device Testing Suite</h4><p>Latest iPhones and iPads for real-device testing across iOS versions.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">🤖</div><h4>CoreML &amp; AI Integration</h4><p>On-device machine learning using Apple&apos;s CoreML and Create ML frameworks.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">🕶️</div><h4>AR Development</h4><p>ARKit &amp; Reality Composer for augmented reality application development.</p></div>
-              </div>
-              <div className="sl-info-strip">
-                <div className="sl-info-item"><div className="sl-info-label">Capacity</div><div className="sl-info-val">40 Students</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Available</div><div className="sl-info-val">9 AM – 7 PM</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Certification</div><div className="sl-info-val">Apple Developer</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Established</div><div className="sl-info-val">2021</div></div>
-              </div>
-            </div>
-
-            {/* MEMS */}
-            <div className={`sl-lab-panel ${active === "mems" ? "active" : ""}`}>
-              <div className="sl-lab-header">
-                <div className="sl-lab-icon-wrap sl-lab-icon-mems">⚗️</div>
-                <div className="sl-lab-title-group">
-                  <span className="sl-lab-tag">Micro · Electro · Mechanical</span>
-                  <h2>MEMS Lab</h2>
-                  <p className="sl-lab-subtitle">Micro-Electro-Mechanical Systems research &amp; fabrication</p>
-                </div>
-              </div>
-              <p className="sl-lab-desc">
-                The MEMS (Micro-Electro-Mechanical Systems) Lab is a state-of-the-art research facility for the study and fabrication of microscale devices that integrate mechanical and electronic components. Students work on sensor design, actuator development, and microfluidics using industry-grade simulation and fabrication tools, preparing them for cutting-edge careers in biomedical, aerospace, and semiconductor industries.
-              </p>
-              <div className="sl-lab-features">
-                <div className="sl-feature-card"><div className="sl-fc-icon">🔬</div><h4>Microscopy Suite</h4><p>SEM and optical microscopes for nanoscale analysis and inspection.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">📐</div><h4>COMSOL Simulation</h4><p>Advanced multiphysics simulation for MEMS design and optimization.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">🧫</div><h4>Microfluidics Platform</h4><p>Lab-on-chip development tools for biomedical and chemical analysis.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">💡</div><h4>Sensor Prototyping</h4><p>Pressure, temperature, and inertial sensor design and testing rigs.</p></div>
-              </div>
-              <div className="sl-info-strip">
-                <div className="sl-info-item"><div className="sl-info-label">Capacity</div><div className="sl-info-val">24 Students</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Available</div><div className="sl-info-val">9 AM – 6 PM</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Focus Area</div><div className="sl-info-val">Research &amp; Dev</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Established</div><div className="sl-info-val">2022</div></div>
-              </div>
-            </div>
-
-            {/* FUTURE READY */}
-            <div className={`sl-lab-panel ${active === "future" ? "active" : ""}`}>
-              <div className="sl-lab-header">
-                <div className="sl-lab-icon-wrap sl-lab-icon-future">🚀</div>
-                <div className="sl-lab-title-group">
-                  <span className="sl-lab-tag">AI · IoT · Next-Gen</span>
-                  <h2>Future Ready Labs</h2>
-                  <p className="sl-lab-subtitle">AI, IoT &amp; emerging technology skill development</p>
-                </div>
-              </div>
-              <p className="sl-lab-desc">
-                The Future Ready Labs are a cluster of next-generation learning spaces focused on Artificial Intelligence, Machine Learning, Internet of Things, and Industry 4.0 technologies. These labs equip students with skills in demand across industries by providing access to GPU clusters, robotics platforms, and advanced prototyping equipment.
-              </p>
-              <div className="sl-lab-features">
-                <div className="sl-feature-card"><div className="sl-fc-icon">🧠</div><h4>AI / ML Cluster</h4><p>NVIDIA GPU-powered stations for deep learning model training and inference.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">🌐</div><h4>IoT Dev Studio</h4><p>Raspberry Pi, Arduino, and industrial IoT gateway prototyping kits.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">🦾</div><h4>Robotics Platform</h4><p>ROS-based robotic arms and autonomous vehicle simulation environments.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">🏭</div><h4>Industry 4.0 Zone</h4><p>Digital twin technology, smart factory simulation, and PLC programming.</p></div>
-              </div>
-              <div className="sl-info-strip">
-                <div className="sl-info-item"><div className="sl-info-label">Capacity</div><div className="sl-info-val">60 Students</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Available</div><div className="sl-info-val">8 AM – 9 PM</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Certification</div><div className="sl-info-val">NVIDIA / AWS AI</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Established</div><div className="sl-info-val">2023</div></div>
-              </div>
-            </div>
-
-            {/* INNOVATION LAB */}
-            <div className={`sl-lab-panel ${active === "innovation" ? "active" : ""}`}>
-              <div className="sl-lab-header">
-                <div className="sl-lab-icon-wrap sl-lab-icon-innovation">⭐</div>
+                <div className="sl-lab-icon-wrap sl-lab-icon-idea">💡</div>
                 <div className="sl-lab-title-group">
                   <span className="sl-lab-tag">Startup · Prototyping · Innovation</span>
-                  <h2>Innovation Lab</h2>
+                  <h2>Idea Lab</h2>
                   <p className="sl-lab-subtitle">Turning ideas into reality through rapid prototyping</p>
                 </div>
               </div>
               <p className="sl-lab-desc">
-                The Innovation Lab is a collaborative innovation space designed to nurture entrepreneurship and creative problem-solving. Students and faculty collaborate on startup ideas, product development, and emerging technologies. Equipped with 3D printers, laser cutters, and makerspaces, this lab supports the entire innovation journey from ideation to market-ready prototypes.
+                The Idea Lab is a collaborative space designed to nurture entrepreneurship and creative problem-solving. Equipped with 3D printers, laser cutters, and makerspaces, this lab supports the entire innovation journey from ideation to market-ready prototypes.
               </p>
-              <div className="sl-lab-features">
-                <div className="sl-feature-card"><div className="sl-fc-icon">🖨️</div><h4>3D Printing Suite</h4><p>FDM and SLA 3D printers for rapid prototyping and product design iteration.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">✂️</div><h4>Laser Cutting &amp; Engraving</h4><p>CO2 and fiber lasers for precision cutting and custom material work.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">🔧</div><h4>Electronics Workbench</h4><p>Soldering stations, oscilloscopes, and embedded system development kits.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">🎯</div><h4>Mentor Network</h4><p>Access to startup founders, investors, and industry experts for guidance.</p></div>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
               </div>
-              <div className="sl-info-strip">
-                <div className="sl-info-item"><div className="sl-info-label">Capacity</div><div className="sl-info-val">50 Students</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Available</div><div className="sl-info-val">8 AM – 8 PM</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Focus Area</div><div className="sl-info-val">Startups &amp; Ideas</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Established</div><div className="sl-info-val">2023</div></div>
+            </div>
+
+            {/* SMT LINE */}
+            <div className={`sl-lab-panel ${active === "smt" ? "active" : ""}`}>
+              <div className="sl-lab-header">
+                <div className="sl-lab-icon-wrap sl-lab-icon-smt">🔌</div>
+                <div className="sl-lab-title-group">
+                  <span className="sl-lab-tag">PCB · Manufacturing · Electronics</span>
+                  <h2>SMT Line</h2>
+                  <p className="sl-lab-subtitle">Advanced Surface Mount Technology manufacturing</p>
+                </div>
+              </div>
+              <p className="sl-lab-desc">
+                The SMT (Surface Mount Technology) Line provides students with hands-on experience in modern electronics manufacturing. From solder paste printing to pick-and-place machines and reflow soldering, students learn the entire PCB assembly process.
+              </p>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
               </div>
             </div>
 
@@ -647,23 +558,122 @@ export default function SkillLabsPage() {
                 <div className="sl-lab-title-group">
                   <span className="sl-lab-tag">GPU Computing · CUDA · Deep Learning</span>
                   <h2>Nvidia Lab</h2>
-                  <p className="sl-lab-subtitle">Advanced GPU computing &amp; accelerated AI development</p>
+                  <p className="sl-lab-subtitle">Advanced GPU computing & accelerated AI development</p>
                 </div>
               </div>
               <p className="sl-lab-desc">
-                The NVIDIA Lab is a specialized computing environment featuring enterprise-grade GPU clusters and specialized training in CUDA, parallel computing, and accelerated AI inference. Students work with the latest NVIDIA hardware and software to develop high-performance AI applications, real-time rendering solutions, and GPU-accelerated data analytics.
+                The NVIDIA Lab is a specialized computing environment featuring enterprise-grade GPU clusters and specialized training in CUDA, parallel computing, and accelerated AI inference. Students work with the latest NVIDIA hardware and software.
               </p>
-              <div className="sl-lab-features">
-                <div className="sl-feature-card"><div className="sl-fc-icon">🎮</div><h4>GPU Cluster</h4><p>Enterprise NVIDIA GPUs (A100, RTX 6000) for parallel computing and deep learning.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">📊</div><h4>CUDA Development</h4><p>Complete CUDA toolkit, cuDNN, and tensorRT for optimized GPU programming.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">🤖</div><h4>Deep Learning Frameworks</h4><p>PyTorch, TensorFlow, and other frameworks optimized on GPU infrastructure.</p></div>
-                <div className="sl-feature-card"><div className="sl-fc-icon">🔍</div><h4>Performance Analytics</h4><p>Profiling tools and monitoring dashboards for GPU optimization.</p></div>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
               </div>
-              <div className="sl-info-strip">
-                <div className="sl-info-item"><div className="sl-info-label">Capacity</div><div className="sl-info-val">45 Students</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Available</div><div className="sl-info-val">9 AM – 9 PM</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Certification</div><div className="sl-info-val">NVIDIA DLI</div></div>
-                <div className="sl-info-item"><div className="sl-info-label">Established</div><div className="sl-info-val">2023</div></div>
+            </div>
+
+            {/* IOS LAB */}
+            <div className={`sl-lab-panel ${active === "ios" ? "active" : ""}`}>
+              <div className="sl-lab-header">
+                <div className="sl-lab-icon-wrap sl-lab-icon-ios">🍎</div>
+                <div className="sl-lab-title-group">
+                  <span className="sl-lab-tag">Mobile · Swift · Xcode</span>
+                  <h2>Apple iOS Lab</h2>
+                  <p className="sl-lab-subtitle">Building next-generation iOS & macOS applications</p>
+                </div>
+              </div>
+              <p className="sl-lab-desc">
+                The Apple iOS Lab is equipped with the latest MacBook Pros and iPads. Students learn Swift, SwiftUI, and Objective-C while building real-world applications for the App Store, preparing graduates for high-demand iOS development roles.
+              </p>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
+              </div>
+            </div>
+
+            {/* EDWIN LAB */}
+            <div className={`sl-lab-panel ${active === "edwin" ? "active" : ""}`}>
+              <div className="sl-lab-header">
+                <div className="sl-lab-icon-wrap sl-lab-icon-edwin">🐧</div>
+                <div className="sl-lab-title-group">
+                  <span className="sl-lab-tag">Open Source · Systems</span>
+                  <h2>Edwin Lab</h2>
+                  <p className="sl-lab-subtitle">Mastering open-source computing & system administration</p>
+                </div>
+              </div>
+              <p className="sl-lab-desc">
+                The Edwin Lab is a dedicated open-source environment where students gain deep expertise in Linux-based operating systems, networking, and cloud infrastructure, preparing them for careers in DevOps and enterprise IT operations.
+              </p>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
+              </div>
+            </div>
+
+            {/* MEMS LAB */}
+            <div className={`sl-lab-panel ${active === "mems" ? "active" : ""}`}>
+              <div className="sl-lab-header">
+                <div className="sl-lab-icon-wrap sl-lab-icon-mems">⚗️</div>
+                <div className="sl-lab-title-group">
+                  <span className="sl-lab-tag">Micro · Electro · Mechanical</span>
+                  <h2>MEMS Lab</h2>
+                  <p className="sl-lab-subtitle">Micro-Electro-Mechanical Systems research & fabrication</p>
+                </div>
+              </div>
+              <p className="sl-lab-desc">
+                The MEMS Lab is a state-of-the-art research facility for the study and fabrication of microscale devices. Students work on sensor design, actuator development, and microfluidics using industry-grade simulation and fabrication tools.
+              </p>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
+              </div>
+            </div>
+
+            {/* BETA LAB */}
+            <div className={`sl-lab-panel ${active === "beta" ? "active" : ""}`}>
+              <div className="sl-lab-header">
+                <div className="sl-lab-icon-wrap sl-lab-icon-beta">⚙️</div>
+                <div className="sl-lab-title-group">
+                  <span className="sl-lab-tag">Simulation · CAE · Engineering</span>
+                  <h2>Beta Lab</h2>
+                  <p className="sl-lab-subtitle">Advanced Computer-Aided Engineering and Simulation</p>
+                </div>
+              </div>
+              <p className="sl-lab-desc">
+                The Beta Lab provides comprehensive training in Computer-Aided Engineering (CAE) using BETA CAE Systems software. Students master advanced pre- and post-processing tools for finite element analysis, CFD, and crash simulations.
+              </p>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
+              </div>
+            </div>
+
+            {/* TOYOTA LAB */}
+            <div className={`sl-lab-panel ${active === "toyota" ? "active" : ""}`}>
+              <div className="sl-lab-header">
+                <div className="sl-lab-icon-wrap sl-lab-icon-toyota">🚗</div>
+                <div className="sl-lab-title-group">
+                  <span className="sl-lab-tag">Automotive · Engines · Mechanics</span>
+                  <h2>Toyota Lab</h2>
+                  <p className="sl-lab-subtitle">Automotive engineering and research center</p>
+                </div>
+              </div>
+              <p className="sl-lab-desc">
+                In collaboration with Toyota, this lab offers hands-on experience with modern automotive engines, transmissions, and vehicle dynamics. Students learn to dismantle, assemble, and analyze modern vehicle components.
+              </p>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
+              </div>
+            </div>
+
+            {/* HYDROPONICS LAB */}
+            <div className={`sl-lab-panel ${active === "hydroponics" ? "active" : ""}`}>
+              <div className="sl-lab-header">
+                <div className="sl-lab-icon-wrap sl-lab-icon-hydroponics">🌱</div>
+                <div className="sl-lab-title-group">
+                  <span className="sl-lab-tag">Agriculture · Tech · Sustainability</span>
+                  <h2>Hydroponics Lab</h2>
+                  <p className="sl-lab-subtitle">Advanced soil-less farming and automated environment control</p>
+                </div>
+              </div>
+              <p className="sl-lab-desc">
+                The Hydroponics Lab merges agriculture with technology. Students research and implement automated nutrient delivery, climate control, and IoT-based monitoring to optimize crop yields in soil-less environments.
+              </p>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
               </div>
             </div>
 

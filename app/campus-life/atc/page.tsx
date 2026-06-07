@@ -146,11 +146,12 @@ export default function ATCPage() {
           </nav>
 
           <span className="inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/35 text-amber-300 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5 backdrop-blur-md">
-            <i className="fas fa-building" /> Alva's Technology Foundation Center
+            <i className="fas fa-building" /> E-CELL AIET
+            AND ATC FOUNDATION
           </span>
 
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight leading-tight">
-            Alva's <span className="text-amber-400">Technology Foundation</span> Center
+            E-CELL AIET <span className="text-amber-400">AND ATC FOUNDATION</span>
           </h1>
           <p className="text-white/80 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
             Fostering innovation, accelerating startups, and nurturing entrepreneurial minds.
@@ -285,7 +286,8 @@ export default function ATCPage() {
               className="inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-8 py-4 rounded-2xl transition duration-300 shadow-lg shadow-amber-400/25 active:scale-95 text-sm md:text-md uppercase tracking-wider"
             >
               <i className="fas fa-external-link-alt" />
-              Visit Alva's EDC Portal
+              Visit E-CELL AIET
+AND ATC FOUNDATION
             </Link>
           </div>
         </div>

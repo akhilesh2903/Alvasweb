@@ -178,7 +178,7 @@ export default function SyllabusViewer({
           </p>
           <p className="text-sm text-indigo-900 font-medium leading-relaxed">
             Optimized for desktop viewing. For mobile devices, we recommend
-            clicking on "Download PDF" for a better experience.
+            clicking on &quot;Download PDF&quot; for a better experience.
           </p>
         </div>
       </div>

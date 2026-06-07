@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { FaChevronLeft, FaChevronRight, FaPlay } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Header from "./Header";
 import MobileMenu from "./MobileMenu";
 
@@ -180,12 +181,11 @@ export default function LifeAtAIET() {
                     </div>
                     <h2 className="card-title">{item.title}</h2>
                     <p className="card-desc">{item.desc}</p>
-                    <button
-                      className="action-btn"
-                      onClick={() => handleExplore(item)}
-                    >
-                      <FaPlay size={10} /> EXPLORE EXPERIENCE
-                    </button>
+                    <Link href={item.href} style={{ textDecoration: 'none' }}>
+                      <button className="action-btn">
+                        <FaPlay size={10} /> EXPLORE EXPERIENCE
+                      </button>
+                    </Link>
                   </div>
                   <div className="reflection" />
                 </div>

@@ -67,7 +67,7 @@
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: calc(100% - 4rem) !important;
-  max-width: 1200px !important;
+  max-width: 1400px !important;
   min-width: 300px !important;
   background: white !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;

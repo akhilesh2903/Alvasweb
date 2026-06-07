@@ -237,7 +237,7 @@ export default function Testimonials() {
 
                         {/* Text */}
                         <p className="text-slate-600 text-lg leading-relaxed italic mb-8 relative z-10">
-                            "{item.quote}"
+                            &quot;{item.quote}&quot;
                         </p>
 
                         {/* Footer */}

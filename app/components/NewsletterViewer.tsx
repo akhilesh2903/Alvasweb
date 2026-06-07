@@ -46,84 +46,9 @@ export default function NewsletterViewer({
 }: NewsletterViewerProps) {
   const router = useRouter();
 
-  // If no data is provided, show the "Coming Soon" placeholder
-  if (!data || data.length === 0) {
-    return (
-      <div className="flex flex-col items-center justify-center py-20 px-6 text-center bg-gradient-to-br from-indigo-50/50 to-white rounded-[2.5rem] border border-indigo-100/50 shadow-sm overflow-hidden relative group">
-        <div className="absolute top-0 right-0 -mr-12 -mt-12 w-48 h-48 bg-indigo-100/30 rounded-full blur-3xl group-hover:bg-indigo-200/40 transition-colors duration-700"></div>
-        <div className="absolute bottom-0 left-0 -ml-12 -mb-12 w-48 h-48 bg-purple-100/30 rounded-full blur-3xl group-hover:bg-purple-200/40 transition-colors duration-700"></div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative z-10"
-        >
-          <div className="relative inline-block mb-8">
-            <div className="w-24 h-24 bg-white rounded-3xl shadow-xl shadow-indigo-100 flex items-center justify-center text-indigo-600 relative z-10">
-              <Newspaper className="w-12 h-12" />
-            </div>
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                rotate: [0, 10, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute -top-4 -right-4 w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center text-white shadow-lg shadow-yellow-100 z-20"
-            >
-              <Sparkles className="w-5 h-5" />
-            </motion.div>
-          </div>
-
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 font-serif">
-            Not Yet Uploaded
-          </h2>
-
-          <p className="text-gray-500 max-w-md mx-auto mb-10 font-medium leading-relaxed">
-            The E-Newsletter for this department has not been uploaded yet. We
-            are currently preparing the latest highlights and achievements for
-            you.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <div className="px-8 py-3 bg-indigo-600 text-white rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all cursor-default">
-              <Bell className="w-5 h-5" />
-              Stay Tuned
-            </div>
-          </div>
-
-          <div className="mt-12 pt-12 border-t border-indigo-50 flex justify-center gap-8 grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700">
-            <div className="flex flex-col items-center">
-              <div className="w-8 h-1 bg-indigo-200 rounded-full mb-2"></div>
-              <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">
-                Events
-              </span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-8 h-1 bg-purple-200 rounded-full mb-2"></div>
-              <span className="text-[10px] font-bold text-purple-400 uppercase tracking-widest">
-                Research
-              </span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-8 h-1 bg-blue-200 rounded-full mb-2"></div>
-              <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest">
-                Awards
-              </span>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    );
-  }
-
-  const [activeYear, setActiveYear] = useState(data[0].year);
+  const [activeYear, setActiveYear] = useState(data?.[0]?.year || "");
   const [activeSemester, setActiveSemester] = useState(
-    data[0].semesters[0].name,
+    data?.[0]?.semesters?.[0]?.name || "",
   );
 
   useEffect(() => {
@@ -203,6 +128,7 @@ export default function NewsletterViewer({
     calculateDimensions();
     window.addEventListener("resize", calculateDimensions);
     return () => window.removeEventListener("resize", calculateDimensions);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFullscreen, pdfRatio]);
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
@@ -284,6 +210,81 @@ export default function NewsletterViewer({
 
   const hasMultipleYears = data.length > 1;
   const hasMultipleSemesters = (activeYearGroup?.semesters.length || 0) > 1;
+
+  // If no data is provided, show the "Coming Soon" placeholder
+  if (!data || data.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20 px-6 text-center bg-gradient-to-br from-indigo-50/50 to-white rounded-[2.5rem] border border-indigo-100/50 shadow-sm overflow-hidden relative group">
+        <div className="absolute top-0 right-0 -mr-12 -mt-12 w-48 h-48 bg-indigo-100/30 rounded-full blur-3xl group-hover:bg-indigo-200/40 transition-colors duration-700"></div>
+        <div className="absolute bottom-0 left-0 -ml-12 -mb-12 w-48 h-48 bg-purple-100/30 rounded-full blur-3xl group-hover:bg-purple-200/40 transition-colors duration-700"></div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative z-10"
+        >
+          <div className="relative inline-block mb-8">
+            <div className="w-24 h-24 bg-white rounded-3xl shadow-xl shadow-indigo-100 flex items-center justify-center text-indigo-600 relative z-10">
+              <Newspaper className="w-12 h-12" />
+            </div>
+            <motion.div
+              animate={{
+                scale: [1, 1.2, 1],
+                rotate: [0, 10, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute -top-4 -right-4 w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center text-white shadow-lg shadow-yellow-100 z-20"
+            >
+              <Sparkles className="w-5 h-5" />
+            </motion.div>
+          </div>
+
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 font-serif">
+            Not Yet Uploaded
+          </h2>
+
+          <p className="text-gray-500 max-w-md mx-auto mb-10 font-medium leading-relaxed">
+            The E-Newsletter for this department has not been uploaded yet. We
+            are currently preparing the latest highlights and achievements for
+            you.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="px-8 py-3 bg-indigo-600 text-white rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all cursor-default">
+              <Bell className="w-5 h-5" />
+              Stay Tuned
+            </div>
+          </div>
+
+          <div className="mt-12 pt-12 border-t border-indigo-50 flex justify-center gap-8 grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700">
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-1 bg-indigo-200 rounded-full mb-2"></div>
+              <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">
+                Events
+              </span>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-1 bg-purple-200 rounded-full mb-2"></div>
+              <span className="text-[10px] font-bold text-purple-400 uppercase tracking-widest">
+                Research
+              </span>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-1 bg-blue-200 rounded-full mb-2"></div>
+              <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest">
+                Awards
+              </span>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <div

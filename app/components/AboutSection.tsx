@@ -148,28 +148,36 @@ export default function AboutSection() {
 
           <div
             id="counter-grid"
-            className="reveal-item opacity-0 translate-y-8 grid grid-cols-3 gap-4 mb-8"
+            className="reveal-item opacity-0 translate-y-8 grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
           >
             <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white shadow-lg">
               <h4 className="text-2xl md:text-3xl font-black">
-                <span className="counter" data-target="100">
+                <span className="counter" data-target="7">
                   0
                 </span>
-                %
               </h4>
               <p className="text-[9px] font-bold text-slate-400 uppercase">
-                Placement
+                Companies In Campus
               </p>
             </div>
             <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white shadow-lg">
               <h4 className="text-2xl md:text-3xl font-black">
-                <span className="counter" data-target="50">
+                <span className="counter" data-target="8">
                   0
                 </span>
-                +
               </h4>
               <p className="text-[9px] font-bold text-slate-400 uppercase">
-                Patents
+                Startups
+              </p>
+            </div>
+            <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white shadow-lg">
+              <h4 className="text-2xl md:text-3xl font-black">
+                <span className="counter" data-target="10">
+                  0
+                </span>
+              </h4>
+              <p className="text-[9px] font-bold text-slate-400 uppercase">
+                Labs
               </p>
             </div>
             <div className="bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white shadow-lg">

@@ -563,17 +563,8 @@ export default function CampusPage() {
                 advanced research centres, open green spaces, and a vibrant student community — all designed to nurture
                 holistic development and foster innovation.
               </p>
-              <div className="cp-features">
-                <div className="cp-card"><div className="cp-fc-icon">🏛️</div><h4>100+ Acre Green Campus</h4><p>Lush, eco-certified campus with rainwater harvesting and solar panels.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">🔬</div><h4>Research Centres</h4><p>Dedicated R&amp;D labs for ECE, CSE, Mech, Civil and allied disciplines.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">🏋️</div><h4>Sports Complex</h4><p>Indoor &amp; outdoor arenas including basketball, football, volleyball courts.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">🍽️</div><h4>Food Courts &amp; Cafeteria</h4><p>Multi-cuisine dining facilities serving 2,000+ students daily.</p></div>
-              </div>
-              <div className="cp-info-strip">
-                <div className="cp-info-item"><div className="cp-info-label">Area</div><div className="cp-info-val">100+ Acres</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Students</div><div className="cp-info-val">4,000+</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Departments</div><div className="cp-info-val">12</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Established</div><div className="cp-info-val">2001</div></div>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
               </div>
             </div>
 
@@ -593,17 +584,8 @@ export default function CampusPage() {
                 women ensure safety and comfort, fostering a close-knit residential community that supports both academic
                 focus and personal growth.
               </p>
-              <div className="cp-features">
-                <div className="cp-card"><div className="cp-fc-icon">🛏️</div><h4>1,500+ Beds</h4><p>Spacious single and double-sharing rooms with attached bathrooms.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">📶</div><h4>24/7 High-Speed Wi-Fi</h4><p>Fiber-optic internet with uninterrupted connectivity across all blocks.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">🔐</div><h4>Smart Security</h4><p>CCTV surveillance, biometric access, and round-the-clock wardens.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">📚</div><h4>Study Lounges</h4><p>Quiet, air-conditioned reading rooms available 24 hours.</p></div>
-              </div>
-              <div className="cp-info-strip">
-                <div className="cp-info-item"><div className="cp-info-label">Capacity</div><div className="cp-info-val">1,500+</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Blocks</div><div className="cp-info-val">6</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Mess Type</div><div className="cp-info-val">Vegetarian</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Security</div><div className="cp-info-val">24 × 7</div></div>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
               </div>
             </div>
 
@@ -623,17 +605,8 @@ export default function CampusPage() {
                 theatre clubs, and fine arts exhibitions, the college celebrates every dimension of human expression and
                 cultural heritage.
               </p>
-              <div className="cp-features">
-                <div className="cp-card"><div className="cp-fc-icon">🎤</div><h4>Alvas Nudisiri Fest</h4><p>Karnataka&apos;s premier cultural extravaganza drawing 50,000+ participants.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">💃</div><h4>Dance Academy</h4><p>Classical &amp; folk dance training under renowned Bharatanatyam masters.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">🎵</div><h4>Music &amp; Choir</h4><p>Carnatic, Hindustani and Western music clubs with professional coaches.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">🎨</div><h4>Fine Arts Studio</h4><p>Dedicated space for painting, sculpture, pottery and digital art.</p></div>
-              </div>
-              <div className="cp-info-strip">
-                <div className="cp-info-item"><div className="cp-info-label">Clubs</div><div className="cp-info-val">20+</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Annual Fests</div><div className="cp-info-val">4</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Participants</div><div className="cp-info-val">50,000+</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Awards Won</div><div className="cp-info-val">200+</div></div>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
               </div>
             </div>
 
@@ -653,17 +626,8 @@ export default function CampusPage() {
                 are GPS-tracked, fitted with CCTV, and maintained to the highest safety standards for comfortable,
                 stress-free daily commutes.
               </p>
-              <div className="cp-features">
-                <div className="cp-card"><div className="cp-fc-icon">🚌</div><h4>80+ Bus Routes</h4><p>Coverage across Mangaluru, Udupi, Kundapur and surrounding taluks.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">📍</div><h4>GPS Tracking</h4><p>Real-time bus location tracking via student mobile app.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">🛡️</div><h4>CCTV & Safety</h4><p>All buses equipped with cameras and trained safety marshals.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">♿</div><h4>Accessible Fleet</h4><p>Wheelchair-accessible vehicles and special-needs support on request.</p></div>
-              </div>
-              <div className="cp-info-strip">
-                <div className="cp-info-item"><div className="cp-info-label">Buses</div><div className="cp-info-val">120+</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Routes</div><div className="cp-info-val">80+</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">GPS Enabled</div><div className="cp-info-val">100%</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Coverage</div><div className="cp-info-val">150 km radius</div></div>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
               </div>
             </div>
 
@@ -683,74 +647,8 @@ export default function CampusPage() {
                 internet, and a dedicated Digital Resource Centre, it supports deep research and self-directed learning
                 across all disciplines.
               </p>
-              <div className="cp-features">
-                <div className="cp-card"><div className="cp-fc-icon">📖</div><h4>1,00,000+ Books</h4><p>Curated collection spanning engineering, management and humanities.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">💻</div><h4>Digital Resource Centre</h4><p>Access to IEEE, Elsevier, Springer, and 20+ global journal databases.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">🤫</div><h4>Silent Reading Hall</h4><p>300-seat air-conditioned reading hall open from 8 AM to 9 PM.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">🔎</div><h4>RFID Cataloguing</h4><p>Fully automated RFID-based book tracking and self-issue counters.</p></div>
-              </div>
-              <div className="cp-info-strip">
-                <div className="cp-info-item"><div className="cp-info-label">Volumes</div><div className="cp-info-val">1,00,000+</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Journals</div><div className="cp-info-val">250+</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Seating</div><div className="cp-info-val">300</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Open</div><div className="cp-info-val">8 AM – 9 PM</div></div>
-              </div>
-
-              {/* ── Chief Librarian Profile ── */}
-              <div style={{
-                marginTop: "32px",
-                background: "linear-gradient(135deg, #e6fdf5 0%, #f0fdf9 100%)",
-                border: "1px solid #a7f3d0",
-                borderRadius: "16px",
-                padding: "28px 32px",
-                display: "flex",
-                alignItems: "center",
-                gap: "28px",
-                flexWrap: "wrap",
-              }}>
-                {/* Photo */}
-                <div style={{
-                  width: "100px", height: "100px", borderRadius: "50%",
-                  overflow: "hidden", flexShrink: 0,
-                  border: "3px solid #10b981",
-                  boxShadow: "0 4px 18px rgba(16,185,129,0.25)",
-                }}>
-                  <img
-                    src="/punith.png"
-                    alt="Puneeth Kumar – Chief Librarian"
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
-                </div>
-
-                {/* Name & Designation */}
-                <div style={{ minWidth: "160px" }}>
-                  <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "#6b7280", marginBottom: "4px" }}>Chief Librarian</p>
-                  <h3 style={{ fontSize: "22px", fontWeight: 800, color: "#065f46", marginBottom: "6px", fontFamily: "DM Serif Display, serif" }}>Puneeth Kumar</h3>
-                  <div style={{ width: "40px", height: "2px", background: "#10b981", borderRadius: "2px", marginBottom: "10px" }} />
-                  <p style={{ fontSize: "13px", color: "#374151" }}><span style={{ fontWeight: 600 }}>Qualification :</span> M.L.I.Sc</p>
-                </div>
-
-                {/* Divider */}
-                <div style={{ width: "1px", height: "90px", background: "#6ee7b7", flexShrink: 0 }} />
-
-                {/* Contact */}
-                <div style={{ minWidth: "200px" }}>
-                  <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "#10b981", marginBottom: "12px" }}>Contact Details</p>
-                  <p style={{ fontSize: "13px", color: "#374151", marginBottom: "6px" }}><span style={{ fontWeight: 600 }}>Phone Number :</span> +9164645879</p>
-                  <p style={{ fontSize: "13px", color: "#374151", marginBottom: "6px" }}><span style={{ fontWeight: 600 }}>Telephone :</span> 08258262724</p>
-                  <p style={{ fontSize: "13px", color: "#374151", marginBottom: "4px" }}><span style={{ fontWeight: 600 }}>Email :</span> aietlib@gmail.com</p>
-                  <p style={{ fontSize: "13px", color: "#374151" }}>info@aiet.org.in</p>
-                </div>
-
-                {/* Divider */}
-                <div style={{ width: "1px", height: "90px", background: "#6ee7b7", flexShrink: 0 }} />
-
-                {/* Working Hours */}
-                <div style={{ minWidth: "220px" }}>
-                  <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "#10b981", marginBottom: "12px" }}>Working Hours</p>
-                  <p style={{ fontSize: "13px", color: "#374151", marginBottom: "8px" }}><span style={{ fontWeight: 600 }}>On Working day :</span> 8.30am to 11.00pm</p>
-                  <p style={{ fontSize: "13px", color: "#374151" }}><span style={{ fontWeight: 600 }}>on Sunday/Holidays :</span> 9.00am to 1.00pm</p>
-                </div>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
               </div>
             </div>
 
@@ -771,17 +669,8 @@ export default function CampusPage() {
                 venue for convocations, cultural galas, national conferences, and distinguished guest lectures,
                 providing an unforgettable experience for performers and audiences alike.
               </p>
-              <div className="cp-features">
-                <div className="cp-card"><div className="cp-fc-icon">🪑</div><h4>1,500 Seat Capacity</h4><p>Tiered seating with unobstructed sightlines and wheelchair zones.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">🔊</div><h4>Dolby Sound System</h4><p>32-channel professional mixer with surround-sound speaker arrays.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">💡</div><h4>LED Stage Lighting</h4><p>Programmable moving head lights and coloured LED grid for productions.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">📺</div><h4>4K Projection</h4><p>Twin 4K laser projectors with 20-foot screens for large-format display.</p></div>
-              </div>
-              <div className="cp-info-strip">
-                <div className="cp-info-item"><div className="cp-info-label">Capacity</div><div className="cp-info-val">1,500</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Stage Area</div><div className="cp-info-val">3,000 sq ft</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Events/Year</div><div className="cp-info-val">50+</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">AC &amp; AV</div><div className="cp-info-val">Full Kit</div></div>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
               </div>
             </div>
 
@@ -801,17 +690,8 @@ export default function CampusPage() {
                 conferencing systems, and ergonomic seating — enabling seamless hybrid learning experiences and fostering
                 industry–academia collaboration.
               </p>
-              <div className="cp-features">
-                <div className="cp-card"><div className="cp-fc-icon">📊</div><h4>Smart Boards</h4><p>65-inch 4K interactive displays with multi-touch annotation tools.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">🌐</div><h4>Video Conferencing</h4><p>Cisco WebEx &amp; Zoom-enabled systems for global expert lectures.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">🎙️</div><h4>PA &amp; Recording</h4><p>Wireless lavalier mics and session recording for knowledge archive.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">❄️</div><h4>Climate Controlled</h4><p>Central AC with individually controlled zones for 8–10 hour sessions.</p></div>
-              </div>
-              <div className="cp-info-strip">
-                <div className="cp-info-item"><div className="cp-info-label">Halls</div><div className="cp-info-val">8</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Capacity Each</div><div className="cp-info-val">100–200</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Smart AV</div><div className="cp-info-val">All Halls</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Events/Year</div><div className="cp-info-val">120+</div></div>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
               </div>
             </div>
 
@@ -831,35 +711,8 @@ export default function CampusPage() {
                 professional-grade cardio machines, strength training equipment, and dedicated zones for yoga and
                 stretching — all supervised by qualified fitness instructors.
               </p>
-              <div className="cp-features">
-                <div className="cp-card"><div className="cp-fc-icon">🏃</div><h4>Cardio Zone</h4><p>Treadmills, ellipticals, stationary bikes and rowing machines for high-energy workouts.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">💪</div><h4>Strength Training</h4><p>Free weights, barbells, squat racks and multi-station resistance machines.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">🧘</div><h4>Yoga & Wellness</h4><p>Dedicated mat area for yoga, stretching and mindfulness sessions with trained instructors.</p></div>
-                <div className="cp-card"><div className="cp-fc-icon">👟</div><h4>Qualified Trainers</h4><p>Certified fitness coaches available to guide personalised workout and nutrition plans.</p></div>
-              </div>
-              <div className="cp-info-strip">
-                <div className="cp-info-item"><div className="cp-info-label">Equipment</div><div className="cp-info-val">50+ Units</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Area</div><div className="cp-info-val">3,000 sq ft</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Timings</div><div className="cp-info-val">6 AM – 8 PM</div></div>
-                <div className="cp-info-item"><div className="cp-info-label">Trainers</div><div className="cp-info-val">Certified</div></div>
-              </div>
-
-              {/* Gym Photos */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginTop: "28px" }}>
-                <div style={{ borderRadius: "14px", overflow: "hidden", boxShadow: "0 4px 16px rgba(0,0,0,0.10)" }}>
-                  <img
-                    src="https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2019/11/AE-28-200x200.jpg"
-                    alt="AIET Gymnasium 1"
-                    style={{ width: "100%", height: "220px", objectFit: "cover", display: "block" }}
-                  />
-                </div>
-                <div style={{ borderRadius: "14px", overflow: "hidden", boxShadow: "0 4px 16px rgba(0,0,0,0.10)" }}>
-                  <img
-                    src="https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2019/11/AE-29-200x200.jpg"
-                    alt="AIET Gymnasium 2"
-                    style={{ width: "100%", height: "220px", objectFit: "cover", display: "block" }}
-                  />
-                </div>
+              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
+                Data will be uploaded soon...
               </div>
             </div>
 

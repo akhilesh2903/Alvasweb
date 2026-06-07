@@ -3,17 +3,19 @@
 import { useEffect, useRef, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { motion } from "framer-motion";
-import { Building2, Globe2, Users2, Rocket, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Building2, Globe2, Users2, Rocket, ArrowRight, X } from "lucide-react";
 
 const tabs = [
   { id: "overview", label: "Overview" },
-  { id: "placement-types", label: "Placement Types Offered" },
+  { id: "training-programs", label: "Training Programs" },
+  { id: "placement-types", label: "Placement Types" },
+  { id: "internships", label: "Internships" },
   { id: "team", label: "Our Team" },
   { id: "students", label: "Placed Students" },
-  { id: "companies", label: "Companies Visited" },
+  { id: "companies", label: "Companies" },
   { id: "gallery", label: "Placement Gallery" },
-  { id: "alvas-pragathi", label: "Alvas Pragathi" },
+  { id: "alvas-pragathi", label: "Alvas Pragati" },
 ];
 
 const imageProxyUrl = (url: string) =>
@@ -21,14 +23,22 @@ const imageProxyUrl = (url: string) =>
 
 const slides = [
   {
-    image: "https://picsum.photos/1600/700?random=1",
-    name: "Ananya Rao",
-    package: "₹32 LPA",
+    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
+    name: "Thulasi Uchila",
+    package: "21",
+    company: "Juspay",
   },
   {
-    image: "https://picsum.photos/1600/700?random=2",
-    name: "Rahul Sharma",
-    package: "₹28 LPA",
+    image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f",
+    name: "Anooj Raj",
+    package: "21",
+    company: "Juspay",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655",
+    name: "Vishal Nayak",
+    package: "20",
+    company: "Amazon",
   },
 ];
 
@@ -149,6 +159,7 @@ function InfiniteSlider({
 export default function PlacementClient() {
   const [activeTab, setActiveTab] = useState("overview");
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedMember, setSelectedMember] = useState<any>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   // Hero Auto Slider
@@ -231,7 +242,7 @@ export default function PlacementClient() {
               </h1>
 
               <p className="text-gray-300 text-lg md:text-xl max-w-md font-light leading-relaxed">
-                Empowering our students to secure positions in the world's most
+                Empowering our students to secure positions in the world&apos;s most
                 prestigious organizations.
               </p>
             </div>
@@ -255,6 +266,11 @@ export default function PlacementClient() {
                     Lakhs Per Annum
                   </span>
                 </div>
+                {slides[currentSlide].company && (
+                  <div className="mt-2 text-white font-medium text-lg">
+                    Placed at <span className="font-bold text-[#F4C430]">{slides[currentSlide].company}</span>
+                  </div>
+                )}
 
                 <div className="mt-8 pt-8 border-t border-white/10 flex items-center justify-between">
                   <div className="flex -space-x-3">
@@ -355,7 +371,7 @@ export default function PlacementClient() {
               <div className="absolute -right-4 -top-4 w-24 h-24 bg-[#1E2A78]/5 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
               <div className="relative z-10">
                 <p className="text-[#1E2A78] text-5xl font-black tracking-tighter mb-2 italic">
-                  320<span className="text-[#F4C430] font-bold">+</span>
+                  1000<span className="text-[#F4C430] font-bold">+</span>
                 </p>
                 <p className="text-gray-400 font-bold uppercase tracking-widest text-xs">
                   Students Placed
@@ -368,7 +384,7 @@ export default function PlacementClient() {
             <div className="relative group bg-[#1E2A78] p-8 rounded-[2.5rem] shadow-xl transform lg:translate-y-8 transition-all duration-500">
               <div className="relative z-10">
                 <p className="text-white text-5xl font-black tracking-tighter mb-2 italic">
-                  85<span className="text-[#F4C430] text-2xl ml-1">v</span>
+                  320+<span className="text-[#F4C430] text-2xl ml-1">v</span>
                 </p>
                 <p className="text-blue-200/60 font-bold uppercase tracking-widest text-xs">
                   Recruiting Partners
@@ -391,7 +407,7 @@ export default function PlacementClient() {
               <div className="relative z-10">
                 <div className="flex items-baseline gap-1">
                   <p className="text-[#1E2A78] text-5xl font-black tracking-tighter mb-2 italic">
-                    32
+                    21
                   </p>
                   <p className="text-[#1E2A78] font-bold text-lg">LPA</p>
                 </div>
@@ -414,7 +430,7 @@ export default function PlacementClient() {
               <div className="relative z-10">
                 <div className="flex items-baseline gap-1">
                   <p className="text-[#1E2A78] text-5xl font-black tracking-tighter mb-2 italic">
-                    8.5
+                    4.5
                   </p>
                   <p className="text-[#1E2A78] font-bold text-lg">LPA</p>
                 </div>
@@ -436,7 +452,10 @@ export default function PlacementClient() {
             return (
               <button
                 key={tab.id}
-                onClick={() => scrollTo(tab.id)}
+                onClick={() => {
+                  setActiveTab(tab.id);
+                  scrollTo(tab.id);
+                }}
                 className={`relative px-6 py-2.5 rounded-full text-xs md:text-sm font-bold tracking-wide uppercase transition-all duration-500 overflow-hidden ${
                   isActive
                     ? "text-[#1E2A78]"
@@ -445,9 +464,9 @@ export default function PlacementClient() {
               >
                 {/* Active Background Indicator (Animated) */}
                 {isActive && (
-                  <div
+                  <motion.div
+                    layoutId="activeTab"
                     className="absolute inset-0 bg-[#F4C430] rounded-full -z-10 shadow-[0_4px_12px_rgba(244,196,48,0.3)]"
-                    // For Framer Motion users: layoutId="activeTab"
                   />
                 )}
 
@@ -480,8 +499,8 @@ export default function PlacementClient() {
             <div className="absolute -top-6 -left-6 w-32 h-32 bg-[#F4C430] rounded-full opacity-20 animate-pulse"></div>
             <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-500">
               <img
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644"
-                alt="Placement Cell"
+                src={imageProxyUrl("https://drive.google.com/uc?export=view&id=1diQ-cnIOcqsbvTeK6_pGoPDhCVy1UiMq")}
+                alt="Placement Cell Overview"
                 className="h-[500px] w-full object-cover"
               />
             </div>
@@ -499,23 +518,111 @@ export default function PlacementClient() {
             <span className="text-[#F4C430] font-bold uppercase tracking-[0.3em] text-sm mb-4 block">
               Introduction
             </span>
-            <h2 className="text-5xl font-black text-[#1E2A78] mb-8 leading-tight">
-              Bridging Academics <br />
+            <h2 className="text-4xl md:text-5xl font-black text-[#1E2A78] mb-8 leading-tight">
+              Empowering Future Engineers <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1E2A78] to-blue-500">
-                with Industry.
+                with Industry-Focused Training.
               </span>
             </h2>
             <div className="space-y-6">
-              <p className="text-gray-600 text-xl leading-relaxed font-light">
-                The Placement Department has consistently achieved remarkable
-                results, attracting reputed companies across multiple sectors
-                every year.
+              <p className="text-gray-600 text-lg leading-relaxed">
+                At Alva’s Institute of Engineering and Technology (AIET), the Training & Placement Department is dedicated to transforming students into highly skilled, industry-ready professionals. Through comprehensive training programs, strategic corporate partnerships, internships, and large-scale campus recruitment initiatives, AIET ensures students are fully prepared to excel in today’s competitive job market.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed border-l-4 border-[#F4C430] pl-6 italic">
-                Regular aptitude, technical, and communication training sessions
-                ensure that our students aren't just graduates, but
-                industry-ready professionals.
+                As one of the leading engineering colleges in Karnataka, AIET bridges the gap between academic excellence and professional success by providing students with the technical expertise, employability skills, and career guidance required for long-term growth.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TRAINING PROGRAMS SECTION */}
+      <section
+        ref={(el) => {
+          sectionRefs.current["training-programs"] = el;
+        }}
+        className="px-6 md:px-20 py-24 bg-white"
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-[#F4C430] font-bold uppercase tracking-[0.3em] text-sm mb-4 block">
+              Skill Development
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black text-[#1E2A78] serif">
+              Employability Enhancement Programs
+            </h2>
+            <div className="w-24 h-1 bg-[#F4C430] mx-auto mt-6 mb-6"></div>
+            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
+              AIET’s Training & Placement Department offers structured programs designed to prepare students for successful professional careers. We focus on holistic professional development to create versatile professionals capable of thriving in dynamic work environments.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Soft Skills */}
+            <div className="bg-[#F8F9FB] p-10 rounded-[2.5rem] border border-gray-100 hover:shadow-xl transition-all group">
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Users2 className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-[#1E2A78] mb-4">Soft Skills & Personality Development</h3>
+              <ul className="space-y-3 text-gray-600">
+                {["Communication skills", "Public speaking", "Leadership development", "Team collaboration", "Group discussions", "Professional etiquette", "Time management", "Problem-solving"].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3">
+                    <ArrowRight className="w-4 h-4 text-[#F4C430] flex-shrink-0" /> 
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Technical Training */}
+            <div className="bg-[#F8F9FB] p-10 rounded-[2.5rem] border border-gray-100 hover:shadow-xl transition-all group">
+              <div className="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Rocket className="w-8 h-8 text-indigo-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-[#1E2A78] mb-4">Technical Training Programs</h3>
+              <ul className="space-y-3 text-gray-600">
+                {["Core engineering skills", "IT and software development competencies", "Programming languages", "Domain-specific workshops and Hackathons", "Industry-relevant tools and technologies", "Technical aptitude development"].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3">
+                    <ArrowRight className="w-4 h-4 text-[#F4C430] flex-shrink-0" /> 
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Career Preparation */}
+            <div className="bg-[#F8F9FB] p-10 rounded-[2.5rem] border border-gray-100 hover:shadow-xl transition-all group">
+              <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Building2 className="w-8 h-8 text-emerald-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-[#1E2A78] mb-4">Career Preparation Modules</h3>
+              <ul className="space-y-3 text-gray-600">
+                {["Mock interviews by company professionals", "Resume writing workshops", "LinkedIn profile building", "HR interview coaching", "Technical assessments", "Competitive aptitude training"].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3">
+                    <ArrowRight className="w-4 h-4 text-[#F4C430] flex-shrink-0" /> 
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-sm font-bold text-[#1E2A78] italic border-t border-gray-200 pt-4">
+                These initiatives ensure graduates are professionally confident, technically competent, and placement-ready.
+              </p>
+            </div>
+
+            {/* Holistic Dev */}
+            <div className="bg-[#F8F9FB] p-10 rounded-[2.5rem] border border-gray-100 hover:shadow-xl transition-all group">
+              <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Globe2 className="w-8 h-8 text-amber-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-[#1E2A78] mb-4">Holistic Professional Development</h3>
+              <ul className="space-y-3 text-gray-600">
+                {["Leadership workshops", "Communication mastery sessions", "Team-building activities", "Entrepreneurship awareness programs", "Innovation and creativity sessions", "Workplace readiness training"].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3">
+                    <ArrowRight className="w-4 h-4 text-[#F4C430] flex-shrink-0" /> 
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -526,16 +633,19 @@ export default function PlacementClient() {
         ref={(el) => {
           sectionRefs.current["placement-types"] = el;
         }}
-        className="px-6 md:px-20 py-24 bg-white"
+        className="px-6 md:px-20 py-24 bg-[#F8F9FB]"
       >
         <div className="max-w-7xl mx-auto text-center mb-16">
           <span className="text-[#F4C430] font-bold uppercase tracking-[0.3em] text-sm mb-4 block">
             Our Offerings
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-[#1E2A78] serif">
-            Placement Types Offered
+            Campus Recruitment Opportunities
           </h2>
-          <div className="w-24 h-1 bg-[#F4C430] mx-auto mt-6"></div>
+          <div className="w-24 h-1 bg-[#F4C430] mx-auto mt-6 mb-6"></div>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            AIET provides diverse recruitment opportunities to maximize student placements. This strategic approach consistently enhances placement outcomes for students across all engineering disciplines.
+          </p>
         </div>
 
         {/* ===== PLACEMENT TYPES OFFERED - GRID SYSTEM ===== */}
@@ -547,9 +657,9 @@ export default function PlacementClient() {
             {
               title: "On Campus",
               description:
-                "Direct recruitment drives from global giants like Amazon, IBM, and Infosys right at our doorstep.",
+                "Leading national and multinational companies recruit directly from campus.",
               icon: <Building2 className="w-8 h-8" />,
-              rate: "92%",
+              rate: "",
               color: "bg-indigo-600",
               lightColor: "bg-indigo-50",
               textColor: "text-indigo-900",
@@ -557,9 +667,9 @@ export default function PlacementClient() {
             {
               title: "Off Campus",
               description:
-                "Guided pathways and application mentorship for roles at top-tier startups and multinational corporations.",
+                "Students gain broader career opportunities through external placement events.",
               icon: <Globe2 className="w-8 h-8" />,
-              rate: "85%",
+              rate: "",
               color: "bg-blue-600",
               lightColor: "bg-blue-50",
               textColor: "text-blue-900",
@@ -567,19 +677,19 @@ export default function PlacementClient() {
             {
               title: "Pool Campus",
               description:
-                "Collaborative recruitment events bringing multiple colleges together for high-volume hiring opportunities.",
+                "Large-scale placement events involving multiple institutions and recruiters.",
               icon: <Users2 className="w-8 h-8" />,
-              rate: "88%",
+              rate: "",
               color: "bg-emerald-600",
               lightColor: "bg-emerald-50",
               textColor: "text-emerald-900",
             },
             {
-              title: "Pragathi",
+              title: "Mass Recruitment",
               description:
-                "India's premier mega-job fair hosted by Alva's, connecting thousands with their dream careers.",
+                "Bulk hiring opportunities across major industries and organizations, like Alva’s Pragati.",
               icon: <Rocket className="w-8 h-8 text-amber-600" />,
-              rate: "96%",
+              rate: "",
               color: "bg-amber-500",
               lightColor: "bg-amber-50",
               textColor: "text-amber-900",
@@ -609,7 +719,7 @@ export default function PlacementClient() {
               </p>
               <div className="mt-auto relative z-10">
                 <p className="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase mb-2">
-                  Success Rate
+                
                 </p>
                 <div className="flex items-center justify-between">
                   <span className={`text-3xl font-black ${type.textColor}`}>
@@ -644,6 +754,91 @@ export default function PlacementClient() {
               />
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* INTERNSHIPS & PARTNERSHIPS SECTION */}
+      <section
+        ref={(el) => {
+          sectionRefs.current["internships"] = el;
+        }}
+        className="px-6 md:px-20 py-24 bg-white border-t border-gray-100"
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-[#F4C430] font-bold uppercase tracking-[0.3em] text-sm mb-4 block">
+              Industry Connect
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black text-[#1E2A78] serif">
+              Internships & Partnerships
+            </h2>
+            <div className="w-24 h-1 bg-[#F4C430] mx-auto mt-6 mb-6"></div>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-16">
+            {/* Left: Industry Collaboration */}
+            <div className="w-full lg:w-1/2">
+              <h3 className="text-3xl font-bold text-[#1E2A78] mb-6">
+                Strong Industry Collaboration
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                AIET actively collaborates with leading industries to provide practical exposure and real-world opportunities. These partnerships help students gain practical knowledge, professional exposure, and valuable networking opportunities.
+              </p>
+              
+              <div className="bg-[#F8F9FB] rounded-[2rem] p-8 border border-gray-100 h-full">
+                <h4 className="font-bold text-[#1E2A78] uppercase tracking-widest text-sm mb-6">Collaboration Includes:</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    "MoUs with reputed industries",
+                    "In-Campus Technology centre with reputed companies, startups and CoEs from prominent companies",
+                    "Internship programs",
+                    "Live industry projects",
+                    "Corporate mentorship programs",
+                    "Expert guest lectures",
+                    "Technical seminars and workshops"
+                  ].map((item, i) => (
+                    <div key={i} className={`flex items-start gap-3 ${i === 1 ? 'sm:col-span-2' : ''}`}>
+                      <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-[#1E2A78]/10 flex items-center justify-center">
+                        <div className="w-2 h-2 bg-[#F4C430] rounded-full"></div>
+                      </div>
+                      <span className="text-gray-700 font-medium">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Internships */}
+            <div className="w-full lg:w-1/2">
+              <h3 className="text-3xl font-bold text-[#1E2A78] mb-6">
+                Internship Opportunities
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                Internships are an essential part of AIET’s career development strategy. Our students grab the opportunities for internships at MNCs with stipends ranging from <span className="font-bold text-[#1E2A78]">₹25,000-₹90,000 per month</span> and PPOs from <span className="font-bold text-[#1E2A78]">9LPA-34LPA</span>.
+              </p>
+              
+              <div className="bg-gradient-to-br from-[#1E2A78] to-blue-900 rounded-[2rem] p-8 shadow-xl text-white h-full">
+                <h4 className="font-bold text-[#F4C430] uppercase tracking-widest text-sm mb-6">Internship Benefits:</h4>
+                <ul className="space-y-4">
+                  {[
+                    "Practical industry experience",
+                    "Real-world technical exposure",
+                    "Enhanced professional skills",
+                    "Career exploration opportunities",
+                    "Networking with industry professionals",
+                    "Improved employability"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3">
+                      <svg className="w-5 h-5 text-[#F4C430] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="font-medium text-blue-50">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -747,14 +942,23 @@ export default function PlacementClient() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                name: "Mr.Samyak Jain",
+                name: "Mr. Samyak Jain",
                 role: "Training & Placement Officer",
                 img: imageProxyUrl("https://drive.google.com/uc?export=view&id=1sb5ngI_uz9V1hfXPIsEEkQ9bqnzfrM7C"),
+                designation: "Assistant professor and Assistant placement officer",
+                email: "samyakjain@aiet.org.in",
+                joiningDate: "15-07-2025",
+                educationalQualifications: "MBA",
+                yearOfExperience: "8 Months",
+                pastExperience: "1 Year",
+                areasOfInterest: "Finance and Marketing",
+                subjectsTeaching: "Strategic Brand Management, Internatinal Business, Logistics and Supply Chain Management",
               },
             ].map((member, index) => (
               <div
                 key={index}
-                className="group relative bg-white rounded-2xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+                onClick={() => setSelectedMember(member)}
+                className="group relative bg-white rounded-2xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
               >
                 {/* Circular Image with Border Ring */}
                 <div className="relative w-32 h-32 mx-auto mb-6">
@@ -801,111 +1005,32 @@ export default function PlacementClient() {
           </h2>
         </div>
 
-        <div className="relative">
-          {/* Clean Edge Fades */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        <div className="relative -mx-6 md:-mx-20">
+          {/* Edge gradients */}
+          <div className="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
-          <InfiniteSlider speed={0.8}>
+          <InfiniteSlider speed={0.8} direction="left">
             {[
-              {
-                name: "Mr. Saurav N Shetty",
-                dept: "CSE",
-                company: "Amazon",
-                ctc: "45.64 Lakhs",
-                img: "https://randomuser.me/api/portraits/men/21.jpg",
-              },
-              {
-                name: "Mr. Ujjwal Yadav",
-                dept: "CSE",
-                company: "Amazon",
-                ctc: "45.64 Lakhs",
-                img: "https://randomuser.me/api/portraits/men/22.jpg",
-              },
-              {
-                name: "Mr. Akash Shetty",
-                dept: "ISE",
-                company: "Cohesity",
-                ctc: "22.42 Lakhs",
-                img: "https://randomuser.me/api/portraits/men/23.jpg",
-              },
-              {
-                name: "Mr. B Ananthakrishna Rao",
-                dept: "CSE",
-                company: "Cohesity",
-                ctc: "22.42 Lakhs",
-                img: "https://randomuser.me/api/portraits/men/24.jpg",
-              },
-              {
-                name: "Ms. Chandani Kumari",
-                dept: "ISE",
-                company: "Cohesity",
-                ctc: "22.42 Lakhs",
-                img: "https://randomuser.me/api/portraits/women/25.jpg",
-              },
-              {
-                name: "Ms. Kavya Nair",
-                dept: "CSE",
-                company: "Infosys",
-                ctc: "18.20 Lakhs",
-                img: "https://randomuser.me/api/portraits/women/26.jpg",
-              },
-              {
-                name: "Mr. Rahul Verma",
-                dept: "ECE",
-                company: "IBM",
-                ctc: "12.50 Lakhs",
-                img: "https://randomuser.me/api/portraits/men/27.jpg",
-              },
-              {
-                name: "Ms. Priya Iyer",
-                dept: "CSE",
-                company: "Capgemini",
-                ctc: "10.80 Lakhs",
-                img: "https://randomuser.me/api/portraits/women/28.jpg",
-              },
-            ]
-              .concat(/* Tripling data for perfect continuous loop */)
-              .map((student, index) => (
-                <div
-                  key={index}
-                  className="min-w-[400px] h-32 mx-4 flex items-center bg-gray-50 rounded-full p-4 border border-gray-100 hover:bg-white hover:shadow-xl hover:shadow-[#1E2A78]/5 transition-all duration-300 group"
-                >
-                  {/* Circle Image with Ring */}
-                  <div className="relative w-24 h-24 flex-shrink-0">
-                    <div className="absolute inset-0 border-2 border-[#F4C430] rounded-full scale-110 opacity-20 group-hover:scale-100 group-hover:opacity-100 transition-all"></div>
-                    <img
-                      src={student.img}
-                      alt={student.name}
-                      className="w-full h-full rounded-full object-cover border-4 border-white shadow-sm"
-                    />
-                  </div>
-
-                  {/* Details - Compact List */}
-                  <div className="ml-6 flex-grow">
-                    <h3 className="text-base font-bold text-[#1E2A78] leading-tight mb-1">
-                      {student.name}
-                    </h3>
-
-                    <div className="flex items-center gap-3">
-                      <span className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">
-                        {student.dept}
-                      </span>
-                      <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
-                      <span className="text-sm font-black text-gray-700">
-                        {student.company}
-                      </span>
-                    </div>
-
-                    <div className="mt-2 text-[#1E2A78] font-bold text-sm">
-                      <span className="text-[10px] text-gray-400 font-medium uppercase mr-2">
-                        CTC:
-                      </span>
-                      {student.ctc}
-                    </div>
-                  </div>
-                </div>
-              ))}
+              "1cRDnInrGMCU9XOhEQzrqaXRVgygS7x1G",
+              "1xFCnW_svYKSKW5qhC7yQhh8tNNGa0wc5",
+              "1VKytOuMzpC0Z0WHg1lyBKHUGeMZiNvMW",
+              "1lcsl2PeWgUBFNd3HfAkZGnRUXmlrod7R",
+              "1RTPvBUrvyxpkpcWI2J5aCydeoocHSxyv",
+              "1HQR5vydpXHLrLwinj_3d_4Z1hM59HCp5",
+              "1-UbVUdlZZTxI4PhzxJiTvr9g6FuaWtMR",
+            ].map((id, index) => (
+              <div
+                key={index}
+                className="w-[350px] h-[450px] mx-4 rounded-[2rem] overflow-hidden shadow-lg border border-gray-100 flex-shrink-0 group relative bg-white p-2"
+              >
+                <img
+                  src={imageProxyUrl(`https://drive.google.com/uc?export=view&id=${id}`)}
+                  alt="Placement Poster"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            ))}
           </InfiniteSlider>
         </div>
       </section>
@@ -1034,49 +1159,9 @@ export default function PlacementClient() {
           {[
             {
               title: "Placement Drive 2019",
-              img: "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2019/09/Poster-24-04-2019_Page_08.jpg",
+              img: imageProxyUrl("https://drive.google.com/uc?export=view&id=1dZ4BvAJCPDcWhJ00zmSTMeewF-bPJa1w"),
               size: "lg:col-span-2 lg:row-span-2",
             }, // Large Square
-            {
-              title: "Campus Recruitment",
-              img: "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2019/09/Poster-24-04-2019_Page_06.jpg",
-              size: "lg:col-span-1 lg:row-span-1",
-            }, // Small Square
-            {
-              title: "Offer Letter Ceremony",
-              img: "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2019/09/Poster-24-04-2019_Page_09.jpg",
-              size: "lg:col-span-1 lg:row-span-2",
-            }, // Tall
-            {
-              title: "Industry Interaction",
-              img: "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2019/09/Poster-24-04-2019_Page_10.jpg",
-              size: "lg:col-span-1 lg:row-span-1",
-            }, // Small Square
-            {
-              title: "Placement 2025",
-              img: "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-18-at-10.44.25-AM-1-2048x2048.jpeg",
-              size: "lg:col-span-2 lg:row-span-1",
-            }, // Wide
-            {
-              title: "Recruitment Day",
-              img: "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-18-at-10.44.25-AM-2048x2048.jpeg",
-              size: "lg:col-span-1 lg:row-span-2",
-            }, // Tall
-            {
-              title: "Student Achievement",
-              img: "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-18-at-10.44.18-AM-1.jpeg",
-              size: "lg:col-span-1 lg:row-span-1",
-            }, // Small
-            {
-              title: "Corporate Visit",
-              img: "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-18-at-10.44.18-AM-2.jpeg",
-              size: "lg:col-span-1 lg:row-span-1",
-            }, // Small
-            {
-              title: "Placement Success",
-              img: "https://cdn-ilckkap.nitrocdn.com/rMNIGAqtniUxPuOnJDQbsPYclpYTbDLa/assets/images/optimized/rev-b79922c/www.aiet.org.in/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-18-at-10.44.18-AM.jpeg",
-              size: "lg:col-span-1 lg:row-span-1",
-            }, // Small
           ].map((item, index) => (
             <div
               key={index}
@@ -1125,11 +1210,11 @@ export default function PlacementClient() {
                 </span>
               </div>
               <h2 className="text-5xl font-black text-[#1E2A78] mb-8 leading-tight">
-                Alva's <span className="text-[#F4C430]">Pragati.</span>
+                Alva&apos;s <span className="text-[#F4C430]">Pragati.</span>
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                Alva's Pragati is a premier mega placement drive organized by
-                Alva's Education Foundation, Moodbidri. Established in 2010, it
+                Alva&apos;s Pragati is a premier mega placement drive organized by
+                Alva&apos;s Education Foundation, Moodbidri. Established in 2010, it
                 has grown to become one of the most significant recruitment
                 events in the region, connecting thousands of job seekers with
                 hundreds of premier companies across various sectors including
@@ -1243,6 +1328,159 @@ export default function PlacementClient() {
           </div>
         </div>
       </section>
+
+      {/* WHY AIET & BUILD YOUR CAREER SECTION */}
+      <section className="px-6 md:px-20 py-24 bg-white relative">
+        <div className="max-w-7xl mx-auto bg-white p-10 md:p-16 rounded-[3rem] shadow-xl border border-gray-100 relative z-10">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-black text-[#1E2A78]">
+              Why AIET is a Preferred Destination
+            </h3>
+            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
+              AIET’s dedicated placement ecosystem focuses on maximizing career opportunities for every student.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              "Advanced pre-placement technical training programs from 2nd year",
+              "Technical skill development workshops",
+              "Soft skills and personality enhancement sessions right from 1st semester",
+              "Internship opportunities with PPO offers ranging from 6LPA-34LPA",
+              "On-campus and off-campus recruitment drives",
+              "Pool campus and mass hiring events",
+              "Resume building and LinkedIn profile optimization",
+              "Mock interviews, aptitude training, and HR preparation",
+              "Guidance from company professionals including in-house Tech Centre"
+            ].map((feature, i) => (
+              <div key={i} className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#1E2A78]/10 flex items-center justify-center mt-1">
+                  <div className="w-3 h-3 bg-[#F4C430] rounded-full"></div>
+                </div>
+                <p className="text-gray-700 font-medium leading-relaxed">{feature}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 text-center border-t border-gray-100 pt-12">
+            <h4 className="text-2xl font-bold text-[#1E2A78] mb-4">Build Your Career with AIET</h4>
+            <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              The Training & Placement Department is committed to building successful careers by combining academic excellence, practical exposure, and strong industry engagement. With advanced skill development programs, internship access, robust placement support, and personalized mentoring, AIET empowers students to achieve exceptional professional success.
+            </p>
+            <p className="text-[#F4C430] font-black uppercase tracking-widest mt-6">
+              Join AIET — Where Engineering Education Meets Career Excellence.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FACULTY MODAL */}
+      <AnimatePresence>
+        {selectedMember && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-[#0F172A]/80 backdrop-blur-sm"
+              onClick={() => setSelectedMember(null)}
+            />
+            
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              className="relative w-full max-w-2xl bg-white rounded-3xl overflow-hidden shadow-2xl z-10 flex flex-col md:flex-row"
+            >
+              {/* Close Button */}
+              <button 
+                onClick={() => setSelectedMember(null)}
+                className="absolute top-4 right-4 z-20 p-2 bg-white/50 hover:bg-gray-100 rounded-full transition-colors backdrop-blur-md"
+              >
+                <X className="w-5 h-5 text-gray-700" />
+              </button>
+
+              {/* Left Side: Photo */}
+              <div className="md:w-2/5 bg-gradient-to-br from-[#1E2A78] to-[#1E2A78]/80 p-8 flex flex-col items-center justify-center">
+                <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-xl mb-4">
+                  <img
+                    src={selectedMember.img}
+                    alt={selectedMember.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src =
+                        "https://ui-avatars.com/api/?name=" +
+                        encodeURIComponent(selectedMember.name) +
+                        "&background=fff&color=1E2A78&size=200";
+                    }}
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-white text-center">{selectedMember.name}</h3>
+                <p className="text-blue-200 text-sm font-medium text-center mt-1">{selectedMember.designation || selectedMember.role}</p>
+              </div>
+
+              {/* Right Side: Details */}
+              <div className="md:w-3/5 p-8 max-h-[80vh] overflow-y-auto">
+                <div className="space-y-6">
+                  {selectedMember.email && (
+                    <div>
+                      <p className="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase mb-1">Email</p>
+                      <p className="text-[#1E2A78] font-medium">{selectedMember.email}</p>
+                    </div>
+                  )}
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    {selectedMember.joiningDate && (
+                      <div>
+                        <p className="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase mb-1">Joining Date</p>
+                        <p className="text-[#1E2A78] font-medium">{selectedMember.joiningDate}</p>
+                      </div>
+                    )}
+                    {selectedMember.educationalQualifications && (
+                      <div>
+                        <p className="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase mb-1">Qualifications</p>
+                        <p className="text-[#1E2A78] font-medium">{selectedMember.educationalQualifications}</p>
+                      </div>
+                    )}
+                    {selectedMember.yearOfExperience && (
+                      <div>
+                        <p className="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase mb-1">Experience (AIET)</p>
+                        <p className="text-[#1E2A78] font-medium">{selectedMember.yearOfExperience}</p>
+                      </div>
+                    )}
+                    {selectedMember.pastExperience && (
+                      <div>
+                        <p className="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase mb-1">Past Experience</p>
+                        <p className="text-[#1E2A78] font-medium">{selectedMember.pastExperience}</p>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {selectedMember.areasOfInterest && (
+                    <div>
+                      <p className="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase mb-1">Areas of Interest</p>
+                      <p className="text-[#1E2A78] font-medium">{selectedMember.areasOfInterest}</p>
+                    </div>
+                  )}
+                  
+                  {selectedMember.subjectsTeaching && (
+                    <div>
+                      <p className="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase mb-1">Subjects Teaching</p>
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {selectedMember.subjectsTeaching.split(',').map((subject: string, idx: number) => (
+                          <span key={idx} className="bg-[#F8F9FB] border border-gray-100 text-[#1E2A78] px-3 py-1 rounded-full text-xs font-medium">
+                            {subject.trim()}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       <Footer />
     </div>

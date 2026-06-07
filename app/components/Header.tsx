@@ -121,7 +121,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
       dd.style.left = "50%";
       dd.style.width = "100%";
       if (dd.id === "academics-dropdown") {
-        dd.style.setProperty("max-width", "700px", "important");
+        dd.style.setProperty("max-width", "1000px", "important");
       } else {
         dd.style.setProperty("max-width", "1200px", "important");
       }
@@ -690,7 +690,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
               className="dropdown-menu transition-all duration-200 z-[9999]"
             >
               <div className="bg-white border border-[#edf2f7] border-t-[3px] border-t-[#b77a00] rounded-xl shadow-lg p-8">
-                <div className="grid grid-cols-2 gap-10">
+                <div className="grid grid-cols-3 gap-10">
                   {/* Column 1 - UG Programmes */}
                   <div>
                     <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4">
@@ -707,7 +707,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                         href="/academics/ai"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
-                        Artificial Intelligence & ML
+                        Artificial Intelligence & Machine Learning Engineering
                       </Link>
                       <Link
                         href="/academics/cse"
@@ -725,8 +725,17 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                         href="/academics/ece"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
-                        Electronics & Communication Engg
+                        Electronics & Communication Engineering
                       </Link>
+                    </div>
+                  </div>
+
+                  {/* Column 2 - UG Programmes (Continued) */}
+                  <div>
+                    <h3 className="text-[0.9rem] font-bold text-[#1e293b] uppercase tracking-wider border-b border-[#e2e8f0] pb-2 mb-4 opacity-0 hidden md:block select-none pointer-events-none">
+                      Continued
+                    </h3>
+                    <div className="space-y-1">
                       <Link
                         href="/academics/ise"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
@@ -743,19 +752,19 @@ export default function Header({ onMenuToggle }: HeaderProps) {
                         href="/academics/icb"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
-                        IoT, ICB & BlockChain
+                        Computer Science & Engineering (IoT, ICB & BlockChain)
                       </Link>
                       <Link
                         href="/academics/ds"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
-                        Data Science
+                        Computer Science & Engineering (Data Science)
                       </Link>
                       <Link
                         href="/academics/cd"
                         className="block text-[0.9rem] text-[#475569] hover:text-[#b77a00] hover:pl-1 transition-all py-0.5"
                       >
-                        Computer Science & Design
+                        Computer Science & Engineering (Design) 
                       </Link>
                     </div>
                   </div>
