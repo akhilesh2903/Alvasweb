@@ -13,7 +13,7 @@ M4:	By imbibing the students with human values and ethics through transformative
 
 `,
   hod: {
-    name: "Dr. ECE HOD",
+    name: "Dr. Ece Hod",
     designation: "Professor & HOD - ECE",
     qualification: "Ph.D",
     experience: "15+ Years",
@@ -37,7 +37,7 @@ M4:	By imbibing the students with human values and ethics through transformative
   faculty: [
     {
       name: "Faisal.K",
-      designation: "Sr Assistant Professor",
+      designation: "Senior Assistant Professor",
       qualification: "M.Tech",
       experience: "1 year 5 months (AIET)",
       email: "faisalk@aiet.org.in",
@@ -64,8 +64,8 @@ M4:	By imbibing the students with human values and ethics through transformative
       },
     },
     {
-      name: "MRS. VIJETHA T S",
-      designation: "Senior Assistant professor",
+      name: "Mrs. Vijetha T S",
+      designation: "Senior Assistant Professor",
       qualification: "B.E., M.Tech, (Ph.D)",
       experience: "15 years",
       email: "tsvijetha@aiet.org.in",
@@ -104,7 +104,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       },
     },
     {
-      name: "SUDHAKARA H M",
+      name: "Sudhakara H M",
       designation: "Associate Professor",
       qualification: "B.E., M.Tech",
       experience: "12 years (AIET)",

@@ -17,7 +17,7 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
 `,
   hod: {
     name: "Dr. Satyanarayan",
-    designation: "Professor & HOD - MECH",
+    designation: "Professor & HOD - Mech",
     qualification: "Ph.D",
     experience: "15+ Years",
     email: "hodmech@alvas.edu.in",
@@ -41,7 +41,7 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
   },
   faculty: [
     {
-      name: "Dr. GURUSHANTH B VAGGAR",
+      name: "Dr. Gurushanth B Vaggar",
       designation: "Associate Professor",
       qualification: "B.E, M.Tech, Ph.D",
       experience: "21 Years",
@@ -65,7 +65,7 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
     },
     {
       name: "Prof. Sharathchandra Prabhu",
-      designation: "Sr. Assistant Professor",
+      designation: "Senior Assistant Professor",
       qualification: "B.E, M.Tech",
       experience: "21 Years",
       email: "sharathchandraprabhu@aiet.org.in",
@@ -88,7 +88,7 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
     },
     {
       name: "Prof. Hemanth Suvarna",
-      designation: "Sr. Assistant Professor",
+      designation: "Senior Assistant Professor",
       qualification: "B.E, M.Tech",
       experience: "21 Years",
       email: "hemanthsuvarna@aiet.org.in",
@@ -110,7 +110,7 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
       },
     },
     {
-      name: "Dr KIRAN C.H",
+      name: "Dr Kiran C.H",
       designation: "Assistant Professor",
       qualification: "B.E, M.Tech, Ph.D",
       experience: "15 Years",
@@ -157,7 +157,7 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
     },
     {
       name: "Dr. Kumar Swamy M C",
-      designation: "Sr. Assistant Professor",
+      designation: "Senior Assistant Professor",
       qualification: "B.E, M.Tech, Ph.D",
       experience: "14 Years",
       email: "mckswamy@aiet.org.in",
@@ -179,7 +179,7 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
       },
     },
     {
-      name: "Mr. DEEPAK KOTHARI",
+      name: "Mr. Deepak Kothari",
       designation: "Assistant Professor",
       qualification: "B.E., M.Tech.",
       experience: "15 Years",
@@ -202,7 +202,7 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
       },
     },
     {
-      name: "Mr. SRINIVASA C S",
+      name: "Mr. Srinivasa C S",
       designation: "Assistant Professor",
       qualification: "B.E, M.Tech, (Ph.D)",
       experience: "13 Years",
@@ -225,7 +225,7 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
       },
     },
     {
-      name: "Mr. PRAVEEN K C",
+      name: "Mr. Praveen K C",
       designation: "Assistant Professor",
       qualification: "B.E, M.Tech",
       experience: "15 Years",

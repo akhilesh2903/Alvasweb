@@ -203,7 +203,7 @@ M3: Inculcate ethical values, leadership qualities, and entrepreneurial skills t
     },
     {
       name: "Shrikanth N G",
-      designation: "Sr. Assistant Professor",
+      designation: "Senior Assistant Professor",
       qualification: "M.Tech",
       experience: "13 Years",
       email: "shrikanthng@aiet.org.in",
@@ -242,7 +242,7 @@ M3: Inculcate ethical values, leadership qualities, and entrepreneurial skills t
       },
     },
     {
-      name: "Dr. SRINIVASAN G",
+      name: "Dr. Srinivasan G",
       designation: "Professor",
       qualification: "Ph.D.",
       experience: "19.6 Years Teaching + 4 Years Industry",
@@ -320,7 +320,7 @@ M3: Inculcate ethical values, leadership qualities, and entrepreneurial skills t
       },
     },
     {
-      name: "Mr. KULAI GANESH VASANT KINI",
+      name: "Mr. Kulai Ganesh Vasant Kini",
       designation: "Assistant Professor",
       qualification: "M.Tech",
       experience: "12 Years (2 Years Teaching)",

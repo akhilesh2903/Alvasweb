@@ -14,7 +14,7 @@ M2: To create agriculture engineers who are both technically proficient and mora
 M3: To develop and enhance novel technologies to address current and foreseeable issues in agriculture.`,
   hod: {
     name: "Dr. K.V. Suresh",
-    designation: "Professor and Head of the Department",
+    designation: "Professor And Head Of The Department",
     qualification: "B.E., M.Tech, PhD",
     experience: "35 Years",
     email: "aietag08@aiet.org.in",
@@ -110,7 +110,7 @@ M3: To develop and enhance novel technologies to address current and foreseeable
     },
     {
       name: "Dr. Yamagar S. G.",
-      designation: "Sr. Assistant Professor",
+      designation: "Senior Assistant Professor",
       qualification: "B. Tech, M. Tech, Ph. D",
       experience: "2 Years",
       email: "ysujitrao@aiet.org.in",

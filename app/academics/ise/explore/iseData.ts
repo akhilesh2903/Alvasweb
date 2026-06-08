@@ -14,7 +14,7 @@ M3: To foster students to become successful technocrats to meet global competenc
 M4: To develop entrepreneurship skills with active research and innovation by inculcating ethical values among students.`,
   hod: {
     name: "Dr. Ravindra B V",
-    designation: "Professor & HOD - ISE",
+    designation: "Professor & HOD - Ise",
     qualification: "Ph.D",
     experience: "15+ Years",
     email: "hodise@alvas.edu.in",

@@ -14,8 +14,8 @@ M4:	By imbibing the students with human values and ethics through transformative
 
 `,
   hod: {
-    name: "Dr. BSH HOD",
-    designation: "Professor & HOD - BSH",
+    name: "Dr. Bsh Hod",
+    designation: "Professor & HOD - Bsh",
     qualification: "Ph.D",
     experience: "15+ Years",
     email: "hodbsh@alvas.edu.in",
@@ -38,7 +38,7 @@ M4:	By imbibing the students with human values and ethics through transformative
   faculty: Array.from(
     { length: 10 },
     (_, i): Faculty => ({
-      name: `Prof. BSH Faculty ${i + 1}`,
+      name: `Prof. Bsh Faculty ${i + 1}`,
       designation:
         (i + 1) % 3 === 0 ? "Associate Professor" : "Assistant Professor",
       qualification: (i + 1) % 2 === 0 ? "M.Tech, Ph.D" : "M.Tech",

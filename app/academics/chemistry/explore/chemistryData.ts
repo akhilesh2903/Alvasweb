@@ -17,7 +17,7 @@ M4:Inculcate the basic principles of Chemistry for interdisciplinary innovative 
 `,
   hod: {
     name: "Dr. Ravi Kumar C",
-    designation: "Professor & HOD - CHEMISTRY",
+    designation: "Professor & HOD - Chemistry",
     qualification: "Ph.D",
     experience: "15+ Years",
     email: "hodchemistry@alvas.edu.in",
@@ -42,7 +42,7 @@ M4:Inculcate the basic principles of Chemistry for interdisciplinary innovative 
   faculty: Array.from(
     { length: 10 },
     (_, i): Faculty => ({
-      name: `Prof. CHEMISTRY Faculty ${i + 1}`,
+      name: `Prof. Chemistry Faculty ${i + 1}`,
       designation:
         (i + 1) % 3 === 0 ? "Associate Professor" : "Assistant Professor",
       qualification: (i + 1) % 2 === 0 ? "M.Tech, Ph.D" : "M.Tech",

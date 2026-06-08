@@ -17,7 +17,7 @@ M4: To develop in them a strong commitment to embrace cross cultural diversity a
 `,
   hod: {
     name: "Mrs. Priya Sequiera",
-    designation: "HOD, Sr. Asst. Professor",
+    designation: "Senior Assistant Professor",
     qualification: "MBA",
     experience: "7 Years (AIET)",
     email: "priyasequiera@aiet.org.in",
@@ -150,7 +150,7 @@ Let us work together to create leaders who do not just succeed, but make a diffe
     },
     {
       name: "Dr. Vijay Joshi",
-      designation: "Sr. Assistant Professor",
+      designation: "Senior Assistant Professor",
       qualification: "BBA, MBA, PhD",
       experience: "1 Year (AIET), 16 Years (Total)",
       email: "vijayjoshi@aiet.org.in",
@@ -178,7 +178,7 @@ Let us work together to create leaders who do not just succeed, but make a diffe
     },
     {
       name: "Mr. Johnson Fernandes",
-      designation: "Senior Asst. Professor",
+      designation: "Senior Assistant Professor",
       qualification: "MBA",
       experience: "14 Years (AIET), 15 Years (Total)",
       email: "johnsonfernandes@aiet.org.in",
@@ -389,7 +389,7 @@ Let us work together to create leaders who do not just succeed, but make a diffe
     },
     {
       name: "Mr. Samyak Jain",
-      designation: "Assistant Professor & Placement Officer",
+      designation: "Assistant Professor",
       qualification: "MBA",
       experience: "8 Months (AIET), 2 Years (Total)",
       email: "samyakjain@aiet.org.in",

@@ -13,7 +13,7 @@ M2: To produce civil engineers of high caliber, technical skills and ethical val
 M3: To promote innovation in the minds of future engineers to face the challenges.`,
   hod: {
     name: "Mr.Durgaprasad Baliga",
-    designation: "Professor & HOD - CIVIL",
+    designation: "Professor & HOD - Civil",
     qualification: "Ph.D",
     experience: "15+ Years",
     email: "hodcivil@alvas.edu.in",
@@ -38,7 +38,7 @@ M3: To promote innovation in the minds of future engineers to face the challenge
   faculty: Array.from(
     { length: 10 },
     (_, i): Faculty => ({
-      name: `Prof. CIVIL Faculty ${i + 1}`,
+      name: `Prof. Civil Faculty ${i + 1}`,
       designation:
         (i + 1) % 3 === 0 ? "Associate Professor" : "Assistant Professor",
       qualification: (i + 1) % 2 === 0 ? "M.Tech, Ph.D" : "M.Tech",
