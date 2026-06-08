@@ -46,7 +46,7 @@ export default function Home() {
         {/* <CampusDiaries /> */}
 
         <CampusHighlights />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Footer />
         
       </main>

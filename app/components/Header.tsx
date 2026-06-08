@@ -292,13 +292,6 @@ export default function Header({ onMenuToggle }: HeaderProps) {
 
         <div className="flex gap-6 tracking-wide items-center font-bold">
           <a
-            href="#"
-            className="flex items-center gap-2 bg-slate-800 text-[#b77a00] px-4 py-1.5 rounded-full hover:bg-[#b77a00] hover:text-slate-900 transition"
-          >
-            <i className="fas fa-cube text-lg"></i>
-            360° View
-          </a>
-          <a
             href="https://admissions.alvas.org/engineering-application-form"
             target="_blank"
             rel="noopener noreferrer"

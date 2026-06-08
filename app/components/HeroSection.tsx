@@ -22,9 +22,6 @@ export default function HeroSection() {
           <a href="https://admissions.alvas.org/engineering-application-form" target="_blank" rel="noopener noreferrer" className="inline-block bg-yellow-500 text-blue-900 font-extrabold py-4 px-10 rounded shadow-2xl hover:bg-white transition-all text-xs md:text-sm uppercase tracking-widest hover:shadow-[0_0_20px_rgba(251,191,36,0.6)] hover:-translate-y-1">
             Apply Now 2026
           </a>
-          <button className="border-2 border-white backdrop-blur-sm hover:bg-white hover:text-blue-900 font-bold py-4 px-10 rounded transition-all text-xs md:text-sm uppercase tracking-widest hover:shadow-lg">
-            Take Virtual Tour
-          </button>
         </div>
       </div>
     </section>

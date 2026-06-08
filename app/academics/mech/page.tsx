@@ -280,29 +280,10 @@ export default function MECHPage() {
         ref={videoSectionRef}
         className="mb-16 reveal w-full overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl font-black text-gray-900 mb-4 serif">
-            Course Overview Video
-          </h2>
-          <p className="text-sm text-gray-700 mb-6">
-            Watch a quick overview about the course.
-          </p>
-        </div>
+        
         <div className="w-screen relative left-1/2 -translate-x-1/2 border-y border-gray-300 shadow-2xl bg-gray-900 overflow-hidden">
           <div className="aspect-[16/6] md:aspect-[21/9] w-full">
-            <video
-              className="w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
-              <source
-                src="/videos/vecteezy_inside-a-massive-data-center-showing-rows-of-servers-and-cables_71747904.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
+            <img src="/Top-_and_best_ranked_engineering_college_in_karnataka.jpg" className="w-full h-full object-cover" alt="Top ranked engineering college in Karnataka" />
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-6">
@@ -405,11 +386,15 @@ export default function MECHPage() {
             <div className="w-full md:w-1/3">
               <div className="relative">
                 <div className="absolute inset-0 bg-indigo-600 rounded-[2.5rem] rotate-6 scale-95 opacity-20"></div>
-                <img
-                  src={deptData.hod.photo}
-                  className="w-full h-[400px] object-cover object-top rounded-[2.5rem] shadow-2xl relative z-10 border-4 border-white"
-                  alt={deptData.hod.name}
-                />
+                {deptData.hod.photo ? (
+                  <img
+                    src={deptData.hod.photo}
+                    className="w-full h-[400px] object-cover object-top rounded-[2.5rem] shadow-2xl relative z-10 border-4 border-white"
+                    alt={deptData.hod.name}
+                  />
+                ) : (
+                  <div className="w-full h-[400px] bg-[#fdfbf7] rounded-[2.5rem] shadow-2xl relative z-10 border-4 border-white"></div>
+                )}
               </div>
             </div>
             <div className="w-full md:w-2/3">
@@ -496,11 +481,15 @@ export default function MECHPage() {
                   onClick={() => openFacultyModal(member)}
                 >
                   <div className="relative overflow-hidden rounded-2xl mb-6 aspect-square">
-                    <img
-                      src={member.photo}
-                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
-                      alt={member.name}
-                    />
+                    {member.photo ? (
+                      <img
+                        src={member.photo}
+                        className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
+                        alt={member.name}
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-[#fdfbf7] group-hover:scale-110 transition-transform duration-700 flex items-center justify-center"></div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
                   <h3 className="text-lg font-black text-gray-900 serif mb-1 group-hover:text-indigo-600 transition-colors">
@@ -570,11 +559,15 @@ export default function MECHPage() {
             <div className="bg-[#f8f9fa] p-8 pb-6 border-b border-gray-100 flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-tr from-indigo-500 to-indigo-200 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-                <img
-                  src={selectedFaculty.photo}
-                  className="w-40 h-40 md:w-52 md:h-52 object-cover object-top rounded-full shadow-2xl border-4 border-white relative z-10"
-                  alt={selectedFaculty.name}
-                />
+                {selectedFaculty.photo ? (
+                  <img
+                    src={selectedFaculty.photo}
+                    className="w-40 h-40 md:w-52 md:h-52 object-cover object-top rounded-full shadow-2xl border-4 border-white relative z-10"
+                    alt={selectedFaculty.name}
+                  />
+                ) : (
+                  <div className="w-40 h-40 md:w-52 md:h-52 bg-[#fdfbf7] rounded-full shadow-2xl border-4 border-white relative z-10 flex items-center justify-center"></div>
+                )}
               </div>
 
               <div className="flex-1 mt-4 md:mt-0">
