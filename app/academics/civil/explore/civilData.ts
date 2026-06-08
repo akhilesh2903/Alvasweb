@@ -6,7 +6,7 @@ const imageProxyUrl = (url: string) =>
 export const civilDepartmentData: DepartmentData = {
   id: "civil",
   name: "Department of Civil",
-  title: "Department of Civil Engineering",
+  title: "Civil Engineering",
   vision: `To become a leader in the field of Civil Engineering by imparting quality education in developing highly competent manpower and promote research to meet the current and future challenges in Civil Engineering.`,
   mission: `M1: To impart knowledge by creating conducive teaching-learning environment.
 M2: To produce civil engineers of high caliber, technical skills and ethical values, to serve the society.
@@ -46,7 +46,7 @@ M3: To promote innovation in the minds of future engineers to face the challenge
       email: `faculty${i + 1}.civil@alvas.edu.in`,
       phone: `+91 90000 000${(i + 1).toString().padStart(2, "0")}`,
       aoi: "Specialized Research Area",
-      photo: `https://images.unsplash.com/photo-${1500000000000 + (i + 1) * 10000 + 4}?auto=format&fit=crop&w=400&q=80`,
+      photo: "",
       joiningDate: `01-01-20${15 + ((i + 1) % 8)}`,
       details: {
         qualifications: `BE in CIVIL, M.Tech in Specialization`,

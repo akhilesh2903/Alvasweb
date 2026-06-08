@@ -6,7 +6,7 @@ const imageProxyUrl = (url: string) =>
 export const aiDepartmentData: DepartmentData = {
   id: "ai",
   name: "Department of Artificial Intelligence & Machine Learning",
-  title: "Department of Artificial Intelligence & Machine Learning",
+  title: "Artificial Intelligence & Machine Learning Engineering",
   vision: `To produce globally competent professionals in Artificial Intelligence and Machine Learning by fostering cognitive learning, innovation, and strong industry collaboration for the betterment of society.`,
   mission: `M1: Impart knowledge in cutting-edge Artificial Intelligence and Machine Learning technologies in line with evolving industry standards.
 M2: Promote research, innovation, and lifelong learning to address real-world challenges and contribute to societal development.
@@ -104,7 +104,7 @@ M3: Inculcate ethical values, leadership qualities, and entrepreneurial skills t
       experience: "18+ Years",
       email: "pradeepn@aiet.org.in",
       phone: "+91 90000 00000",
-      photo: `https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80`,
+      photo: "",
       details: {
         qualifications: `• Ph.D. in Computer Science and Engineering - NITK, Surathkal (2023)
 • M.Tech in Software Engineering - VTU, Belgaum (2009)
@@ -157,7 +157,7 @@ M3: Inculcate ethical values, leadership qualities, and entrepreneurial skills t
       experience: "8 Years",
       email: "kiranraj@aiet.org.in",
       phone: "+91 90000 00000",
-      photo: `https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80`,
+      photo: "",
       details: {
         qualifications: `• M.Tech in Computer Science & Engineering - VTU (2016)
 • B.E in Information Science & Engineering - VTU (2014)
@@ -208,7 +208,7 @@ M3: Inculcate ethical values, leadership qualities, and entrepreneurial skills t
       experience: "13 Years",
       email: "shrikanthng@aiet.org.in",
       phone: "+91 90000 00000",
-      photo: `https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80`,
+      photo: "",
       joiningDate: "05-09-2022",
       details: {
         qualifications: `• M.Tech.
@@ -248,7 +248,7 @@ M3: Inculcate ethical values, leadership qualities, and entrepreneurial skills t
       experience: "19.6 Years Teaching + 4 Years Industry",
       email: "srinivasgopalan@aiet.org.in",
       phone: "+91 90000 00000",
-      photo: `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80`,
+      photo: "",
       details: {
         qualifications: `• Ph.D. in Computer Science and Engineering - Sathyabama University (2017)
 • M.Tech in Advanced Computing - SASTRA University, Thanjavur (2005)
@@ -326,7 +326,7 @@ M3: Inculcate ethical values, leadership qualities, and entrepreneurial skills t
       experience: "12 Years (2 Years Teaching)",
       email: "ganesh.kini@aiet.org.in",
       phone: "+91 90000 00000",
-      photo: `https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80`,
+      photo: "",
       details: {
         qualifications: `• M.Tech in Data Science and Machine Learning - PES University (2023)
 • B.E in Mechanical Engineering - University of Mysore (2001)

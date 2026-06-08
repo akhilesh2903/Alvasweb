@@ -6,7 +6,7 @@ const imageProxyUrl = (url: string) =>
 export const iseDepartmentData: DepartmentData = {
   id: "ise",
   name: "Department of Information Science and Engineering",
-  title: "Department of Information Science and Engineering",
+  title: "Information Science & Engineering",
   vision: `To impart quality learning and nurture students to become successful technocrats by achieving excellence in Information Science and Engineering for addressing the evolving needs of the industry as well as society.`,
   mission: `M1: To provide quality technical education and research training for preparing competent professionals in the Information Technology field.
 M2: To provide suitable infrastructure and an environment that inculcates best engineering practices for the socio-economic development of society.

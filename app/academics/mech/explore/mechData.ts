@@ -6,7 +6,7 @@ const imageProxyUrl = (url: string) =>
 export const mechDepartmentData: DepartmentData = {
   id: "mech",
   name: "Department of Mech",
-  title: "Department of Mech Engineering",
+  title: "Mechanical Engineering",
   vision: `Impart Quality Technical Education to excel in Mechanical Engineering to meet the needs of the community.
 `,
   mission: `M1:Empower student knowledge in basic and applied areas of Mechanical Engineering.

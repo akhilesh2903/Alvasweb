@@ -66,8 +66,7 @@ export const cseDepartmentData: DepartmentData = {
       email: "madhusudhan@aiet.org.in",
       phone: "NA",
       aoi: "Computer Vision, Image Processing, Computational Neural sciences",
-      photo:
-        "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "18-11-2020",
       details: {
         qualifications: "BE, MTech, Ph.D.",
@@ -197,8 +196,7 @@ Patent Publication: A SYSTEM AND METHOD FOR DETECTING AND PREVENTING IMAGE FORGE
       email: "jayendra@aiet.org.in",
       phone: "NA",
       aoi: "Software Development, Programming, Design of new Product, Test Automation",
-      photo:
-        "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "21-04-2025",
       details: {
         qualifications: `B.E, M.Tech
@@ -239,8 +237,7 @@ Zero defect Achiever award on Test automation project`,
       email: "kiranbv@aiet.org.in",
       phone: "NA",
       aoi: "Microcontrollers, IoT, Digital Design",
-      photo:
-        "https://images.unsplash.com/photo-1531123897727-8f129e16fd3c?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "07-08-2023",
       details: {
         qualifications: "B.E., M.Tech",
@@ -274,8 +271,7 @@ Zero defect Achiever award on Test automation project`,
       email: "maheshkini@aiet.org.in",
       phone: "NA",
       aoi: "NLP, AI, & Robotics.",
-      photo:
-        "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "05-02-2023",
       details: {
         qualifications: "BE(CSE), MTech (CSE)",
@@ -400,8 +396,7 @@ Angular JS and Python Programming`,
       email: "vidya@aiet.org.in",
       phone: "NA",
       aoi: "Computer Networks, Web Technology, Cloud computing, Network Security",
-      photo:
-        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "20-07-2013",
       details: {
         qualifications: "B.E, M.Tech",
@@ -468,8 +463,7 @@ Data Analytics
 IOT
 Generative AI
 Computer Networks`,
-      photo:
-        "https://images.unsplash.com/photo-1557862951-ef757a68ea23?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "11-10-2021",
       details: {
         qualifications: "B.E, M.TECH",
@@ -514,8 +508,7 @@ Artificial Intelligence`,
       email: "giridhargowda@aiet.org.in",
       phone: "NA",
       aoi: "Machine Learning, Deep Learning, Natural Language Processing.",
-      photo:
-        "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "02-11-2023",
       details: {
         qualifications: "MTech",
@@ -606,8 +599,7 @@ M.Tech - Computer Science and Engineering (2023-2025), University of Visvesvaray
       email: "maheshdk@aiet.org.in",
       phone: "NA",
       aoi: "Machine Learning, Deep Learning, Generative AI",
-      photo:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "03-02-2026",
       details: {
         qualifications: `B.E - Computer Science and Engineering (2018-2022), APS College of Engineering Bangalore (VTU)
@@ -717,8 +709,7 @@ FDP/Workshops/Trainings Attended:
       email: "rakshitharai31@gmail.com",
       phone: "NA",
       aoi: "Natural Language Processing, Ethical Hacking, Deep Learning",
-      photo:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "02-02-2026",
       details: {
         qualifications: `M.Tech, Srinivas Institute Of Technology, Valachil, Mangalore (VTU)
@@ -747,8 +738,7 @@ Teaching (1.5 years)`,
       email: "aysharameela19@gmail.com",
       phone: "NA",
       aoi: "Internet of Things (IoT), Artificial Intelligence and Machine Learning, C Programming, Embedded Systems",
-      photo:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "09-02-2026",
       details: {
         qualifications: `Graduation: B.E in ISE from YIT Moodbidri, India, 2023
@@ -781,8 +771,7 @@ Presented a research paper titled â€œBridging the Communication Gap: An Impr
       email: "jasmine@aiet.org.in",
       phone: "NA",
       aoi: "Artificial Intelligence, Machine Learning, IOT",
-      photo:
-        "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "02-09-2024",
       details: {
         qualifications: "B.E.",
@@ -810,8 +799,7 @@ Master of Computer Applications, Shree Devi Institute of Technology, Kenjar, Man
       email: "yogithak@aiet.org.in",
       phone: "NA",
       aoi: "Data Structures, Data communication & Computer Network, Database Management Systems",
-      photo:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "14-07-2025",
       details: {
         qualifications: `Bachelor of Computer Applications, Alvaâ€™s College, Moodubidire-2019
@@ -839,8 +827,7 @@ Master of Computer Applications, Shree Devi Institute of Technology, Kenjar, Man
 Web & Application Development
 Blockchain Technologies
 Digital Marketing & Crypto Ecosystems`,
-      photo:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "18-08-2025",
       details: {
         qualifications: "Bachelor of Engineering (BE)",

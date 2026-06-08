@@ -19,8 +19,7 @@ M4:	By imbibing the students with human values and ethics through transformative
     experience: "15+ Years",
     email: "hodece@alvas.edu.in",
     phone: "+91 98765 43214",
-    photo:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+    photo: "",
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",
@@ -44,8 +43,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       email: "faisalk@aiet.org.in",
       phone: "NA",
       aoi: "signal/image processing",
-      photo:
-        "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "01/10/2024",
       details: {
         qualifications: "M.Tech",
@@ -73,8 +71,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       email: "tsvijetha@aiet.org.in",
       phone: "NA",
       aoi: "Signal processing, Digital Communication, Electromagnetics, Machine Learning, Deep learning",
-      photo:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "26/07/2010",
       details: {
         qualifications:
@@ -114,8 +111,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       email: "sudhi123@aiet.org.in",
       phone: "NA",
       aoi: "Embedded System, Digital System design, Power Electronics",
-      photo:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "16-09-2013",
       details: {
         qualifications: "B.E., M.Tech",
@@ -148,8 +144,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       email: "ganeshvn@aiet.org.in",
       phone: "NA",
       aoi: "Nano-Technology, Cryptography, Analog and digital Signal Processing, Antenna Theory and Design, Analog and Digital Communication Systems, VLSI Design and Embedded Systems.",
-      photo:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "04-10-2023",
       details: {
         qualifications: "Ph.D, M.Tech(DE&CS), B.E",
@@ -185,8 +180,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       email: "roshans@aiet.org.in",
       phone: "NA",
       aoi: "Artificial Intelligence, Electromagnetics, Embedded Systems",
-      photo:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "27-07-2012",
       details: {
         qualifications: "M.Tech, Ph.D",

@@ -6,7 +6,7 @@ const imageProxyUrl = (url: string) =>
 export const agriDepartmentData: DepartmentData = {
   id: "agri",
   name: "Department of Agri",
-  title: "Department of Agri Engineering",
+  title: "Agriculture Engineering",
   vision:
     "To serve the country by producing high-caliber technocrats who can combine farming with engineering and technology interventions and contribute to global food security and sustainable growth in agricultural production.",
   mission: `M1: To impart knowledge by establishing an environment that is conducive to teaching and learning.
@@ -116,8 +116,7 @@ M3: To develop and enhance novel technologies to address current and foreseeable
       email: "ysujitrao@aiet.org.in",
       phone: "+91 9730764477",
       aoi: "Farm Equipment, Electric Vehicle (EV) in protected cultivation, Precision and Smart agriculture, Robotics and Drones in Agriculture.",
-      photo:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "01-09-2022",
       details: {
         qualifications:
@@ -158,8 +157,7 @@ M3: To develop and enhance novel technologies to address current and foreseeable
       email: "rakeshp@aiet.org.in",
       phone: "NA",
       aoi: "Research and NPD",
-      photo:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "19-09-2025",
       details: {
         qualifications: "M-Tech. Food Processing Technology",
@@ -183,8 +181,7 @@ M3: To develop and enhance novel technologies to address current and foreseeable
       email: "sharanb@aiet.org.in",
       phone: "NA",
       aoi: "Teaching and Research",
-      photo:
-        "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=400&q=80",
+      photo: "",
       joiningDate: "28-08-2025",
       details: {
         qualifications: "M-Tech. Farm Machinery and Power Engineering",

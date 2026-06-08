@@ -6,7 +6,7 @@ const imageProxyUrl = (url: string) =>
 export const cdDepartmentData: DepartmentData = {
   id: "cd",
   name: "Department of Cd",
-  title: "Department of Cd Engineering",
+  title: "Computer Science & Engineering (Design)",
   vision: `Centre of excellence to empower the young minds in the field of Department of Cd Engineering with research focus and skill development through transformative education catering to the needs of the society`,
   mission: `M1:	To create Learning Environment to enable the students for excellence in the field of Department of Cd Engineering.
 M2:	To empower the students with ncdssary skills for solving the complex technological problems.
@@ -111,7 +111,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       email: `faculty${i + 1}.cd@alvas.edu.in`,
       phone: `+91 90000 000${(i + 1).toString().padStart(2, "0")}`,
       aoi: "Specialized Research Area",
-      photo: `https://images.unsplash.com/photo-${1500000000000 + (i + 1) * 10000 + 4}?auto=format&fit=crop&w=400&q=80`,
+      photo: "",
       joiningDate: `01-01-20${15 + ((i + 1) % 8)}`,
       details: {
         qualifications: `BE in CD, M.Tech in Specialization`,

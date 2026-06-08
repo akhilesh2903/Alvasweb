@@ -20,8 +20,7 @@ M4:	By imbibing the students with human values and ethics through transformative
     experience: "15+ Years",
     email: "hodmca@alvas.edu.in",
     phone: "+91 98765 43214",
-    photo:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+    photo: "",
     joiningDate: "12-08-2010",
     details: {
       qualifications: "Ph.D in VLSI",
@@ -47,7 +46,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       email: `faculty${i + 1}.mca@alvas.edu.in`,
       phone: `+91 90000 000${(i + 1).toString().padStart(2, "0")}`,
       aoi: "Specialized Research Area",
-      photo: `https://images.unsplash.com/photo-${1500000000000 + (i + 1) * 10000 + 4}?auto=format&fit=crop&w=400&q=80`,
+      photo: "",
       joiningDate: `01-01-20${15 + ((i + 1) % 8)}`,
       details: {
         qualifications: `BE in MCA, M.Tech in Specialization`,

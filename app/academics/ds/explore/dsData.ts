@@ -3,7 +3,7 @@ import { DepartmentData, Faculty } from "@/lib/departments";
 export const dsDepartmentData: DepartmentData = {
   id: "ds",
   name: "Department of Ds",
-  title: "Department of Ds Engineering",
+  title: "Computer Science & Engineering (Data Science)",
   vision: `Centre of excellence to empower the young minds in the field of Department of Ds Engineering with research focus and skill development through transformative education catering to the needs of the society`,
   mission:
     `M1:	To create Learning Environment to enable the students for excellence in the field of Department of Ds Engineering.
@@ -108,7 +108,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       email: `faculty${i + 1}.ds@alvas.edu.in`,
       phone: `+91 90000 000${(i + 1).toString().padStart(2, "0")}`,
       aoi: "Specialized Research Area",
-      photo: `https://images.unsplash.com/photo-${1500000000000 + (i + 1) * 10000 + 4}?auto=format&fit=crop&w=400&q=80`,
+      photo: "",
       joiningDate: `01-01-20${15 + ((i + 1) % 8)}`,
       details: {
         qualifications: `BE in DS, M.Tech in Specialization`,
