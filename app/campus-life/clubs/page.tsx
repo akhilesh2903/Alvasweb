@@ -159,7 +159,7 @@ export default function ClubsActivityPage() {
         .ca-orb3 { width:250px;height:250px;background:radial-gradient(circle,rgba(192,0,29,.08),transparent 70%);top:8%;right:22%;animation-duration:22s;animation-delay:-3s; }
         @keyframes caOrbFloat { 0%{transform:translateY(0) scale(1)} 33%{transform:translateY(-35px) scale(1.04)} 66%{transform:translateY(18px) scale(.98)} 100%{transform:translateY(0) scale(1)} }
         .ca-hero,.ca-page-body { position:relative;z-index:1; }
-        .ca-hero { position:relative;height:520px;background:url('/DJI_0135.jpg') center/cover no-repeat;display:flex;align-items:flex-end;overflow:hidden; }
+        .ca-hero { position:relative;height:520px;background:url('/Top-_and_best_ranked_engineering_college_in_karnataka.jpg') center/cover no-repeat;display:flex;align-items:flex-end;overflow:hidden; }
         .ca-hero::before { content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.25),rgba(0,0,0,.75)); }
         .ca-hero::after { content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.06) 50%,transparent 60%);background-size:200% 100%;animation:caShimmer 6s ease-in-out infinite;pointer-events:none; }
         @keyframes caShimmer { 0%{background-position:-100% 0} 50%{background-position:200% 0} 100%{background-position:200% 0} }

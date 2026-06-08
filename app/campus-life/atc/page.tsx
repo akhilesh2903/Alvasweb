@@ -125,7 +125,7 @@ export default function ATCPage() {
       <section className="relative h-[60vh] w-full mt-[80px] overflow-hidden flex items-center justify-center bg-slate-950">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1558403194-611308249627?w=1800&q=80"
+            src="/Top-_and_best_ranked_engineering_college_in_karnataka.jpg"
             alt="Collaboration space"
             className="w-full h-full object-cover opacity-45 scale-105"
           />

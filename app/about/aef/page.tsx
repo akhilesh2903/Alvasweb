@@ -48,7 +48,7 @@ export default function AEFPage() {
             <section className="relative h-[70vh] w-full mt-[80px] overflow-hidden z-10">
                 <div className="absolute inset-0">
                     <img
-                        src="/DJI_0135.jpg"
+                        src="/Top-_and_best_ranked_engineering_college_in_karnataka.jpg"
                         alt="Alva's Education Foundation Campus — Aerial View"
                         className="w-full h-full object-cover scale-110 aef-hero-parallax"
                     />

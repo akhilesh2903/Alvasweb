@@ -207,7 +207,7 @@ export default function SkillLabsPage() {
         .sl-hero {
           position: relative;
           height: 520px;
-          background: url('/DJI_0135.jpg') center/cover no-repeat;
+          background: url('/Top-_and_best_ranked_engineering_college_in_karnataka.jpg') center/cover no-repeat;
           display: flex;
           align-items: flex-end;
           overflow: hidden;

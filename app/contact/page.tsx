@@ -188,7 +188,7 @@ export default function ContactPage() {
       <section className="relative h-[60vh] w-full mt-[80px] overflow-hidden z-10">
         <div ref={heroImgRef} className="absolute inset-0">
           <img
-            src="/DJI_0135.jpg"
+            src="/Top-_and_best_ranked_engineering_college_in_karnataka.jpg"
             alt="AIET Campus"
             className="w-full h-full object-cover scale-110"
           />

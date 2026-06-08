@@ -43,7 +43,7 @@ export default function AboutCollege() {
       {/* Hero Section */}
       <section className="relative h-[65vh] w-full mt-[80px] overflow-hidden">
         <img
-          src="/DJI_0135.jpg"
+          src="/Top-_and_best_ranked_engineering_college_in_karnataka.jpg"
           alt="AIET Campus Architecture"
           className="w-full h-full object-cover"
         />

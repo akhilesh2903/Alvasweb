@@ -6,9 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function AboutSection() {
   const [isTourOpen, setIsTourOpen] = useState(false);
-  const virtualTourImage = `/api/image-proxy?url=${encodeURIComponent(
-    "https://drive.google.com/uc?export=view&id=1UgoPupivLPhEcYoRc-QyWP6rE7uJXv4x",
-  )}`;
+  const virtualTourImage = "/Top-_and_best_ranked_engineering_college_in_karnataka.jpg";
   const virtualTourVideo =
     "https://www.youtube.com/embed/zB9gO40DBOc?autoplay=1&rel=0";
 

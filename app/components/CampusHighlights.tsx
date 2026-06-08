@@ -44,8 +44,8 @@ export default function CampusHighlights() {
     { id: 4, title: "Library", subtitle: "Library", description: "Digital and physical resources 24/7.", link: "/campus-life/library", image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800", position: 3 },
     { id: 5, title: "Sports & Culture", subtitle: "Sports", description: "World-class athletic facilities.", link: "/campus-life/sports-and-culture", image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800", position: 4 },
     { id: 6, title: "ATC", subtitle: "ATC", description: "Celebrating diversity and art.", link: "/campus-life/atc", image: "https://t3.ftcdn.net/jpg/01/54/24/96/360_F_154249693_9G4LPN3ywf3F4ZNuveNRCCPykS8GzjNz.jpg", position: 5 },
-    { id: 7, title: "MOU's", subtitle: "Community", description: "Real-world social impact.", link: "/campus-life/startups", image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800", position: 6 },
-    { id: 8, title: "Training", subtitle: "Admissions", description: "Start your journey today.", link: "/campus-life/campus", image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80", position: 7 }
+    { id: 7, title: "MOU's", subtitle: "Community", description: "Real-world social impact.", link: "/about/mou", image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800", position: 6 },
+    { id: 8, title: "Placement and Training", subtitle: "Placement and Training", description: "Start your journey today.", link: "/placement", image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80", position: 7 }
   ]
 
   // --- CYLINDER CONFIGURATION ---

@@ -20,7 +20,7 @@ export default function ChairmansMessage() {
       {/* Hero */}
       <section className="relative h-[55vh] w-full mt-[80px] overflow-hidden">
         <img
-          src="/DJI_0135.jpg"
+          src="/Top-_and_best_ranked_engineering_college_in_karnataka.jpg"
           alt="AIET Campus"
           className="w-full h-full object-cover"
         />

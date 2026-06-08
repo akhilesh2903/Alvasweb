@@ -20,7 +20,7 @@ const milestones = [
     The campus in Moodbidri quickly became a landmark, attracting students from across the state and eventually the nation. Dr. Alva's unique approach combined academic rigor with a deep respect for cultural heritage, ensuring that students received a holistic education. Early challenges were met with resilience, and the foundation's growth over the next few years was nothing short of phenomenal, setting the stage for the diverse array of institutions that would follow.`,
     icon: <FaBuilding />,
     color: '#b77700', // Mustard
-    image: '/DJI_0135.jpg'
+    image: '/Top-_and_best_ranked_engineering_college_in_karnataka.jpg'
   },
   { 
     year: '1996', 
@@ -31,7 +31,7 @@ const milestones = [
     The college boasts an extensive library of ancient manuscripts and modern research papers, fostering a scholarly environment. Students here engage in practical training at the attached hospital, gaining hands-on experience in treating patients using traditional methods. The faculty comprises renowned experts in the field, who mentor students not just in medical science but also in the ethical and compassionate aspects of healthcare. This holistic training ensures that graduates are well-prepared to serve society with dedication and skill.`,
     icon: <FaLeaf />,
     color: '#475569', // Slate
-    image: '/DJI_0135.jpg'
+    image: '/Top-_and_best_ranked_engineering_college_in_karnataka.jpg'
   },
   { 
     year: '2005', 
@@ -42,7 +42,7 @@ const milestones = [
     The award ceremony was a moment of pride for the entire Alva's family, including staff, students, and the local community. It validated the unique educational model championed by Dr. Alva, where cultural and extracurricular activities are given equal importance alongside academics. This recognition spurred further growth and innovation, inspiring the foundation to take on even more ambitious projects in the years to come, solidifying its reputation as a beacon of excellence in the state.`,
     icon: <FaAward />,
     color: '#b77700',
-    image: '/DJI_0135.jpg'
+    image: '/Top-_and_best_ranked_engineering_college_in_karnataka.jpg'
   },
   { 
     year: '2014', 
@@ -53,7 +53,7 @@ const milestones = [
     The research center is equipped with advanced laboratories and collaborates with other scientific institutions to conduct interdisciplinary studies. Regular seminars and conferences are organized to disseminate research findings and encourage intellectual exchange. This focus on research has not only enhanced the academic prestige of the institution but has also led to significant contributions in the field of Ayurvedic medicine, validating ancient practices with modern scientific evidence.`,
     icon: <FaUniversity />,
     color: '#475569',
-    image: '/DJI_0135.jpg'
+    image: '/Top-_and_best_ranked_engineering_college_in_karnataka.jpg'
   },
   { 
     year: '2019', 
@@ -64,7 +64,7 @@ const milestones = [
     The campus provides top-notch training facilities for NCC cadets, including firing ranges and obstacle courses. Regular camps are held where cadets undergo rigorous physical training and learn about team building and leadership. Many cadets from the institution have gone on to join the armed forces, serving the country with distinction. This award serves as a motivation for current and future students to embrace the values of discipline, patriotism, and selfless service.`,
     icon: <FaMedal />,
     color: '#b77700',
-    image: '/DJI_0135.jpg'
+    image: '/Top-_and_best_ranked_engineering_college_in_karnataka.jpg'
   },
   { 
     year: '2021', 
@@ -75,7 +75,7 @@ const milestones = [
     The celebrations were a grand affair, attended by dignitaries, alumni, and well-wishers from all walks of life. A series of events were organized throughout the year to commemorate the occasion, showcasing the diverse talents of the students. A special souvenir was released, documenting the journey of the foundation and its impact on society. The Silver Jubilee was not just a celebration of past achievements but a reaffirmation of the foundation's commitment to its vision of "Moulding a better tomorrow" for generations to come.`,
     icon: <FaAward />,
     color: '#475569',
-    image: '/DJI_0135.jpg'
+    image: '/Top-_and_best_ranked_engineering_college_in_karnataka.jpg'
   },
   { 
     year: '2024', 
@@ -86,7 +86,7 @@ const milestones = [
     The campus boasts world-class sports facilities, including synthetic tracks, swimming pools, and indoor stadiums. Expert coaches identify and nurture talent from a young age, providing them with personalized training programs and nutritional support. The success of Alva's athletes on the national and international stage has brought glory not just to the institution but to the entire nation. The foundation continues to invest heavily in sports, believing in its power to build character and unite people.`,
     icon: <FaMedal />,
     color: '#b77700',
-    image: '/DJI_0135.jpg'
+    image: '/Top-_and_best_ranked_engineering_college_in_karnataka.jpg'
   },
   { 
     year: '2025', 
@@ -97,7 +97,7 @@ const milestones = [
     The institution's approach to competitive exam preparation involves comprehensive study material, regular mock tests, and personalized doubt-clearing sessions. The faculty consists of experienced educators who are dedicated to helping students achieve their dreams. The success in NEET is just one example of the academic prowess of Alva's students, who consistently perform well in various other competitive examinations. This focus on academic excellence ensures that students are well-equipped to pursue successful careers in their chosen fields.`,
     icon: <FaGraduationCap />,
     color: '#475569',
-    image: '/DJI_0135.jpg'
+    image: '/Top-_and_best_ranked_engineering_college_in_karnataka.jpg'
   },
 ];
 
