@@ -22,7 +22,7 @@ export default function ProgramsSection() {
   const programs: Program[] = [
     {
       id: 1,
-      title: "Computer Science",
+      title: "Computer Science & Engineering",
       level: "ug",
       image:
         "https://images.squarespace-cdn.com/content/v1/5fce63270356d927d7eecdbd/033e9988-2ac8-4cb9-8b9f-5bf05fb22dcb/gff.jpg",
@@ -31,7 +31,7 @@ export default function ProgramsSection() {
     },
     {
       id: 2,
-      title: "Mechanical Engg.",
+      title: "Mechanical Engineering",
       level: "ug",
       image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop",
       description: "B.E Program",
@@ -39,7 +39,7 @@ export default function ProgramsSection() {
     },
     {
       id: 3,
-      title: "Artificial Intelligence",
+      title: "Artificial Intelligence & Machine Learning Engineering",
       level: "ug",
       image:
         "https://incubator.ucf.edu/wp-content/uploads/2023/07/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-central-processor-unit-chipset-big-data-machine-learning-cyber-mind-domination-generative-ai-scaled-1-1500x1000.jpg",
@@ -48,7 +48,7 @@ export default function ProgramsSection() {
     },
     {
       id: 4,
-      title: "Information Science",
+      title: "Information Science & Engineering",
       level: "ug",
       image:
         "https://oed.com.ph/wp-content/uploads/2023/10/computer-science-min.jpg",
@@ -57,7 +57,7 @@ export default function ProgramsSection() {
     },
     {
       id: 5,
-      title: "ICB",
+      title: "Computer Science & Engineering (IOT)",
       level: "ug",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9tdmLDAsZyWBOJIc-2WAIyUUvaCOIbqwb7Q&s",
@@ -66,7 +66,7 @@ export default function ProgramsSection() {
     },
     {
       id: 6,
-      title: "Electronics & Comm.",
+      title: "Electronics & Communication Engineering",
       level: "ug",
       image:
         "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop",
@@ -93,7 +93,7 @@ export default function ProgramsSection() {
     },
     {
       id: 9,
-      title: "Data Science",
+      title: "Computer Science & Engineering(Data Science)",
       level: "ug",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZFcWStmrIlrPId7iL8aO7gDpl_DT5oLhpWg&s",
@@ -102,7 +102,7 @@ export default function ProgramsSection() {
     },
     {
       id: 10,
-      title: "Agricultural Engg.",
+      title: "Agricultural Engineering",
       level: "ug",
       image:
         "https://www.kopykitab.com/blog/wp-content/uploads/2022/05/image-1359.png",
@@ -111,22 +111,15 @@ export default function ProgramsSection() {
     },
     {
       id: 11,
-      title: "Computer Design",
+      title: "Computer Science & Engineering(Design)",
       level: "ug",
       image:
         "https://img.freepik.com/free-photo/design-software-resize-icon-concept_53876-132194.jpg?semt=ais_hybrid&w=740&q=80",
       description: "B.E Program",
       link: "/academics/cd",
     },
-    {
-      id: 12,
-      title: "Basic Science & H.",
-      level: "ug",
-      image:
-        "https://www.unco.edu/app/uploads/2025/02/book-lightbulb-graphic.jpg",
-      description: "Department",
-      link: "/academics/physics",
-    },
+    
+      
   ];
 
   // Filter Logic
