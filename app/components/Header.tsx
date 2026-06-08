@@ -282,7 +282,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
           </span>
           <span className="hover:text-[#b77a00] cursor-pointer transition">
             <i className="fas fa-phone mr-2 text-[#b77a00]"></i>
-            8050579606, 8050585606
+            9632895394, 9448458334, 9845050268
           </span>
           <span className="hover:text-[#b77a00] cursor-pointer transition">
             CET CODE-E169

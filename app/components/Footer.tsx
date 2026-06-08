@@ -57,7 +57,10 @@ export default function Footer() {
                     Phone
                   </p>
                   <p>
-                    +91 98765 43210 <br /> +91 98765 43211
+                    Reception: +91 9632895394 <br /> 
+                    PRO: +91 8310533690 <br />
+                    Admission Incharge: +91 9686324367 <br />
+                    AO: +91 9448458334
                   </p>
                 </div>
                 <div className="flex gap-3">

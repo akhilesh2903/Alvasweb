@@ -563,8 +563,19 @@ export default function CampusPage() {
                 advanced research centres, open green spaces, and a vibrant student community — all designed to nurture
                 holistic development and foster innovation.
               </p>
-              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
-                Data will be uploaded soon...
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+                {[
+                  "1LOPbRuqCFCKw8iy5JTiM5vbs911QR1QO",
+                  "1uDce9nrQbNQ8SQIXgxwH7zkz0on5ikNl",
+                  "1sCPUwsXQAMWYirR-wnPTgt7KgyIzeRDz",
+                  "1iSj6_DiHpC1Fyrf4H9dX1Ipd_Z1VhQC0",
+                  "18w-esY6E4DKtbHxGwgW6h58EjPeraigf",
+                  "12Yh3CICqXADp1M69wHPJT3rC-qqGUHYQ"
+                ].map((id, index) => (
+                  <div key={index} className="rounded-2xl overflow-hidden shadow-lg group h-64">
+                    <img src={`/api/image-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=view&id=${id}`)}`} alt="College Campus" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -584,8 +595,22 @@ export default function CampusPage() {
                 women ensure safety and comfort, fostering a close-knit residential community that supports both academic
                 focus and personal growth.
               </p>
-              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
-                Data will be uploaded soon...
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+                {[
+                  "1otO9H3rBwMoZHX-2eHnte-P254MM_8vP",
+                  "1vtgb4ocpgaiSzAMMBFy9MOhhhX45Rut3",
+                  "1Zxg9lVnU-_TTaWHPqjIPG67PYL9U6DLg",
+                  "1e6ZKTqQFp3Wmld6cIgIL4JTERUkfSNGC",
+                  "1IgiGMpIx2wz1tyWAdFkgW1LlOMEZo6aM",
+                  "1H2wJupL8OmHFVhf1F_DDKrSvWgidXalV",
+                  "1r0pogsK7UaAdBnp3CebIaR7tvTqpwzMy",
+                  "1hVM_UJ6LoW_7pRoaPSHyxbS9-EN74yxH",
+                  "1lera_hoQhC0kNTrHc7uMjq4JJn2VJbcE"
+                ].map((id, index) => (
+                  <div key={index} className="rounded-2xl overflow-hidden shadow-lg group h-64">
+                    <img src={`/api/image-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=view&id=${id}`)}`} alt="Hostel" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -647,8 +672,18 @@ export default function CampusPage() {
                 internet, and a dedicated Digital Resource Centre, it supports deep research and self-directed learning
                 across all disciplines.
               </p>
-              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
-                Data will be uploaded soon...
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+                {[
+                  "1gzX-F1ubMfW4wbzVmGwH_AQm1hhHnLWp",
+                  "1z-GiJvTGu8x6UBCw3j41QYRdQzb7D-7h",
+                  "1mBjX6a9EJpBGeJF_8rS-TTOSzq6jSFp1",
+                  "1AFBUVM3NCDtQ0kdCKPF6NgQOYXkSSIVh",
+                  "1bS3YRbLmc7LspJ0ukgICuGYxiAk3jIXD"
+                ].map((id, index) => (
+                  <div key={index} className="rounded-2xl overflow-hidden shadow-lg group h-64">
+                    <img src={`/api/image-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=view&id=${id}`)}`} alt="Library" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -711,8 +746,16 @@ export default function CampusPage() {
                 professional-grade cardio machines, strength training equipment, and dedicated zones for yoga and
                 stretching — all supervised by qualified fitness instructors.
               </p>
-              <div style={{ marginTop: "40px", padding: "24px", background: "rgba(0,0,0,0.03)", borderLeft: "4px solid var(--gold)", borderRadius: "8px", textAlign: "center", fontStyle: "italic", color: "var(--muted)" }}>
-                Data will be uploaded soon...
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+                {[
+                  "1g6pUq1x2Hk-78UDIx9fH422LR_vcLMjC",
+                  "1vgu_o_jsxooego3iT_XGyqOnAZ1sfEIG",
+                  "1BJr35lCworV4FVz4RpC8BERGNTwmxuhG"
+                ].map((id, index) => (
+                  <div key={index} className="rounded-2xl overflow-hidden shadow-lg group h-64">
+                    <img src={`/api/image-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=view&id=${id}`)}`} alt="Gym" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                ))}
               </div>
             </div>
 

@@ -1012,6 +1012,8 @@ export default function PlacementClient() {
 
           <InfiniteSlider speed={0.8} direction="left">
             {[
+              "1sKK_rU8MU5oT5y8g-ie-BhKCRurj_Yjz",
+              "1rrzajGgvP9Jp9ptBZle7irpQciUrO-zu",
               "1cRDnInrGMCU9XOhEQzrqaXRVgygS7x1G",
               "1xFCnW_svYKSKW5qhC7yQhh8tNNGa0wc5",
               "1VKytOuMzpC0Z0WHg1lyBKHUGeMZiNvMW",
