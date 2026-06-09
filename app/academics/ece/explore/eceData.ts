@@ -36,7 +36,7 @@ M4:	By imbibing the students with human values and ethics through transformative
   },
   faculty: [
     {
-      name: "Faisal.K",
+      name: "Mr. Faisal.K",
       designation: "Senior Assistant Professor",
       qualification: "M.Tech",
       experience: "1 year 5 months (AIET)",
@@ -104,7 +104,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       },
     },
     {
-      name: "Sudhakara H M",
+      name: "Mr. Sudhakara H M",
       designation: "Associate Professor",
       qualification: "B.E., M.Tech",
       experience: "12 years (AIET)",

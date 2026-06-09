@@ -1,5 +1,5 @@
 import { DepartmentData, Faculty } from "@/lib/departments";
- 
+
 const imageProxyUrl = (url: string) =>
   `/api/image-proxy?url=${encodeURIComponent(url)}`;
 
@@ -16,14 +16,14 @@ M4:	By imbibing the students with human values and ethics through transformative
 
 `,
   hod: {
-    name: "Prof. Harish Kunder",
+    name: "Dr. Pushparani M K",
     designation: "Associate Professor & Head",
-    qualification: "Ph.D (Thesis Submitted)",
-    experience: "22+ Years",
+    qualification: "B.E, M.Tech, Ph.D",
+    experience: "15+ Years",
     email: "aietaiml08@aiet.org.in",
     phone: "+91 98765 43214",
     photo: imageProxyUrl(
-      "https://drive.google.com/uc?export=view&id=10_iBnKvNTiyqzkoHdBOn2sxyWkW0sTHV",
+      "https://lh3.googleusercontent.com/pw/AP1GczM0p6ay4eBVUMk_zs0GTZJc2h6dHoxrJW0Ni0O-sMYgw2YNrYRN73Pcgswr1XvMljcm6oOAJCfNP0LVDaJKdUFg7k68AZI1VKntZ5xweS6bxGfkM4Dbghaf1zz_DDktzb2OE3ZlYN-KcLZ6392cvvJZKw=w960-h640-s-no-gm",
     ),
     joiningDate: "12-08-2010",
     details: {

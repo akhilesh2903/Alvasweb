@@ -150,7 +150,7 @@ M3: To develop and enhance novel technologies to address current and foreseeable
       },
     },
     {
-      name: "Rakesh Rudragouda Patil",
+      name: "Mr. Rakesh Rudragouda Patil",
       designation: "Assistant Professor",
       qualification: "M-Tech. Food Processing Technology",
       experience: "7 Months",

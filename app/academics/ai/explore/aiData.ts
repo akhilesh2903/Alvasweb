@@ -151,7 +151,7 @@ M3: Inculcate ethical values, leadership qualities, and entrepreneurial skills t
       },
     },
     {
-      name: "Kiran Raj K M",
+      name: "Mr. Kiran Raj K M",
       designation: "Assistant Professor",
       qualification: "M.Tech (Ph.D Pursuing)",
       experience: "8 Years",
@@ -202,7 +202,7 @@ M3: Inculcate ethical values, leadership qualities, and entrepreneurial skills t
       },
     },
     {
-      name: "Shrikanth N G",
+      name: "Mr. Shrikanth N G",
       designation: "Senior Assistant Professor",
       qualification: "M.Tech",
       experience: "13 Years",
