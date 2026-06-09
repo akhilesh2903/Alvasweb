@@ -39,12 +39,25 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "URL not allowed" }, { status: 400 });
   }
 
+  // Convert Google Drive /uc links to /thumbnail links to bypass virus scan pages and size limits
+  if (
+    targetUrl.hostname === "drive.google.com" &&
+    targetUrl.pathname.startsWith("/uc")
+  ) {
+    const id = targetUrl.searchParams.get("id");
+    if (id) {
+      targetUrl = new URL(
+        `https://drive.google.com/thumbnail?id=${id}&sz=w2000`,
+      );
+    }
+  }
+
   try {
     const upstream = await fetch(targetUrl.toString(), {
       headers: {
         Accept: "image/avif,image/webp,image/*,*/*",
       },
-      next: { revalidate: 86400 },
+      cache: "no-store",
     });
 
     if (!upstream.ok) {
