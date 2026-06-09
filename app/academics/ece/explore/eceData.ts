@@ -13,7 +13,7 @@ M4:	By imbibing the students with human values and ethics through transformative
 
 `,
   hod: {
-    name: "Dr. Ece Hod",
+    name: "Dr. Dattathreya",
     designation: "Professor & HOD - ECE",
     qualification: "Ph.D",
     experience: "15+ Years",
