@@ -246,11 +246,10 @@ export default function EEEPage() {
       <div className="h-20 md:h-24"></div>
 
       <div
-        className={`fixed left-1/2 -translate-x-1/2 z-50 flex flex-col items-center transition-opacity duration-300 ${
-          showExploreBtn
+        className={`fixed left-1/2 -translate-x-1/2 z-50 flex flex-col items-center transition-opacity duration-300 ${showExploreBtn
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
-        }`}
+          }`}
         style={{ bottom: `${exploreBtnBottom}px` }}
       >
         <Link
@@ -280,7 +279,7 @@ export default function EEEPage() {
         ref={videoSectionRef}
         className="mb-16 reveal w-full overflow-hidden"
       >
-        
+
         <div className="w-screen relative left-1/2 -translate-x-1/2 border-y border-gray-300 shadow-2xl bg-gray-900 overflow-hidden">
           <div className="aspect-[16/6] md:aspect-[21/9] w-full">
             <img src="/Top-_and_best_ranked_engineering_college_in_karnataka.jpg" className="w-full h-full object-cover" alt="Top ranked engineering college in Karnataka" />
@@ -484,7 +483,7 @@ export default function EEEPage() {
                     {member.photo ? (
                       <img
                         src={member.photo}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
                         alt={member.name}
                       />
                     ) : (
@@ -606,7 +605,7 @@ export default function EEEPage() {
               </div>
             </div>
 
-            <div 
+            <div
               className="flex-1 overflow-y-auto p-6 font-sans"
               style={{ WebkitOverflowScrolling: 'touch' }}
             >
@@ -632,19 +631,17 @@ export default function EEEPage() {
                         openAccordion === item.key ? null : item.key,
                       )
                     }
-                    className={`w-full flex items-center justify-between p-4 rounded-xl transition-all duration-300 text-left ${
-                      openAccordion === item.key
+                    className={`w-full flex items-center justify-between p-4 rounded-xl transition-all duration-300 text-left ${openAccordion === item.key
                         ? "bg-[#f1f3f5] shadow-sm"
                         : "bg-gray-50 hover:bg-white hover:shadow-md border border-gray-100"
-                    }`}
+                      }`}
                   >
                     <span className="text-sm font-bold text-gray-700">
                       {item.title}
                     </span>
                     <svg
-                      className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${
-                        openAccordion === item.key ? "rotate-180" : ""
-                      }`}
+                      className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${openAccordion === item.key ? "rotate-180" : ""
+                        }`}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -658,11 +655,10 @@ export default function EEEPage() {
                     </svg>
                   </button>
                   <div
-                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                      openAccordion === item.key
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${openAccordion === item.key
                         ? "max-h-96 opacity-100 mt-2"
                         : "max-h-0 opacity-0"
-                    }`}
+                      }`}
                   >
                     <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed">
                       {selectedFaculty.details?.[

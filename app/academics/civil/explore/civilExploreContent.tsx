@@ -617,9 +617,8 @@ export default function CivilExploreContent() {
       {/* Header */}
       <header
         id="main-header"
-        className={`fixed top-0 w-full z-50 text-white pt-4 pb-4 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-500 ${
-          isScrolled ? "header-scrolled" : ""
-        }`}
+        className={`fixed top-0 w-full z-50 text-white pt-4 pb-4 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-500 ${isScrolled ? "header-scrolled" : ""
+          }`}
       >
         <nav className="container mx-auto px-6 lg:px-12 flex justify-between items-center relative">
           <Link href="/">
@@ -678,11 +677,10 @@ export default function CivilExploreContent() {
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
-                    className={`tab-btn w-full text-left px-4 py-3 rounded-2xl border border-gray-300 hover:bg-gray-200 transition font-bold text-gray-900 ${
-                      activeTab === tab.id
+                    className={`tab-btn w-full text-left px-4 py-3 rounded-2xl border border-gray-300 hover:bg-gray-200 transition font-bold text-gray-900 ${activeTab === tab.id
                         ? "active bg-gray-100"
                         : "bg-gray-100"
-                    }`}
+                      }`}
                     onClick={() => handleTabClick(tab.id)}
                   >
                     {tab.label}
@@ -1060,7 +1058,7 @@ export default function CivilExploreContent() {
                                   <div className="relative overflow-hidden rounded-2xl mb-5 aspect-square">
                                     <img
                                       src={member.photo}
-                                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
                                       alt={member.name}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -1250,7 +1248,7 @@ export default function CivilExploreContent() {
               </div>
             </div>
 
-            <div 
+            <div
               className="flex-1 overflow-y-auto p-6 font-sans"
               style={{ WebkitOverflowScrolling: 'touch' }}
             >
@@ -1276,19 +1274,17 @@ export default function CivilExploreContent() {
                         openAccordion === item.key ? null : item.key,
                       )
                     }
-                    className={`w-full flex items-center justify-between p-4 rounded-xl transition-all duration-300 text-left ${
-                      openAccordion === item.key
+                    className={`w-full flex items-center justify-between p-4 rounded-xl transition-all duration-300 text-left ${openAccordion === item.key
                         ? "bg-[#f1f3f5] shadow-sm"
                         : "bg-gray-50 hover:bg-white hover:shadow-md border border-gray-100"
-                    }`}
+                      }`}
                   >
                     <span className="text-sm font-bold text-gray-700">
                       {item.title}
                     </span>
                     <svg
-                      className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${
-                        openAccordion === item.key ? "rotate-180" : ""
-                      }`}
+                      className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${openAccordion === item.key ? "rotate-180" : ""
+                        }`}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -1302,11 +1298,10 @@ export default function CivilExploreContent() {
                     </svg>
                   </button>
                   <div
-                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                      openAccordion === item.key
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${openAccordion === item.key
                         ? "max-h-96 opacity-100 mt-2"
                         : "max-h-0 opacity-0"
-                    }`}
+                      }`}
                   >
                     <div className="p-4 bg-white rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed">
                       {selectedFaculty?.details?.[

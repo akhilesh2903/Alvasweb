@@ -77,7 +77,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       phone: "NA",
       aoi: "signal/image processing",
       photo: imageProxyUrl(
-        "https://lh3.googleusercontent.com/pw/AP1GczN5dSn-N98fm53INzHCWjm4EiKlG0lUgcC4itTLn13CwAaqbs3wOXdnR55V5gFRIS1z22bGpXXwuJb5WjjvAg5RMFMw-255cn5eoEu26VOKGLIO5Od2Vd2rhrLi842hbDXJifKFy1wN-AYWQi07tk6Xyg=w413-h531-s-no"
+        "https://drive.google.com/uc?export=view&id=1BeDTi5DdZDndUWgiEwKkfr1OrjfD34TK"
       ),
 
       joiningDate: "17.04.2023",
