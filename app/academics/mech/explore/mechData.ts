@@ -1,5 +1,5 @@
 import { DepartmentData, Faculty } from "@/lib/departments";
- 
+
 const imageProxyUrl = (url: string) =>
   `/api/image-proxy?url=${encodeURIComponent(url)}`;
 
@@ -102,7 +102,7 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
         areasOfInterest: "Manufacturing\nNon-Conventional Energy Sources",
         achievements: "Nil",
         professionalMembership: "NA",
-        publications: "1) Naveen Bilagi, Nandana M Hegde, Ketan Karande, Dinesh K Naik, Hemanth Suvarna, A review on Automation in Hydroponics, IRJET, Vol 10, Issue 5, May 2023.\n2) Suvarna H, Kundar B, Pinto CL, Shetty LS, Gurukiran, A Review of the Vapour Absorption Solar Refrigeration System. IJRP, Vol 4, Issue 2, Feb 2023.",
+        publications: "1. Naveen Bilagi, Nandana M Hegde, Ketan Karande, Dinesh K Naik, Hemanth Suvarna, A review on Automation in Hydroponics, IRJET, Vol 10, Issue 5, May 2023.\n2. Suvarna H, Kundar B, Pinto CL, Shetty LS, Gurukiran, A Review of the Vapour Absorption Solar Refrigeration System. IJRP, Vol 4, Issue 2, Feb 2023.",
         projectsGuided: "NA",
         subjectsTeaching: "Hydraulics & Pneumatics, Computer-Aided Engineering Drawing, Renewable Energy Power plants, Non-Conventional Energy Sources",
         researchPublications: "Nil",
@@ -117,7 +117,9 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
       email: "ckmkiran@aiet.org.in",
       phone: "NA",
       aoi: "Green Technology, CFD, Industrial Robotics",
-      photo: "",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1-sEkK40CURhUnzdctdMi0xSXD6KS2D3A"
+      ),
       joiningDate: "09/01/2012",
       details: {
         qualifications: "B.E: Malnad College of Engineering [MCE], Hassan (2008)\nM.Tech: Thermal Power Engineering, Adichuchanagiri Institute of Technology [AIT], Chikkamagaluru (2011)\nPh.D: Mechanical Engineering Sciences, VTU, Belagavi (2025)",
@@ -179,6 +181,31 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
       },
     },
     {
+      name: "Mr. Ganesh M R",
+      designation: "Assistant Professor",
+      qualification: "B.E, M.Tech",
+      experience: "15 Years",
+      email: "ganeshmr@aiet.org.in",
+      phone: "NA",
+      aoi: "Product Design and Manufacturing",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1sI5v0kE6Y_84n2x1hvue-OE8l08MHxLg"
+      ),
+      joiningDate: "25-07-2012",
+      details: {
+        qualifications: "1. B.E- Adhichunchanagiri Institute of Technology, Chikmagalore, 2009\n2. M.Tech, Product design and Manufacturing, Shri Siddhartha Institute of Technology, Tumkur 2012.",
+        pastExperience: "nil",
+        areasOfInterest: "Product design and Manufacturing, Non-destructive testing, Casting process.",
+        achievements: "Organising member of the International Symposium workshop on recent advances in Material joining manufacturing process, 27 and 28th February 2025, Project title: Design and Fabrication of manually operated Multipurpose, Multi-rotor Weed remover has been selected for VGST, DST Gok for the release of TRIP support grant (FY: 2015-16), Project title: Design and Fabrication of manually operated Multipurpose, Multi-rotor Weed Remover has been selected for the KSCST Exhibition held at BLDE Association’s Vachana Pitamaha Dr. P.G Halakatti College of Engineering and Technology, Vijapura on 19th to 20th August 2016, Guide recognition Certificate in Indian Science and Engineering Fair (INSEF) Level -2, Hosted by Alva’s Education Foundation, Moodbidri on May 20th -21th 2017, Prajavani Sadhaka award at 2022 for achievements in Art field.",
+        professionalMembership: "Life Member of ISTE",
+        publications: "Role of Artificial Intelligence in Mechanical Product and Design published in Tuijin Jishu/Journal of Propulsion Technology, ISSN: 1001-4055,    Vol. 46 No. 3 (2025), A Review on Synthetic and Natural Hybrid Fiber Reinforced Polymer Composite, A Review on Design of Sowing machine, published in International Research journal of Engineering and Technology (IRJET) , Volume:08 ISSUE:07, 2021, Fabrication of Potato Harvester published in IJARIIE-ISSN(O)-2395-4396, Vol-5, Issue-2,2019, Fabrication of Root Vegetable Washer, Published in International Journal of Innovative Research Explorer, ISSN NO: 2347-6060, Volume 5. ISSUE5, MAY/2018.",
+        projectsGuided: "NA",
+        subjectsTeaching: "Introduction to Mechanical Engineering, Computer-Aided Engineering Drawing, Manufacturing process, Machining Science and Metrology, Mechanical Measurement and Metrology, Hydraulics and Pneumatics, Nontraditional Machining process, Elements of Mechanical Engineering",
+        researchPublications: "nil",
+        others: "Organising Theatre, Art, Music and Dance training and workshop to cultural students every academic year. The AIET Cultural team is participating in VTU Cultural youth festivals and other intercollegiate cultural festivals every academic year. Our team own 4 times overall championship in VTU Cultural youth festivals organised by VTU, and have been many times champions and won many prizes in other intercollegiate cultural festivals also. As a Kannada Sanga Coordinator organized many Kannada Talks and completions for students every year.",
+      },
+    },
+    {
       name: "Mr. Deepak Kothari",
       designation: "Assistant Professor",
       qualification: "B.E., M.Tech.",
@@ -199,6 +226,31 @@ M4:Exposure to industrial practices for managerial skills & professionalism.
         subjectsTeaching: "Total Quality Management, Supply Chain Management, Project Management, Mechanical Measurement and Metrology, Manufacturing Process I & II, Operation Research, Management and Entrepreneurship, Engineering Economics, Computer-Integrated Manufacturing, Industrial Engineering, Non-Traditional Machining, Industrial Safety, Product Data & Management",
         researchPublications: "SCOPUS Author ID: 58790087900\nGoogle Scholar: https://scholar.google.com/citations?user=IdH5ciUAAAAJ&hl=en",
         others: "Responsibilities: NAAC Criteria 3 College level Coordinator, Department NBA Criteria 8 Coordinator, Time table Coordinator, Internal Test Coordinator, Internship Coordinator, Centre Of Excellence TKM Trainer\nPatents: 3 Indian Published Patents\nConferences & Workshops: Active participation in numerous national and international technical events\nCertificates: Lean and Six Sigma Yellow/Green Belt, Project Planning (Coursera)",
+      },
+    },
+    {
+      name: "Dr. Peter Fernandes",
+      designation: "Professor",
+      qualification: "",
+      experience: "",
+      email: "",
+      phone: "NA",
+      aoi: "",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=16va-_wmfTmXn2vV9d2tGLwClGInbXj86"
+      ),
+      joiningDate: "",
+      details: {
+        qualifications: "",
+        pastExperience: "",
+        areasOfInterest: "",
+        achievements: "",
+        professionalMembership: "",
+        publications: "",
+        projectsGuided: "",
+        subjectsTeaching: "",
+        researchPublications: "",
+        others: "",
       },
     },
     {
