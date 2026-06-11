@@ -159,7 +159,7 @@ R.Senthilkumar, Dr.A.Bharathi â€œGray-Level Co-Occurrence Matrix With Orient
       },
     },
     {
-      name: "Ms. Deepika Kamath",
+      name: "Deepika Kamath",
       designation: "Senior Assistant Professor",
       qualification: "BE, M.Tech, (PH.D)",
       experience: "15",
