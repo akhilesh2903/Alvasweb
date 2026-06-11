@@ -66,7 +66,9 @@ export const cseDepartmentData: DepartmentData = {
       email: "madhusudhan@aiet.org.in",
       phone: "NA",
       aoi: "Computer Vision, Image Processing, Computational Neural sciences",
-      photo: "",
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1SrT-hbGjTconxf0bTSs2L8tYi9zqHJWF/"
+      ),
       joiningDate: "18-11-2020",
       details: {
         qualifications: "BE, MTech, Ph.D.",
