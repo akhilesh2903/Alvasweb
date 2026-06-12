@@ -815,7 +815,7 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3578519`,
     {
       name: "Ms.Yogitha K",
       designation: "Teaching Assistant",
-      qualification: `Bachelor of Computer Applications, Alvaâ€™s College, Moodubidire-2019
+      qualification: `Bachelor of Computer Applications, Alva's College, Moodubidire-2019
 Master of Computer Applications, Shree Devi Institute of Technology, Kenjar, Mangalore (VTU)-2025`,
       experience: "2",
       email: "yogithak@aiet.org.in",
@@ -846,6 +846,78 @@ Master of Computer Applications, Shree Devi Institute of Technology, Kenjar, Man
       qualification: "Bachelor of Engineering (BE)",
       experience: "6 months",
       email: "SrinivasaCSE@aiet.org.in",
+      phone: "NA",
+      aoi: `Python Programming
+Web & Application Development
+Blockchain Technologies
+Digital Marketing & Crypto Ecosystems`,
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1eGdYFDE8knQGsN7e6bpKcTqEQyZY2vNJ"
+      ),
+      joiningDate: "18-08-2025",
+      details: {
+        qualifications: "Bachelor of Engineering (BE)",
+        pastExperience: "Fresher (No previous full-time employment)",
+        areasOfInterest: `Python Programming
+Web & Application Development
+Blockchain Technologies
+Digital Marketing & Crypto Ecosystems`,
+        achievements:
+          "Developed practical digital projects and research-oriented work in Web3 and finance tracking",
+        professionalMembership: "NA",
+        publications: `â€œAn Overview of Deep Learning for Detecting Brain Tumorsâ€ â€“ Published at ICCET 2024
+â€œFinance Tracker using Blockchain Technologiesâ€ â€“ Accepted and presented at ICCCNet 2025`,
+        projectsGuided: "NA",
+        subjectsTeaching: "Python Programming, Artificial Intelligence (AI)",
+        researchPublications: `â€œAn Overview of Deep Learning for Detecting Brain Tumorsâ€ â€“ Conference publication on AI/ML applications in medical imaging.
+â€œFinance Tracker using Blockchain Technologiesâ€ â€“ Research accepted & presented at ICCCNet 2025.`,
+        others: `Experienced in Web3 finance development, including decentralized finance (DeFi) concepts and smart contract-based financial protocols.
+Skilled in digital asset analysis and ICT-based trading strategies to support informed decision-making in crypto markets.`,
+      },
+    },
+    {
+      name: "Chaithra S",
+      designation: "",
+      qualification: "B.E, M.Tech ",
+      experience: "7.5 years",
+      email: "chaitras@aiet.org.in",
+      phone: "NA",
+      aoi: ``,
+      photo: imageProxyUrl(
+        "https://drive.google.com/uc?export=view&id=1Tw346oRiDq6jqzyqvl09jy6JVxUh6Wl8"
+      ),
+      joiningDate: "18-08-2025",
+      details: {
+        qualifications: "B.E. in CS&E, M.Tech in CS&E",
+        pastExperience: "N/A",
+        areasOfInterest: ``,
+        achievements:
+          "",
+        professionalMembership: "NA",
+        publications: `1`,
+        projectsGuided: "NA",
+        subjectsTeaching: "Programming in C, Programming with java, Programming in python, Web Technology and it’s Application, Theory of Computation, Machine Learning",
+        researchPublications: `	Published “Vitamin deficiency detection using image processing” in Springer Nature e-book Computing and Machine Learning in 2025.`,
+        others: `1. Participated as MENTOR in Smart India Hackathon, 2023 held at Ongal, Andra Pradesh.
+2. Participated as MENTOR in KSHITHIJ, 2024 Techo – Management fest held at IIT, Kharghpur.
+3. Participated in 3 days FDP on Intellectual property Rights Commercialization, 2023 held at SCEM, Mangaluru.
+4. Participated in 1 day FDP on Data insights with AI AND CLOUD using Power BI, 2023 held at SCEM, Mangaluru.
+5. Participated in 1 day Training Program on e-Resources of VTU Consortium, 2023 organized by VTU Consortium, SCEM, Mangaluru.
+6. Participated in 4 days Workshop – Compute to Empower : Supercharging Education With High – Performance Computing, 2024 organized by Manipal institute of Technology.
+7. Completed Course on Fundamental of Accelerated Computing with CUDA C/C++.
+8. Participated in 2 days FDP on Innovative Methods in Teaching Learning, 2024  held at SCEM, Mangaluru.
+9. Invited as a resource person at Saint Peter’s Higher Primary School, Mangalore, 2025  to deliver a motivational talk on teamwork and cooperation.
+10. Invited as a resource person at St. Sebastian High School, Permannur, Mangalore, 2025  to deliver a motivational talk on time management.
+11. Invited as a resource person at St. Joseph Joyland High School, Kolya, Mangalore, 2025  to deliver an orientation session on Teaching Learning Pedagogy.
+`,
+      },
+    },
+    {
+      name: "",
+      designation: "",
+      qualification: "",
+      experience: "",
+      email: "",
       phone: "NA",
       aoi: `Python Programming
 Web & Application Development
