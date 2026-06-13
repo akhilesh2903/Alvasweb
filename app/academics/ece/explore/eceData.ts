@@ -16,7 +16,7 @@ M4:	By imbibing the students with human values and ethics through transformative
 
 `,
   hod: {
-    name: "Dr. KrishnaVeni",
+    name: "Dr. Keshaveni",
     designation: "Professor & HOD - ECE",
     qualification: "Ph.D",
     experience: "15+ Years",
@@ -47,7 +47,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       phone: "NA",
       aoi: "signal/image processing",
       photo: imageProxyUrl(
-        "https://drive.google.com/uc?export=view&id=1mvyj07lwPWJ9tYYwb10WKwYFlzD3gAsD"
+        "https://drive.google.com/uc?export=view&id=1mvyj07lwPWJ9tYYwb10WKwYFlzD3gAsD",
       ),
       joiningDate: "01/10/2024",
       details: {
@@ -77,7 +77,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       phone: "NA",
       aoi: "signal/image processing",
       photo: imageProxyUrl(
-        "https://drive.google.com/uc?export=view&id=1BeDTi5DdZDndUWgiEwKkfr1OrjfD34TK"
+        "https://drive.google.com/uc?export=view&id=1BeDTi5DdZDndUWgiEwKkfr1OrjfD34TK",
       ),
 
       joiningDate: "17.04.2023",
@@ -104,7 +104,8 @@ M4:	By imbibing the students with human values and ethics through transformative
     11. “Overview of Current Compliance Effect on Reliability of Nano Scaled Metal Oxide Resistive Random Access Memory Device” in IEEE ICDCS 2018. (Scopus Indexed)
     12. •	“An Optimal Non Invasive Blood Glucose Measurement using Smartphone by Near Infrared Spectroscopy” in International Journal of Applied Engineering Research ISSN 0973-4562 Volume 10, Number 13 (2015) (Scopus indexed)
     13. •	“Open Loop Control of a Novel Power Converter for Fuel Cell assisted Photo voltaic Power Systems” in International Journal of Scientific & Engineering Research, Volume 4, Issue 4, April2013 ISSN 2229-5518. (Scopus indexed)`,
-        others: "Conducted a significant portion of my doctoral research on RRAM fabrication and characterisation at Indian Institute of Science (IISc) Bangalore, where I gained hands-on experience in advanced device fabrication, clean room processing, and electrical characterisation, while collaborating with interdisciplinary research teams to analyze resistive switching behavior and optimize device performance.",
+        others:
+          "Conducted a significant portion of my doctoral research on RRAM fabrication and characterisation at Indian Institute of Science (IISc) Bangalore, where I gained hands-on experience in advanced device fabrication, clean room processing, and electrical characterisation, while collaborating with interdisciplinary research teams to analyze resistive switching behavior and optimize device performance.",
       },
     },
     {
@@ -116,18 +117,20 @@ M4:	By imbibing the students with human values and ethics through transformative
       phone: "",
       aoi: "VLSI Design, ASIC Design, Phase Locked Loops (PLL), Embedded Systems",
       photo: imageProxyUrl(
-        "https://drive.google.com/uc?export=view&id=14X61SN7e8vU0pLYrgVfyjlMOlWe1XVKW"
+        "https://drive.google.com/uc?export=view&id=14X61SN7e8vU0pLYrgVfyjlMOlWe1XVKW",
       ),
       joiningDate: "",
       details: {
         qualifications: "B.E. (ECE), M.Tech (VLSI Design and Embedded Systems)",
         pastExperience: "5 months",
-        areasOfInterest: "VLSI Design, ASIC Design, Phase Locked Loops (PLL), Embedded Systems",
+        areasOfInterest:
+          "VLSI Design, ASIC Design, Phase Locked Loops (PLL), Embedded Systems",
         achievements: "nil",
         professionalMembership: "nil",
         publications: "1",
         projectsGuided: "nil",
-        subjectsTeaching: "Basic Electronics, Analog electronic Circuits, VLSI Design, VLSI Process Technology, ASIC Design, System on Chip (SoC) Design, VLSI Testing and Verification, Digital System Design Using Verilog, Multimedia Communication, IOT, Machine Learning.",
+        subjectsTeaching:
+          "Basic Electronics, Analog electronic Circuits, VLSI Design, VLSI Process Technology, ASIC Design, System on Chip (SoC) Design, VLSI Testing and Verification, Digital System Design Using Verilog, Multimedia Communication, IOT, Machine Learning.",
         researchPublications: `1. 1.	Hemanth T S and Rajeshwari B S, “Predicting Blood Pressure from Photoplethysmogram Data: A Machine Learning Approach” 2024 International Conference on Recent Advances in Science and Engineering Technology (ICRASET).`,
         others: `1. Reviewer for the 3rd International Conference on Integrated Circuits and Communication Systems (ICICACS - 2025), organized by H.K.E. Society's Sir M Visvesvaraya College of Engineering, Raichur, February 21-22, 2025.
 2. Reviewer for the 4th IEEE International Conference on Distributed Computing and Electrical Circuits and Electronics (ICDCECE - 2025) organized by IEEE SB Ballari Institute of Technology and Management, Ballari, April 25-26, 2025. 
@@ -144,7 +147,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       phone: "",
       aoi: "",
       photo: imageProxyUrl(
-        "https://drive.google.com/uc?export=view&id=1Kr6P7dBPgeRmxDhsUasFH62p5hfojsrI"
+        "https://drive.google.com/uc?export=view&id=1Kr6P7dBPgeRmxDhsUasFH62p5hfojsrI",
       ),
       joiningDate: "",
       details: {
@@ -169,7 +172,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       phone: "NA",
       aoi: "Signal processing, Digital Communication, Electromagnetics, Machine Learning, Deep learning",
       photo: imageProxyUrl(
-        "https://drive.google.com/uc?export=view&id=1pxKu1aaODqkIULmKwmmdRd1pAy8mIniz"
+        "https://drive.google.com/uc?export=view&id=1pxKu1aaODqkIULmKwmmdRd1pAy8mIniz",
       ),
       joiningDate: "26/07/2010",
       details: {
@@ -244,7 +247,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       phone: "NA",
       aoi: "Nano-Technology, Cryptography, Analog and digital Signal Processing, Antenna Theory and Design, Analog and Digital Communication Systems, VLSI Design and Embedded Systems.",
       photo: imageProxyUrl(
-        "https://drive.google.com/uc?export=view&id=11DBTwdd6IaU6r6-TPZyOb7-ISaPsAGXR"
+        "https://drive.google.com/uc?export=view&id=11DBTwdd6IaU6r6-TPZyOb7-ISaPsAGXR",
       ),
       joiningDate: "04-10-2023",
       details: {
@@ -282,7 +285,7 @@ M4:	By imbibing the students with human values and ethics through transformative
       phone: "NA",
       aoi: "Artificial Intelligence, Electromagnetics, Embedded Systems",
       photo: imageProxyUrl(
-        "https://drive.google.com/uc?export=view&id=1hANb8DPBqxG_RBZsxkgjSejphRS6F7Fq"
+        "https://drive.google.com/uc?export=view&id=1hANb8DPBqxG_RBZsxkgjSejphRS6F7Fq",
       ),
       joiningDate: "27-07-2012",
       details: {
@@ -317,32 +320,31 @@ M4:	By imbibing the students with human values and ethics through transformative
     {
       name: "Dr. Harish Bhat N",
       designation: "Senior Assistant Professor",
-      qualification: "BE(ECE), M.Tech(Digital Electronics and Communication), PhD(Autonomous Drones)",
+      qualification:
+        "BE(ECE), M.Tech(Digital Electronics and Communication), PhD(Autonomous Drones)",
       experience: "9.5 years",
       email: "harishbhat@aiet.org.in",
       phone: "NA",
       aoi: "Control design, System Engineering, Power Electronics, FPGA based system realization",
-      photo: imageProxyUrl(
-        ""
-      ),
+      photo: imageProxyUrl(""),
       joiningDate: "01/08/2024",
       details: {
-        qualifications: "BE(ECE), M.Tech(Digital Electronics and Communication), PhD(Autonomous Drones)",
+        qualifications:
+          "BE(ECE), M.Tech(Digital Electronics and Communication), PhD(Autonomous Drones)",
         pastExperience: "6 years Industry",
         areasOfInterest:
           "Control design, System Engineering, Power Electronics, FPGA based system realization",
         achievements:
           "GATE qualified 3 times, consistent certifications in Swayam NPTEL courses, participated in Summer Faculty Research Fellowship (SFRF 2015) for 6 weeks at IIT Delhi, 4 certificates in ATAL 5 days FDPs.",
-        professionalMembership: "Reviewer for IEEE Access an open access journal (Q2)",
+        professionalMembership:
+          "Reviewer for IEEE Access an open access journal (Q2)",
         publications: "2",
-        projectsGuided:
-          "nil",
+        projectsGuided: "nil",
         subjectsTeaching:
           "Embedded System Design, System Modeling Using Simulink Lab.",
         researchPublications: `1.	Bhat Harish N., Chokkadi Shreesha, & Shenoy B., Satish, (2023). "Evolvable Hardware Based Optimal Position Control of Quadcopter," Defence Science Journal, Jan 2024, 74(01), 91-99.
         2. Bhat, Harish, Shreesha Chokkadi, and Satish Shenoy. "Optimal fault resilient autonomous quadcopter control based on dynamic partial reconfigurable FPGA." Cogent Engineering 10, no. 2 (2023): 2276503`,
-        others:
-          `Others:
+        others: `Others:
 Developed zero cost Power Converter Simulation Lab using FreeEDA (an open source EDA tool) in 2014 at MITE Moodabidre
 `,
       },
@@ -355,21 +357,18 @@ Developed zero cost Power Converter Simulation Lab using FreeEDA (an open source
       email: "keshaveni@aiet.org.in",
       phone: "NA",
       aoi: "Digital systems, VLSI design, Video/Image processing",
-      photo: imageProxyUrl(
-        ""
-      ),
+      photo: imageProxyUrl(""),
       joiningDate: "20-08-2025",
       details: {
         qualifications: "B.E, MTech, PhD",
         pastExperience: "31.7 years",
-        areasOfInterest:
-          "Digital systems, VLSI design, Video/Image processing",
+        areasOfInterest: "Digital systems, VLSI design, Video/Image processing",
         achievements:
           "Secured 3rd Rank in M.Tech  Digital Electronics, from V.T.U Belagavi during the year 2000.",
-        professionalMembership: "doctoral committee member for 4 more candidates under VTU, Doctoral committee member for one candidate, under Nitte university, Karkala.",
+        professionalMembership:
+          "doctoral committee member for 4 more candidates under VTU, Doctoral committee member for one candidate, under Nitte university, Karkala.",
         publications: "26",
-        projectsGuided:
-          "4",
+        projectsGuided: "4",
         subjectsTeaching:
           "VLSI design and testing, Electronic principles and circuits.",
         researchPublications: `1.  Implementation of Context   Adaptive Variable Length Coder for H.264 Video Encoder , IJRTE, Vol. 2, ISSN:1797-9617, November 2009.
@@ -420,8 +419,7 @@ Developed zero cost Power Converter Simulation Lab using FreeEDA (an open source
 
 25. An AVOA-LSTM with MRCNN for segmenting and classifying the sunglass image-based eye region identification, Journal of Multimedia tools and applications, 2023.
 `,
-        others:
-          `1. Served as External Deputy Chief Superintendent at Alpha college of Engineering Bangalore, KNSIT Bangalore during the year 2003, 2004, related to VTU examination Work. 
+        others: `1. Served as External Deputy Chief Superintendent at Alpha college of Engineering Bangalore, KNSIT Bangalore during the year 2003, 2004, related to VTU examination Work. 
 2. Served/Serving as Question Paper setter, valuator and moderator for UG and PG program of VTU Belagavi.
 3. Recognized as a Local Inspection Committee member from VTU Belagavi, during the year 2014 and 2015 and visited various colleges for inspection in the Bangalore region.
 4. Board of Examination (BOE) member for the academic year 2016, attended meetings to scrutinize the Question papers at VTU centers Belagavi, Bijapur and Mysore.
@@ -445,23 +443,18 @@ Developed zero cost Power Converter Simulation Lab using FreeEDA (an open source
       email: "praveenm@aiet.org.in",
       phone: "NA",
       aoi: "Communication",
-      photo: imageProxyUrl(
-        ""
-      ),
+      photo: imageProxyUrl(""),
       joiningDate: "2/2/2026",
       details: {
         qualifications: "M.Tech",
         pastExperience: "13.5 years",
-        areasOfInterest:
-          "Communication",
-        achievements:
-          "Received IEEE MDC star award.",
-        professionalMembership: "Reviewer for IEEE Access an open access journal (Q2)",
+        areasOfInterest: "Communication",
+        achievements: "Received IEEE MDC star award.",
+        professionalMembership:
+          "Reviewer for IEEE Access an open access journal (Q2)",
         publications: "nil",
-        projectsGuided:
-          "nil",
-        subjectsTeaching:
-          "Basic electrical engineering, VLSI.",
+        projectsGuided: "nil",
+        subjectsTeaching: "Basic electrical engineering, VLSI.",
         researchPublications: ``,
         others: ``,
       },
@@ -469,17 +462,17 @@ Developed zero cost Power Converter Simulation Lab using FreeEDA (an open source
     {
       name: "Ms. Sowmya T K",
       designation: "Senior Assistant Professor",
-      qualification: "M.Tech in Digital Electronics and Communication, NMAM Institute of Technology, Nitte 2010, B.E. in Electronics and Communication Engineering, SJEC, Mangalore 2008, Advanced Diploma in ASIC Design – RTL Verification, RV Skills, Bangalore 2024",
+      qualification:
+        "M.Tech in Digital Electronics and Communication, NMAM Institute of Technology, Nitte 2010, B.E. in Electronics and Communication Engineering, SJEC, Mangalore 2008, Advanced Diploma in ASIC Design – RTL Verification, RV Skills, Bangalore 2024",
       experience: "15.2 years",
       email: "sowmyatk@aiet.org.in",
       phone: "NA",
       aoi: "Cryptography and Network Security, VLSI Design and Verification, Digital System Design",
-      photo: imageProxyUrl(
-        ""
-      ),
+      photo: imageProxyUrl(""),
       joiningDate: "23/02/2026",
       details: {
-        qualifications: "M.Tech in Digital Electronics and Communication, NMAM Institute of Technology, Nitte 2010, B.E. in Electronics and Communication Engineering, SJEC, Mangalore 2008, Advanced Diploma in ASIC Design – RTL Verification, RV Skills, Bangalore 2024",
+        qualifications:
+          "M.Tech in Digital Electronics and Communication, NMAM Institute of Technology, Nitte 2010, B.E. in Electronics and Communication Engineering, SJEC, Mangalore 2008, Advanced Diploma in ASIC Design – RTL Verification, RV Skills, Bangalore 2024",
         pastExperience: "13.5 years",
         areasOfInterest:
           "Cryptography and Network Security, VLSI Design and Verification, Digital System Design",
@@ -487,8 +480,7 @@ Developed zero cost Power Converter Simulation Lab using FreeEDA (an open source
           "Published papers in Scopus Indexed and Q2 journals, Presented research paper in IEEE International Conference, Advanced certification in ASIC Design and RTL Verification",
         professionalMembership: "nil",
         publications: "3",
-        projectsGuided:
-          "nil",
+        projectsGuided: "nil",
         subjectsTeaching:
           "Digital Electronics, Logic Design, Control systems, Analog communication, Digital communication, Analog Circuits, Embedded Systems, VLSI Design, Microcontroller, Digital System Design using Verilog, Cryptography and Network Security",
         researchPublications: ``,
