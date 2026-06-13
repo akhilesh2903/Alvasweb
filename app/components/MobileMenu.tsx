@@ -22,7 +22,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const [academicsOpen, setAcademicsOpen] = useState(false);
   const [ugOpen, setUgOpen] = useState(false);
   const [pgOpen, setPgOpen] = useState(false);
-  const [basicOpen, setBasicOpen] = useState(false);
 
   const [campusOpen, setCampusOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
@@ -46,16 +45,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
   const academicPostgraduateLinks = [
     { href: "/academics/mba", label: "MBA Programme" },
-    { href: "/academics/mtech", label: "M.Tech" },
-    { href: "/academics/mca", label: "MCA Programme" },
-  ];
-
-  const basicScienceLinks = [
-    { href: "/academics/chemistry", label: "Chemistry" },
-    { href: "/academics/mathematics", label: "Mathematics" },
-    { href: "/academics/physics", label: "Physics" },
-    { href: "/academics/english", label: "English" },
-    { href: "/academics/bsh", label: "Basic Sciences Hub" },
   ];
 
   // Prevent body scroll when menu is open
@@ -133,8 +122,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 )}
               </div>
 
-
-
               <Link
                 href="/about/mou"
                 onClick={onClose}
@@ -142,7 +129,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               >
                 MOUs
               </Link>
-              
+
               <Link
                 href="/about/aef"
                 onClick={onClose}
@@ -182,7 +169,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     <Link href="/about/accreditations/naac" onClick={onClose}>
                       NAAC
                     </Link>
-                    <Link href="/about/accreditations/autonomous" onClick={onClose}>
+                    <Link
+                      href="/about/accreditations/autonomous"
+                      onClick={onClose}
+                    >
                       Autonomous
                     </Link>
                   </div>
@@ -254,17 +244,21 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     <Link href="/admissions/management" onClick={onClose}>
                       Admission Through Management
                     </Link>
-                    <Link href="/admissions/documents-required" onClick={onClose}>
+                    <Link
+                      href="/admissions/documents-required"
+                      onClick={onClose}
+                    >
                       Documents Required
                     </Link>
-                    <Link href="/admissions/eligibility-criteria" onClick={onClose}>
+                    <Link
+                      href="/admissions/eligibility-criteria"
+                      onClick={onClose}
+                    >
                       Disclaimer – Eligibility Criteria
                     </Link>
                   </div>
                 )}
               </div>
-
-
 
               {/* Mandatory Disclosure Sub-Accordion */}
               <div className="flex flex-col">
@@ -348,33 +342,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 {pgOpen && (
                   <div className="flex flex-col gap-2 ml-4 mt-2 text-white/60 text-base">
                     {academicPostgraduateLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={onClose}
-                        className="py-1 hover:text-[#b77a00]"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <div className="flex flex-col">
-                <button
-                  type="button"
-                  onClick={() => setBasicOpen(!basicOpen)}
-                  className="flex justify-between items-center text-white/80 py-1"
-                >
-                  Basic Sciences
-                  <i
-                    className={`fas fa-chevron-${basicOpen ? "up" : "down"} text-xs`}
-                  ></i>
-                </button>
-                {basicOpen && (
-                  <div className="flex flex-col gap-2 ml-4 mt-2 text-white/60 text-base">
-                    {basicScienceLinks.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
