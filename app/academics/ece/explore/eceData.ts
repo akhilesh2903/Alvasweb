@@ -16,7 +16,7 @@ M4:	By imbibing the students with human values and ethics through transformative
 
 `,
   hod: {
-    name: "Dr. Keshaveni",
+    name: "Dr. Keshaveni N",
     designation: "Professor & HOD - ECE",
     qualification: "Ph.D",
     experience: "15+ Years",
